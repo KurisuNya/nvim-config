@@ -1,6 +1,8 @@
 # nvim-config
 
-个人Neovim配置文件
+Full lua nvim config.
+
+User lazy.nvim as plugin manager.
 
 ## 项目结构
 
