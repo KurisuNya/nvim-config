@@ -15,10 +15,10 @@ User lazy.nvim as plugin manager.
 │   ├── core
 │   │   ├── colorscheme.lua
 │   │   ├── keymaps
+│   │   │   ├── alpha-nvim.lua
 │   │   │   ├── better-escape.lua
 │   │   │   ├── bufferline.lua
 │   │   │   ├── camelcase.lua
-│   │   │   ├── dashboard.lua
 │   │   │   ├── diffview.lua
 │   │   │   ├── gitsigns.lua
 │   │   │   ├── hop.lua
@@ -50,9 +50,9 @@ User lazy.nvim as plugin manager.
 │       │   └── trouble.lua
 │       ├── plugins.lua
 │       ├── tool
+│       │   ├── alpha-nvim.lua
 │       │   ├── better-escape.lua
 │       │   ├── comment.lua
-│       │   ├── dashboard.lua
 │       │   ├── gitsigns.lua
 │       │   ├── highlightedyank.lua
 │       │   ├── hop.lua

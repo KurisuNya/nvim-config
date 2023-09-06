@@ -43,8 +43,6 @@ keymap.set("n", "<S-Down>", "5j", opts)
 keymap.set("n", "<S-Up>", "5k", opts)
 --取消高亮
 keymap.set("n", "<leader>/", ":noh<cr>", opts)
--- --删除单字不复制
--- keymap.set("n", "x", '"_x', opts)
 --数字加减
 keymap.set("n", "+", "<C-a>", opts)
 keymap.set("n", "_", "<C-x>", opts)
@@ -53,12 +51,12 @@ keymap.set("n", "<leader>sc", ":setlocal spell! spelllang=en_us<cr>", opts)
 --------------------
 --   visual-mod   --
 --------------------
---移动选中文本
-keymap.set("v", "J", ":move '>+1<CR>gv-gv", opts)
-keymap.set("v", "K", ":move '<-2<CR>gv-gv", opts)
-keymap.set("v", "<S-Down>", ":move '>+1<CR>gv-gv", opts)
-keymap.set("v", "<S-Up>", ":move '<-2<CR>gv-gv", opts)
---修复黏贴问题
+--快速移动
+keymap.set("v", "J", "5j", opts)
+keymap.set("v", "K", "5k", opts)
+keymap.set("v", "<S-Down>", "5j", opts)
+keymap.set("v", "<S-Up>", "5k", opts)
+--黏贴替换文本
 keymap.set("v", "p", '"_dP', opts)
 ----------------------
 --   terminal-mod   --
