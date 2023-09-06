@@ -53,7 +53,7 @@ return {
 		event = "VeryLazy",
 	},
 	{
-		"AbaoFromCUG/dashboard-nvim",
+		"goolord/alpha-nvim",
 		event = "VeryLazy",
 	},
 	{

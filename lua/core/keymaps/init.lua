@@ -8,7 +8,7 @@ require("core.keymaps.nvim")
 ----  direct  ----
 require("core.keymaps.bufferline")
 require("core.keymaps.camelcase")
-require("core.keymaps.dashboard")
+require("core.keymaps.alpha-nvim")
 require("core.keymaps.diffview")
 require("core.keymaps.gitsigns")
 require("core.keymaps.markdown-preview")

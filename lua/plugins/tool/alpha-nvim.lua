@@ -1,11 +1,11 @@
-local status, db = pcall(require, "dashboard")
+local status, alpha = pcall(require, "alpha")
 if not status then
 	return
 end
+local dashboard = require("alpha.themes.dashboard")
 
-db.custom_header = {
-	[[]],
-	[[]],
+-- header
+dashboard.section.header.val = {
 	[[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠀]],
 	[[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣤⣶⣖⣀⢲⣶⣶⢂⠢⣤⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣶⣿⣿⠀]],
 	[[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠀⣶⣿⣿⡇⠀⢻⣿⣿⠁⢿⣿⡇⠿⢀⣿⣿⡆⣼⣿⣶⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⣤⣾⣿⣿⣿⡟⠀]],
@@ -28,41 +28,60 @@ db.custom_header = {
 	[[⠀⠿⠛⠛⠉⠁⠀⠀⠀⠀⠈⠛⣿⣿⣿⣿⣿⣿⣿⣶⣦⣤⣤⣥⣅⣥⣤⣤⣤⣶⣾⣿⣿⣿⣿⣿⣿⠿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀]],
 	[[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀]],
 	[[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠛⠛⠛⠛⠛⠛⠋⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀]],
-	[[]],
-	[[]],
-	[[]],
+}
+dashboard.section.header.opts.hl = "Function"
+
+-- footer
+dashboard.section.footer.val = "KurisuNya NeoVim"
+dashboard.section.footer.opts.hl = "Comment"
+
+-- buttons
+local leader = "SPC"
+local function button(sc, txt, keybind, keybind_opts)
+	local sc_ = sc:gsub("%s", ""):gsub(leader, "<leader>")
+	local opts = {
+		position = "center",
+		shortcut = sc,
+		cursor = 3,
+		width = 40,
+		align_shortcut = "right",
+		hl_shortcut = "Comment",
+		hl = "Label",
+	}
+	if keybind then
+		keybind_opts = vim.F.if_nil(keybind_opts, { noremap = true, silent = true, nowait = true })
+		opts.keymap = { "n", sc_, keybind, keybind_opts }
+	end
+	local function on_press()
+		local key = vim.api.nvim_replace_termcodes(keybind or sc_ .. "<Ignore>", true, false, true)
+		vim.api.nvim_feedkeys(key, "t", false)
+	end
+	return {
+		type = "button",
+		val = txt,
+		on_press = on_press,
+		opts = opts,
+	}
+end
+dashboard.button = button
+
+dashboard.section.buttons.val = {
+	dashboard.button("p", "  Open Project", "<cmd>Telescope projects<CR>"),
+	dashboard.button("f", "󰈞  Find File", "<cmd>Telescope fd<CR>"),
+	dashboard.button("h", "  File history", "<cmd>Telescope oldfiles<CR>"),
+	dashboard.button("c", "  File frecency", "<cmd>Telescope frecency<CR>"),
+	dashboard.button("e", "  Edit Projects", "<cmd>edit ~/.local/share/nvim/project_nvim/project_history<CR>"),
 }
 
-db.custom_center = {
-	{
-		icon = "                      ",
-		desc = "Project find                        ",
-		action = "Telescope projects",
-	},
-	{
-		icon = "                      ",
-		desc = "File history                        ",
-		action = "Telescope oldfiles",
-	},
-	{
-		icon = "                      ",
-		desc = "File frecency                       ",
-		action = "Telescope frecency",
-	},
-	{
-		icon = "                      ",
-		desc = "Edit Projects                       ",
-		action = "edit ~/.local/share/nvim/project_nvim/project_history",
-	},
-	{
-		icon = "                      ",
-		desc = "Edit keymaps                        ",
-		action = "edit ~/.config/nvim/lua/core/keymaps/init.lua",
-	},
+-- layout
+dashboard.config.layout = {
+	{ type = "padding", val = 3 },
+	dashboard.section.header,
+	{ type = "padding", val = 5 },
+	dashboard.section.buttons,
+	{ type = "padding", val = 1 },
+	dashboard.section.footer,
 }
 
-db.custom_footer = {
-	"",
-	"",
-	"KurisuNya NeoVim  ",
-}
+-- setup
+alpha.setup(dashboard.config)
