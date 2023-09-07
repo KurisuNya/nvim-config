@@ -4,9 +4,48 @@ if not telescope_setup then
 	return
 end
 
-local map_list = require("core.keymaps").telescope_undo
 -- configure telescope
+local map_list = require("core.keymaps").telescope_undo
+
 telescope.setup({
+	defaults = {
+		vimgrep_arguments = {
+			"rg",
+			"--color=never",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--smart-case",
+			"--trim",
+			"--hidden",
+			"--glob",
+			"!**/.git/*",
+			"--glob",
+			"!**/node_modules/*",
+			"--glob",
+			"!Webdav/",
+			"--glob",
+			"!Remote/",
+		},
+	},
+	pickers = {
+		find_files = {
+			find_command = {
+				"rg",
+				"--files",
+				"--hidden",
+				"--glob",
+				"!**/.git/*",
+				"--glob",
+				"!**/node_modules/*",
+				"--glob",
+				"!Webdav/",
+				"--glob",
+				"!Remote/",
+			},
+		},
+	},
 	extensions = {
 		undo = {
 			use_delta = true,
