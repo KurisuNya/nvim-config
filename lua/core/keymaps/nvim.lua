@@ -58,6 +58,11 @@ keymap.set("v", "<S-Down>", "5j", opts)
 keymap.set("v", "<S-Up>", "5k", opts)
 --黏贴替换文本
 keymap.set("v", "p", '"_dP', opts)
+--数字加减
+keymap.set("v", "+", "<C-a>", opts)
+keymap.set("v", "_", "<C-x>", opts)
+keymap.set("v", "g+", "g<C-a>", opts)
+keymap.set("v", "g_", "g<C-x>", opts)
 ----------------------
 --   terminal-mod   --
 ----------------------
