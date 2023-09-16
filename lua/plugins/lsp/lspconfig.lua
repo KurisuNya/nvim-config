@@ -32,7 +32,8 @@ lspconfig["clangd"].setup({
 	cmd = {
 		"clangd",
 		"--offset-encoding=utf-16",
-		-- "--query-driver=/usr/arm-none-eabi/include",
+		"--background-index",
+		"--suggest-missing-includes",
 	},
 })
 lspconfig["pylsp"].setup({

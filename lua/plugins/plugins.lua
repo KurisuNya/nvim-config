@@ -1,44 +1,149 @@
 return {
 	--dependence
-	"nvim-lua/plenary.nvim",
-	"kkharji/sqlite.lua",
+	{
+		"nvim-lua/plenary.nvim",
+		event = "VeryLazy",
+	},
+	{
+		"kkharji/sqlite.lua",
+		event = "VeryLazy",
+	},
 	--theme
-	"folke/tokyonight.nvim",
+	{
+		"folke/tokyonight.nvim",
+		event = "VeryLazy",
+	},
 	--ui
-	"MunifTanjim/nui.nvim",
-	"folke/noice.nvim",
-	"nvim-tree/nvim-web-devicons",
-	"onsails/lspkind.nvim",
-	"akinsho/bufferline.nvim",
-	"nvim-lualine/lualine.nvim",
-	"arkav/lualine-lsp-progress",
-	"lukas-reineke/indent-blankline.nvim",
-	"p00f/nvim-ts-rainbow",
-	"RRethy/vim-illuminate",
+	{
+		"MunifTanjim/nui.nvim",
+		event = "VeryLazy",
+	},
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+	},
+	{
+		"nvim-tree/nvim-web-devicons",
+		event = "VeryLazy",
+	},
+	{
+		"onsails/lspkind.nvim",
+		event = "VeryLazy",
+	},
+	{
+		"akinsho/bufferline.nvim",
+		event = "VeryLazy",
+	},
+	{
+		"nvim-lualine/lualine.nvim",
+		event = "VeryLazy",
+	},
+	{
+		"arkav/lualine-lsp-progress",
+		event = "VeryLazy",
+	},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		event = "VeryLazy",
+	},
+	{
+		"p00f/nvim-ts-rainbow",
+		event = "VeryLazy",
+	},
+	{
+		"RRethy/vim-illuminate",
+		event = "VeryLazy",
+	},
 	--cmp
-	"hrsh7th/nvim-cmp",
-	"L3MON4D3/LuaSnip",
-	"rafamadriz/friendly-snippets",
-	"windwp/nvim-autopairs",
-	"windwp/nvim-ts-autotag",
-	"lukas-reineke/cmp-under-comparator",
-	"hrsh7th/cmp-buffer",
-	"hrsh7th/cmp-path",
-	"hrsh7th/cmp-nvim-lsp",
-	"hrsh7th/cmp-nvim-lsp-signature-help",
-	"hrsh7th/cmp-cmdline",
-	"f3fora/cmp-spell",
-	"hrsh7th/cmp-nvim-lua",
-	"saadparwaiz1/cmp_luasnip",
+	{
+		"hrsh7th/nvim-cmp",
+		event = "VeryLazy",
+	},
+	{
+		"L3MON4D3/LuaSnip",
+		event = "VeryLazy",
+	},
+	{
+		"rafamadriz/friendly-snippets",
+		event = "VeryLazy",
+	},
+	{
+		"windwp/nvim-autopairs",
+		event = "VeryLazy",
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		event = "VeryLazy",
+	},
+	{
+		"lukas-reineke/cmp-under-comparator",
+		event = "VeryLazy",
+	},
+	{
+		"hrsh7th/cmp-buffer",
+		event = "VeryLazy",
+	},
+	{
+		"hrsh7th/cmp-path",
+		event = "VeryLazy",
+	},
+	{
+		"hrsh7th/cmp-nvim-lsp",
+		event = "VeryLazy",
+	},
+	{
+		"hrsh7th/cmp-nvim-lsp-signature-help",
+		event = "VeryLazy",
+	},
+	{
+		"hrsh7th/cmp-cmdline",
+		event = "VeryLazy",
+	},
+	{
+		"f3fora/cmp-spell",
+		event = "VeryLazy",
+	},
+	{
+		"hrsh7th/cmp-nvim-lua",
+		event = "VeryLazy",
+	},
+	{
+		"saadparwaiz1/cmp_luasnip",
+		event = "VeryLazy",
+	},
 	--lsp
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
-	"jayp0521/mason-null-ls.nvim",
-	"neovim/nvim-lspconfig",
-	"glepnir/lspsaga.nvim",
-	"jose-elias-alvarez/null-ls.nvim",
-	"folke/trouble.nvim",
-	"folke/neodev.nvim",
+	{
+		"williamboman/mason.nvim",
+		event = "VeryLazy",
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		event = "VeryLazy",
+	},
+	{
+		"jayp0521/mason-null-ls.nvim",
+		event = "VeryLazy",
+	},
+	{
+		"neovim/nvim-lspconfig",
+		event = "VeryLazy",
+	},
+	{
+		"glepnir/lspsaga.nvim",
+		event = "VeryLazy",
+	},
+	{
+		"jose-elias-alvarez/null-ls.nvim",
+		event = "VeryLazy",
+	},
+	{
+		"folke/trouble.nvim",
+		event = "VeryLazy",
+	},
+	{
+		"folke/neodev.nvim",
+		event = "VeryLazy",
+	},
 	--tool
 	{
 		"nguyenvukhang/nvim-toggler",
@@ -106,6 +211,7 @@ return {
 			vim.g.mkdp_filetypes = { "markdown" }
 		end,
 		ft = { "markdown" },
+		event = "VeryLazy",
 	},
 	{
 		"nacro90/numb.nvim",

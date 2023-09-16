@@ -1,3 +1,5 @@
+------ enable fast loader ------
+vim.loader.enable()
 ------ leader-key ------
 vim.g.mapleader = " "
 ------ user-plugins ------
