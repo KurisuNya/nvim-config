@@ -36,20 +36,6 @@ lspconfig["clangd"].setup({
 		"--suggest-missing-includes",
 	},
 })
-lspconfig["pylsp"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-	settings = {
-		pylsp = {
-			plugins = {
-				pycodestyle = {
-					ignore = { "W391" },
-					maxLineLength = 100,
-				},
-			},
-		},
-	},
-})
 lspconfig["lua_ls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
@@ -73,6 +59,24 @@ lspconfig["lua_ls"].setup({
 			},
 		},
 	},
+})
+lspconfig["pylsp"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	settings = {
+		pylsp = {
+			plugins = {
+				pycodestyle = {
+					ignore = { "W391" },
+					maxLineLength = 100,
+				},
+			},
+		},
+	},
+})
+lspconfig["rust_analyzer"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
 })
 
 -- lsp-ui
