@@ -1,9 +1,24 @@
 -- import nvim-indent_blankline safely
-local indent_blankline_setup, indent_blankline = pcall(require, "indent_blankline")
-if not indent_blankline_setup then
+local ibl_setup, ibl = pcall(require, "ibl")
+if not ibl_setup then
 	return
 end
-indent_blankline.setup({
-	space_char_blankline = " ",
-	show_current_context = true,
+local ibl_hooks_setup, ibl_hooks = pcall(require, "ibl.hooks")
+if not ibl_hooks_setup then
+	return
+end
+
+ibl_hooks.register(ibl_hooks.type.HIGHLIGHT_SETUP, function()
+	vim.api.nvim_set_hl(0, "IBLSelected", { fg = "#ff9e64" })
+end)
+
+ibl.setup({
+	scope = {
+		highlight = { "IBLSelected" },
+		include = {
+			node_type = { lua = { "return_statement", "table_constructor" } },
+		},
+	},
 })
+
+ibl_hooks.register(ibl_hooks.type.SCOPE_HIGHLIGHT, ibl_hooks.builtin.scope_highlight_from_extmark)
