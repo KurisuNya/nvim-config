@@ -1,5 +1,4 @@
-return {
-	--dependence
+return { --dependence
 	{
 		"nvim-lua/plenary.nvim",
 		event = "VeryLazy",
@@ -118,6 +117,10 @@ return {
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
+		event = "VeryLazy",
+	},
+	{
+		"mfussenegger/nvim-jdtls",
 		event = "VeryLazy",
 	},
 	{
