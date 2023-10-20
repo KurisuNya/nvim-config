@@ -44,7 +44,6 @@ lualine.setup({
 		},
 		lualine_c = {
 			{
-
 				require("noice").api.status.command.get,
 				cond = require("noice").api.status.command.has,
 			},

@@ -5,7 +5,6 @@ if not setup then
 end
 
 -- for conciseness
-
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 local code_action = null_ls.builtins.code_actions

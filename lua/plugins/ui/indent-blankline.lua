@@ -16,7 +16,9 @@ ibl.setup({
 	scope = {
 		highlight = { "IBLSelected" },
 		include = {
-			node_type = { lua = { "return_statement", "table_constructor" } },
+			node_type = {
+				lua = { "return_statement", "table_constructor" },
+			},
 		},
 	},
 })

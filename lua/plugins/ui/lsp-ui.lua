@@ -1,6 +1,5 @@
 local M = {}
 
--- remove obsolete TS* highlight groups https://github.com/nvim-treesitter/nvim-treesitter/pull/3656
 M.symbol_map = {
 	Text = { icon = "" },
 	Method = { icon = "", hl = "@method" },
@@ -27,7 +26,6 @@ M.symbol_map = {
 	Event = { icon = "", hl = "@type" },
 	Operator = { icon = "", hl = "@operator" },
 	TypeParameter = { icon = "", hl = "@parameter" },
-	---------------------------------------------------------
 	Namespace = { icon = "", hl = "@namespace" },
 	Package = { icon = "", hl = "@namespace" },
 	String = { icon = "", hl = "@string" },

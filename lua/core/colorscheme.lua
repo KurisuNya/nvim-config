@@ -11,7 +11,7 @@ tokyonight.setup({
 	dim_inactive = true,
 	lualine_bold = true,
 	styles = {
-		comments = { italic = false },
+		comments = { italic = true },
 		keywords = { italic = true },
 	},
 })

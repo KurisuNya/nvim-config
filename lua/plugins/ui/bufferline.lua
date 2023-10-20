@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 local status, bufferline = pcall(require, "bufferline")
 if not status then
 	return

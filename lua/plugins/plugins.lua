@@ -1,4 +1,5 @@
-return { --dependence
+return {
+	--dependence
 	{
 		"nvim-lua/plenary.nvim",
 		event = "VeryLazy",
@@ -55,7 +56,7 @@ return { --dependence
 	},
 	--cmp
 	{
-		"hrsh7th/nvim-cmp",
+		"windwp/nvim-autopairs",
 		event = "VeryLazy",
 	},
 	{
@@ -67,11 +68,7 @@ return { --dependence
 		event = "VeryLazy",
 	},
 	{
-		"windwp/nvim-autopairs",
-		event = "VeryLazy",
-	},
-	{
-		"windwp/nvim-ts-autotag",
+		"hrsh7th/nvim-cmp",
 		event = "VeryLazy",
 	},
 	{
@@ -79,11 +76,15 @@ return { --dependence
 		event = "VeryLazy",
 	},
 	{
+		"saadparwaiz1/cmp_luasnip",
+		event = "VeryLazy",
+	},
+	{
 		"hrsh7th/cmp-buffer",
 		event = "VeryLazy",
 	},
 	{
-		"hrsh7th/cmp-path",
+		"f3fora/cmp-spell",
 		event = "VeryLazy",
 	},
 	{
@@ -95,11 +96,7 @@ return { --dependence
 		event = "VeryLazy",
 	},
 	{
-		"hrsh7th/cmp-cmdline",
-		event = "VeryLazy",
-	},
-	{
-		"f3fora/cmp-spell",
+		"hrsh7th/cmp-nvim-lsp-document-symbol",
 		event = "VeryLazy",
 	},
 	{
@@ -107,7 +104,15 @@ return { --dependence
 		event = "VeryLazy",
 	},
 	{
-		"saadparwaiz1/cmp_luasnip",
+		"FelipeLema/cmp-async-path",
+		event = "VeryLazy",
+	},
+	{
+		"hrsh7th/cmp-cmdline",
+		event = "VeryLazy",
+	},
+	{
+		"kdheepak/cmp-latex-symbols",
 		event = "VeryLazy",
 	},
 	--lsp
@@ -193,6 +198,10 @@ return { --dependence
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
+		event = "VeryLazy",
+	},
+	{
+		"windwp/nvim-ts-autotag",
 		event = "VeryLazy",
 	},
 	{
