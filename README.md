@@ -75,6 +75,7 @@ User lazy.nvim as plugin manager.
 │           ├── init.lua
 │           ├── lsp-ui.lua
 │           ├── lualine.lua
-│           └── noice.lua
+│           ├── noice.lua
+│           └── nvim-web-devicons.lua
 └── README.md
 ```
