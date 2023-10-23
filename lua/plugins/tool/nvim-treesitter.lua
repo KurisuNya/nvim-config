@@ -7,6 +7,7 @@ end
 treesitter.setup({
 	--默认安装
 	ensure_installed = {
+		"bash",
 		"c",
 		"comment",
 		"cpp",
@@ -16,7 +17,13 @@ treesitter.setup({
 		"lua",
 		"markdown",
 		"markdown_inline",
+		"php",
 		"python",
+		"regex",
+		"rust",
+		"scss",
+		"vim",
+		"yuck",
 	},
 	-- 启用代码高亮模块
 	highlight = {
