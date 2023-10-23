@@ -8,6 +8,10 @@ return {
 		"kkharji/sqlite.lua",
 		event = "VeryLazy",
 	},
+	{
+		"kevinhwang91/promise-async",
+		event = "VeryLazy",
+	},
 	--theme
 	{
 		"folke/tokyonight.nvim",
@@ -218,12 +222,12 @@ return {
 	},
 	{
 		"iamcco/markdown-preview.nvim",
-		build = "cd app && npm install",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		build = "cd app && yarn install",
 		init = function()
 			vim.g.mkdp_filetypes = { "markdown" }
 		end,
 		ft = { "markdown" },
-		event = "VeryLazy",
 	},
 	{
 		"nacro90/numb.nvim",
@@ -280,6 +284,16 @@ return {
 	},
 	{
 		"lambdalisue/suda.vim",
+		event = "VeryLazy",
+	},
+	{
+		"kevinhwang91/nvim-ufo",
+		event = "VeryLazy",
+	},
+	{
+		"michaelb/sniprun",
+		branch = "master",
+		build = "sh install.sh",
 		event = "VeryLazy",
 	},
 }
