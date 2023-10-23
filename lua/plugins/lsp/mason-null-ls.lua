@@ -8,6 +8,7 @@ mason_null_ls.setup({
 	ensure_installed = {
 		"cpptools",
 		"codespell",
+		"commitlint",
 		"cpplint",
 		"shellcheck",
 		"autopep8",
