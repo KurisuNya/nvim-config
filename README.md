@@ -2,7 +2,7 @@
 
 Full lua nvim config.
 
-User lazy.nvim as plugin manager.
+Use lazy.nvim as plugin manager.
 
 ## 项目结构
 
