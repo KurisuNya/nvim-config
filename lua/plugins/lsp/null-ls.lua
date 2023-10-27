@@ -24,7 +24,7 @@ null_ls.setup({
 		formatting.prettier.with({
 			disabled_filetypes = { "markdown" },
 		}),
-		formatting.autopep8,
+		formatting.black,
 		formatting.stylua,
 		formatting.beautysh,
 		-- linters

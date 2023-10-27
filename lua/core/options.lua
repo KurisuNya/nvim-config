@@ -14,7 +14,7 @@ vim.wo.cursorline = true
 -- 显示左侧图标指示列
 vim.wo.signcolumn = "yes"
 -- 显示右侧参考线
-vim.wo.colorcolumn = "80"
+vim.wo.colorcolumn = "100"
 -- Tab长度
 vim.o.tabstop = 2
 vim.bo.tabstop = 2
