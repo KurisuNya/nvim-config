@@ -46,6 +46,7 @@ User lazy.nvim as plugin manager.
 │       │   ├── lspsaga.lua
 │       │   ├── mason-lspconfig.lua
 │       │   ├── mason.lua
+│       │   ├── mason-null-ls.lua
 │       │   ├── null-ls.lua
 │       │   └── trouble.lua
 │       ├── plugins.lua
@@ -57,6 +58,7 @@ User lazy.nvim as plugin manager.
 │       │   ├── highlightedyank.lua
 │       │   ├── hop.lua
 │       │   ├── init.lua
+│       │   ├── markdown-preview.lua
 │       │   ├── neoscroll.lua
 │       │   ├── neo-tree.lua
 │       │   ├── numb.lua
@@ -64,7 +66,9 @@ User lazy.nvim as plugin manager.
 │       │   ├── nvim-spectre.lua
 │       │   ├── nvim-toggler.lua
 │       │   ├── nvim-treesitter.lua
+│       │   ├── nvim-ufo.lua
 │       │   ├── project.lua
+│       │   ├── sniprun.lua
 │       │   ├── suda.lua
 │       │   ├── telescope.lua
 │       │   ├── vim-table-mode.lua
