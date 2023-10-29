@@ -108,6 +108,10 @@ cmp.setup.filetype({ "TelescopePrompt" }, {
 cmp.setup.filetype({ "markdown" }, {
 	sources = {
 		{
+			name = "async_path",
+			priority = 3,
+		},
+		{
 			name = "spell",
 			option = {
 				keep_all_entries = false,

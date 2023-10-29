@@ -296,4 +296,8 @@ return {
 		build = "sh install.sh",
 		event = "VeryLazy",
 	},
+	{
+		"askfiy/nvim-picgo",
+		event = "VeryLazy",
+	},
 }
