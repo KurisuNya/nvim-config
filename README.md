@@ -16,8 +16,8 @@ Use lazy.nvim as plugin manager.
 │   │   ├── colorscheme.lua
 │   │   ├── keymaps
 │   │   │   ├── alpha-nvim.lua
+│   │   │   ├── barbar.lua
 │   │   │   ├── better-escape.lua
-│   │   │   ├── bufferline.lua
 │   │   │   ├── camelcase.lua
 │   │   │   ├── diffview.lua
 │   │   │   ├── gitsigns.lua
@@ -63,6 +63,7 @@ Use lazy.nvim as plugin manager.
 │       │   ├── neo-tree.lua
 │       │   ├── numb.lua
 │       │   ├── nvim-colorizer.lua
+│       │   ├── nvim-picgo.lua
 │       │   ├── nvim-spectre.lua
 │       │   ├── nvim-toggler.lua
 │       │   ├── nvim-treesitter.lua
@@ -74,7 +75,7 @@ Use lazy.nvim as plugin manager.
 │       │   ├── vim-table-mode.lua
 │       │   └── which-key.lua
 │       └── ui
-│           ├── bufferline.lua
+│           ├── barbar.lua
 │           ├── indent-blankline.lua
 │           ├── init.lua
 │           ├── lsp-ui.lua
