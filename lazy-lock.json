@@ -48,7 +48,7 @@
   "nvim-picgo": { "branch": "master", "commit": "73d5b5171d9125c1b43bd5448c8b611de7b5dbd5" },
   "nvim-spectre": { "branch": "master", "commit": "696cff781a4a7ecc91549736835e2acbd00fe859" },
   "nvim-toggler": { "branch": "main", "commit": "7797634fd0e85e8f31da4911765d116fa63b4ae9" },
-  "nvim-treesitter": { "branch": "master", "commit": "f9c422a12185bd8e732f829dc26b1e0b59bdbb75" },
+  "nvim-treesitter": { "branch": "master", "commit": "6f8387f05d2cbb357fededf35ea4311703104a11" },
   "nvim-ts-autotag": { "branch": "main", "commit": "6be1192965df35f94b8ea6d323354f7dc7a557e4" },
   "nvim-ts-rainbow": { "branch": "master", "commit": "ef95c15a935f97c65a80e48e12fe72d49aacf9b9" },
   "nvim-ufo": { "branch": "main", "commit": "ebbab711d909d5f675e38ad489765bd22bd2c6b3" },

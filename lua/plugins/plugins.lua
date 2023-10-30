@@ -302,7 +302,7 @@ return {
 		event = "VeryLazy",
 	},
 	{
-		"askfiy/nvim-picgo",
+		"KurisuNya/nvim-picgo",
 		event = "VeryLazy",
 	},
 }
