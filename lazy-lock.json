@@ -45,7 +45,7 @@
   "nvim-colorizer.lua": { "branch": "master", "commit": "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6" },
   "nvim-jdtls": { "branch": "master", "commit": "a09f8cdd75c546eb024d0f0b5b3ad185f05b738f" },
   "nvim-lspconfig": { "branch": "master", "commit": "d0467b9574b48429debf83f8248d8cee79562586" },
-  "nvim-picgo": { "branch": "master", "commit": "73d5b5171d9125c1b43bd5448c8b611de7b5dbd5" },
+  "nvim-picgo": { "branch": "master", "commit": "4b449c0d5085981e2f86e11ec685142756e78b28" },
   "nvim-spectre": { "branch": "master", "commit": "696cff781a4a7ecc91549736835e2acbd00fe859" },
   "nvim-toggler": { "branch": "main", "commit": "7797634fd0e85e8f31da4911765d116fa63b4ae9" },
   "nvim-treesitter": { "branch": "master", "commit": "6f8387f05d2cbb357fededf35ea4311703104a11" },
