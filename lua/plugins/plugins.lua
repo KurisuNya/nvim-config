@@ -17,6 +17,11 @@ return {
 		"folke/tokyonight.nvim",
 		event = "VeryLazy",
 	},
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+	},
 	--ui
 	{
 		"MunifTanjim/nui.nvim",
@@ -35,7 +40,7 @@ return {
 		event = "VeryLazy",
 	},
 	{
-		"akinsho/bufferline.nvim",
+		"romgrk/barbar.nvim",
 		event = "VeryLazy",
 	},
 	{

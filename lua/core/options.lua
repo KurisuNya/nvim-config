@@ -61,6 +61,8 @@ vim.o.autoread = true
 vim.bo.autoread = true
 -- 命令行不显示
 vim.opt.cmdheight = 0
+-- diff 使用对角线
+vim.opt.fillchars:append({ diff = "╱" })
 -- 关闭新行注释
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
 	pattern = "*",

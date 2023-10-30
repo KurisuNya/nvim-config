@@ -6,7 +6,7 @@ require("core.keymaps.nvim")
 -- plugin-keymap  --
 --------------------
 ----  direct  ----
-require("core.keymaps.bufferline")
+require("core.keymaps.barbar")
 require("core.keymaps.camelcase")
 require("core.keymaps.alpha-nvim")
 require("core.keymaps.diffview")

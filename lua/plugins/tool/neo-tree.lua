@@ -3,12 +3,25 @@ if not neo_tree_status then
 	return
 end
 
-vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
-vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
-vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
-vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
-vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
+local lsp_ui = require("plugins.ui.lsp-ui")
+vim.fn.sign_define("DiagnosticSignError", {
+	text = lsp_ui.diagnostics.icons.error,
+	texthl = "DiagnosticSignError",
+})
+vim.fn.sign_define("DiagnosticSignWarn", {
+	text = lsp_ui.diagnostics.icons.warning,
+	texthl = "DiagnosticSignWarn",
+})
+vim.fn.sign_define("DiagnosticSignInfo", {
+	text = lsp_ui.diagnostics.icons.info,
+	texthl = "DiagnosticSignInfo",
+})
+vim.fn.sign_define("DiagnosticSignHint", {
+	text = lsp_ui.diagnostics.icons.hint,
+	texthl = "DiagnosticSignHint",
+})
 
+vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 neo_tree.setup({
 	close_if_last_window = true,
 	popup_border_style = "rounded",
