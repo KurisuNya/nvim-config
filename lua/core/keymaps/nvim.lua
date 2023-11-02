@@ -32,8 +32,8 @@ keymap.set("n", "<C-Right>", "<C-w>l", opts)
 keymap.set("n", "<leader>t", ":sp term://fish<CR>", opts)
 keymap.set("n", "<leader>vt", ":vsp term://fish<CR>", opts)
 --行操作
-keymap.set("n", "<Enter>", 'O<Esc>"_cc<Esc>j', opts)
-keymap.set("n", "<leader><Enter>", 'o<Esc>"_cc<Esc>', opts)
+keymap.set("n", "<leader><Enter>", 'O<Esc>"_cc<Esc>j', opts)
+-- keymap.set("n", "<leader><Enter>", 'o<Esc>"_cc<Esc>', opts)
 keymap.set("n", "<leader>j", "J", opts)
 keymap.set("n", "<leader>k", "i<cr><Up><Esc>A", opts)
 --快速移动

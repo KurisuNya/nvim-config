@@ -3,7 +3,7 @@ if not status then
 	return
 end
 nvim_picgo.setup({
-	notice = "echo",
+	notice = "notify",
 	image_name = false,
 	debug = false,
 })

@@ -58,11 +58,10 @@ cmp.setup({
 				end,
 			},
 		},
-		{ name = "nvim_lsp_signature_help" },
 	}),
 	formatting = {
 		format = lspkind.cmp_format({
-			maxwidth = 100,
+			maxwidth = 30,
 			ellipsis_char = "...",
 		}),
 	},
@@ -82,11 +81,9 @@ cmp.setup({
 
 cmp.setup.cmdline("/", {
 	mapping = cmp.mapping.preset.cmdline(),
-	sources = cmp.config.sources({
-		{ name = "nvim_lsp_document_symbol" },
-	}, {
+	sources = {
 		{ name = "buffer" },
-	}),
+	},
 })
 cmp.setup.cmdline(":", {
 	mapping = cmp.mapping.preset.cmdline(),

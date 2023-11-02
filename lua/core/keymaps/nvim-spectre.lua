@@ -3,10 +3,12 @@
 --------------------
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
-keymap.set("n", "<leader>R", "<cmd>lua require('spectre').open()<CR>", opts)
+keymap.set("n", "<leader>S", "<cmd>lua require('spectre').open()<CR>", opts)
+keymap.set("n", "<leader>sw", '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', opts)
+keymap.set("v", "<leader>sw", '<cmd>lua require("spectre").open_visual()<CR>', opts)
 local M = {
 	["toggle_line"] = {
-		map = "dd",
+		map = "<Tab>",
 		cmd = "<cmd>lua require('spectre').toggle_line()<CR>",
 		desc = "toggle current item",
 	},

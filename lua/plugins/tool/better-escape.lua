@@ -1,5 +1,5 @@
-local better_escape_status, better_escape = pcall(require, "better_escape")
-if not better_escape_status then
+local status, better_escape = pcall(require, "better_escape")
+if not status then
 	return
 end
 local map_list = require("core.keymaps").better_escape

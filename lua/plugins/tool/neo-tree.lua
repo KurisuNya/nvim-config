@@ -1,23 +1,23 @@
-local neo_tree_status, neo_tree = pcall(require, "neo-tree")
-if not neo_tree_status then
+local status, neo_tree = pcall(require, "neo-tree")
+if not status then
 	return
 end
 
-local lsp_ui = require("plugins.ui.lsp-ui")
+local icons = require("plugins.ui.icons")
 vim.fn.sign_define("DiagnosticSignError", {
-	text = lsp_ui.diagnostics.icons.error,
+	text = icons.diagnostics.icons.error,
 	texthl = "DiagnosticSignError",
 })
 vim.fn.sign_define("DiagnosticSignWarn", {
-	text = lsp_ui.diagnostics.icons.warning,
+	text = icons.diagnostics.icons.warning,
 	texthl = "DiagnosticSignWarn",
 })
 vim.fn.sign_define("DiagnosticSignInfo", {
-	text = lsp_ui.diagnostics.icons.info,
+	text = icons.diagnostics.icons.info,
 	texthl = "DiagnosticSignInfo",
 })
 vim.fn.sign_define("DiagnosticSignHint", {
-	text = lsp_ui.diagnostics.icons.hint,
+	text = icons.diagnostics.icons.hint,
 	texthl = "DiagnosticSignHint",
 })
 
@@ -28,20 +28,20 @@ neo_tree.setup({
 
 	default_component_configs = {
 		modified = {
-			symbol = "",
+			symbol = icons.git.modified,
 			highlight = "NeoTreeModified",
 		},
 		git_status = {
 			symbols = {
 				added = "",
 				modified = "",
-				unstaged = "",
-				staged = "",
-				conflict = "שׂ",
-				renamed = "",
-				untracked = "ﲉ",
-				deleted = "",
-				ignored = "",
+				unstaged = icons.git.unstaged,
+				staged = icons.git.staged,
+				conflict = icons.git.conflict,
+				renamed = icons.git.renamed,
+				untracked = icons.git.untracked,
+				deleted = icons.git.deleted,
+				ignored = icons.git.ignored,
 			},
 		},
 	},

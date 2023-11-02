@@ -1,10 +1,10 @@
 -- import nvim-indent_blankline safely
-local ibl_setup, ibl = pcall(require, "ibl")
-if not ibl_setup then
+local ibl_status, ibl = pcall(require, "ibl")
+if not ibl_status then
 	return
 end
-local ibl_hooks_setup, ibl_hooks = pcall(require, "ibl.hooks")
-if not ibl_hooks_setup then
+local ibl_hooks_status, ibl_hooks = pcall(require, "ibl.hooks")
+if not ibl_hooks_status then
 	return
 end
 

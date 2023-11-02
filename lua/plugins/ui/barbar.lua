@@ -2,13 +2,14 @@ local status, barbar = pcall(require, "barbar")
 if not status then
 	return
 end
-local lsp_ui = require("plugins.ui.lsp-ui")
+local icons = require("plugins.ui.icons")
 
 vim.g.barbar_auto_setup = false
 barbar.setup({
 	animation = false,
 	insert_at_end = true,
 	auto_hide = 0,
+	modified = { button = icons.git.modified },
 	icons = {
 		button = "",
 		separator = { left = " ", right = "" },
@@ -17,19 +18,19 @@ barbar.setup({
 		diagnostics = {
 			[vim.diagnostic.severity.ERROR] = {
 				enabled = true,
-				icon = lsp_ui.diagnostics.icons.error,
+				icon = icons.diagnostics.icons.error,
 			},
 			[vim.diagnostic.severity.WARN] = {
 				enabled = false,
-				icon = lsp_ui.diagnostics.icons.warning,
+				icon = icons.diagnostics.icons.warning,
 			},
 			[vim.diagnostic.severity.INFO] = {
 				enabled = false,
-				icon = lsp_ui.diagnostics.icons.info,
+				icon = icons.diagnostics.icons.info,
 			},
 			[vim.diagnostic.severity.HINT] = {
 				enabled = true,
-				icon = lsp_ui.diagnostics.icons.hint,
+				icon = icons.diagnostics.icons.hint,
 			},
 		},
 	},

@@ -1,6 +1,6 @@
 ---@diagnostic disable: missing-fields
-local nvim_ufo_status, nvim_ufo = pcall(require, "ufo")
-if not nvim_ufo_status then
+local status, nvim_ufo = pcall(require, "ufo")
+if not status then
 	return
 end
 

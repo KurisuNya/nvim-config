@@ -1,7 +1,12 @@
-local status, lualine = pcall(require, "lualine")
-if not status then
+local lualine_status, lualine = pcall(require, "lualine")
+if not lualine_status then
 	return
 end
+local noice_status, noice = pcall(require, "noice")
+if not noice_status then
+	return
+end
+local icons = require("plugins.ui.icons")
 
 local function diff_source()
 	local gitsigns = vim.b.gitsigns_status_dict
@@ -39,17 +44,17 @@ lualine.setup({
 			"mode",
 		},
 		lualine_b = {
-			{ "b:gitsigns_head", icon = "" },
+			{ "b:gitsigns_head", icon = icons.git.head },
 			{ "diff", source = diff_source },
 		},
 		lualine_c = {
 			{
-				require("noice").api.status.command.get,
-				cond = require("noice").api.status.command.has,
+				noice.api.status.command.get,
+				cond = noice.api.status.command.has,
 			},
 			{
-				require("noice").api.status.mode.get,
-				cond = require("noice").api.status.mode.has,
+				noice.api.status.mode.get,
+				cond = noice.api.status.mode.has,
 			},
 		},
 		lualine_x = {

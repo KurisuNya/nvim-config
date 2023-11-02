@@ -28,6 +28,10 @@ return {
 		event = "VeryLazy",
 	},
 	{
+		"rcarriga/nvim-notify",
+		event = "VeryLazy",
+	},
+	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
 	},
@@ -65,6 +69,10 @@ return {
 	},
 	--cmp
 	{
+		"abecodes/tabout.nvim",
+		event = "VeryLazy",
+	},
+	{
 		"windwp/nvim-autopairs",
 		event = "VeryLazy",
 	},
@@ -98,14 +106,6 @@ return {
 	},
 	{
 		"hrsh7th/cmp-nvim-lsp",
-		event = "VeryLazy",
-	},
-	{
-		"hrsh7th/cmp-nvim-lsp-signature-help",
-		event = "VeryLazy",
-	},
-	{
-		"hrsh7th/cmp-nvim-lsp-document-symbol",
 		event = "VeryLazy",
 	},
 	{
@@ -304,5 +304,9 @@ return {
 	{
 		"KurisuNya/nvim-picgo",
 		event = "VeryLazy",
+	},
+	{
+		"nvimdev/hlsearch.nvim",
+		event = "BufRead",
 	},
 }

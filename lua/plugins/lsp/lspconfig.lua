@@ -83,11 +83,11 @@ local function lspSymbol(name, icon)
 	local hl = "DiagnosticSign" .. name
 	vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
 end
-local lsp_ui = require("plugins.ui.lsp-ui")
-lspSymbol("Error", lsp_ui.diagnostics.icons.error)
-lspSymbol("Info", lsp_ui.diagnostics.icons.info)
-lspSymbol("Hint", lsp_ui.diagnostics.icons.hint)
-lspSymbol("Warn", lsp_ui.diagnostics.icons.warning)
+local icons = require("plugins.ui.icons")
+lspSymbol("Error", icons.diagnostics.icons.error)
+lspSymbol("Info", icons.diagnostics.icons.info)
+lspSymbol("Hint", icons.diagnostics.icons.hint)
+lspSymbol("Warn", icons.diagnostics.icons.warning)
 vim.diagnostic.config({
 	virtual_text = true,
 	signs = true,
@@ -95,5 +95,5 @@ vim.diagnostic.config({
 	update_in_insert = false,
 	severity_sort = false,
 })
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, lsp_ui.hover_actions)
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, lsp_ui.hover_actions)
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, icons.hover_actions)
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, icons.hover_actions)
