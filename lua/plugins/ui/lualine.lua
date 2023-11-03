@@ -7,6 +7,7 @@ if not noice_status then
 	return
 end
 local icons = require("plugins.ui.icons")
+vim.opt.showmode = false
 
 local function diff_source()
 	local gitsigns = vim.b.gitsigns_status_dict

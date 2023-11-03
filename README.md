@@ -21,7 +21,6 @@ Use lazy.nvim as plugin manager.
 │   ├── core
 │   │   ├── colorscheme.lua
 │   │   ├── keymaps
-│   │   │   ├── alpha-nvim.lua
 │   │   │   ├── barbar.lua
 │   │   │   ├── better-escape.lua
 │   │   │   ├── camelcase.lua
@@ -34,17 +33,19 @@ Use lazy.nvim as plugin manager.
 │   │   │   ├── neo-tree.lua
 │   │   │   ├── nvim-cmp.lua
 │   │   │   ├── nvim.lua
+│   │   │   ├── nvim-picgo.lua
 │   │   │   ├── nvim-spectre.lua
+│   │   │   ├── nvim-toggler.lua
 │   │   │   ├── telescope.lua
 │   │   │   ├── telescope-undo.lua
-│   │   │   ├── troubles.lua
-│   │   │   └── vim-maxmizer.lua
+│   │   │   └── troubles.lua
 │   │   └── options.lua
 │   └── plugins
 │       ├── cmp
 │       │   ├── autopairs.lua
 │       │   ├── init.lua
-│       │   └── nvim-cmp.lua
+│       │   ├── nvim-cmp.lua
+│       │   └── tabout.lua
 │       ├── init.lua
 │       ├── lsp
 │       │   ├── init.lua
@@ -62,6 +63,7 @@ Use lazy.nvim as plugin manager.
 │       │   ├── comment.lua
 │       │   ├── gitsigns.lua
 │       │   ├── highlightedyank.lua
+│       │   ├── hlsearch.lua
 │       │   ├── hop.lua
 │       │   ├── init.lua
 │       │   ├── markdown-preview.lua
@@ -82,11 +84,12 @@ Use lazy.nvim as plugin manager.
 │       │   └── which-key.lua
 │       └── ui
 │           ├── barbar.lua
+│           ├── icons.lua
 │           ├── indent-blankline.lua
 │           ├── init.lua
-│           ├── lsp-ui.lua
 │           ├── lualine.lua
 │           ├── noice.lua
+│           ├── nvim-notify.lua
 │           └── nvim-web-devicons.lua
 └── README.md
 ```

@@ -2,6 +2,7 @@ local status, noice = pcall(require, "noice")
 if not status then
 	return
 end
+vim.opt.cmdheight = 0
 
 noice.setup({
 	lsp = {

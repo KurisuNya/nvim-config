@@ -101,10 +101,6 @@ return {
 		event = "VeryLazy",
 	},
 	{
-		"f3fora/cmp-spell",
-		event = "VeryLazy",
-	},
-	{
 		"hrsh7th/cmp-nvim-lsp",
 		event = "VeryLazy",
 	},
@@ -167,10 +163,6 @@ return {
 		event = "VeryLazy",
 	},
 	{
-		"ojroques/nvim-bufdel",
-		event = "VeryLazy",
-	},
-	{
 		"ahmedkhalf/project.nvim",
 		event = "VeryLazy",
 	},
@@ -211,10 +203,6 @@ return {
 	},
 	{
 		"windwp/nvim-ts-autotag",
-		event = "VeryLazy",
-	},
-	{
-		"szw/vim-maximizer",
 		event = "VeryLazy",
 	},
 	{

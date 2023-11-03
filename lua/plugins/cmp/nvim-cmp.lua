@@ -17,6 +17,7 @@ if not lspkind_status then
 end
 require("luasnip.loaders.from_vscode").lazy_load()
 local map_list = require("core.keymaps").nvim_cmp
+vim.opt.pumheight = 10 -- cmp number
 vim.opt.completeopt = "menu,menuone,noselect"
 
 cmp.setup({
@@ -43,21 +44,11 @@ cmp.setup({
 		[map_list.confirm] = cmp.mapping.confirm({ select = false }),
 	}),
 	sources = cmp.config.sources({
-		{ name = "async_path", priority = 6 },
-		{ name = "luasnip", priority = 5 },
-		{ name = "nvim_lsp", priority = 4 },
-		{ name = "nvim_lua", priority = 3 },
-		{ name = "buffer", priority = 2, max_item_count = 5 },
-		{
-			name = "spell",
-			priority = 1,
-			option = {
-				keep_all_entries = false,
-				enable_in_context = function()
-					return true
-				end,
-			},
-		},
+		{ name = "async_path", priority = 5 },
+		{ name = "luasnip", priority = 4 },
+		{ name = "nvim_lsp", priority = 3 },
+		{ name = "nvim_lua", priority = 2 },
+		{ name = "buffer", priority = 1, max_item_count = 5 },
 	}),
 	formatting = {
 		format = lspkind.cmp_format({

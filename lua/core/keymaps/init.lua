@@ -8,15 +8,14 @@ require("core.keymaps.nvim")
 ----  direct  ----
 require("core.keymaps.barbar")
 require("core.keymaps.camelcase")
-require("core.keymaps.alpha-nvim")
 require("core.keymaps.diffview")
 require("core.keymaps.gitsigns")
 require("core.keymaps.markdown-preview")
 require("core.keymaps.neo-tree")
 require("core.keymaps.nvim-picgo")
+require("core.keymaps.nvim-toggler")
 require("core.keymaps.telescope")
 require("core.keymaps.troubles")
-require("core.keymaps.vim-maxmizer")
 ----  by return  ----
 local plugin_keymap = {} --start
 plugin_keymap.better_escape = require("core.keymaps.better-escape")
