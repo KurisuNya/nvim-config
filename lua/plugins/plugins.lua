@@ -309,4 +309,8 @@ return {
 		"nvimdev/hlsearch.nvim",
 		event = "BufRead",
 	},
+	{
+		"tpope/vim-fugitive",
+		event = "VeryLazy",
+	},
 }
