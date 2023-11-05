@@ -6,7 +6,6 @@ end
 mason_null_ls.setup({
 	automatic_installation = true,
 	ensure_installed = {
-		"cpptools",
 		"codespell",
 		"commitlint",
 		"cpplint",

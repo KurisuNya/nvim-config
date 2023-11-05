@@ -130,11 +130,11 @@ return {
 		event = "VeryLazy",
 	},
 	{
-		"mfussenegger/nvim-jdtls",
+		"jayp0521/mason-null-ls.nvim",
 		event = "VeryLazy",
 	},
 	{
-		"jayp0521/mason-null-ls.nvim",
+		"jay-babu/mason-nvim-dap.nvim",
 		event = "VeryLazy",
 	},
 	{
@@ -147,6 +147,18 @@ return {
 	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",
+		event = "VeryLazy",
+	},
+	{
+		"mfussenegger/nvim-dap",
+		event = "VeryLazy",
+	},
+	{
+		"rcarriga/nvim-dap-ui",
+		event = "VeryLazy",
+	},
+	{
+		"ofirgall/goto-breakpoints.nvim",
 		event = "VeryLazy",
 	},
 	{

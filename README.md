@@ -32,6 +32,8 @@ Use lazy.nvim as plugin manager.
 │   │   │   ├── markdown-preview.lua
 │   │   │   ├── neo-tree.lua
 │   │   │   ├── nvim-cmp.lua
+│   │   │   ├── nvim-dap.lua
+│   │   │   ├── nvim-dap-ui.lua
 │   │   │   ├── nvim.lua
 │   │   │   ├── nvim-picgo.lua
 │   │   │   ├── nvim-spectre.lua
@@ -54,7 +56,9 @@ Use lazy.nvim as plugin manager.
 │       │   ├── mason-lspconfig.lua
 │       │   ├── mason.lua
 │       │   ├── mason-null-ls.lua
+│       │   ├── mason-nvim-dap.lua
 │       │   ├── null-ls.lua
+│       │   ├── nvim-dap-ui.lua
 │       │   └── trouble.lua
 │       ├── plugins.lua
 │       ├── tool

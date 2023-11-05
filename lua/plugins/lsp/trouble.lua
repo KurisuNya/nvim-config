@@ -1,5 +1,5 @@
-local t_status, trouble = pcall(require, "trouble")
-if not t_status then
+local status, trouble = pcall(require, "trouble")
+if not status then
 	return
 end
-trouble.setup()
+trouble.setup({})
