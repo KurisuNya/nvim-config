@@ -14,6 +14,8 @@ Use lazy.nvim as plugin manager.
 
 ```
 .
+├── ftplugin
+│   └── markdown.lua
 ├── init.lua
 ├── lazy-lock.json
 ├── LICENSE
@@ -35,6 +37,7 @@ Use lazy.nvim as plugin manager.
 │   │   │   ├── nvim-dap.lua
 │   │   │   ├── nvim-dap-ui.lua
 │   │   │   ├── nvim.lua
+│   │   │   ├── nvim-navbuddy.lua
 │   │   │   ├── nvim-picgo.lua
 │   │   │   ├── nvim-spectre.lua
 │   │   │   ├── nvim-toggler.lua
@@ -46,8 +49,7 @@ Use lazy.nvim as plugin manager.
 │       ├── cmp
 │       │   ├── autopairs.lua
 │       │   ├── init.lua
-│       │   ├── nvim-cmp.lua
-│       │   └── tabout.lua
+│       │   └── nvim-cmp.lua
 │       ├── init.lua
 │       ├── lsp
 │       │   ├── init.lua
@@ -59,6 +61,7 @@ Use lazy.nvim as plugin manager.
 │       │   ├── mason-nvim-dap.lua
 │       │   ├── null-ls.lua
 │       │   ├── nvim-dap-ui.lua
+│       │   ├── nvim-navbuddy.lua
 │       │   └── trouble.lua
 │       ├── plugins.lua
 │       ├── tool
