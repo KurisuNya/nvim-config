@@ -45,7 +45,7 @@ lualine.setup({
 			"mode",
 		},
 		lualine_b = {
-			{ "b:gitsigns_head", icon = icons.git.head },
+			{ "b:gitsigns_head", icon = icons.git.Head },
 			{ "diff", source = diff_source },
 		},
 		lualine_c = {

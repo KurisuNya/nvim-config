@@ -9,7 +9,7 @@ barbar.setup({
 	animation = false,
 	insert_at_end = true,
 	auto_hide = 0,
-	modified = { button = icons.git.modified },
+	modified = { button = icons.git.Modified },
 	icons = {
 		button = "",
 		separator = { left = " ", right = "" },
@@ -18,19 +18,19 @@ barbar.setup({
 		diagnostics = {
 			[vim.diagnostic.severity.ERROR] = {
 				enabled = true,
-				icon = icons.diagnostics.icons.error,
+				icon = icons.diagnostics.Error,
 			},
 			[vim.diagnostic.severity.WARN] = {
 				enabled = true,
-				icon = icons.diagnostics.icons.warning,
+				icon = icons.diagnostics.Warning,
 			},
 			[vim.diagnostic.severity.INFO] = {
 				enabled = true,
-				icon = icons.diagnostics.icons.info,
+				icon = icons.diagnostics.Info,
 			},
 			[vim.diagnostic.severity.HINT] = {
 				enabled = true,
-				icon = icons.diagnostics.icons.hint,
+				icon = icons.diagnostics.Hint,
 			},
 		},
 	},

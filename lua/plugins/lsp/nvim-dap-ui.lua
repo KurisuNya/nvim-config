@@ -13,9 +13,9 @@ local map_list = require("core.keymaps").nvim_dap_ui
 nvim_dap_ui.setup({
 	force_buffers = true,
 	icons = {
-		expanded = icons.ui.arrow_open,
-		collapsed = icons.ui.arrow_close,
-		current_frame = icons.ui.indicator,
+		expanded = icons.ui.ArrowOpen,
+		collapsed = icons.ui.ArrowClose,
+		current_frame = icons.ui.Indicator,
 	},
 	mappings = map_list.normal_mappings,
 	layouts = {
@@ -45,14 +45,14 @@ nvim_dap_ui.setup({
 		enabled = true,
 		element = "repl",
 		icons = {
-			pause = icons.dap.pause,
-			play = icons.dap.play,
-			step_into = icons.dap.step_into,
-			step_over = icons.dap.step_over,
-			step_out = icons.dap.step_out,
-			step_back = icons.dap.step_back,
-			run_last = icons.dap.run_last,
-			terminate = icons.dap.terminate,
+			pause = icons.dap.Pause,
+			play = icons.dap.Play,
+			step_into = icons.dap.StepInto,
+			step_over = icons.dap.StepOver,
+			step_out = icons.dap.StepOut,
+			step_back = icons.dap.StepBack,
+			run_last = icons.dap.RunLast,
+			terminate = icons.dap.Terminate,
 		},
 	},
 	floating = {
@@ -92,31 +92,31 @@ vim.api.nvim_set_hl(0, "DapStopped", {
 	bg = get_color("CursorLine", "bg#"),
 })
 vim.fn.sign_define("DapBreakpoint", {
-	text = icons.dap.break_point,
+	text = icons.dap.BreakPoint,
 	texthl = "DapBreakpoint",
 	linehl = "DapBreakpoint",
 	numhl = "DapBreakpoint",
 })
 vim.fn.sign_define("DapBreakpointCondition", {
-	text = icons.dap.break_point_condition,
+	text = icons.dap.BreakPointCondition,
 	texthl = "DapBreakpoint",
 	linehl = "DapBreakpoint",
 	numhl = "DapBreakpoint",
 })
 vim.fn.sign_define("DapBreakpointRejected", {
-	text = icons.dap.break_point_rejected,
+	text = icons.dap.BreakPointRejected,
 	texthl = "DapBreakpoint",
 	linehl = "DapBreakpoint",
 	numhl = "DapBreakpoint",
 })
 vim.fn.sign_define("DapLogPoint", {
-	text = icons.dap.log_point,
+	text = icons.dap.LogPoint,
 	texthl = "DapLogPoint",
 	linehl = "DapLogPoint",
 	numhl = "DapLogPoint",
 })
 vim.fn.sign_define("DapStopped", {
-	text = icons.dap.stopped,
+	text = icons.dap.Stopped,
 	texthl = "DapStopped",
 	linehl = "DapStopped",
 	numhl = "DapStopped",

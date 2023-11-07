@@ -5,19 +5,19 @@ end
 
 local icons = require("plugins.ui.icons")
 vim.fn.sign_define("DiagnosticSignError", {
-	text = icons.diagnostics.icons.error,
+	text = icons.diagnostics.Error,
 	texthl = "DiagnosticSignError",
 })
 vim.fn.sign_define("DiagnosticSignWarn", {
-	text = icons.diagnostics.icons.warning,
+	text = icons.diagnostics.Warning,
 	texthl = "DiagnosticSignWarn",
 })
 vim.fn.sign_define("DiagnosticSignInfo", {
-	text = icons.diagnostics.icons.info,
+	text = icons.diagnostics.Info,
 	texthl = "DiagnosticSignInfo",
 })
 vim.fn.sign_define("DiagnosticSignHint", {
-	text = icons.diagnostics.icons.hint,
+	text = icons.diagnostics.Hint,
 	texthl = "DiagnosticSignHint",
 })
 
@@ -28,20 +28,20 @@ neo_tree.setup({
 
 	default_component_configs = {
 		modified = {
-			symbol = icons.git.modified,
+			symbol = icons.git.Modified,
 			highlight = "NeoTreeModified",
 		},
 		git_status = {
 			symbols = {
 				added = "",
 				modified = "",
-				unstaged = icons.git.unstaged,
-				staged = icons.git.staged,
-				conflict = icons.git.conflict,
-				renamed = icons.git.renamed,
-				untracked = icons.git.untracked,
-				deleted = icons.git.deleted,
-				ignored = icons.git.ignored,
+				unstaged = icons.git.Unstaged,
+				staged = icons.git.Staged,
+				conflict = icons.git.Conflict,
+				renamed = icons.git.Renamed,
+				untracked = icons.git.Untracked,
+				deleted = icons.git.Deleted,
+				ignored = icons.git.Ignored,
 			},
 		},
 	},

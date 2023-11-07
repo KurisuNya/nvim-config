@@ -2,5 +2,5 @@
 -- telescope-undo  --
 ---------------------
 local M = {}
-M.restore = "<cr>"
+M.restore = "<CR>"
 return M

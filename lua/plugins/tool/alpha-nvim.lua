@@ -66,11 +66,11 @@ end
 dashboard.button = button
 
 dashboard.section.buttons.val = {
-	dashboard.button("p", "  Open Project", "<cmd>Telescope projects<CR>"),
-	dashboard.button("f", "󰈞  Find File", "<cmd>Telescope find_files<CR>"),
-	dashboard.button("h", "  File history", "<cmd>Telescope oldfiles<CR>"),
-	dashboard.button("c", "  File frecency", "<cmd>Telescope frecency<CR>"),
-	dashboard.button("e", "  Edit Projects", "<cmd>edit ~/.local/share/nvim/project_nvim/project_history<CR>"),
+	dashboard.button("p", "  Open Project", "<Cmd>Telescope projects<CR>"),
+	dashboard.button("f", "󰈞  Find File", "<Cmd>Telescope find_files<CR>"),
+	dashboard.button("h", "  File history", "<Cmd>Telescope oldfiles<CR>"),
+	dashboard.button("c", "  File frecency", "<Cmd>Telescope frecency<CR>"),
+	dashboard.button("e", "  Edit Projects", "<Cmd>edit ~/.local/share/nvim/project_nvim/project_history<CR>"),
 }
 
 -- layout

@@ -84,10 +84,10 @@ local function lspSymbol(name, icon)
 	vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
 end
 local icons = require("plugins.ui.icons")
-lspSymbol("Error", icons.diagnostics.icons.error)
-lspSymbol("Info", icons.diagnostics.icons.info)
-lspSymbol("Hint", icons.diagnostics.icons.hint)
-lspSymbol("Warn", icons.diagnostics.icons.warning)
+lspSymbol("Error", icons.diagnostics.Error)
+lspSymbol("Info", icons.diagnostics.Info)
+lspSymbol("Hint", icons.diagnostics.Hint)
+lspSymbol("Warn", icons.diagnostics.Warning)
 vim.diagnostic.config({
 	virtual_text = true,
 	signs = true,

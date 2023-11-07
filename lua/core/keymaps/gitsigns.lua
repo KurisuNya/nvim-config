@@ -7,6 +7,6 @@ local opts = { noremap = true, silent = true }
 keymap.set(
 	"n",
 	"<leader>z",
-	"<cmd>Gitsigns toggle_linehl<cr><cmd>Gitsigns toggle_numhl<cr><cmd>Gitsigns toggle_deleted<cr><cmd>Gitsigns toggle_word_diff<cr>",
+	"<Cmd>Gitsigns toggle_linehl<CR><Cmd>Gitsigns toggle_numhl<CR><Cmd>Gitsigns toggle_deleted<CR><Cmd>Gitsigns toggle_word_diff<CR>",
 	opts
 )

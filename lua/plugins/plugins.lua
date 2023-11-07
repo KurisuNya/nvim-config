@@ -12,6 +12,11 @@ return {
 		"kevinhwang91/promise-async",
 		event = "VeryLazy",
 	},
+	{
+
+		"SmiteshP/nvim-navic",
+		event = "VeryLazy",
+	},
 	--theme
 	{
 		"folke/tokyonight.nvim",
@@ -68,10 +73,6 @@ return {
 		event = "VeryLazy",
 	},
 	--cmp
-	{
-		"abecodes/tabout.nvim",
-		event = "VeryLazy",
-	},
 	{
 		"windwp/nvim-autopairs",
 		event = "VeryLazy",
@@ -144,6 +145,11 @@ return {
 	{
 		"glepnir/lspsaga.nvim",
 		event = "VeryLazy",
+	},
+	{
+		"SmiteshP/nvim-navbuddy",
+		event = "VeryLazy",
+		opts = { lsp = { auto_attach = true } },
 	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",

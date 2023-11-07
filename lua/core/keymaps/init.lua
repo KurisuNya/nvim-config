@@ -24,6 +24,7 @@ plugin_keymap.hop = require("core.keymaps.hop")
 plugin_keymap.lspconfig = require("core.keymaps.lspconfig")
 plugin_keymap.nvim_cmp = require("core.keymaps.nvim-cmp")
 plugin_keymap.nvim_dap_ui = require("core.keymaps.nvim-dap-ui")
+plugin_keymap.nvim_navbuddy = require("core.keymaps.nvim-navbuddy")
 plugin_keymap.nvim_spectre = require("core.keymaps.nvim-spectre")
 plugin_keymap.telescope_undo = require("core.keymaps.telescope-undo")
 return plugin_keymap --end
