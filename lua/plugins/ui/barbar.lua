@@ -21,11 +21,11 @@ barbar.setup({
 				icon = icons.diagnostics.icons.error,
 			},
 			[vim.diagnostic.severity.WARN] = {
-				enabled = false,
+				enabled = true,
 				icon = icons.diagnostics.icons.warning,
 			},
 			[vim.diagnostic.severity.INFO] = {
-				enabled = false,
+				enabled = true,
 				icon = icons.diagnostics.icons.info,
 			},
 			[vim.diagnostic.severity.HINT] = {
