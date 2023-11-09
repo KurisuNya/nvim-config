@@ -1,9 +1,5 @@
-local nvim_navbuddy_status, nvim_navbuddy = pcall(require, "nvim-navbuddy")
-if not nvim_navbuddy_status then
-	return
-end
-local nvim_navbuddy_actions_status, nvim_navbuddy_actions = pcall(require, "nvim-navbuddy.actions")
-if not nvim_navbuddy_actions_status then
+local status, nvim_navbuddy = pcall(require, "nvim-navbuddy")
+if not status then
 	return
 end
 local icons = require("plugins.ui.icons")
@@ -12,7 +8,7 @@ local map_list = require("core.keymaps").nvim_navbuddy
 nvim_navbuddy.setup({
 	window = {
 		border = "rounded",
-		size = "80%",
+		size = "70%",
 	},
 	icons = {
 		File = icons.symbols.File,
@@ -45,6 +41,6 @@ nvim_navbuddy.setup({
 	use_default_mappings = false,
 	mappings = map_list,
 	lsp = {
-		auto_attach = true, -- If set to true, you don't need to manually use attach function
+		auto_attach = true,
 	},
 })

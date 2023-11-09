@@ -3,7 +3,7 @@
 -----------------
 local keymap = vim.keymap -- for conciseness
 local opts = { noremap = true, silent = true }
--- keymap.set("n", "<leader>s", "<Cmd>Lspsaga outline<CR>", opts)
+keymap.set("n", "<leader>s", "<Cmd>Lspsaga outline<CR>", opts)
 keymap.set("n", "<leader>t", "<Cmd>Lspsaga term_toggle<CR>", opts)
 
 local M = {}
@@ -22,7 +22,7 @@ M.on_attach = function(client, bufnr)
 end
 M.outline = {
 	toggle_or_jump = "<Tab>",
-	quit = "q",
+	quit = { "<Esc>", "q" },
 	jump = "<CR>",
 }
 return M

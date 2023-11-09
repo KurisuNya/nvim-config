@@ -7,7 +7,7 @@ if not status then
 end
 local keymap = vim.keymap -- for conciseness
 local opts = { noremap = true, silent = true }
-keymap.set("n", "<leader>s", "<Cmd>Navbuddy<CR>", opts)
+keymap.set("n", "<leader>S", "<Cmd>Navbuddy<CR>", opts)
 local M = {
 	["<esc>"] = nvim_navbuddy_actions.close(), -- Close and cursor to original location
 	["q"] = nvim_navbuddy_actions.close(),
@@ -29,7 +29,7 @@ local M = {
 	["y"] = nvim_navbuddy_actions.yank_scope(), -- Yank the scope to system clipboard "+
 	["<leader>j"] = nvim_navbuddy_actions.move_down(), -- Move focused node down
 	["<leader>k"] = nvim_navbuddy_actions.move_up(), -- Move focused node up
-	["H"] = nvim_navbuddy_actions.toggle_preview(), -- Show preview of current node
+	["s"] = nvim_navbuddy_actions.toggle_preview(), -- Show preview of current node
 	["f"] = nvim_navbuddy_actions.telescope({ -- Fuzzy finder at current level.
 		layout_config = { -- All options that can be
 			height = 0.60, -- passed to telescope.nvim's
