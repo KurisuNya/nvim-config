@@ -4,15 +4,15 @@ Full lua nvim config.
 
 Use lazy.nvim as plugin manager.
 
-# Screenshots
+## Screenshots
 
-![](https://cdn.kurisunya.top/cdn/2/2023/10/653f73a921048.png)
+![dashboard](https://cdn.kurisunya.top/cdn/2/2023/10/653f73a921048.png)
 
-![](https://cdn.kurisunya.top/cdn/2/2023/10/653f741c78cb1.png)
+![coding](https://cdn.kurisunya.top/cdn/2/2023/10/653f741c78cb1.png)
 
 ## Project structure
 
-```
+```text
 .
 ├── ftplugin
 │   └── markdown.lua

@@ -27,10 +27,12 @@ null_ls.setup({
 		formatting.black,
 		formatting.stylua,
 		formatting.beautysh,
+		formatting.google_java_format,
 		-- linters
 		diagnostics.cpplint,
 		diagnostics.codespell,
 		diagnostics.commitlint,
+		diagnostics.markdownlint,
 	},
 	-- configure format on save
 	on_attach = function(current_client, bufnr)

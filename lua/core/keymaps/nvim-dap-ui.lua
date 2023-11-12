@@ -7,10 +7,14 @@ if not status then
 end
 local keymap = vim.keymap
 local opts = { noremap = true, silent = false }
+
+_G._debugui = false
 keymap.set("n", "L", nvim_dap_ui.eval, opts)
 keymap.set("n", "<leader>du", function()
 	nvim_dap_ui.toggle({ reset = true })
+	_G._debugui = not _G._debugui
 end, opts)
+
 local M = {}
 M.normal_mappings = {
 	edit = "e",

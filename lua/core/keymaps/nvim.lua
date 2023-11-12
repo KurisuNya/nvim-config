@@ -5,6 +5,17 @@
 --------------------
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
+---------------------
+--   better-move   --
+---------------------
+keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+keymap.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+keymap.set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+keymap.set({ "n", "x" }, "J", "5gj", opts)
+keymap.set({ "n", "x" }, "K", "5gk", opts)
+keymap.set({ "n", "x" }, "<S-Down>", "5gj", opts)
+keymap.set({ "n", "x" }, "<S-Up>", "5gk", opts)
 --------------------
 --   normal-mod   --
 --------------------
@@ -34,11 +45,6 @@ keymap.set("n", "<leader>vt", "<Cmd>vsp term://fish<CR>", opts)
 keymap.set("n", "<leader><Enter>", 'O<Esc>"_cc<Esc>j', opts)
 keymap.set("n", "<leader>j", "J", opts)
 keymap.set("n", "<leader>k", "i<CR><Up><Esc>A", opts)
---快速移动
-keymap.set("n", "J", "5j", opts)
-keymap.set("n", "K", "5k", opts)
-keymap.set("n", "<S-Down>", "5j", opts)
-keymap.set("n", "<S-Up>", "5k", opts)
 --取消高亮
 keymap.set("n", "<leader>/", "<Cmd>noh<CR>", opts)
 --数字加减
@@ -47,18 +53,16 @@ keymap.set("n", "_", "<C-x>", opts)
 --------------------
 --   visual-mod   --
 --------------------
---快速移动
-keymap.set("v", "J", "5j", opts)
-keymap.set("v", "K", "5k", opts)
-keymap.set("v", "<S-Down>", "5j", opts)
-keymap.set("v", "<S-Up>", "5k", opts)
 --黏贴替换文本
-keymap.set("v", "p", '"_dP', opts)
+keymap.set("x", "p", '"_dP', opts)
 --数字加减
-keymap.set("v", "+", "<C-a>", opts)
-keymap.set("v", "_", "<C-x>", opts)
-keymap.set("v", "g+", "g<C-a>", opts)
-keymap.set("v", "g_", "g<C-x>", opts)
+keymap.set("x", "+", "<C-a>", opts)
+keymap.set("x", "_", "<C-x>", opts)
+keymap.set("x", "g+", "g<C-a>", opts)
+keymap.set("x", "g_", "g<C-x>", opts)
+--缩进优化
+keymap.set("x", "<", "<gv")
+keymap.set("x", ">", ">gv")
 ----------------------
 --   terminal-mod   --
 ----------------------

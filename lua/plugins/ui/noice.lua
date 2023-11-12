@@ -1,9 +1,13 @@
-local status, noice = pcall(require, "noice")
-if not status then
+local noice_status, noice = pcall(require, "noice")
+if not noice_status then
 	return
 end
-vim.opt.cmdheight = 0
+local nvim_jdtls_status, nvim_jdtls = pcall(require, "jdtls")
+if not nvim_jdtls_status then
+	return
+end
 
+vim.opt.cmdheight = 0
 noice.setup({
 	lsp = {
 		override = {
@@ -11,29 +15,16 @@ noice.setup({
 			["vim.lsp.util.stylize_markdown"] = true,
 			["cmp.entry.get_documentation"] = true,
 		},
-		-- hover = {
-		-- 	enabled = false,
-		-- 	silent = false, -- set to true to not show a message if hover is not available
-		-- 	view = nil, -- when nil, use defaults from documentation
-		-- 	---@type NoiceViewOptions
-		-- 	opts = {}, -- merged with defaults from documentation
-		-- },
-		-- signature = {
-		-- 	enabled = false,
-		-- 	auto_open = {
-		-- 		enabled = true,
-		-- 		trigger = true, -- Automatically show signature help when typing a trigger character from the LSP
-		-- 		luasnip = true, -- Will open signature help when jumping to Luasnip insert nodes
-		-- 		throttle = 50, -- Debounce lsp signature help request by 50ms
-		-- 	},
-		-- 	view = nil, -- when nil, use defaults from documentation
-		-- 	---@type NoiceViewOptions
-		-- 	opts = {}, -- merged with defaults from documentation
-		-- },
+	},
+	markdown = {
+		hover = {
+			["|(%S-)|"] = vim.cmd.help, -- vim help links
+			["%[.-%]%((jdt://%S-)%)"] = nvim_jdtls.open_classfile,
+			["%[.-%]%((%S-)%)"] = require("noice.util").open, -- markdown links
+		},
 	},
 	presets = {
 		bottom_search = true, -- use a classic bottom cmdline for search
-		-- command_palette = true, -- position the cmdline and popupmenu together
 		long_message_to_split = true, -- long messages will be sent to a split
 		inc_rename = false, -- enables an input dialog for inc-rename.nvim
 		lsp_doc_border = true, -- add a border to hover docs and signature help

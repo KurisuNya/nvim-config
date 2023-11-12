@@ -3,7 +3,7 @@ if not status then
 	return
 end
 local icons = require("plugins.ui.icons")
-local map_list = require("core.keymaps").nvim_navbuddy
+local map_list = require("core.keymaps.nvim-navbuddy")
 
 nvim_navbuddy.setup({
 	window = {

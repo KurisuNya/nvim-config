@@ -11,15 +11,22 @@ local luasnip_status, luasnip = pcall(require, "luasnip")
 if not luasnip_status then
 	return
 end
+local cheeky_status, cheeky = pcall(require, "cheeky")
+if not cheeky_status then
+	return
+end
 local lspkind_status, lspkind = pcall(require, "lspkind")
 if not lspkind_status then
 	return
 end
-require("luasnip.loaders.from_vscode").lazy_load()
-local map_list = require("core.keymaps").nvim_cmp
+
 vim.opt.pumheight = 10 -- cmp number
 vim.opt.completeopt = "menu,menuone,noselect"
+local map_list = require("core.keymaps.nvim-cmp")
+require("luasnip.loaders.from_vscode").lazy_load()
+cheeky.setup({})
 
+local defaults = require("cmp.config.default")()
 cmp.setup({
 	preselect = cmp.PreselectMode.Item,
 	experimental = {
@@ -34,21 +41,13 @@ cmp.setup({
 		completion = cmp.config.window.bordered(),
 		documentation = cmp.config.window.bordered(),
 	},
-	mapping = cmp.mapping.preset.insert({
-		[map_list.select_prev_item] = cmp.mapping.select_prev_item(),
-		[map_list.select_next_item] = cmp.mapping.select_next_item(),
-		[map_list.scroll_docs_up] = cmp.mapping.scroll_docs(-4),
-		[map_list.scroll_docs_down] = cmp.mapping.scroll_docs(4),
-		[map_list.complete] = cmp.mapping.complete(),
-		[map_list.abort] = cmp.mapping.abort(),
-		[map_list.confirm] = cmp.mapping.confirm({ select = false }),
-	}),
+	mapping = cmp.mapping.preset.insert(map_list),
 	sources = cmp.config.sources({
-		{ name = "async_path", priority = 5 },
-		{ name = "luasnip", priority = 4 },
-		{ name = "nvim_lsp", priority = 3 },
-		{ name = "nvim_lua", priority = 2 },
-		{ name = "buffer", priority = 1, max_item_count = 5 },
+		{ name = "nvim_lsp", max_item_count = 350 },
+		{ name = "luasnip" },
+		{ name = "async_path" },
+	}, {
+		{ name = "buffer", max_item_count = 5 },
 	}),
 	formatting = {
 		format = lspkind.cmp_format({
@@ -62,6 +61,8 @@ cmp.setup({
 			cmp.config.compare.exact,
 			cmp.config.compare.score,
 			cmp_under_comparator.under,
+			cmp.config.compare.recently_used,
+			cmp.config.compare.locality,
 			cmp.config.compare.kind,
 			cmp.config.compare.sort_text,
 			cmp.config.compare.length,

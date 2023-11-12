@@ -7,7 +7,9 @@ if not status then
 end
 local keymap = vim.keymap -- for conciseness
 local opts = { noremap = true, silent = true }
+
 keymap.set("n", "<leader>S", "<Cmd>Navbuddy<CR>", opts)
+
 local M = {
 	["<esc>"] = nvim_navbuddy_actions.close(), -- Close and cursor to original location
 	["q"] = nvim_navbuddy_actions.close(),

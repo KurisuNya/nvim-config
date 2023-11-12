@@ -23,9 +23,9 @@ require("lazy").setup("plugins.plugins")
 -------------------------
 -- ui plugins
 require("plugins.ui")
--- cmp plugins
-require("plugins.cmp")
 -- lsp plugins
 require("plugins.lsp")
+-- cmp plugins
+require("plugins.cmp")
 -- function plugins
 require("plugins.tool")

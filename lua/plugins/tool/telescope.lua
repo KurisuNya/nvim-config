@@ -5,7 +5,7 @@ if not status then
 end
 
 -- configure telescope
-local map_list = require("core.keymaps").telescope_undo
+local map_list = require("core.keymaps.telescope-undo")
 
 telescope.setup({
 	defaults = {

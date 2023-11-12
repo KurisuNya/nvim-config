@@ -1,11 +1,19 @@
 --------------------
 --  nvim-spectre  --
 --------------------
+local status, spectre = pcall(require, "spectre")
+if not status then
+	return
+end
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
-keymap.set("n", "<leader>R", "<Cmd>lua require('spectre').open()<CR>", opts)
-keymap.set("n", "<leader>rw", '<Cmd>lua require("spectre").open_visual({select_word=true})<CR>', opts)
-keymap.set("v", "<leader>rw", '<Cmd>lua require("spectre").open_visual()<CR>', opts)
+
+keymap.set("n", "<leader>R", spectre.open, opts)
+keymap.set("n", "<leader>rw", function()
+	spectre.open_visual({ select_word = true })
+end, opts)
+keymap.set("x", "<leader>rw", spectre.open_visual, opts)
+
 local M = {
 	["toggle_line"] = {
 		map = "<Tab>",

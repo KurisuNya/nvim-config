@@ -4,6 +4,7 @@ if not status then
 	return
 end
 
+require("nvim-ts-autotag").setup()
 treesitter.setup({
 	--默认安装
 	ensure_installed = {
@@ -24,6 +25,7 @@ treesitter.setup({
 		"scss",
 		"vim",
 		"yuck",
+		"html",
 	},
 	-- 启用代码高亮模块
 	highlight = {
@@ -34,13 +36,11 @@ treesitter.setup({
 		enable = true,
 		disable = { "python" },
 	},
-	autotag = {
-		enable = true,
-	},
 	matchup = {
 		enable = true,
 	},
 })
+
 -- 开启 Folding 模块
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"

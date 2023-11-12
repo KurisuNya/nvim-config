@@ -8,7 +8,7 @@ if not nvim_dap_ui_status then
 	return
 end
 local icons = require("plugins.ui.icons")
-local map_list = require("core.keymaps").nvim_dap_ui
+local map_list = require("core.keymaps.nvim-dap-ui")
 
 nvim_dap_ui.setup({
 	force_buffers = true,
@@ -63,15 +63,28 @@ nvim_dap_ui.setup({
 	},
 	render = { indent = 1, max_value_lines = 85 },
 })
+
 nvim_dap.listeners.after.event_initialized["dapui_config"] = function()
 	nvim_dap_ui.open({ reset = true })
+	_G._debugui = true
 end
 nvim_dap.listeners.before.event_terminated["dapui_config"] = function()
 	nvim_dap_ui.close()
+	_G._debugui = false
 end
 nvim_dap.listeners.before.event_exited["dapui_config"] = function()
 	nvim_dap_ui.close()
+	_G._debugui = false
 end
+vim.api.nvim_create_autocmd({ "VimResized" }, {
+	group = vim.api.nvim_create_augroup("ResizeDapUI", { clear = true }),
+	callback = function()
+		if _G._debugui then
+			nvim_dap_ui.toggle({ reset = true })
+			nvim_dap_ui.toggle({ reset = true })
+		end
+	end,
+})
 
 local function get_color(group, attr)
 	return vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(group)), attr)

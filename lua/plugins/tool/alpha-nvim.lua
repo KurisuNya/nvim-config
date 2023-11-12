@@ -32,8 +32,27 @@ dashboard.section.header.val = {
 dashboard.section.header.opts.hl = "Function"
 
 -- footer
-dashboard.section.footer.val = "KurisuNya NeoVim"
+if vim.o.filetype == "lazy" then
+	vim.cmd.close()
+	vim.api.nvim_create_autocmd("User", {
+		once = true,
+		pattern = "AlphaReady",
+		callback = function()
+			require("lazy").show()
+		end,
+	})
+end
 dashboard.section.footer.opts.hl = "Comment"
+vim.api.nvim_create_autocmd("User", {
+	once = true,
+	pattern = "LazyVimStarted",
+	callback = function()
+		local stats = require("lazy").stats()
+		local ms = math.floor(stats.startuptime)
+		dashboard.section.footer.val = "KurisuNya Neovim ⏐ " .. stats.loaded .. " plugins in " .. ms .. "ms"
+		pcall(vim.cmd.AlphaRedraw)
+	end,
+})
 
 -- buttons
 local leader = "SPC"
@@ -67,10 +86,10 @@ dashboard.button = button
 
 dashboard.section.buttons.val = {
 	dashboard.button("p", "  Open Project", "<Cmd>Telescope projects<CR>"),
-	dashboard.button("f", "󰈞  Find File", "<Cmd>Telescope find_files<CR>"),
+	dashboard.button("e", "  Edit Projects", "<Cmd>edit ~/.local/share/nvim/project_nvim/project_history<CR>"),
+	dashboard.button("s", "  Restore Session", '<cmd>lua require("persistence").load()<cr>'),
 	dashboard.button("h", "  File history", "<Cmd>Telescope oldfiles<CR>"),
 	dashboard.button("c", "  File frecency", "<Cmd>Telescope frecency<CR>"),
-	dashboard.button("e", "  Edit Projects", "<Cmd>edit ~/.local/share/nvim/project_nvim/project_history<CR>"),
 }
 
 -- layout
