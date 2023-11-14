@@ -2,10 +2,6 @@ local lspconfig_status, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status then
 	return
 end
-local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not cmp_nvim_lsp_status then
-	return
-end
 local lsp_inlayhints_status, lsp_inlayhints = pcall(require, "lsp-inlayhints")
 if not lsp_inlayhints_status then
 	return
@@ -14,15 +10,14 @@ local neodev_status, neodev = pcall(require, "neodev")
 if not neodev_status then
 	return
 end
+local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not cmp_nvim_lsp_status then
+	return
+end
 
 neodev.setup({})
-lsp_inlayhints.setup({
-	inlay_hints = {
-		parameter_hints = {
-			prefix = "",
-		},
-	},
-})
+lsp_inlayhints.setup({ inlay_hints = { parameter_hints = { prefix = "" } } })
+
 local on_attach = function(client, bufnr)
 	lsp_inlayhints.on_attach(client, bufnr)
 	require("core.keymaps.lspconfig").lsp_on_attach()
@@ -44,10 +39,6 @@ lspconfig["clangd"].setup({
 		"--suggest-missing-includes",
 	},
 })
--- lspconfig["jdtls"].setup({
--- 	capabilities = capabilities,
--- 	on_attach = on_attach,
--- })
 lspconfig["lua_ls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,

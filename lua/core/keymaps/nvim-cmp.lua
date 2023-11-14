@@ -9,6 +9,18 @@ local luasnip_status, luasnip = pcall(require, "luasnip")
 if not luasnip_status then
 	return
 end
+local fast_snip_status, fast_snip = pcall(require, "fast-snip")
+if not fast_snip_status then
+	return
+end
+
+local keymap = vim.keymap
+local opts = { noremap = true, silent = true }
+keymap.set("x", "<leader>gs", function()
+	fast_snip.new_snippet_or_add_placeholder()
+	vim.cmd("normal !u")
+end, opts)
+keymap.set("n", "<leader>gs", fast_snip.finalize_snippet, opts)
 
 local M = {
 	["<S-Tab>"] = cmp.mapping(function(fallback)

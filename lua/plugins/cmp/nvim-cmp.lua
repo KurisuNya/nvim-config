@@ -11,8 +11,8 @@ local luasnip_status, luasnip = pcall(require, "luasnip")
 if not luasnip_status then
 	return
 end
-local cheeky_status, cheeky = pcall(require, "cheeky")
-if not cheeky_status then
+local fast_snip_status, fast_snip = pcall(require, "fast-snip")
+if not fast_snip_status then
 	return
 end
 local lspkind_status, lspkind = pcall(require, "lspkind")
@@ -24,9 +24,8 @@ vim.opt.pumheight = 10 -- cmp number
 vim.opt.completeopt = "menu,menuone,noselect"
 local map_list = require("core.keymaps.nvim-cmp")
 require("luasnip.loaders.from_vscode").lazy_load()
-cheeky.setup({})
+fast_snip.setup({})
 
-local defaults = require("cmp.config.default")()
 cmp.setup({
 	preselect = cmp.PreselectMode.Item,
 	experimental = {

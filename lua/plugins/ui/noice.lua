@@ -18,15 +18,30 @@ noice.setup({
 	},
 	markdown = {
 		hover = {
-			["|(%S-)|"] = vim.cmd.help, -- vim help links
-			["%[.-%]%((jdt://%S-)%)"] = nvim_jdtls.open_classfile,
-			["%[.-%]%((%S-)%)"] = require("noice.util").open, -- markdown links
+			["|(%S-)|"] = vim.cmd.help,
+			["%[.-%]%((jdt%S-)%)"] = nvim_jdtls.open_classfile,
+			["%[.-%]%((http%S-)%)"] = require("noice.util").open,
 		},
+		open_link_keys = "H",
 	},
 	presets = {
-		bottom_search = true, -- use a classic bottom cmdline for search
-		long_message_to_split = true, -- long messages will be sent to a split
-		inc_rename = false, -- enables an input dialog for inc-rename.nvim
-		lsp_doc_border = true, -- add a border to hover docs and signature help
+		bottom_search = true,
+		long_message_to_split = true,
+		inc_rename = false,
+		lsp_doc_border = true,
+	},
+	views = {
+		hover = {
+			size = {
+				width = "auto",
+				height = "auto",
+				max_height = 30,
+				max_width = 90,
+			},
+			win_options = {
+				wrap = true,
+				linebreak = true,
+			},
+		},
 	},
 })

@@ -83,8 +83,8 @@ return {
 	-- snip
 	{ "L3MON4D3/LuaSnip", event = "VeryLazy" },
 	{ "rafamadriz/friendly-snippets", event = "VeryLazy" },
-	{ "KurisuNya/cheeky-snippets.nvim", event = "VeryLazy" },
-	{ "ziontee113/SnippetGenie", event = "VeryLazy" },
+	{ "KurisuNya/fast-snip", event = "VeryLazy" },
+	-- { "KurisuNya/SnippetGenie", event = "VeryLazy" },
 	-- cmp
 	{ "hrsh7th/nvim-cmp", event = "VeryLazy" },
 	{ "hrsh7th/cmp-nvim-lsp", event = "VeryLazy" },
@@ -114,8 +114,9 @@ return {
 	-- lsp
 	{ "neovim/nvim-lspconfig", event = "VeryLazy" },
 	{ "glepnir/lspsaga.nvim", event = "VeryLazy" },
+	{ "ray-x/lsp_signature.nvim", event = "VeryLazy" },
 	{ "lvimuser/lsp-inlayhints.nvim", event = "VeryLazy" },
-	{ "jose-elias-alvarez/null-ls.nvim", event = "VeryLazy" },
+	{ "nvimtools/none-ls.nvim", event = "VeryLazy" },
 	{ "folke/neodev.nvim", event = "VeryLazy" },
 	{
 		"mfussenegger/nvim-jdtls",
@@ -130,6 +131,11 @@ return {
 	-- dap
 	{ "mfussenegger/nvim-dap", event = "VeryLazy" },
 	{ "rcarriga/nvim-dap-ui", event = "VeryLazy" },
+	{
+		"theHamsta/nvim-dap-virtual-text",
+		event = "VeryLazy",
+		opts = {},
+	},
 	{ "ofirgall/goto-breakpoints.nvim", event = "VeryLazy" },
 
 	----------

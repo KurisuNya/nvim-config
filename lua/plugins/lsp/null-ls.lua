@@ -24,6 +24,7 @@ null_ls.setup({
 		formatting.prettier.with({
 			disabled_filetypes = { "markdown" },
 		}),
+		formatting.rustfmt,
 		formatting.black,
 		formatting.stylua,
 		formatting.beautysh,

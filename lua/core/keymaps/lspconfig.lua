@@ -27,6 +27,7 @@ M.lsp_on_attach = function()
 	keymap.set("n", "[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
 	keymap.set("n", "]d", "<Cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
 	keymap.set("n", "H", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+	keymap.set("n", "gH", vim.lsp.buf.signature_help, opts) -- show documentation for what is under cursor
 end
 M.outline_keymap = {
 	toggle_or_jump = "<Tab>",
