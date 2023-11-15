@@ -13,18 +13,15 @@ Use lazy.nvim as plugin manager.
 ## Project structure
 
 ```text
-.
-├── ftplugin
-│   └── markdown.lua
 ├── init.lua
 ├── lazy-lock.json
 ├── LICENSE
 ├── lua
 │   ├── core
+│   │   ├── autocommand.lua
 │   │   ├── colorscheme.lua
 │   │   ├── keymaps
 │   │   │   ├── barbar.lua
-│   │   │   ├── better-escape.lua
 │   │   │   ├── camelcase.lua
 │   │   │   ├── diffview.lua
 │   │   │   ├── gitsigns.lua
@@ -49,46 +46,29 @@ Use lazy.nvim as plugin manager.
 │       ├── cmp
 │       │   ├── autopairs.lua
 │       │   ├── init.lua
-│       │   └── nvim-cmp.lua
+│       │   ├── nvim-cmp.lua
+│       │   └── tabout.lua
 │       ├── init.lua
 │       ├── lsp
 │       │   ├── init.lua
 │       │   ├── lspconfig.lua
 │       │   ├── lspsaga.lua
 │       │   ├── mason-lspconfig.lua
-│       │   ├── mason.lua
 │       │   ├── mason-null-ls.lua
 │       │   ├── mason-nvim-dap.lua
 │       │   ├── null-ls.lua
 │       │   ├── nvim-dap-ui.lua
+│       │   ├── nvim-jdtls.lua
 │       │   ├── nvim-navbuddy.lua
-│       │   └── trouble.lua
+│       │   └── nvim-treesitter.lua
 │       ├── plugins.lua
 │       ├── tool
 │       │   ├── alpha-nvim.lua
-│       │   ├── better-escape.lua
-│       │   ├── comment.lua
 │       │   ├── gitsigns.lua
-│       │   ├── highlightedyank.lua
-│       │   ├── hlsearch.lua
-│       │   ├── hop.lua
 │       │   ├── init.lua
-│       │   ├── markdown-preview.lua
-│       │   ├── neoscroll.lua
 │       │   ├── neo-tree.lua
-│       │   ├── numb.lua
-│       │   ├── nvim-colorizer.lua
-│       │   ├── nvim-picgo.lua
 │       │   ├── nvim-spectre.lua
-│       │   ├── nvim-toggler.lua
-│       │   ├── nvim-treesitter.lua
-│       │   ├── nvim-ufo.lua
-│       │   ├── project.lua
-│       │   ├── sniprun.lua
-│       │   ├── suda.lua
-│       │   ├── telescope.lua
-│       │   ├── vim-table-mode.lua
-│       │   └── which-key.lua
+│       │   └── telescope.lua
 │       └── ui
 │           ├── barbar.lua
 │           ├── icons.lua
@@ -96,7 +76,7 @@ Use lazy.nvim as plugin manager.
 │           ├── init.lua
 │           ├── lualine.lua
 │           ├── noice.lua
-│           ├── nvim-notify.lua
+│           ├── nvim-ufo.lua
 │           └── nvim-web-devicons.lua
 └── README.md
 ```

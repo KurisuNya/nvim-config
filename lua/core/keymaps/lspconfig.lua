@@ -36,5 +36,6 @@ M.outline_keymap = {
 }
 M.finder_keymap = {
 	toggle_or_open = "<CR>",
+	quit = { "<Esc>", "q" },
 }
 return M

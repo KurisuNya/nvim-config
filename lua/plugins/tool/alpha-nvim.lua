@@ -86,10 +86,10 @@ dashboard.button = button
 
 dashboard.section.buttons.val = {
 	dashboard.button("p", "  Open Project", "<Cmd>Telescope projects<CR>"),
-	dashboard.button("e", "  Edit Projects", "<Cmd>edit ~/.local/share/nvim/project_nvim/project_history<CR>"),
-	dashboard.button("s", "  Restore Session", '<cmd>lua require("persistence").load()<cr>'),
+	dashboard.button("s", "  Last Session", '<Cmd>lua require("persistence").load({ last = true })<cr>'),
 	dashboard.button("h", "  File history", "<Cmd>Telescope oldfiles<CR>"),
 	dashboard.button("c", "  File frecency", "<Cmd>Telescope frecency<CR>"),
+	dashboard.button("e", "  Edit Projects", "<Cmd>edit ~/.local/share/nvim/project_nvim/project_history<CR>"),
 }
 
 -- layout

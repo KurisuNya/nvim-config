@@ -16,22 +16,13 @@ end
 
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
-keymap.set("x", "<leader>gs", function()
+keymap.set("x", "<leader>cs", function()
 	fast_snip.new_snippet_or_add_placeholder()
 	vim.cmd("normal !u")
 end, opts)
-keymap.set("n", "<leader>gs", fast_snip.finalize_snippet, opts)
+keymap.set("n", "<leader>cs", fast_snip.finalize_snippet, opts)
 
 local M = {
-	["<S-Tab>"] = cmp.mapping(function(fallback)
-		if cmp.visible() then
-			cmp.select_prev_item()
-		elseif luasnip.jumpable(-1) then
-			luasnip.jump(-1)
-		else
-			fallback()
-		end
-	end, { "i", "s" }),
 	["<Tab>"] = cmp.mapping(function(fallback)
 		if cmp.visible() then
 			cmp.select_next_item()
@@ -41,10 +32,30 @@ local M = {
 			fallback()
 		end
 	end, { "i", "s" }),
+	["<S-Tab>"] = cmp.mapping(function(fallback)
+		if cmp.visible() then
+			cmp.select_prev_item()
+		elseif luasnip.jumpable(-1) then
+			luasnip.jump(-1)
+		else
+			fallback()
+		end
+	end, { "i", "s" }),
+	["<CR>"] = cmp.mapping(function(fallback)
+		if cmp.visible() then
+			if cmp.get_selected_entry() then
+				cmp.confirm({
+					behavior = cmp.ConfirmBehavior.Replace,
+					select = false,
+				})
+			else
+				cmp.abort()
+			end
+		else
+			fallback()
+		end
+	end, { "i" }),
 	["<C-u>"] = cmp.mapping.scroll_docs(-4),
 	["<C-d>"] = cmp.mapping.scroll_docs(4),
-	["<C-Space>"] = cmp.mapping.complete(),
-	["<C-e>"] = cmp.mapping.abort(),
-	["<CR>"] = cmp.mapping.confirm({ select = false }),
 }
 return M

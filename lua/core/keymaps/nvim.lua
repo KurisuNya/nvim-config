@@ -16,6 +16,8 @@ keymap.set({ "n", "x" }, "J", "5gj", opts)
 keymap.set({ "n", "x" }, "K", "5gk", opts)
 keymap.set({ "n", "x" }, "<S-Down>", "5gj", opts)
 keymap.set({ "n", "x" }, "<S-Up>", "5gk", opts)
+keymap.set({ "n", "x" }, "#", "*", opts)
+keymap.set({ "n", "x" }, "*", "#", opts)
 --------------------
 --   normal-mod   --
 --------------------

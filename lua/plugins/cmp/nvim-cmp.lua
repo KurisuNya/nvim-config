@@ -97,24 +97,12 @@ cmp.setup.filetype({ "markdown" }, {
 	sources = {
 		{
 			name = "async_path",
-			priority = 3,
-		},
-		{
-			name = "spell",
-			option = {
-				keep_all_entries = false,
-				enable_in_context = function()
-					return true
-				end,
-			},
-			priority = 2,
 		},
 		{
 			name = "latex_symbols",
 			option = {
 				strategy = 2,
 			},
-			priority = 1,
 		},
 	},
 })

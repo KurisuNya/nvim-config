@@ -35,7 +35,7 @@ noice.setup({
 			size = {
 				width = "auto",
 				height = "auto",
-				max_height = 30,
+				max_height = 20,
 				max_width = 90,
 			},
 			win_options = {

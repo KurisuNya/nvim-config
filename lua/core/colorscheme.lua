@@ -24,7 +24,3 @@ vim.api.nvim_set_hl(0, "LspSignatureActiveParameter", { bold = true, bg = "#2e3c
 local M = {}
 M.lualine = "tokyonight"
 return M
--- vim.cmd.colorscheme("catppuccin-macchiato")
--- local M = {}
--- M.lualine = "catppuccin"
--- return M

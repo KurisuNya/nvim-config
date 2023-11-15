@@ -12,9 +12,24 @@ return {
 	--------
 	-- theme
 	{ "folke/tokyonight.nvim", event = "VeryLazy" },
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	-- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	-- utils
 	{ "MunifTanjim/nui.nvim", event = "VeryLazy" },
+	{
+		"stevearc/dressing.nvim",
+		init = function()
+			---@diagnostic disable-next-line: duplicate-set-field
+			vim.ui.select = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.select(...)
+			end
+			---@diagnostic disable-next-line: duplicate-set-field
+			vim.ui.input = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.input(...)
+			end
+		end,
+	},
 	{
 		"nvim-tree/nvim-web-devicons",
 		event = "VeryLazy",
@@ -42,6 +57,17 @@ return {
 	-- better ui
 	{ "lukas-reineke/indent-blankline.nvim", event = "VeryLazy" },
 	{ "RRethy/vim-illuminate", event = "VeryLazy" },
+	{ "karb94/neoscroll.nvim", event = "VeryLazy", opts = {} },
+	{
+		"norcalli/nvim-colorizer.lua",
+		-- event = "VeryLazy",
+		init = function()
+			vim.opt.termguicolors = true
+		end,
+		config = function()
+			require("colorizer").setup()
+		end,
+	},
 	{
 		"machakann/vim-highlightedyank",
 		event = "VeryLazy",
@@ -50,30 +76,9 @@ return {
 			vim.b.highlightedyank_highlight_duration = 400
 		end,
 	},
-	{
-		"karb94/neoscroll.nvim",
-		event = "VeryLazy",
-		opts = {},
-	},
-	{
-		"norcalli/nvim-colorizer.lua",
-		event = "VeryLazy",
-		init = function()
-			vim.opt.termguicolors = true
-		end,
-		opts = {},
-	},
-	{
-		"nacro90/numb.nvim",
-		event = "VeryLazy",
-		opts = {},
-	},
+	{ "nacro90/numb.nvim", event = "VeryLazy", opts = {} },
 	{ "kevinhwang91/nvim-ufo", event = "VeryLazy" },
-	{
-		"nvimdev/hlsearch.nvim",
-		event = "BufRead",
-		opts = {},
-	},
+	{ "nvimdev/hlsearch.nvim", event = "BufRead", opts = {} },
 
 	---------
 	-- cmp --
@@ -84,7 +89,6 @@ return {
 	{ "L3MON4D3/LuaSnip", event = "VeryLazy" },
 	{ "rafamadriz/friendly-snippets", event = "VeryLazy" },
 	{ "KurisuNya/fast-snip", event = "VeryLazy" },
-	-- { "KurisuNya/SnippetGenie", event = "VeryLazy" },
 	-- cmp
 	{ "hrsh7th/nvim-cmp", event = "VeryLazy" },
 	{ "hrsh7th/cmp-nvim-lsp", event = "VeryLazy" },
@@ -102,39 +106,38 @@ return {
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", event = "VeryLazy" },
 	{ "p00f/nvim-ts-rainbow", event = "VeryLazy" },
 	{ "windwp/nvim-ts-autotag", event = "VeryLazy" },
-	-- mason
 	{
-		"williamboman/mason.nvim",
+		"andymass/vim-matchup",
 		event = "VeryLazy",
-		opts = {},
+		config = function()
+			vim.g.matchup_matchparen_offscreen = { method = "popup" }
+		end,
 	},
+	-- mason
+	{ "williamboman/mason.nvim", event = "VeryLazy", opts = {} },
 	{ "williamboman/mason-lspconfig.nvim", event = "VeryLazy" },
 	{ "jayp0521/mason-null-ls.nvim", event = "VeryLazy" },
 	{ "jay-babu/mason-nvim-dap.nvim", event = "VeryLazy" },
 	-- lsp
 	{ "neovim/nvim-lspconfig", event = "VeryLazy" },
-	{ "glepnir/lspsaga.nvim", event = "VeryLazy" },
+	{ "glepnir/lspsaga.nvim", event = "VeryLazy", commit = "283a3fc" },
 	{ "ray-x/lsp_signature.nvim", event = "VeryLazy" },
 	{ "lvimuser/lsp-inlayhints.nvim", event = "VeryLazy" },
 	{ "nvimtools/none-ls.nvim", event = "VeryLazy" },
 	{ "folke/neodev.nvim", event = "VeryLazy" },
-	{
-		"mfussenegger/nvim-jdtls",
-		ft = "java",
-	},
-	{
-		"folke/trouble.nvim",
-		event = "VeryLazy",
-		opts = {},
-	},
+	{ "mfussenegger/nvim-jdtls", ft = "java" },
+	{ "folke/trouble.nvim", event = "VeryLazy", opts = {} },
 	{ "SmiteshP/nvim-navbuddy", event = "VeryLazy" },
 	-- dap
 	{ "mfussenegger/nvim-dap", event = "VeryLazy" },
 	{ "rcarriga/nvim-dap-ui", event = "VeryLazy" },
+	{ "theHamsta/nvim-dap-virtual-text", event = "VeryLazy", opts = {} },
 	{
-		"theHamsta/nvim-dap-virtual-text",
+		"Weissle/persistent-breakpoints.nvim",
 		event = "VeryLazy",
-		opts = {},
+		opts = {
+			load_breakpoints_event = { "BufReadPost" },
+		},
 	},
 	{ "ofirgall/goto-breakpoints.nvim", event = "VeryLazy" },
 
@@ -154,15 +157,18 @@ return {
 			})
 		end,
 	},
-	{
-		"folke/persistence.nvim",
-		event = "BufReadPre",
-		opts = {},
-	},
+	{ "folke/persistence.nvim", event = "BufReadPre", opts = {} },
 
 	-- git
-	{ "sindrets/diffview.nvim", event = "VeryLazy" },
-	{ "lewis6991/gitsigns.nvim", event = "VeryLazy" },
+	-- {
+	-- 	"sindrets/diffview.nvim",
+	-- 	event = "VeryLazy",
+	-- 	-- config = function()
+	-- 	-- 	vim.api.nvim_set_hl(0, "DiffDelete", { fg = "#3b4261", bg = "#3f2d3d" })
+	-- 	-- end,
+	-- },
+	-- { "lewis6991/gitsigns.nvim", event = "VeryLazy" },
+	{ "KurisuNya/vgit.nvim", event = "VeryLazy", opts = {} },
 	-- telescope
 	{ "nvim-telescope/telescope.nvim", event = "VeryLazy" },
 	{
@@ -173,25 +179,11 @@ return {
 	{ "debugloop/telescope-undo.nvim", event = "VeryLazy" },
 	{ "nvim-telescope/telescope-frecency.nvim", event = "VeryLazy" },
 	-- operations
-	{
-		"numToStr/Comment.nvim",
-		event = "VeryLazy",
-		opts = {},
-	},
-	{
-		"nguyenvukhang/nvim-toggler",
-		event = "VeryLazy",
-		opts = {
-			remove_default_keybinds = true,
-		},
-	},
+	{ "numToStr/Comment.nvim", event = "VeryLazy", opts = {} },
+	{ "nguyenvukhang/nvim-toggler", event = "VeryLazy" },
 	{ "tpope/vim-surround", event = "VeryLazy" },
-	{
-		"phaazon/hop.nvim",
-		event = "VeryLazy",
-		opts = {},
-		branch = "v2",
-	},
+	{ "phaazon/hop.nvim", event = "VeryLazy", opts = {}, branch = "v2" },
+	{ "Weissle/easy-action", event = "VeryLazy", opts = {} },
 	{ "bkad/CamelCaseMotion", event = "VeryLazy" },
 	{
 		"dhruvasagar/vim-table-mode",
@@ -203,7 +195,7 @@ return {
 			vim.g.table_mode_corner = "|"
 		end,
 	},
-	{ "andymass/vim-matchup", event = "VeryLazy" },
+	{ "Darazaki/indent-o-matic", event = "BufRead", opts = {} },
 	-- markdown
 	{
 		"iamcco/markdown-preview.nvim",
@@ -215,11 +207,7 @@ return {
 		end,
 		ft = { "markdown" },
 	},
-	{
-		"KurisuNya/nvim-picgo",
-		event = "VeryLazy",
-		opts = {},
-	},
+	{ "KurisuNya/nvim-picgo", event = "VeryLazy", opts = {} },
 	-- linux
 	{ "h-hg/fcitx.nvim", event = "VeryLazy" },
 	{
@@ -240,6 +228,13 @@ return {
 		opts = {},
 	},
 	{ "nvim-pack/nvim-spectre", event = "VeryLazy" },
+	{
+		"ziontee113/icon-picker.nvim",
+		event = "VeryLazy",
+		opts = {
+			disable_legacy_commands = true,
+		},
+	},
 	{
 		"michaelb/sniprun",
 		branch = "master",

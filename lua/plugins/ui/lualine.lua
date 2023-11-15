@@ -6,30 +6,24 @@ local noice_status, noice = pcall(require, "noice")
 if not noice_status then
 	return
 end
-local icons = require("plugins.ui.icons")
 vim.opt.showmode = false
 
 local function diff_source()
-	local gitsigns = vim.b.gitsigns_status_dict
-	if gitsigns then
+	local vgit = vim.b.vgit_status
+	if vgit then
 		return {
-			added = gitsigns.added,
-			modified = gitsigns.changed,
-			removed = gitsigns.removed,
+			added = vgit.added,
+			modified = vgit.changed,
+			removed = vgit.removed,
 		}
 	end
 end
 
-local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
-	return function(str)
-		local win_width = vim.fn.winwidth(0)
-		if hide_width and win_width < hide_width then
-			return ""
-		elseif trunc_width and trunc_len and win_width < trunc_width and #str > trunc_len then
-			return str:sub(1, trunc_len) .. (no_ellipsis and "" or "...")
-		end
-		return str
-	end
+local function get_fg(name)
+	local hl = vim.api.nvim_get_hl and vim.api.nvim_get_hl(0, { name = name })
+		or vim.api.nvim_get_hl_by_name(name, true)
+	local fg = hl and (hl.fg or hl.foreground)
+	return fg and { fg = string.format("#%06x", fg) } or nil
 end
 
 local lualine_theme = require("core.colorscheme").lualine
@@ -39,19 +33,25 @@ lualine.setup({
 		section_separators = { left = "", right = "" },
 		component_separators = { left = "", right = "" },
 	},
-	extensions = { "neo-tree", "trouble", "toggleterm" },
+	extensions = {
+		"lazy",
+		"neo-tree",
+		"nvim-dap-ui",
+		"trouble",
+	},
 	sections = {
 		lualine_a = {
 			"mode",
 		},
 		lualine_b = {
-			{ "b:gitsigns_head", icon = icons.git.Head },
+			{ "branch", padding = { left = 1, right = 0 } },
 			{ "diff", source = diff_source },
 		},
 		lualine_c = {
 			{
 				noice.api.status.command.get,
 				cond = noice.api.status.command.has,
+				padding = { left = 1, right = 0 },
 			},
 			{
 				noice.api.status.mode.get,
@@ -59,19 +59,33 @@ lualine.setup({
 			},
 		},
 		lualine_x = {
+			{
+				function()
+					return " " .. require("dap").status()
+				end,
+				cond = function()
+					return package.loaded["dap"] and require("dap").status() ~= ""
+				end,
+				color = get_fg("Debug"),
+			},
 			"encoding",
 			{
 				"fileformat",
 				symbols = {
-					unix = "LF ",
-					dos = "CRLF ",
-					mac = "CR ",
+					unix = "LF ",
+					dos = "CRLF ",
+					mac = "CR ",
 				},
 			},
 			"filetype",
 		},
+		lualine_y = {
+			"progress",
+		},
 		lualine_z = {
-			{ "filename", fmt = trunc(90, 30, 50) },
+			function()
+				return "" .. os.date("%R")
+			end,
 		},
 	},
 })
