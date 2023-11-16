@@ -9,12 +9,12 @@ end
 vim.opt.showmode = false
 
 local function diff_source()
-	local vgit = vim.b.vgit_status
-	if vgit then
+	local gitsigns = vim.b.gitsigns_status_dict
+	if gitsigns then
 		return {
-			added = vgit.added,
-			modified = vgit.changed,
-			removed = vgit.removed,
+			added = gitsigns.added,
+			modified = gitsigns.changed,
+			removed = gitsigns.removed,
 		}
 	end
 end
@@ -44,7 +44,7 @@ lualine.setup({
 			"mode",
 		},
 		lualine_b = {
-			{ "branch", padding = { left = 1, right = 0 } },
+			{ "b:gitsigns_head", icon = "" },
 			{ "diff", source = diff_source },
 		},
 		lualine_c = {

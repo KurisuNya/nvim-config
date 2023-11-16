@@ -12,7 +12,6 @@ return {
 	--------
 	-- theme
 	{ "folke/tokyonight.nvim", event = "VeryLazy" },
-	-- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	-- utils
 	{ "MunifTanjim/nui.nvim", event = "VeryLazy" },
 	{
@@ -160,14 +159,18 @@ return {
 	{ "folke/persistence.nvim", event = "BufReadPre", opts = {} },
 
 	-- git
-	-- {
-	-- 	"sindrets/diffview.nvim",
-	-- 	event = "VeryLazy",
-	-- 	-- config = function()
-	-- 	-- 	vim.api.nvim_set_hl(0, "DiffDelete", { fg = "#3b4261", bg = "#3f2d3d" })
-	-- 	-- end,
-	-- },
-	-- { "lewis6991/gitsigns.nvim", event = "VeryLazy" },
+	{
+		"lewis6991/gitsigns.nvim",
+		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+		opts = {
+			signs = {
+				add = { text = "▎" },
+				change = { text = "▎" },
+				changedelete = { text = "▎" },
+				untracked = { text = "▎" },
+			},
+		},
+	},
 	{ "KurisuNya/vgit.nvim", event = "VeryLazy", opts = {} },
 	-- telescope
 	{ "nvim-telescope/telescope.nvim", event = "VeryLazy" },

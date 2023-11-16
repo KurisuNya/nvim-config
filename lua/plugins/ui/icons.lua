@@ -57,7 +57,6 @@ M.diagnostics = {
 }
 
 M.git = {
-	Head = "",
 	Modified = "●",
 	Unstaged = "",
 	Staged = "",
