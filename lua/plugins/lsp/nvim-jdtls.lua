@@ -56,12 +56,20 @@ local function genarate_dap_bundles()
 		local jar_patterns = {
 			java_dbg_path .. "/extension/server/com.microsoft.java.debug.plugin-*.jar",
 		}
+		if mason_registry.is_installed("java-test") then
+			local java_test_pkg = mason_registry.get_package("java-test")
+			local java_test_path = java_test_pkg:get_install_path()
+			vim.list_extend(jar_patterns, {
+				java_test_path .. "/extension/server/*.jar",
+			})
+		end
 		for _, jar_pattern in ipairs(jar_patterns) do
 			for _, bundle in ipairs(vim.split(vim.fn.glob(jar_pattern), "\n")) do
 				table.insert(bundles, bundle)
 			end
 		end
 	end
+
 	return bundles
 end
 
@@ -81,6 +89,9 @@ local function attach_jdtls()
 			if plugin_exist("nvim-dap") and mason_registry.is_installed("java-debug-adapter") then
 				nvim_jdtls.setup_dap({ hotcodereplace = "auto", config_overrides = {} })
 				nvim_jdtls_dap.setup_dap_main_class_configs()
+			end
+			if mason_registry.is_installed("java-test") then
+				require("core.keymaps.lspconfig").jdtls_debug_on_attach()()
 			end
 		end,
 		capabilities = cmp_nvim_lsp.default_capabilities(),

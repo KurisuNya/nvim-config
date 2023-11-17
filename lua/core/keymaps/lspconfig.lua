@@ -29,6 +29,11 @@ M.lsp_on_attach = function()
 	keymap.set("n", "H", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 	keymap.set("n", "gH", vim.lsp.buf.signature_help, opts) -- show documentation for what is under cursor
 end
+M.jdtls_debug_on_attach = function()
+	keymap.set("n", "<leader>dj", require("jdtls.dap").test_class, opts)
+	-- keymap.set("n", "<leader>dj", require("jdtls.dap").test_nearest_method, opts)
+	keymap.set("n", "<leader>dJ", require("jdtls.dap").pick_test, opts)
+end
 M.outline_keymap = {
 	toggle_or_jump = "<Tab>",
 	quit = { "<Esc>", "q" },

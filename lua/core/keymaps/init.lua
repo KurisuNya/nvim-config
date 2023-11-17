@@ -7,7 +7,7 @@ require("core.keymaps.nvim")
 --------------------
 require("core.keymaps.barbar")
 require("core.keymaps.camelcase")
-require("core.keymaps.hop")
+require("core.keymaps.easy-action")
 require("core.keymaps.icon-picker")
 require("core.keymaps.markdown-preview")
 require("core.keymaps.neo-tree")

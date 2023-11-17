@@ -29,6 +29,7 @@ null_ls.setup({
 		formatting.stylua,
 		formatting.beautysh,
 		formatting.google_java_format,
+		formatting.xmlformat,
 		-- linters
 		diagnostics.cpplint,
 		diagnostics.codespell,

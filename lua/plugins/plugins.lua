@@ -161,7 +161,7 @@ return {
 	-- git
 	{
 		"lewis6991/gitsigns.nvim",
-		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+		event = "VeryLazy",
 		opts = {
 			signs = {
 				add = { text = "▎" },
@@ -176,7 +176,9 @@ return {
 	{ "nvim-telescope/telescope.nvim", event = "VeryLazy" },
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
-		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && "
+			.. "cmake --build build --config Release && "
+			.. "cmake --install build --prefix build",
 		event = "VeryLazy",
 	},
 	{ "debugloop/telescope-undo.nvim", event = "VeryLazy" },
@@ -185,8 +187,29 @@ return {
 	{ "numToStr/Comment.nvim", event = "VeryLazy", opts = {} },
 	{ "nguyenvukhang/nvim-toggler", event = "VeryLazy" },
 	{ "tpope/vim-surround", event = "VeryLazy" },
-	{ "phaazon/hop.nvim", event = "VeryLazy", opts = {}, branch = "v2" },
-	{ "Weissle/easy-action", event = "VeryLazy", opts = {} },
+	{
+		"Weissle/easy-action",
+		event = "VeryLazy",
+		opts = {
+			jump_provider = "leap",
+			jump_provider_config = {
+				leap = {
+					action_select = {
+						default = function()
+							require("leap").leap({ target_windows = { vim.fn.win_getid() } })
+						end,
+					},
+				},
+			},
+		},
+	},
+	{
+		"ggandor/leap.nvim",
+		-- event = "VeryLazy",
+		config = function()
+			require("leap").add_default_mappings()
+		end,
+	},
 	{ "bkad/CamelCaseMotion", event = "VeryLazy" },
 	{
 		"dhruvasagar/vim-table-mode",

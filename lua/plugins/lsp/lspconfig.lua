@@ -77,6 +77,10 @@ lspconfig["rust_analyzer"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
+lspconfig["lemminx"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
 
 -- lsp-ui
 local function lspSymbol(name, icon)

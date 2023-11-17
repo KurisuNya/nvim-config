@@ -25,8 +25,11 @@ keymap.set("n", "<leader>w", "<Cmd>w<CR>", opts)
 keymap.set("n", "<leader>q", "<Cmd>q<CR>", opts)
 keymap.set("n", "<leader>W", "<Cmd>wq<CR>", opts)
 keymap.set("n", "<leader>Q", "<Cmd>q!<CR>", opts)
+-- 宏录制
+keymap.set("n", "<leader>M", "q", opts)
+keymap.set("n", "q", "", opts)
 --窗口操作
-keymap.set("n", "s", "", opts)
+-- keymap.set("n", "s", "", opts)
 keymap.set("n", "<leader><Right>", "<Cmd>vsp<CR>", opts)
 keymap.set("n", "<leader><Down>", "<Cmd>sp<CR>", opts)
 keymap.set("n", "<leader><Left>", "<C-w>c", opts)
