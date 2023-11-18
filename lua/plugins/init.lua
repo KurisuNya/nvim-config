@@ -18,11 +18,10 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy.core.config").defaults.defaults.lazy = true
 require("lazy").setup({
 	--------------------------
-	-- normal dependenceies --
+	-- normal dependencies --
 	--------------------------
 	-- utils
 	{ "nvim-lua/plenary.nvim" },
-	{ "kkharji/sqlite.lua" },
 	{ "kevinhwang91/promise-async" },
 	-- ui dependence
 	{

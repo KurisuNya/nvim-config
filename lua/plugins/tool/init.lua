@@ -31,7 +31,7 @@ return {
 			},
 			last_session_on_startup = false,
 		},
-		dependenceies = {
+		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"Shatur/neovim-session-manager",
 			"nvim-telescope/telescope.nvim",
@@ -45,7 +45,7 @@ return {
 		"nvim-telescope/telescope.nvim",
 		keys = require("core.keymaps.telescope").keys,
 		config = require("plugins.tool.telescope").config,
-		dependenceies = {
+		dependencies = {
 			"debugloop/telescope-undo.nvim",
 			"nvim-telescope/telescope-fzf-native.nvim",
 			"nvim-telescope/telescope-frecency.nvim",
@@ -60,7 +60,14 @@ return {
 		event = "VeryLazy",
 	},
 	{ "debugloop/telescope-undo.nvim", event = "VeryLazy" },
-	{ "nvim-telescope/telescope-frecency.nvim", event = "VeryLazy" },
+	{
+		"nvim-telescope/telescope-frecency.nvim",
+		dependencies = {
+			"kkharji/sqlite.lua",
+		},
+		event = "VeryLazy",
+	},
+	{ "kkharji/sqlite.lua" },
 
 	-- git
 	{

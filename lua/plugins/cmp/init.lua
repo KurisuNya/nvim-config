@@ -6,7 +6,7 @@ return {
 
 	{
 		"L3MON4D3/LuaSnip",
-		dependenceies = {
+		dependencies = {
 			"rafamadriz/friendly-snippets",
 			config = function()
 				require("luasnip.loaders.from_vscode").lazy_load()
@@ -30,7 +30,7 @@ return {
 	{
 		"hrsh7th/nvim-cmp",
 		config = require("plugins.cmp.nvim-cmp").config,
-		dependenceies = {
+		dependencies = {
 			"L3MON4D3/LuaSnip",
 			"onsails/lspkind.nvim",
 			"abecodes/tabout.nvim",
