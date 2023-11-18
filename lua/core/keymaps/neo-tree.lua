@@ -1,8 +1,12 @@
-----------------
---  neo-tree  --
-----------------
-local keymap = vim.keymap
-local opts = { noremap = true, silent = true }
---开关neo-tree
-
-keymap.set("n", "<leader>e", "<Cmd>Neotree toggle<CR>", opts)
+local M = {}
+M.keys = {
+	{
+		"<leader>e",
+		"<Cmd>Neotree toggle<CR>",
+		desc = "Neotree Toggle",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+}
+return M

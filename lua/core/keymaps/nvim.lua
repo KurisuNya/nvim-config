@@ -21,19 +21,44 @@ keymap.set({ "n", "x" }, "<S-Up>", "5gk", opts)
 --------------------
 --编辑器保存退出
 keymap.set("n", "<C-s>", "<Cmd>w<CR>", opts)
-keymap.set("n", "<leader>w", "<Cmd>w<CR>", opts)
-keymap.set("n", "<leader>q", "<Cmd>q<CR>", opts)
-keymap.set("n", "<leader>W", "<Cmd>wq<CR>", opts)
-keymap.set("n", "<leader>Q", "<Cmd>q!<CR>", opts)
+keymap.set("n", "<leader>w", "<Cmd>w<CR>", {
+	noremap = true,
+	silent = true,
+	desc = "Save",
+})
+keymap.set("n", "<leader>q", "<Cmd>q<CR>", {
+	noremap = true,
+	silent = true,
+	desc = "Quit",
+})
+keymap.set("n", "<leader>W", "<Cmd>wq<CR>", {
+	noremap = true,
+	silent = true,
+	desc = "Save Quit",
+})
+keymap.set("n", "<leader>Q", "<Cmd>q!<CR>", {
+	noremap = true,
+	silent = true,
+	desc = "Force Quit",
+})
 -- 宏录制
-keymap.set("n", "<leader>M", "q", opts)
 keymap.set("n", "q", "", opts)
+keymap.set("n", "<leader>M", "q", {
+	noremap = true,
+	silent = true,
+	desc = "Record Marco",
+})
 --窗口操作
--- keymap.set("n", "s", "", opts)
-keymap.set("n", "<leader><Right>", "<Cmd>vsp<CR>", opts)
-keymap.set("n", "<leader><Down>", "<Cmd>sp<CR>", opts)
-keymap.set("n", "<leader><Left>", "<C-w>c", opts)
-keymap.set("n", "<leader><Up>", "<C-w>o", opts)
+keymap.set("n", "<leader><Right>", "<Cmd>vsp<CR>", {
+	noremap = true,
+	silent = true,
+	desc = "Vertical Spilt Window",
+})
+keymap.set("n", "<leader><Down>", "<Cmd>sp<CR>", {
+	noremap = true,
+	silent = true,
+	desc = "Horizontal Spilt Window",
+})
 keymap.set("n", "<C-h>", "<C-w>h", opts)
 keymap.set("n", "<C-j>", "<C-w>j", opts)
 keymap.set("n", "<C-k>", "<C-w>k", opts)
@@ -43,13 +68,22 @@ keymap.set("n", "<C-Down>", "<C-w>j", opts)
 keymap.set("n", "<C-Up>", "<C-w>k", opts)
 keymap.set("n", "<C-Right>", "<C-w>l", opts)
 --打开终端
-keymap.set("n", "<leader>vt", "<Cmd>vsp term://fish<CR>", opts)
+keymap.set("n", "<leader>vt", "<Cmd>vsp term://fish<CR>", {
+	noremap = true,
+	silent = true,
+	desc = "Vertical Terminal",
+})
 --行操作
-keymap.set("n", "<leader><Enter>", 'O<Esc>"_cc<Esc>j', opts)
-keymap.set("n", "<leader>j", "J", opts)
-keymap.set("n", "<leader>k", "i<CR><Up><Esc>A", opts)
---取消高亮
-keymap.set("n", "<leader>/", "<Cmd>noh<CR>", opts)
+keymap.set("n", "<leader><Enter>", 'O<Esc>"_cc<Esc>j', {
+	noremap = true,
+	silent = true,
+	desc = "Empty Line",
+})
+keymap.set("n", "<leader>j", "J", {
+	noremap = true,
+	silent = true,
+	desc = "Joint Lines",
+})
 --数字加减
 keymap.set("n", "+", "<C-a>", opts)
 keymap.set("n", "_", "<C-x>", opts)

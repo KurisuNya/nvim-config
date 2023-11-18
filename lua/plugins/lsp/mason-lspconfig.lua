@@ -1,15 +1,15 @@
-local status, mason_lspconfig = pcall(require, "mason-lspconfig")
-if not status then
-	return
+local M = {}
+M.config = function()
+	require("mason-lspconfig").setup({
+		automatic_installation = true,
+		ensure_installed = {
+			"bashls",
+			"clangd",
+			"jdtls",
+			"pylsp",
+			"lua_ls",
+			"rust_analyzer",
+		},
+	})
 end
-mason_lspconfig.setup({
-	automatic_installation = true,
-	ensure_installed = {
-		"bashls",
-		"clangd",
-		"jdtls",
-		"pylsp",
-		"lua_ls",
-		"rust_analyzer",
-	},
-})
+return M

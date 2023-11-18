@@ -1,6 +1,12 @@
-------------------------
---  markdown-preview  --
-------------------------
-local keymap = vim.keymap
-local opts = { noremap = true, silent = true }
-keymap.set("n", "<leader>mp", "<Cmd>MarkdownPreviewToggle<CR>", opts)
+local M = {}
+M.keys = {
+	{
+		"<leader>mp",
+		"<Cmd>MarkdownPreviewToggle<CR>",
+		desc = "Markdown Preview Toggle",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+}
+return M

@@ -1,6 +1,12 @@
-------------------
---  nvim-picgo  --
-------------------
-local keymap = vim.keymap
-local opts = { noremap = true, silent = false }
-keymap.set("n", "<leader>pc", ":PicgoUpload ~/Pictures/", opts)
+local M = {}
+M.keys = {
+	{
+		"<leader>pc",
+		":PicgoUpload ~/Pictures/",
+		mode = "n",
+		noremap = true,
+		silent = false,
+		desc = "Picture Upload",
+	},
+}
+return M

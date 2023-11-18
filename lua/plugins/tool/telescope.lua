@@ -1,39 +1,20 @@
 -- import telescope plugin safely
-local status, telescope = pcall(require, "telescope")
-if not status then
-	return
-end
+local M = {}
+M.config = function()
+	local telescope = require("telescope")
+	local map_list = require("core.keymaps.telescope").telescope_undo
 
--- configure telescope
-local map_list = require("core.keymaps.telescope-undo")
-
-telescope.setup({
-	defaults = {
-		vimgrep_arguments = {
-			"rg",
-			"--color=never",
-			"--no-heading",
-			"--with-filename",
-			"--line-number",
-			"--column",
-			"--smart-case",
-			"--trim",
-			"--hidden",
-			"--glob",
-			"!**/.git/*",
-			"--glob",
-			"!**/node_modules/*",
-			"--glob",
-			"!Webdav/",
-			"--glob",
-			"!Remote/",
-		},
-	},
-	pickers = {
-		find_files = {
-			find_command = {
+	telescope.setup({
+		defaults = {
+			vimgrep_arguments = {
 				"rg",
-				"--files",
+				"--color=never",
+				"--no-heading",
+				"--with-filename",
+				"--line-number",
+				"--column",
+				"--smart-case",
+				"--trim",
 				"--hidden",
 				"--glob",
 				"!**/.git/*",
@@ -45,29 +26,46 @@ telescope.setup({
 				"!Remote/",
 			},
 		},
-	},
-	extensions = {
-		undo = {
-			use_delta = true,
-			side_by_side = false,
-			use_custom_command = nil,
-			diff_context_lines = vim.o.scrolloff,
-			entry_format = "state #$ID, $STAT, $TIME",
-			mappings = {
-				i = {
-					[map_list.restore] = require("telescope-undo.actions").restore,
+		pickers = {
+			find_files = {
+				find_command = {
+					"rg",
+					"--files",
+					"--hidden",
+					"--glob",
+					"!**/.git/*",
+					"--glob",
+					"!**/node_modules/*",
+					"--glob",
+					"!Webdav/",
+					"--glob",
+					"!Remote/",
 				},
 			},
 		},
-		fzf = {
-			fuzzy = true,
-			override_generic_sorter = true,
-			override_file_sorter = true,
-			case_mode = "smart_case",
+		extensions = {
+			undo = {
+				use_delta = true,
+				side_by_side = false,
+				use_custom_command = nil,
+				diff_context_lines = vim.o.scrolloff,
+				entry_format = "state #$ID, $STAT, $TIME",
+				mappings = {
+					i = {
+						[map_list.restore] = require("telescope-undo.actions").restore,
+					},
+				},
+			},
+			fzf = {
+				fuzzy = true,
+				override_generic_sorter = true,
+				override_file_sorter = true,
+				case_mode = "smart_case",
+			},
 		},
-	},
-})
-telescope.load_extension("undo")
-telescope.load_extension("fzf")
-telescope.load_extension("frecency")
-telescope.load_extension("projects")
+	})
+	telescope.load_extension("undo")
+	telescope.load_extension("fzf")
+	telescope.load_extension("frecency")
+end
+return M

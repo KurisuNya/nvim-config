@@ -1,45 +1,119 @@
------------------
---  lspconfig  --
------------------
-local keymap = vim.keymap -- for conciseness
-local opts = { noremap = true, silent = true }
-keymap.set("n", "<leader>s", "<Cmd>Lspsaga outline<CR>", opts)
-keymap.set("n", "<leader>t", "<Cmd>Lspsaga term_toggle<CR>", opts)
-keymap.set({ "n", "i", "s" }, "<c-d>", function()
-	if not require("noice.lsp").scroll(4) then
-		return "<c-d>"
-	end
-end, { silent = true, expr = true })
-keymap.set({ "n", "i", "s" }, "<c-u>", function()
-	if not require("noice.lsp").scroll(-4) then
-		return "<c-u>"
-	end
-end, { silent = true, expr = true })
-
 local M = {}
+M.lspsaga_keys = function()
+	vim.keymap.set("n", "<leader>s", "<Cmd>Lspsaga outline<CR>", {
+		noremap = true,
+		silent = true,
+		desc = "Lsp Symbols Float",
+	})
+	vim.keymap.set("n", "<leader>t", "<Cmd>Lspsaga term_toggle<CR>", {
+		noremap = true,
+		silent = true,
+		desc = "Float Terminal",
+	})
+end
+
+M.nvim_navbuddy_keys = {
+	{
+		"<leader>S",
+		"<Cmd>Navbuddy<CR>",
+		mode = "n",
+		noremap = true,
+		silent = true,
+		desc = "Lsp Symbols Explorer",
+	},
+}
+
+M.noice_keys = function()
+	vim.keymap.set({ "n", "i", "s" }, "<c-d>", function()
+		if not require("noice.lsp").scroll(4) then
+			return "<c-d>"
+		end
+	end, { silent = true, expr = true })
+	vim.keymap.set({ "n", "i", "s" }, "<c-u>", function()
+		if not require("noice.lsp").scroll(-4) then
+			return "<c-u>"
+		end
+	end, { silent = true, expr = true })
+end
+
 M.lsp_on_attach = function()
-	keymap.set("n", "gr", "<Cmd>Lspsaga finder<CR>", opts) -- show definition, references
-	keymap.set("n", "gD", "<Cmd>Lspsaga goto_definition<CR>", opts) -- got to declaration
-	keymap.set("n", "gd", "<Cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
-	keymap.set("n", "<leader>ca", "<Cmd>Lspsaga code_action<CR>", opts) -- see available code actions
-	keymap.set("n", "<leader>rn", "<Cmd>Lspsaga rename mode=n<CR>", opts) -- smart rename
-	keymap.set("n", "<leader>D", "<Cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
-	keymap.set("n", "[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
-	keymap.set("n", "]d", "<Cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
-	keymap.set("n", "H", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
-	keymap.set("n", "gH", vim.lsp.buf.signature_help, opts) -- show documentation for what is under cursor
+	vim.keymap.set("n", "gd", "<Cmd>Lspsaga peek_definition<CR>", {
+		noremap = true,
+		silent = true,
+		desc = "Lsp Peek Definition",
+	})
+	vim.keymap.set("n", "gD", function()
+		require("telescope.builtin").lsp_definitions({ reuse_win = true })
+	end, {
+		noremap = true,
+		silent = true,
+		desc = "Lsp Goto Definition",
+	})
+	vim.keymap.set("n", "gr", "<Cmd>Lspsaga finder<CR>", {
+		noremap = true,
+		silent = true,
+		desc = "Lsp Find Reference",
+	})
+	vim.keymap.set("n", "<leader>ca", "<Cmd>Lspsaga code_action<CR>", {
+		noremap = true,
+		silent = true,
+		desc = "Lsp Code Action",
+	})
+	vim.keymap.set("n", "<leader>rn", "<Cmd>Lspsaga rename mode=n<CR>", {
+		noremap = true,
+		silent = true,
+		desc = "Lsp Rename",
+	})
+	vim.keymap.set("n", "<leader>D", "<Cmd>Lspsaga show_line_diagnostics<CR>", {
+		noremap = true,
+		silent = true,
+		desc = "Lsp Line Diagnostic",
+	})
+	vim.keymap.set("n", "[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", {
+		noremap = true,
+		silent = true,
+		desc = "Lsp Previous Diagnostic",
+	})
+	vim.keymap.set("n", "]d", "<Cmd>Lspsaga diagnostic_jump_next<CR>", {
+		noremap = true,
+		silent = true,
+		desc = "Lsp Next Diagnostic",
+	})
+	vim.keymap.set("n", "H", vim.lsp.buf.hover, {
+		noremap = true,
+		silent = true,
+		desc = "Lsp Hover Doc",
+	})
+	vim.keymap.set("n", "gH", vim.lsp.buf.signature_help, {
+		noremap = true,
+		silent = true,
+		desc = "Lsp Signature Help",
+	})
+	vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, {
+		noremap = true,
+		silent = true,
+	})
 end
+
 M.jdtls_debug_on_attach = function()
-	keymap.set("n", "<leader>dj", require("jdtls.dap").test_class, opts)
-	-- keymap.set("n", "<leader>dj", require("jdtls.dap").test_nearest_method, opts)
-	keymap.set("n", "<leader>dJ", require("jdtls.dap").pick_test, opts)
+	vim.keymap.set("n", "<leader>dj", require("jdtls.dap").test_class, {
+		noremap = true,
+		silent = true,
+		desc = "Dap Java Test Class",
+	})
+	vim.keymap.set("n", "<leader>dJ", require("jdtls.dap").pick_test, {
+		noremap = true,
+		silent = true,
+		desc = "Dap Java Pick Test",
+	})
 end
-M.outline_keymap = {
+
+M.lspsaga_outline_keymap = {
 	toggle_or_jump = "<Tab>",
 	quit = { "<Esc>", "q" },
 	jump = "<CR>",
 }
-M.finder_keymap = {
+M.lspsaga_finder_keymap = {
 	toggle_or_open = "<CR>",
 	quit = { "<Esc>", "q" },
 }

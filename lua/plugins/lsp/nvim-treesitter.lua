@@ -1,48 +1,43 @@
 ---@diagnostic disable: missing-fields
-local status, treesitter = pcall(require, "nvim-treesitter.configs")
-if not status then
-	return
+local M = {}
+M.config = function()
+	require("nvim-ts-autotag").setup()
+	require("nvim-treesitter.configs").setup({
+		ensure_installed = {
+			"bash",
+			"c",
+			"comment",
+			"cpp",
+			"gitcommit",
+			"gitignore",
+			"java",
+			"lua",
+			"markdown",
+			"markdown_inline",
+			"php",
+			"python",
+			"regex",
+			"rust",
+			"scss",
+			"vim",
+			"yuck",
+			"html",
+		},
+		highlight = {
+			enable = true,
+			additional_vim_regex_highlighting = false,
+		},
+		indent = {
+			enable = true,
+			disable = { "python" },
+		},
+		matchup = {
+			enable = true,
+		},
+	})
+	vim.opt.foldmethod = "expr"
+	vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+	vim.opt.foldlevel = 99
+	vim.g.matchup_matchparen_offscreen = { method = "popup" }
 end
-
-require("nvim-ts-autotag").setup()
-treesitter.setup({
-	--默认安装
-	ensure_installed = {
-		"bash",
-		"c",
-		"comment",
-		"cpp",
-		"gitcommit",
-		"gitignore",
-		"java",
-		"lua",
-		"markdown",
-		"markdown_inline",
-		"php",
-		"python",
-		"regex",
-		"rust",
-		"scss",
-		"vim",
-		"yuck",
-		"html",
-	},
-	-- 启用代码高亮模块
-	highlight = {
-		enable = true,
-		additional_vim_regex_highlighting = false,
-	},
-	indent = {
-		enable = true,
-		disable = { "python" },
-	},
-	matchup = {
-		enable = true,
-	},
-})
-
--- 开启 Folding 模块
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
--- 默认不要折叠
-vim.opt.foldlevel = 99
+return M

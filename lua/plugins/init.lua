@@ -15,17 +15,26 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
-require("lazy").setup("plugins.plugins")
--------------------------
---                     --
---    plugin-config    --
---                     --
--------------------------
--- ui plugins
-require("plugins.ui")
--- lsp plugins
-require("plugins.lsp")
--- cmp plugins
-require("plugins.cmp")
--- function plugins
-require("plugins.tool")
+require("lazy.core.config").defaults.defaults.lazy = true
+require("lazy").setup({
+	--------------------------
+	-- normal dependenceies --
+	--------------------------
+	-- utils
+	{ "nvim-lua/plenary.nvim" },
+	{ "kkharji/sqlite.lua" },
+	{ "kevinhwang91/promise-async" },
+	-- ui dependence
+	{
+		"nvim-tree/nvim-web-devicons",
+		opts = { color_icons = true, default = true, strict = true },
+	},
+	{ "onsails/lspkind.nvim" },
+	{ "MunifTanjim/nui.nvim" },
+
+	{ require("core.colorscheme").colorscheme_plugin },
+	{ require("plugins.ui") },
+	{ require("plugins.cmp") },
+	{ require("plugins.lsp") },
+	{ require("plugins.tool") },
+})

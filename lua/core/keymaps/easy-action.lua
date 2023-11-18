@@ -1,5 +1,12 @@
--------------------
---  easy-action  --
--------------------
-local opts = { noremap = true, silent = true }
-vim.keymap.set({ "n", "x" }, "<leader><leader>a", "<Cmd>BasicEasyAction<CR>", opts)
+local M = {}
+M.keys = {
+	{
+		"<leader><leader>a",
+		"<Cmd>BasicEasyAction<CR>",
+		desc = "Action Everywhere",
+		mode = { "n", "x" },
+		noremap = true,
+		silent = true,
+	},
+}
+return M

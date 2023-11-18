@@ -1,33 +1,199 @@
---------------
---  barbar  --
---------------
-local keymap = vim.keymap
-local opts = { noremap = true, silent = true }
---切换标签
-keymap.set("n", "<A-l>", "<Cmd>BufferNext<CR>", opts)
-keymap.set("n", "<A-h>", "<Cmd>BufferPrevious<CR>", opts)
-keymap.set("n", "<A-j>", "<Cmd>BufferNext<CR>", opts)
-keymap.set("n", "<A-k>", "<Cmd>BufferPrevious<CR>", opts)
-keymap.set("n", "<A-Right>", "<Cmd>BufferNext<CR>", opts)
-keymap.set("n", "<A-Left>", "<Cmd>BufferPrevious<CR>", opts)
-keymap.set("n", "<A-Down>", "<Cmd>BufferNext<CR>", opts)
-keymap.set("n", "<A-Up>", "<Cmd>BufferPrevious<CR>", opts)
-keymap.set("n", "<A-1>", "<Cmd>BufferGoto 1<CR>", opts)
-keymap.set("n", "<A-2>", "<Cmd>BufferGoto 2<CR>", opts)
-keymap.set("n", "<A-3>", "<Cmd>BufferGoto 3<CR>", opts)
-keymap.set("n", "<A-4>", "<Cmd>BufferGoto 4<CR>", opts)
-keymap.set("n", "<A-5>", "<Cmd>BufferGoto 5<CR>", opts)
-keymap.set("n", "<A-6>", "<Cmd>BufferGoto 6<CR>", opts)
-keymap.set("n", "<A-7>", "<Cmd>BufferGoto 7<CR>", opts)
-keymap.set("n", "<A-8>", "<Cmd>BufferGoto 8<CR>", opts)
-keymap.set("n", "<A-9>", "<Cmd>BufferGoto 9<CR>", opts)
-keymap.set("n", "<A-0>", "<Cmd>BufferLast<CR>", opts)
---关闭标签
-keymap.set("n", "<A-q>", "<Cmd>BufferClose<CR>", opts)
-keymap.set("n", "<A-Q>", "<Cmd>BufferCloseAllButPinned<CR>", opts)
---固定标签
-keymap.set("n", "<A-p>", "<Cmd>BufferPin<CR>", opts)
---移动标签
-keymap.set("n", "<A-,>", "<Cmd>BufferMovePrevious<CR>", opts)
-keymap.set("n", "<A-.>", "<Cmd>BufferMoveNext<CR>", opts)
-keymap.set("n", "<A-s>", "<Cmd>BufferOrderByDirectory<CR>", opts)
+local M = {}
+M.keys = {
+	{
+		"<A-l>",
+		"<Cmd>BufferNext<CR>",
+		desc = "Buffer Next",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<A-h>",
+		"<Cmd>BufferPrevious<CR>",
+		desc = "Buffer Previous",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<A-j>",
+		"<Cmd>BufferNext<CR>",
+		desc = "Buffer Next",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<A-k>",
+		"<Cmd>BufferPrevious<CR>",
+		desc = "Buffer Previous",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<A-Right>",
+		"<Cmd>BufferNext<CR>",
+		desc = "Buffer Next",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<A-Left>",
+		"<Cmd>BufferPrevious<CR>",
+		desc = "Buffer Previous",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<A-Down>",
+		"<Cmd>BufferNext<CR>",
+		desc = "Buffer Next",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<A-Up>",
+		"<Cmd>BufferPrevious<CR>",
+		desc = "Buffer Previous",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<A-1>",
+		"<Cmd>BufferGoto 1<CR>",
+		desc = "Buffer Goto 1",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<A-2>",
+		"<Cmd>BufferGoto 2<CR>",
+		desc = "Buffer Goto 2",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<A-3>",
+		"<Cmd>BufferGoto 3<CR>",
+		desc = "Buffer Goto 3",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<A-4>",
+		"<Cmd>BufferGoto 4<CR>",
+		desc = "Buffer Goto 4",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<A-5>",
+		"<Cmd>BufferGoto 5<CR>",
+		desc = "Buffer Goto 5",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<A-6>",
+		"<Cmd>BufferGoto 6<CR>",
+		desc = "Buffer Goto 6",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<A-7>",
+		"<Cmd>BufferGoto 7<CR>",
+		desc = "Buffer Goto 7",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<A-8>",
+		"<Cmd>BufferGoto 8<CR>",
+		desc = "Buffer Goto 8",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<A-9>",
+		"<Cmd>BufferGoto 9<CR>",
+		desc = "Buffer Goto 9",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<A-0>",
+		"<Cmd>BufferLast<CR>",
+		desc = "Buffer Goto Last",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+
+	{
+		"<A-q>",
+		"<Cmd>BufferClose<CR>",
+		desc = "Buffer Close",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<A-Q>",
+		"<Cmd>BufferCloseAllButPinned<CR>",
+		desc = "Buffer Close Except Pinned",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+
+	{
+		"<A-p>",
+		"<Cmd>BufferPin<CR>",
+		desc = "Buffer Pin",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+
+	{
+		"<A-,>",
+		"<Cmd>BufferMovePrevious<CR>",
+		desc = "Buffer Moveto Previous",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<A-.>",
+		"<Cmd>BufferMoveNext<CR>",
+		desc = "Buffer Move to Next",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<A-s>",
+		"<Cmd>BufferOrderByDirectory<CR>",
+		desc = "Buffer Sort by Dir",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+}
+return M

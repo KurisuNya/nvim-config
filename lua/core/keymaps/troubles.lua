@@ -1,6 +1,12 @@
-----------------
---  troubles  --
-----------------
-local keymap = vim.keymap
-local opts = { noremap = true, silent = true }
-keymap.set("n", "<leader>x", "<Cmd>TroubleToggle<CR>", opts)
+local M = {}
+M.keys = {
+	{
+		"<leader>x",
+		"<Cmd>TroubleToggle<CR>",
+		desc = "Trouble View Toggle",
+		mode = "n",
+		noremap = true,
+		silent = true,
+	},
+}
+return M

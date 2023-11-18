@@ -1,28 +1,7 @@
-----------------
---  nvim-cmp  --
-----------------
-local cmp_status, cmp = pcall(require, "cmp")
-if not cmp_status then
-	return
-end
-local luasnip_status, luasnip = pcall(require, "luasnip")
-if not luasnip_status then
-	return
-end
-local fast_snip_status, fast_snip = pcall(require, "fast-snip")
-if not fast_snip_status then
-	return
-end
-
-local keymap = vim.keymap
-local opts = { noremap = true, silent = true }
-keymap.set("x", "<leader>cs", function()
-	fast_snip.new_snippet_or_add_placeholder()
-	vim.cmd("normal !u")
-end, opts)
-keymap.set("n", "<leader>cs", fast_snip.finalize_snippet, opts)
-
-local M = {
+local cmp = require("cmp")
+local luasnip = require("luasnip")
+local M = {}
+M.keymap_list = {
 	["<Tab>"] = cmp.mapping(function(fallback)
 		if cmp.visible() then
 			cmp.select_next_item()
