@@ -6,9 +6,11 @@ Use lazy.nvim as plugin manager.
 
 ## Screenshots
 
-![dashboard](https://cdn.kurisunya.top/cdn/2/2023/10/653f73a921048.png)
+![dashboard](https://cdn.kurisunya.top/cdn/2/2023/11/6558f585ee90a.png)
 
-![coding](https://cdn.kurisunya.top/cdn/2/2023/10/653f741c78cb1.png)
+![coding](https://cdn.kurisunya.top/cdn/2/2023/11/6558f5e52a7d4.png)
+
+![debugging](https://cdn.kurisunya.top/cdn/2/2023/11/6558f647241f1.png)
 
 ## Project structure
 
