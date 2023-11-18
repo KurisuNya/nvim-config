@@ -6,8 +6,9 @@ M.config = function()
 			"bashls",
 			"clangd",
 			"jdtls",
-			"pylsp",
+			"lemminx",
 			"lua_ls",
+			"pylsp",
 			"rust_analyzer",
 		},
 	})
