@@ -13,6 +13,7 @@ Use lazy.nvim as plugin manager.
 ## Project structure
 
 ```text
+.
 ├── init.lua
 ├── lazy-lock.json
 ├── LICENSE
@@ -23,10 +24,9 @@ Use lazy.nvim as plugin manager.
 │   │   ├── keymaps
 │   │   │   ├── barbar.lua
 │   │   │   ├── camelcase.lua
-│   │   │   ├── diffview.lua
-│   │   │   ├── gitsigns.lua
-│   │   │   ├── hop.lua
-│   │   │   ├── init.lua
+│   │   │   ├── easy-action.lua
+│   │   │   ├── fast-snip.lua
+│   │   │   ├── icon-picker.lua
 │   │   │   ├── lspconfig.lua
 │   │   │   ├── markdown-preview.lua
 │   │   │   ├── neo-tree.lua
@@ -39,15 +39,13 @@ Use lazy.nvim as plugin manager.
 │   │   │   ├── nvim-spectre.lua
 │   │   │   ├── nvim-toggler.lua
 │   │   │   ├── telescope.lua
-│   │   │   ├── telescope-undo.lua
-│   │   │   └── troubles.lua
+│   │   │   ├── troubles.lua
+│   │   │   └── vgit.lua
 │   │   └── options.lua
 │   └── plugins
 │       ├── cmp
-│       │   ├── autopairs.lua
 │       │   ├── init.lua
-│       │   ├── nvim-cmp.lua
-│       │   └── tabout.lua
+│       │   └── nvim-cmp.lua
 │       ├── init.lua
 │       ├── lsp
 │       │   ├── init.lua
@@ -61,13 +59,12 @@ Use lazy.nvim as plugin manager.
 │       │   ├── nvim-jdtls.lua
 │       │   ├── nvim-navbuddy.lua
 │       │   └── nvim-treesitter.lua
-│       ├── plugins.lua
 │       ├── tool
 │       │   ├── alpha-nvim.lua
-│       │   ├── gitsigns.lua
 │       │   ├── init.lua
 │       │   ├── neo-tree.lua
 │       │   ├── nvim-spectre.lua
+│       │   ├── nvim-toggler.lua
 │       │   └── telescope.lua
 │       └── ui
 │           ├── barbar.lua
@@ -76,7 +73,7 @@ Use lazy.nvim as plugin manager.
 │           ├── init.lua
 │           ├── lualine.lua
 │           ├── noice.lua
-│           ├── nvim-ufo.lua
-│           └── nvim-web-devicons.lua
+│           ├── nvim-web-devicons.lua
+│           └── pretty-fold.lua
 └── README.md
 ```

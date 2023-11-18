@@ -116,5 +116,8 @@ return {
 		event = "VeryLazy",
 		opts = { load_breakpoints_event = { "BufReadPost" } },
 	},
-	{ "ofirgall/goto-breakpoints.nvim" },
+	{
+		"ofirgall/goto-breakpoints.nvim",
+		keys = require("core.keymaps.nvim-dap").goto_breakpoints_keys,
+	},
 }
