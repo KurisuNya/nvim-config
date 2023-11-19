@@ -88,6 +88,13 @@ local M = {
 		opts = {},
 		event = "VeryLazy",
 	},
+	{
+		"akinsho/git-conflict.nvim",
+		version = "*",
+		keys = require("core.keymaps.git-conflict").keys,
+		config = require("plugins.tool.git-conflict").config,
+		event = "VeryLazy",
+	},
 
 	-- operations
 	{
