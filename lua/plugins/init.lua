@@ -15,7 +15,6 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
-require("lazy.core.config").defaults.defaults.lazy = true
 require("lazy").setup({
 	--------------------------
 	-- normal dependencies --
@@ -36,4 +35,14 @@ require("lazy").setup({
 	{ require("plugins.cmp") },
 	{ require("plugins.lsp") },
 	{ require("plugins.tool") },
+}, {
+	defaults = {
+		lazy = true,
+	},
+	ui = {
+		custom_keys = {
+			["<localleader>l"] = false,
+			["<localleader>t"] = false,
+		},
+	},
 })
