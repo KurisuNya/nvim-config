@@ -1,3 +1,4 @@
+---@diagnostic disable: inject-field
 ------------------
 --  ui-plugins  --
 ------------------
@@ -43,6 +44,11 @@ return {
 		"stevearc/dressing.nvim",
 		opts = {},
 		lazy = false,
+	},
+	{
+		"yorickpeterse/nvim-pqf",
+		config = require("plugins.ui.nvim-pqf").config,
+		event = "VeryLazy",
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",

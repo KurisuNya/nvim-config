@@ -1,6 +1,14 @@
 local M = {}
 M.keys = {
 	{
+		"<leader>cl",
+		"<Cmd>GitConflictListQf<CR>",
+		mode = "n",
+		noremap = true,
+		silent = true,
+		desc = "Conflict List",
+	},
+	{
 		"<leader>co",
 		mode = "n",
 		desc = "Conflict Choose Ours",
