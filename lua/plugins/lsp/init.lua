@@ -24,16 +24,19 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		config = require("plugins.lsp.mason-lspconfig").config,
+		dependencies = { "neovim/nvim-lspconfig" },
 		event = "VeryLazy",
 	},
 	{
 		"jayp0521/mason-null-ls.nvim",
 		config = require("plugins.lsp.mason-null-ls").config,
+		dependencies = { "nvimtools/none-ls.nvim" },
 		event = "VeryLazy",
 	},
 	{
 		"jay-babu/mason-nvim-dap.nvim",
 		config = require("plugins.lsp.mason-nvim-dap").config,
+		dependencies = { "mfussenegger/nvim-dap" },
 		event = "VeryLazy",
 	},
 
@@ -54,6 +57,8 @@ return {
 		dependencies = {
 			"lvimuser/lsp-inlayhints.nvim",
 			"hrsh7th/nvim-cmp",
+			"mfussenegger/nvim-dap",
+			"jay-babu/mason-nvim-dap.nvim",
 		},
 		ft = "java",
 	},
