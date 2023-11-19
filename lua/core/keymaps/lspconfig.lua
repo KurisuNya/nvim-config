@@ -5,11 +5,6 @@ M.lspsaga_keys = function()
 		silent = true,
 		desc = "Lsp Symbols Float",
 	})
-	vim.keymap.set("n", "<leader>t", "<Cmd>Lspsaga term_toggle<CR>", {
-		noremap = true,
-		silent = true,
-		desc = "Float Terminal",
-	})
 end
 
 M.nvim_navbuddy_keys = {

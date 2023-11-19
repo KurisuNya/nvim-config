@@ -67,12 +67,6 @@ keymap.set("n", "<C-Left>", "<C-w>h", opts)
 keymap.set("n", "<C-Down>", "<C-w>j", opts)
 keymap.set("n", "<C-Up>", "<C-w>k", opts)
 keymap.set("n", "<C-Right>", "<C-w>l", opts)
---打开终端
-keymap.set("n", "<leader>vt", "<Cmd>vsp term://fish<CR>", {
-	noremap = true,
-	silent = true,
-	desc = "Vertical Terminal",
-})
 --行操作
 keymap.set("n", "<leader><Enter>", 'O<Esc>"_cc<Esc>j', {
 	noremap = true,

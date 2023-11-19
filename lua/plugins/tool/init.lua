@@ -167,6 +167,13 @@ local M = {
 
 	-- other
 	{
+		"akinsho/toggleterm.nvim",
+		version = "*",
+		keys = require("core.keymaps.toggleterm").keys,
+		config = require("plugins.tool.toggleterm").config,
+		event = "VeryLazy",
+	},
+	{
 		"folke/which-key.nvim",
 		init = function()
 			vim.opt.timeout = true
