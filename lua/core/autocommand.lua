@@ -50,3 +50,12 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt_local.wrap = true
 	end,
 })
+-- Windows 中英文自动切换
+if vim.loop.os_uname().sysname == "Windows_NT" then
+	local im_english = "im-select 1033"
+	local im_chinese = "im-select 2052"
+	vim.api.nvim_command("autocmd VimEnter * :silent :!" .. im_english)
+	vim.api.nvim_command("autocmd InsertEnter * :silent :!" .. im_chinese)
+	vim.api.nvim_command("autocmd InsertLeave * :silent :!" .. im_english)
+	vim.api.nvim_command("autocmd VimLeave * :silent :!" .. im_chinese)
+end

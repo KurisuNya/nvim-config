@@ -88,7 +88,7 @@ M.config = function()
 		dashboard.button("f", "  Find Project", "<Cmd>Telescope neovim-project discover<CR>"),
 		dashboard.button("s", "  Last Session", "<Cmd>NeovimProjectLoadRecent<cr>"),
 		dashboard.button("h", "  File history", "<Cmd>Telescope oldfiles<CR>"),
-		dashboard.button("c", "神 File frecency", "<Cmd>Telescope frecency<CR>"),
+		dashboard.button("c", "  File frecency", "<Cmd>Telescope frecency<CR>"),
 	}
 
 	-- layout

@@ -1,7 +1,7 @@
 --------------------
 --  tool-plugins  --
 --------------------
-return {
+local M = {
 
 	-- dashboard and explorer
 	{
@@ -165,16 +165,6 @@ return {
 		ft = "markdown",
 	},
 
-	-- linux
-	{ "h-hg/fcitx.nvim", event = "VeryLazy" },
-	{
-		"lambdalisue/suda.vim",
-		init = function()
-			vim.g.suda_smart_edit = 1
-		end,
-		event = "VeryLazy",
-	},
-
 	-- other
 	{
 		"folke/which-key.nvim",
@@ -212,3 +202,21 @@ return {
 		event = "VeryLazy",
 	},
 }
+
+if vim.loop.os_uname().sysname == "Linux" then
+	local linux_plugins = {
+		-- linux
+		{ "h-hg/fcitx.nvim", event = "VeryLazy" },
+		{
+			"lambdalisue/suda.vim",
+			init = function()
+				vim.g.suda_smart_edit = 1
+			end,
+			event = "VeryLazy",
+		},
+	}
+	for _, plugin in ipairs(linux_plugins) do
+		table.insert(M, plugin)
+	end
+end
+return M

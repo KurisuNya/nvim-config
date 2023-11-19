@@ -42,13 +42,19 @@ M.lsp_on_attach = function()
 		silent = true,
 		desc = "Lsp Peek Definition",
 	})
-	vim.keymap.set("n", "gD", function()
-		require("telescope.builtin").lsp_definitions({ reuse_win = true })
-	end, {
+
+	vim.keymap.set("n", "gD", "<Cmd>Lspsaga goto_definition<CR>", {
 		noremap = true,
 		silent = true,
 		desc = "Lsp Goto Definition",
 	})
+	-- vim.keymap.set("n", "gD", function()
+	-- 	require("telescope.builtin").lsp_definitions({ reuse_win = true })
+	-- end, {
+	-- 	noremap = true,
+	-- 	silent = true,
+	-- 	desc = "Lsp Goto Definition",
+	-- })
 	vim.keymap.set("n", "gr", "<Cmd>Lspsaga finder<CR>", {
 		noremap = true,
 		silent = true,
