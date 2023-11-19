@@ -47,7 +47,6 @@ return {
 	},
 	{ "abecodes/tabout.nvim" },
 	{ "windwp/nvim-autopairs" },
-	{ "hrsh7th/nvim-cmp", event = "VeryLazy" },
 	{ "hrsh7th/cmp-nvim-lsp", event = "VeryLazy" },
 	{ "saadparwaiz1/cmp_luasnip", event = "VeryLazy" },
 	{ "hrsh7th/cmp-buffer", event = "VeryLazy" },

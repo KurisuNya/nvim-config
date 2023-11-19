@@ -44,6 +44,14 @@ M.config = function()
 			format = require("lspkind").cmp_format({
 				maxwidth = 30,
 				ellipsis_char = "...",
+				menu = {
+					nvim_lsp = "[LSP]",
+					luasnip = "[SNP]",
+					buffer = "[BUF]",
+					cmdline = "[CMD]",
+					async_path = "[PATH]",
+					latex_symbols = "[LTEX]",
+				},
 			}),
 		},
 		sorting = {
