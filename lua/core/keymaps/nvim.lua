@@ -5,6 +5,9 @@
 --------------------
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
+keymap.set({ "n", "x" }, "q", "", opts)
+keymap.set({ "n", "x" }, "Q", "", opts)
+keymap.set({ "n", "x" }, "ZZ", "", opts)
 ---------------------
 --   better-move   --
 ---------------------
@@ -42,7 +45,6 @@ keymap.set("n", "<leader>Q", "<Cmd>q!<CR>", {
 	desc = "Force Quit",
 })
 -- 宏录制
-keymap.set("n", "q", "", opts)
 keymap.set("n", "<leader>M", "q", {
 	noremap = true,
 	silent = true,

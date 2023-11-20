@@ -32,7 +32,6 @@ return {
 		config = require("plugins.cmp.nvim-cmp").config,
 		dependencies = {
 			"L3MON4D3/LuaSnip",
-			"onsails/lspkind.nvim",
 			"abecodes/tabout.nvim",
 			"windwp/nvim-autopairs",
 			"hrsh7th/cmp-nvim-lsp",

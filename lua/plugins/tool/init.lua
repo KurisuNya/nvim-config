@@ -28,6 +28,7 @@ local M = {
 				"~/Documents/Projects/*",
 				"~/Documents/PlatformIO/Projects/*",
 				"~/.config/*",
+				"~/.local/share/nvim/lazy/*",
 			},
 			last_session_on_startup = false,
 		},
@@ -72,6 +73,7 @@ local M = {
 	-- git
 	{
 		"lewis6991/gitsigns.nvim",
+		keys = require("core.keymaps.gitsigns").keys,
 		opts = {
 			signs = {
 				add = { text = "▎" },
@@ -79,20 +81,23 @@ local M = {
 				changedelete = { text = "▎" },
 				untracked = { text = "▎" },
 			},
+			current_line_blame = true,
+			current_line_blame_formatter = "    <author>, <author_time:%Y-%m-%d> - <summary>",
+			preview_config = {
+				border = "rounded",
+				style = "minimal",
+				relative = "cursor",
+				row = 0,
+				col = 1,
+			},
 		},
 		event = "VeryLazy",
 	},
 	{
-		"KurisuNya/vgit.nvim",
-		keys = require("core.keymaps.vgit").keys,
-		opts = {},
-		event = "VeryLazy",
-	},
-	{
-		"akinsho/git-conflict.nvim",
-		version = "*",
-		keys = require("core.keymaps.git-conflict").keys,
-		config = require("plugins.tool.git-conflict").config,
+		"KurisuNya/diffview.nvim",
+		keys = require("core.keymaps.diffview").keys,
+		config = require("plugins.tool.diffview").config,
+		dependencies = { "lewis6991/gitsigns.nvim" },
 		event = "VeryLazy",
 	},
 
@@ -127,23 +132,6 @@ local M = {
 		config = require("plugins.tool.nvim-toggler").config,
 		event = "VeryLazy",
 	},
-	{
-		"dhruvasagar/vim-table-mode",
-		keys = {
-			{
-				"<leader>|",
-				desc = "Tableize",
-				mode = "n",
-			},
-		},
-		init = function()
-			vim.g.table_mode_map_prefix = "<Bar>"
-			vim.g.table_mode_toggle_map = "<Bar>"
-			vim.g.table_mode_tableize_map = "<leader><Bar>"
-			vim.g.table_mode_corner = "|"
-		end,
-		event = "VeryLazy",
-	},
 	{ "Darazaki/indent-o-matic", event = "BufRead", opts = {} },
 	{ "numToStr/Comment.nvim", opts = {}, event = "VeryLazy" },
 	{ "tpope/vim-surround", event = "VeryLazy" },
@@ -169,6 +157,23 @@ local M = {
 		"KurisuNya/nvim-picgo",
 		keys = require("core.keymaps.nvim-picgo").keys,
 		opts = {},
+		ft = "markdown",
+	},
+	{
+		"dhruvasagar/vim-table-mode",
+		keys = {
+			{
+				"<leader>|",
+				desc = "Tableize",
+				mode = "n",
+			},
+		},
+		init = function()
+			vim.g.table_mode_map_prefix = "<Bar>"
+			vim.g.table_mode_toggle_map = "<Bar>"
+			vim.g.table_mode_tableize_map = "<leader><Bar>"
+			vim.g.table_mode_corner = "|"
+		end,
 		ft = "markdown",
 	},
 

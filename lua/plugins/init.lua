@@ -27,7 +27,6 @@ require("lazy").setup({
 		"nvim-tree/nvim-web-devicons",
 		opts = { color_icons = true, default = true, strict = true },
 	},
-	{ "onsails/lspkind.nvim" },
 	{ "MunifTanjim/nui.nvim" },
 
 	{ require("core.colorscheme").colorscheme_plugin },

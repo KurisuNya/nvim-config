@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 local M = {}
 M.config = function()
 	vim.opt.showmode = false

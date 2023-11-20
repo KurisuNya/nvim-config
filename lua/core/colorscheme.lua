@@ -20,7 +20,6 @@ M.colorscheme_plugin = {
 		vim.cmd.colorscheme("tokyonight-storm")
 		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
 		vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#29a4bd", bg = "NONE" })
-		vim.api.nvim_set_hl(0, "LspSagaFinderSelection", { fg = "#29a4bd", bg = "NONE" })
 		vim.api.nvim_set_hl(0, "LspSignatureActiveParameter", { bold = true, bg = "#2e3c64" })
 	end,
 }
