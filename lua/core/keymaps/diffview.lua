@@ -107,8 +107,8 @@ M.file_panel_keymap_list = function()
 		{ "n", "zR", actions.open_all_folds, { desc = "Fold Expand All" } },
 		{ "n", "zM", actions.close_all_folds, { desc = "Fold Collapse All" } },
 		-- git actions
-		{ "n", "S", actions.toggle_stage_entry, { desc = "Git Toggle Staged" } },
-		{ "n", "SS", actions.stage_all, { desc = "Git Stage All" } },
+		{ "n", "s", actions.toggle_stage_entry, { desc = "Git Toggle Staged" } },
+		{ "n", "S", actions.stage_all, { desc = "Git Stage All" } },
 		{ "n", "U", actions.unstage_all, { desc = "Git Unstage All" } },
 		{ "n", "L", actions.open_commit_log, { desc = "Git Commit Log" } },
 		{ "n", "[x", actions.prev_conflict, { desc = "Conflict Previous" } },
