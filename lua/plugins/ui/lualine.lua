@@ -4,6 +4,7 @@ M.config = function()
 	local lualine_theme = require("core.colorscheme").lualine
 	local noice = require("noice")
 	vim.opt.showmode = false
+	vim.o.laststatus = vim.g.lualine_laststatus
 
 	-- usful function
 	local function space_enough()

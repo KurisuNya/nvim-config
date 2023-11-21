@@ -7,14 +7,26 @@ return {
 	-- bars and lines
 	{
 		"romgrk/barbar.nvim",
+		init = function()
+			vim.g.barbar_auto_setup = false
+			vim.opt.showtabline = 0
+		end,
 		config = require("plugins.ui.barbar").config,
 		keys = require("core.keymaps.barbar").keys,
-		lazy = false,
+		event = "VeryLazy",
 	},
 	{
 		"nvim-lualine/lualine.nvim",
+		init = function()
+			vim.g.lualine_laststatus = vim.o.laststatus
+			if vim.fn.argc(-1) > 0 then
+				vim.o.statusline = " "
+			else
+				vim.o.laststatus = 0
+			end
+		end,
 		config = require("plugins.ui.lualine").config,
-		lazy = false,
+		event = "VeryLazy",
 	},
 
 	-- notify
@@ -42,6 +54,18 @@ return {
 	},
 	{
 		"stevearc/dressing.nvim",
+		init = function()
+			---@diagnostic disable-next-line: duplicate-set-field
+			vim.ui.select = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.select(...)
+			end
+			---@diagnostic disable-next-line: duplicate-set-field
+			vim.ui.input = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.input(...)
+			end
+		end,
 		opts = {
 			input = {
 				insert_only = false,
@@ -50,7 +74,7 @@ return {
 				backend = { "telescope" },
 			},
 		},
-		lazy = false,
+		lazy = true,
 	},
 	{
 		"yorickpeterse/nvim-pqf",

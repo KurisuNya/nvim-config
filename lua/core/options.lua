@@ -43,8 +43,6 @@ vim.opt.updatetime = 300
 -- 分屏方向
 vim.opt.splitbelow = true
 vim.opt.splitright = true
--- 永远显示tabline
-vim.opt.showtabline = 2
 -- 当文件被外部程序修改时，自动加载
 vim.opt.autoread = true
 -- diff 使用对角线
