@@ -1,5 +1,4 @@
 local actions = require("diffview.actions")
-local gs = package.loaded.gitsigns
 
 local GIT_INFO_TYPE = {
 	error = -2,
@@ -60,14 +59,14 @@ local function get_buffers()
 	return buffers
 end
 
+_G.diffview_opened = false
 local original_buffers = {}
-local diffview_opened = false
 local diffview_open_project = false
 
 local M = {}
 
 M.diffview_open_current = function()
-	if diffview_opened then
+	if _G.diffview_opened then
 		return
 	end
 	local git_info = get_git_info()
@@ -87,7 +86,7 @@ M.diffview_open_current = function()
 end
 
 M.diffview_open_project = function()
-	if diffview_opened then
+	if _G.diffview_opened then
 		return
 	end
 	diffview_open_project = true
@@ -95,7 +94,7 @@ M.diffview_open_project = function()
 end
 
 M.diffview_open_history = function()
-	if diffview_opened then
+	if _G.diffview_opened then
 		return
 	end
 	diffview_open_project = true
@@ -145,7 +144,7 @@ M.diffview_undo_stage_all = function()
 end
 
 M.diffview_view_opened_hunk = function()
-	diffview_opened = true
+	_G.diffview_opened = true
 	disable_barbar_keys()
 	original_buffers = get_buffers()
 	for _, buffer in ipairs(original_buffers) do
@@ -157,7 +156,7 @@ M.diffview_view_opened_hunk = function()
 end
 
 M.diffview_view_close_hunk = function()
-	diffview_opened = false
+	_G.diffview_opened = false
 	enable_barbar_keys()
 	for _, buffer in ipairs(get_buffers()) do
 		if not table_contains(original_buffers, buffer) then

@@ -36,6 +36,11 @@ return {
 		event = "VeryLazy",
 	},
 	{
+		"linrongbin16/lsp-progress.nvim",
+		opts = {},
+		event = "VeryLazy",
+	},
+	{
 		"stevearc/dressing.nvim",
 		opts = {
 			input = {

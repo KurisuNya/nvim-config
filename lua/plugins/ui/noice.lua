@@ -8,6 +8,7 @@ M.config = function()
 				["vim.lsp.util.stylize_markdown"] = true,
 				["cmp.entry.get_documentation"] = true,
 			},
+			progress = { enabled = false },
 		},
 		markdown = {
 			hover = {
