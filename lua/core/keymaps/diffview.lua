@@ -1,16 +1,16 @@
 local M = {}
 M.keys = function()
 	local custom = require("plugins.tool.diffview_custom")
-	vim.keymap.set("n", "<leader>gP", custom.diffview_open_project, {
+	vim.keymap.set("n", "<leader>gD", custom.diffview_open_project, {
 		silent = true,
 		noremap = true,
-		desc = "Git Project Diff",
+		desc = "Git Diff Project",
 	})
 
-	vim.keymap.set("n", "<leader>gp", custom.diffview_open_current, {
+	vim.keymap.set("n", "<leader>gd", custom.diffview_open_current, {
 		silent = true,
 		noremap = true,
-		desc = "Git File Diff",
+		desc = "Git Diff File",
 	})
 
 	vim.keymap.set("n", "<leader>gH", custom.diffview_open_history, {
