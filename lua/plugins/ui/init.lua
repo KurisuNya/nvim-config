@@ -47,11 +47,7 @@ return {
 		config = require("plugins.ui.noice").config,
 		event = "VeryLazy",
 	},
-	{
-		"linrongbin16/lsp-progress.nvim",
-		opts = {},
-		event = "VeryLazy",
-	},
+	{ "linrongbin16/lsp-progress.nvim", opts = {}, event = "VeryLazy" },
 	{
 		"stevearc/dressing.nvim",
 		init = function()
@@ -79,6 +75,17 @@ return {
 	{
 		"yorickpeterse/nvim-pqf",
 		config = require("plugins.ui.nvim-pqf").config,
+		event = "VeryLazy",
+	},
+	{
+		"lukas-reineke/virt-column.nvim",
+		init = function()
+			vim.api.nvim_set_hl(0, "VirtColumn", { fg = "#343b58", bg = "NONE" })
+		end,
+		opts = {
+			char = "▕",
+			highlight = "VirtColumn",
+		},
 		event = "VeryLazy",
 	},
 	{

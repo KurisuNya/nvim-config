@@ -8,14 +8,12 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		config = require("plugins.lsp.nvim-treesitter").config,
 		dependencies = {
-			"p00f/nvim-ts-rainbow",
 			"andymass/vim-matchup",
 		},
 		build = ":TSUpdate",
 		event = "VeryLazy",
 	},
 	{ "windwp/nvim-ts-autotag" },
-	{ "p00f/nvim-ts-rainbow" },
 	{ "andymass/vim-matchup" },
 
 	-- mason
