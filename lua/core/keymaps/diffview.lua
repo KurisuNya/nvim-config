@@ -16,7 +16,7 @@ M.keys = function()
 	vim.keymap.set("n", "<leader>gH", custom.diffview_open_history, {
 		silent = true,
 		noremap = true,
-		desc = "Git Project History",
+		desc = "Git History Project",
 	})
 end
 

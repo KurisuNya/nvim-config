@@ -13,7 +13,7 @@ M.keys = function()
 	vim.keymap.set("n", "<leader>gh", require("tinygit").searchFileHistory, {
 		noremap = true,
 		silent = true,
-		desc = "Git File History",
+		desc = "Git History File",
 	})
 end
 return M
