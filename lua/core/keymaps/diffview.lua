@@ -1,22 +1,22 @@
 local M = {}
 M.keys = function()
 	local custom = require("plugins.tool.diffview_custom")
-	vim.keymap.set("n", "<leader>gd", custom.diffview_open_project, {
+	vim.keymap.set("n", "<leader>gP", custom.diffview_open_project, {
 		silent = true,
 		noremap = true,
-		desc = "Git Diff Project",
+		desc = "Git Project Diff",
 	})
 
 	vim.keymap.set("n", "<leader>gp", custom.diffview_open_current, {
 		silent = true,
 		noremap = true,
-		desc = "Git Diff Current",
+		desc = "Git File Diff",
 	})
 
-	vim.keymap.set("n", "<leader>gh", custom.diffview_open_history, {
+	vim.keymap.set("n", "<leader>gH", custom.diffview_open_history, {
 		silent = true,
 		noremap = true,
-		desc = "Git File History",
+		desc = "Git Project History",
 	})
 end
 
@@ -24,12 +24,14 @@ M.view_keymap_list = function()
 	local custom = require("plugins.tool.diffview_custom")
 	local actions = require("diffview.actions")
 	local list = {
+		{ "n", "<leader>e", custom.diffview_toggle_files, { desc = "Files Toggle " } },
 		{ "n", "<tab>", custom.diffview_next_entry, { desc = "File Diff Open Next" } },
 		{ "n", "<s-tab>", custom.diffview_prev_entry, { desc = "File Diff Open Previous" } },
-		{ "n", "<leader>e", custom.diffview_toggle_files, { desc = "Files Toggle " } },
+		{ "n", "s", custom.diffview_stage_hunk, { desc = "Git Toggle Staged" } },
+		{ "n", "S", custom.diffview_stage_buffer, { desc = "Git Toggle Staged" } },
+		{ "n", "u", custom.diffview_undo_stage_hunk, { desc = "Git Unstage All" } },
+		{ "n", "U", custom.diffview_undo_stage_all, { desc = "Git Unstage All" } },
 		{ "n", "<leader>q", actions.close, { desc = "Close Diffview" } },
-		{ "n", "s", actions.toggle_stage_entry, { desc = "Git Toggle Staged" } },
-		{ "n", "U", actions.unstage_all, { desc = "Git Unstage All" } },
 		{ "n", "[x", actions.prev_conflict, { desc = "Conflict Previous" } },
 		{ "n", "]x", actions.next_conflict, { desc = "Conflict Next" } },
 		{ "n", "<leader>co", actions.conflict_choose("ours"), { desc = "Conflict Choose Ours" } },
@@ -105,8 +107,8 @@ M.file_panel_keymap_list = function()
 		{ "n", "zR", actions.open_all_folds, { desc = "Fold Expand All" } },
 		{ "n", "zM", actions.close_all_folds, { desc = "Fold Collapse All" } },
 		-- git actions
-		{ "n", "s", actions.toggle_stage_entry, { desc = "Git Toggle Staged" } },
-		{ "n", "S", actions.stage_all, { desc = "Git Stage All" } },
+		{ "n", "S", actions.toggle_stage_entry, { desc = "Git Toggle Staged" } },
+		{ "n", "SS", actions.stage_all, { desc = "Git Stage All" } },
 		{ "n", "U", actions.unstage_all, { desc = "Git Unstage All" } },
 		{ "n", "L", actions.open_commit_log, { desc = "Git Commit Log" } },
 		{ "n", "[x", actions.prev_conflict, { desc = "Conflict Previous" } },

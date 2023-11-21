@@ -48,7 +48,8 @@ M.config = function()
 		callback = function()
 			local stats = require("lazy").stats()
 			local ms = math.floor(stats.startuptime)
-			dashboard.section.footer.val = "KurisuNya Neovim ⏐ " .. stats.loaded .. " plugins in " .. ms .. "ms"
+			local plugin_info = " ⏐ " .. stats.loaded .. " plugins in " .. ms .. "ms"
+			dashboard.section.footer.val = "KurisuNya Neovim" .. plugin_info
 			pcall(vim.cmd.AlphaRedraw)
 		end,
 	})

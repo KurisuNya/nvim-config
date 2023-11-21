@@ -15,6 +15,7 @@ return {
 		"nvim-lualine/lualine.nvim",
 		config = require("plugins.ui.lualine").config,
 		dependencies = {
+			"lewis6991/gitsigns.nvim",
 			"KurisuNya/noice.nvim",
 			"nvim-tree/nvim-web-devicons",
 		},
@@ -42,7 +43,14 @@ return {
 	},
 	{
 		"stevearc/dressing.nvim",
-		opts = {},
+		opts = {
+			input = {
+				insert_only = false,
+			},
+			select = {
+				backend = { "telescope" },
+			},
+		},
 		lazy = false,
 	},
 	{

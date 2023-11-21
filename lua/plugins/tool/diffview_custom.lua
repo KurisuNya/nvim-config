@@ -1,4 +1,5 @@
 local actions = require("diffview.actions")
+local gs = package.loaded.gitsigns
 
 local GIT_INFO_TYPE = {
 	error = -2,
@@ -116,6 +117,30 @@ end
 M.diffview_toggle_files = function()
 	if diffview_open_project then
 		actions.toggle_files()
+	end
+end
+
+M.diffview_stage_hunk = function()
+	if diffview_open_project then
+		vim.cmd("Gitsigns stage_hunk")
+	end
+end
+
+M.diffview_stage_buffer = function()
+	if diffview_open_project then
+		vim.cmd("Gitsigns stage_buffer")
+	end
+end
+
+M.diffview_undo_stage_hunk = function()
+	if diffview_open_project then
+		vim.cmd("Gitsigns undo_stage_hunk")
+	end
+end
+
+M.diffview_undo_stage_all = function()
+	if diffview_open_project then
+		actions.unstage_all()
 	end
 end
 

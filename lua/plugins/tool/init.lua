@@ -94,7 +94,25 @@ local M = {
 		event = "VeryLazy",
 	},
 	{
-		"KurisuNya/diffview.nvim",
+		"rhysd/git-messenger.vim",
+		keys = require("core.keymaps.git-messenger").keys,
+		init = function()
+			vim.g.git_messenger_no_default_mappings = true
+		end,
+		config = require("plugins.tool.git-messenger").config,
+		event = "VeryLazy",
+	},
+	{
+		"chrisgrieser/nvim-tinygit",
+		keys = require("core.keymaps.nvim-tinygit").keys,
+		dependencies = {
+			"stevearc/dressing.nvim",
+			"rcarriga/nvim-notify",
+		},
+		ft = { "gitrebase", "gitcommit" },
+	},
+	{
+		"sindrets/diffview.nvim",
 		keys = require("core.keymaps.diffview").keys,
 		config = require("plugins.tool.diffview").config,
 		dependencies = { "lewis6991/gitsigns.nvim" },

@@ -7,7 +7,7 @@ M.config = function()
 			auto_save = true,
 		},
 		symbol_in_winbar = {
-			enable = true,
+			enable = false,
 		},
 		finder = {
 			keys = map_list.lspsaga_finder_keymap,
