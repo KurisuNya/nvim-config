@@ -1,16 +1,24 @@
 # nvim-config
 
-Full lua nvim config.
+Full lua nvim config using lazy.nvim as plugin manager.
 
-Use lazy.nvim as plugin manager.
+Welcome to fork!!!
 
 ## Screenshots
 
 ![dashboard](https://cdn.kurisunya.top/cdn/2/2023/11/6558f585ee90a.png)
 
-![coding](https://cdn.kurisunya.top/cdn/2/2023/11/6558f5e52a7d4.png)
+![coding](https://cdn.kurisunya.top/cdn/2/2023/11/655ca814dde35.png)
 
 ![debugging](https://cdn.kurisunya.top/cdn/2/2023/11/6558f647241f1.png)
+
+## Tips
+
+* Remember to run `:checkhealth` and fix the errors.
+
+* If you are Winodws user, make sure `im-selcet` is available in your environment path.
+
+There is the link of [im-select](https://github.com/daipeihust/im-select).
 
 ## Project structure
 
@@ -26,8 +34,11 @@ Use lazy.nvim as plugin manager.
 │   │   ├── keymaps
 │   │   │   ├── barbar.lua
 │   │   │   ├── camelcase.lua
+│   │   │   ├── diffview.lua
 │   │   │   ├── easy-action.lua
 │   │   │   ├── fast-snip.lua
+│   │   │   ├── git-messenger.lua
+│   │   │   ├── gitsigns.lua
 │   │   │   ├── icon-picker.lua
 │   │   │   ├── lspconfig.lua
 │   │   │   ├── markdown-preview.lua
@@ -39,10 +50,11 @@ Use lazy.nvim as plugin manager.
 │   │   │   ├── nvim-navbuddy.lua
 │   │   │   ├── nvim-picgo.lua
 │   │   │   ├── nvim-spectre.lua
+│   │   │   ├── nvim-tinygit.lua
 │   │   │   ├── nvim-toggler.lua
 │   │   │   ├── telescope.lua
-│   │   │   ├── troubles.lua
-│   │   │   └── vgit.lua
+│   │   │   ├── toggleterm.lua
+│   │   │   └── troubles.lua
 │   │   └── options.lua
 │   └── plugins
 │       ├── cmp
@@ -63,11 +75,15 @@ Use lazy.nvim as plugin manager.
 │       │   └── nvim-treesitter.lua
 │       ├── tool
 │       │   ├── alpha-nvim.lua
+│       │   ├── diffview_custom.lua
+│       │   ├── diffview.lua
+│       │   ├── git-messenger.lua
 │       │   ├── init.lua
 │       │   ├── neo-tree.lua
 │       │   ├── nvim-spectre.lua
 │       │   ├── nvim-toggler.lua
-│       │   └── telescope.lua
+│       │   ├── telescope.lua
+│       │   └── toggleterm.lua
 │       └── ui
 │           ├── barbar.lua
 │           ├── icons.lua
@@ -75,6 +91,7 @@ Use lazy.nvim as plugin manager.
 │           ├── init.lua
 │           ├── lualine.lua
 │           ├── noice.lua
+│           ├── nvim-pqf.lua
 │           ├── nvim-web-devicons.lua
 │           └── pretty-fold.lua
 └── README.md
