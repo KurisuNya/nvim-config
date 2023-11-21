@@ -81,11 +81,15 @@ M.config = function()
 	lspSymbol("Hint", icons.diagnostics.Hint)
 	lspSymbol("Warn", icons.diagnostics.Warning)
 	vim.diagnostic.config({
-		virtual_text = true,
+		virtual_text = {
+			spacing = 4,
+			source = "if_many",
+			prefix = "●",
+		},
 		signs = true,
 		underline = true,
 		update_in_insert = false,
-		severity_sort = false,
+		severity_sort = true,
 	})
 end
 return M

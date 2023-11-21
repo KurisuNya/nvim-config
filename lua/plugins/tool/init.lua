@@ -33,9 +33,7 @@ local M = {
 			last_session_on_startup = false,
 		},
 		dependencies = {
-			"nvim-lua/plenary.nvim",
 			"Shatur/neovim-session-manager",
-			"nvim-telescope/telescope.nvim",
 		},
 		event = "VeryLazy",
 	},
@@ -58,15 +56,13 @@ local M = {
 		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && "
 			.. "cmake --build build --config Release && "
 			.. "cmake --install build --prefix build",
-		event = "VeryLazy",
 	},
-	{ "debugloop/telescope-undo.nvim", event = "VeryLazy" },
+	{ "debugloop/telescope-undo.nvim" },
 	{
 		"nvim-telescope/telescope-frecency.nvim",
 		dependencies = {
 			"kkharji/sqlite.lua",
 		},
-		event = "VeryLazy",
 	},
 	{ "kkharji/sqlite.lua" },
 
@@ -82,7 +78,7 @@ local M = {
 				untracked = { text = "▎" },
 			},
 			current_line_blame = true,
-			current_line_blame_formatter = "    <author>, <author_time:%Y-%m-%d> - <summary>",
+			current_line_blame_formatter = "   <author_time:%Y-%m-%d>, <author> ∙ <summary>",
 			preview_config = {
 				border = "rounded",
 				style = "minimal",
@@ -105,17 +101,12 @@ local M = {
 	{
 		"chrisgrieser/nvim-tinygit",
 		keys = require("core.keymaps.nvim-tinygit").keys,
-		dependencies = {
-			"stevearc/dressing.nvim",
-			"rcarriga/nvim-notify",
-		},
 		ft = { "gitrebase", "gitcommit" },
 	},
 	{
 		"sindrets/diffview.nvim",
 		keys = require("core.keymaps.diffview").keys,
 		config = require("plugins.tool.diffview").config,
-		dependencies = { "lewis6991/gitsigns.nvim" },
 		event = "VeryLazy",
 	},
 

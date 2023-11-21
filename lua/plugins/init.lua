@@ -20,14 +20,15 @@ require("lazy").setup({
 	-- normal dependencies --
 	--------------------------
 	-- utils
-	{ "nvim-lua/plenary.nvim" },
-	{ "kevinhwang91/promise-async" },
+	{ "nvim-lua/plenary.nvim", lazy = false },
+	{ "kevinhwang91/promise-async", lazy = false },
 	-- ui dependence
 	{
 		"nvim-tree/nvim-web-devicons",
 		opts = { color_icons = true, default = true, strict = true },
+		lazy = false,
 	},
-	{ "MunifTanjim/nui.nvim" },
+	{ "MunifTanjim/nui.nvim", lazy = false },
 
 	{ require("core.colorscheme").colorscheme_plugin },
 	{ require("plugins.ui") },

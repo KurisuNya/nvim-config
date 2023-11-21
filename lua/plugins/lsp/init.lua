@@ -9,35 +9,28 @@ return {
 		config = require("plugins.lsp.nvim-treesitter").config,
 		dependencies = {
 			"p00f/nvim-ts-rainbow",
-			"windwp/nvim-ts-autotag",
 			"andymass/vim-matchup",
 		},
 		build = ":TSUpdate",
 		event = "VeryLazy",
 	},
 	{ "windwp/nvim-ts-autotag" },
-	{ "p00f/nvim-ts-rainbow", event = "VeryLazy" },
-	{ "andymass/vim-matchup", event = "VeryLazy" },
+	{ "p00f/nvim-ts-rainbow" },
+	{ "andymass/vim-matchup" },
 
 	-- mason
 	{ "williamboman/mason.nvim", opts = {}, event = "VeryLazy" },
 	{
 		"williamboman/mason-lspconfig.nvim",
 		config = require("plugins.lsp.mason-lspconfig").config,
-		dependencies = { "neovim/nvim-lspconfig" },
-		event = "VeryLazy",
 	},
 	{
 		"jayp0521/mason-null-ls.nvim",
 		config = require("plugins.lsp.mason-null-ls").config,
-		dependencies = { "nvimtools/none-ls.nvim" },
-		event = "VeryLazy",
 	},
 	{
 		"jay-babu/mason-nvim-dap.nvim",
 		config = require("plugins.lsp.mason-nvim-dap").config,
-		dependencies = { "mfussenegger/nvim-dap" },
-		event = "VeryLazy",
 	},
 
 	-- lsp
@@ -45,9 +38,8 @@ return {
 		"neovim/nvim-lspconfig",
 		config = require("plugins.lsp.lspconfig").config,
 		dependencies = {
-			"folke/neodev.nvim",
-			"lvimuser/lsp-inlayhints.nvim",
-			"hrsh7th/nvim-cmp",
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
 		},
 		event = "VeryLazy",
 	},
@@ -55,16 +47,18 @@ return {
 		"mfussenegger/nvim-jdtls",
 		config = require("plugins.lsp.nvim-jdtls").config,
 		dependencies = {
-			"lvimuser/lsp-inlayhints.nvim",
-			"hrsh7th/nvim-cmp",
-			"mfussenegger/nvim-dap",
-			"jay-babu/mason-nvim-dap.nvim",
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
 		},
 		ft = "java",
 	},
 	{
 		"nvimtools/none-ls.nvim",
 		config = require("plugins.lsp.null-ls").config,
+		dependencies = {
+			"williamboman/mason.nvim",
+			"jayp0521/mason-null-ls.nvim",
+		},
 		event = "VeryLazy",
 	},
 	{
@@ -78,22 +72,18 @@ return {
 		keys = require("core.keymaps.lspconfig").nvim_navbuddy_keys,
 		config = require("plugins.lsp.nvim-navbuddy").config,
 		dependencies = {
-			"neovim/nvim-lspconfig",
 			"SmiteshP/nvim-navic",
-			"MunifTanjim/nui.nvim",
-			"numToStr/Comment.nvim", -- Optional
-			"nvim-telescope/telescope.nvim", -- Optional
 		},
 		event = "VeryLazy",
 	},
-	{ "SmiteshP/nvim-navic", dependencies = { "neovim/nvim-lspconfig" } },
-	{ "folke/neodev.nvim", event = "VeryLazy" },
-	{ "lvimuser/lsp-inlayhints.nvim", event = "VeryLazy" },
+	{ "SmiteshP/nvim-navic" },
+	{ "folke/neodev.nvim" },
+	{ "lvimuser/lsp-inlayhints.nvim" },
 	{
 		"folke/trouble.nvim",
 		keys = require("core.keymaps.troubles").keys,
-		event = "VeryLazy",
 		opts = {},
+		event = "VeryLazy",
 	},
 
 	-- dap
@@ -101,18 +91,20 @@ return {
 		"rcarriga/nvim-dap-ui",
 		keys = require("core.keymaps.nvim-dap-ui").keys,
 		config = require("plugins.lsp.nvim-dap-ui").config,
-		dependencies = { "mfussenegger/nvim-dap" },
 		event = "VeryLazy",
 	},
 	{
 		"theHamsta/nvim-dap-virtual-text",
 		opts = {},
-		dependencies = { "mfussenegger/nvim-dap" },
 		event = "VeryLazy",
 	},
 	{
 		"mfussenegger/nvim-dap",
 		keys = require("core.keymaps.nvim-dap").nvim_dap_keys,
+		dependencies = {
+			"williamboman/mason.nvim",
+			"jay-babu/mason-nvim-dap.nvim",
+		},
 		event = "VeryLazy",
 	},
 	{

@@ -14,11 +14,6 @@ return {
 	{
 		"nvim-lualine/lualine.nvim",
 		config = require("plugins.ui.lualine").config,
-		dependencies = {
-			"lewis6991/gitsigns.nvim",
-			"KurisuNya/noice.nvim",
-			"nvim-tree/nvim-web-devicons",
-		},
 		lazy = false,
 	},
 
@@ -38,7 +33,6 @@ return {
 		"KurisuNya/noice.nvim",
 		keys = require("core.keymaps.lspconfig").noice_keys,
 		config = require("plugins.ui.noice").config,
-		dependencies = { "mfussenegger/nvim-jdtls" },
 		event = "VeryLazy",
 	},
 	{
