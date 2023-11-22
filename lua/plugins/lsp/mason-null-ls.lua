@@ -14,8 +14,8 @@ M.config = function()
 			"google-java-format",
 			"prettier",
 			"rustfmt",
-			"xmlformatter",
 			"stylua",
+			"xmlformatter",
 		},
 	})
 end
