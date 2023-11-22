@@ -80,7 +80,7 @@ return {
 	{
 		"lukas-reineke/virt-column.nvim",
 		init = function()
-			vim.api.nvim_set_hl(0, "VirtColumn", { fg = "#343b58", bg = "NONE" })
+			vim.api.nvim_set_hl(0, "VirtColumn", { fg = "#3b4261", bg = "NONE" })
 		end,
 		opts = {
 			char = "▕",

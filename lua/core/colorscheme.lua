@@ -9,18 +9,15 @@ M.colorscheme_plugin = {
 	config = function()
 		require("tokyonight").setup({
 			style = "storm",
-			dim_inactive = false,
 			lualine_bold = true,
-			hide_inactive_statusline = false,
 			styles = {
 				comments = { italic = true },
 				keywords = { italic = true },
+				floats = "normal",
 			},
 		})
 		vim.cmd.colorscheme("tokyonight-storm")
-		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
-		vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#29a4bd", bg = "NONE" })
-		vim.api.nvim_set_hl(0, "LspSignatureActiveParameter", { bold = true, bg = "#2e3c64" })
+		vim.api.nvim_set_hl(0, "LspSignatureActiveParameter", { link = "Visual" })
 	end,
 }
 M.lualine = "tokyonight"
