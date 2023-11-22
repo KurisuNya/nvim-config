@@ -47,19 +47,9 @@ M.config = function()
 			},
 		},
 	})
-	lspconfig["pylsp"].setup({
+	lspconfig["pyright"].setup({
 		capabilities = capabilities,
 		on_attach = on_attach,
-		settings = {
-			pylsp = {
-				plugins = {
-					pycodestyle = {
-						ignore = { "W391" },
-						maxLineLength = 100,
-					},
-				},
-			},
-		},
 	})
 	lspconfig["rust_analyzer"].setup({
 		capabilities = capabilities,

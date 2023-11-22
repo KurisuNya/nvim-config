@@ -22,7 +22,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 		end
 	end,
 })
--- close some filetypes with <q>
+-- 使用 q 退出
 vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("CloseWithQ", { clear = true }),
 	pattern = {
