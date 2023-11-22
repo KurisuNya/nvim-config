@@ -37,12 +37,7 @@ M.noice_keys = function()
 end
 
 M.lsp_on_attach = function()
-	vim.keymap.set("n", "gd", "<Cmd>Lspsaga peek_definition<CR>", {
-		noremap = true,
-		silent = true,
-		desc = "Lsp Peek Definition",
-	})
-	vim.keymap.set("n", "gD", function()
+	vim.keymap.set("n", "gd", function()
 		require("gtd").exec({ command = "edit" })
 	end, {
 		noremap = true,
