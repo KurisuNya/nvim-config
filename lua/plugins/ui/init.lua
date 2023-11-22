@@ -115,7 +115,7 @@ return {
 		event = "VeryLazy",
 	},
 	{ "RRethy/vim-illuminate", event = "VeryLazy" },
-	{ "karb94/neoscroll.nvim", event = "VeryLazy", opts = {} },
-	{ "nacro90/numb.nvim", event = "VeryLazy", opts = {} },
-	{ "nvimdev/hlsearch.nvim", event = "VeryLazy", opts = {} },
+	{ "karb94/neoscroll.nvim", opts = {}, event = "VeryLazy" },
+	{ "nacro90/numb.nvim", opts = {}, event = "VeryLazy" },
+	{ "nvimdev/hlsearch.nvim", opts = {}, event = "VeryLazy" },
 }

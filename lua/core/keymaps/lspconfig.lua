@@ -29,6 +29,11 @@ M.noice_keys = function()
 			return "<c-u>"
 		end
 	end, { silent = true, expr = true })
+	vim.keymap.set("n", "<leader>fm", "<Cmd>Noice telescope<CR>", {
+		silent = true,
+		noremap = true,
+		desc = "Find Message",
+	})
 end
 
 M.lsp_on_attach = function()
@@ -38,7 +43,7 @@ M.lsp_on_attach = function()
 		desc = "Lsp Peek Definition",
 	})
 	vim.keymap.set("n", "gD", function()
-		require("telescope.builtin").lsp_definitions({ reuse_win = true })
+		require("gtd").exec({ command = "edit" })
 	end, {
 		noremap = true,
 		silent = true,

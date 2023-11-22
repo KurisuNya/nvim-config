@@ -13,10 +13,19 @@ M.config = function()
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 	-- lsp-server settings
-	lspconfig["bashls"].setup({
-		capabilities = capabilities,
-		on_attach = on_attach,
-	})
+	local simple_servers = {
+		"bashls",
+		"lemminx",
+		"pyright",
+		"rust_analyzer",
+	}
+	for _, server in ipairs(simple_servers) do
+		lspconfig[server].setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
+	end
+
 	lspconfig["clangd"].setup({
 		capabilities = capabilities,
 		on_attach = on_attach,
@@ -46,18 +55,6 @@ M.config = function()
 				},
 			},
 		},
-	})
-	lspconfig["pyright"].setup({
-		capabilities = capabilities,
-		on_attach = on_attach,
-	})
-	lspconfig["rust_analyzer"].setup({
-		capabilities = capabilities,
-		on_attach = on_attach,
-	})
-	lspconfig["lemminx"].setup({
-		capabilities = capabilities,
-		on_attach = on_attach,
 	})
 
 	-- lsp-ui

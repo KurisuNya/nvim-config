@@ -60,11 +60,12 @@ return {
 		event = "VeryLazy",
 	},
 	{
-		"glepnir/lspsaga.nvim",
+		"nvimdev/lspsaga.nvim",
 		keys = require("core.keymaps.lspconfig").lspsaga_keys,
 		config = require("plugins.lsp.lspsaga").config,
 		event = "VeryLazy",
 	},
+	{ "KurisuNya/nvim-gtd", opts = {}, event = "VeryLazy" },
 	{
 		"SmiteshP/nvim-navbuddy",
 		keys = require("core.keymaps.lspconfig").nvim_navbuddy_keys,
@@ -91,11 +92,7 @@ return {
 		config = require("plugins.lsp.nvim-dap-ui").config,
 		event = "VeryLazy",
 	},
-	{
-		"theHamsta/nvim-dap-virtual-text",
-		opts = {},
-		event = "VeryLazy",
-	},
+	{ "theHamsta/nvim-dap-virtual-text", opts = {}, event = "VeryLazy" },
 	{
 		"mfussenegger/nvim-dap",
 		keys = require("core.keymaps.nvim-dap").nvim_dap_keys,
