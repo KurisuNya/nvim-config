@@ -80,18 +80,6 @@ return {
 		opts = {},
 		event = "VeryLazy",
 	},
-	{
-		"VidocqH/lsp-lens.nvim",
-		opts = {
-			sections = {
-				references = true,
-				implements = true,
-				definition = false,
-				git_authors = false,
-			},
-		},
-		event = "VeryLazy",
-	},
 	{ "SmiteshP/nvim-navic" },
 	{ "folke/neodev.nvim" },
 	{ "lvimuser/lsp-inlayhints.nvim" },
