@@ -3,7 +3,7 @@ M.keys = {
 	{
 		"]c",
 		"<Cmd>Gitsigns next_hunk<CR>",
-		desc = "Git Hunk Next",
+		desc = "Next Git Hunk",
 		mode = "n",
 		noremap = true,
 		silent = true,
@@ -11,7 +11,7 @@ M.keys = {
 	{
 		"[c",
 		"<Cmd>Gitsigns prev_hunk<CR>",
-		desc = "Git Hunk Previous",
+		desc = "Previous Git Hunk",
 		mode = "n",
 		noremap = true,
 		silent = true,

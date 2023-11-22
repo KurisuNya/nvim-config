@@ -149,6 +149,12 @@ local M = {
 		keys = require("core.keymaps.camelcase").keys,
 		event = "VeryLazy",
 	},
+	{
+		"folke/todo-comments.nvim",
+		keys = require("core.keymaps.todo-comment").keys,
+		opts = {},
+		event = "VeryLazy",
+	},
 
 	-- markdown
 	{

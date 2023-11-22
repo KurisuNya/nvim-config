@@ -67,12 +67,12 @@ M.lsp_on_attach = function()
 	vim.keymap.set("n", "[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", {
 		noremap = true,
 		silent = true,
-		desc = "Lsp Previous Diagnostic",
+		desc = "Previous Lsp Diagnostic",
 	})
 	vim.keymap.set("n", "]d", "<Cmd>Lspsaga diagnostic_jump_next<CR>", {
 		noremap = true,
 		silent = true,
-		desc = "Lsp Next Diagnostic",
+		desc = "Next Lsp Diagnostic",
 	})
 	vim.keymap.set("n", "H", vim.lsp.buf.hover, {
 		noremap = true,

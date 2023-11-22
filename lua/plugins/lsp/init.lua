@@ -76,7 +76,7 @@ return {
 	},
 	{
 		"folke/trouble.nvim",
-		keys = require("core.keymaps.troubles").keys,
+		keys = require("core.keymaps.trouble").keys,
 		opts = {},
 		event = "VeryLazy",
 	},
