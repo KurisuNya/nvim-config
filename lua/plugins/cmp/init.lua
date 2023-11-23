@@ -1,9 +1,9 @@
 -------------------
 --  cmp-plugins  --
 -------------------
--- snip
-return {
+local M = {
 
+	-- snip
 	{
 		"L3MON4D3/LuaSnip",
 		dependencies = {
@@ -24,6 +24,14 @@ return {
 		opts = {},
 		event = "VeryLazy",
 	},
+	{
+		"danymat/neogen",
+		keys = require("core.keymaps.neogen").keys,
+		opts = {
+			snippet_engine = "luasnip",
+		},
+		event = "VeryLazy",
+	},
 	{ "rafamadriz/friendly-snippets" },
 
 	-- cmp
@@ -41,6 +49,20 @@ return {
 		},
 		event = "VeryLazy",
 	},
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		build = ":Copilot auth",
+		opts = {
+			suggestion = { enabled = false },
+			panel = { enabled = false },
+			filetypes = {
+				markdown = true,
+				help = true,
+			},
+		},
+	},
+	{ "zbirenbaum/copilot-cmp", opts = {} },
 	{ "abecodes/tabout.nvim" },
 	{ "windwp/nvim-autopairs" },
 	{ "hrsh7th/cmp-nvim-lsp" },
@@ -51,3 +73,15 @@ return {
 	{ "kdheepak/cmp-latex-symbols" },
 	{ "lukas-reineke/cmp-under-comparator" },
 }
+
+---@diagnostic disable-next-line: undefined-field
+if _G.use_copilot then
+	for _, plugin in ipairs(M) do
+		local from, _ = plugin[1]:find("nvim%-cmp")
+		if from then
+			table.insert(plugin.dependencies, "zbirenbaum/copilot-cmp")
+			table.insert(plugin.dependencies, "zbirenbaum/copilot.lua")
+		end
+	end
+end
+return M

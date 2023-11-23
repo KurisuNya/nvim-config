@@ -7,12 +7,12 @@ M.keys = function()
 	end, {
 		noremap = true,
 		silent = true,
-		desc = "FastSnip Add",
+		desc = "Create Snippet",
 	})
 	vim.keymap.set("n", "<leader>cs", fast_snip.finalize_snippet, {
 		noremap = true,
 		silent = true,
-		desc = "FastSnip Add",
+		desc = "Create Snippet",
 	})
 end
 return M

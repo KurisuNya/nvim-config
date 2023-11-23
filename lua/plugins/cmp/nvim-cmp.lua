@@ -53,6 +53,40 @@ M.config = function()
 		end
 	end
 
+	local function get_sources()
+		local sources = {
+			{ name = "nvim_lsp", max_item_count = 350 },
+			{ name = "luasnip" },
+			{ name = "async_path" },
+			{ name = "buffer", max_item_count = 5 },
+		}
+		---@diagnostic disable-next-line: undefined-field
+		if _G.use_copilot then
+			table.insert(sources, { name = "copilot" })
+		end
+		return sources
+	end
+	local function get_comparators()
+		local comparators = {
+			compare.offset,
+			compare.exact,
+			compare.lsp_scores,
+			compare.score,
+			compare.recently_used,
+			compare.locality,
+			require("cmp-under-comparator").under,
+			compare.kind,
+			compare.length,
+			compare.order,
+		}
+		---@diagnostic disable-next-line: undefined-field
+		if _G.use_copilot then
+			table.insert(comparators, 1, require("copilot_cmp.comparators").prioritize)
+			table.insert(comparators, 2, require("copilot_cmp.comparators").score)
+		end
+		return comparators
+	end
+
 	-- cmp
 	cmp.setup({
 		preselect = cmp.PreselectMode.Item,
@@ -69,13 +103,8 @@ M.config = function()
 			documentation = cmp.config.window.bordered(),
 		},
 		mapping = cmp.mapping.preset.insert(map_list),
-		sources = cmp.config.sources({
-			{ name = "nvim_lsp", max_item_count = 350 },
-			{ name = "luasnip" },
-			{ name = "async_path" },
-		}, {
-			{ name = "buffer", max_item_count = 5 },
-		}),
+		sources = cmp.config.sources(get_sources()),
+		sorting = { comparators = get_comparators() },
 		formatting = {
 			fields = { "abbr", "kind", "menu" },
 			format = cmp_format({
@@ -89,22 +118,9 @@ M.config = function()
 					cmdline = "[CMD]",
 					async_path = "[PATH]",
 					latex_symbols = "[LTEX]",
+					copilot = "[COP]",
 				},
 			}),
-		},
-		sorting = {
-			comparators = {
-				compare.offset,
-				compare.exact,
-				compare.lsp_scores,
-				compare.score,
-				compare.recently_used,
-				compare.locality,
-				require("cmp-under-comparator").under,
-				compare.kind,
-				compare.length,
-				compare.order,
-			},
 		},
 	})
 
