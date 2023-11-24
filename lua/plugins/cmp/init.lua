@@ -49,20 +49,8 @@ local M = {
 		},
 		event = "VeryLazy",
 	},
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		build = ":Copilot auth",
-		opts = {
-			suggestion = { enabled = false },
-			panel = { enabled = false },
-			filetypes = {
-				markdown = true,
-				help = true,
-			},
-		},
-	},
-	{ "zbirenbaum/copilot-cmp", opts = {} },
+	{ "github/copilot.vim", build = ":Copilot setup" },
+	{ "KurisuNya/cmp-copilot" },
 	{ "abecodes/tabout.nvim" },
 	{ "windwp/nvim-autopairs" },
 	{ "hrsh7th/cmp-nvim-lsp" },
@@ -79,8 +67,8 @@ if _G.use_copilot then
 	for _, plugin in ipairs(M) do
 		local from, _ = plugin[1]:find("nvim%-cmp")
 		if from then
-			table.insert(plugin.dependencies, "zbirenbaum/copilot-cmp")
-			table.insert(plugin.dependencies, "zbirenbaum/copilot.lua")
+			table.insert(plugin.dependencies, "KurisuNya/cmp-copilot")
+			table.insert(plugin.dependencies, "github/copilot.vim")
 		end
 	end
 end

@@ -155,6 +155,15 @@ local M = {
 		opts = {},
 		event = "VeryLazy",
 	},
+	{
+		"chentoast/marks.nvim",
+		keys = require("core.keymaps.marks").keys,
+		opts = {
+			default_mappings = false,
+			mappings = require("core.keymaps.marks").keymap_list,
+		},
+		event = "VeryLazy",
+	},
 
 	-- markdown
 	{
@@ -184,7 +193,7 @@ local M = {
 			},
 		},
 		init = function()
-			vim.g.table_mode_map_prefix = "<Bar>"
+			vim.g.table_mode_kap_prefix = "<Bar>"
 			vim.g.table_mode_toggle_map = "<Bar>"
 			vim.g.table_mode_tableize_map = "<leader><Bar>"
 			vim.g.table_mode_corner = "|"

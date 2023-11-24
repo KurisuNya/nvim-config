@@ -49,20 +49,15 @@ M.symbols = {
 }
 
 M.cmp = {
-	Codeium = "",
-	TabNine = "",
 	Copilot = "",
 	buffer = "",
-	cmp_tabnine = "",
-	codeium = "",
-	copilot = "",
-	copilot_alt = "",
 	latex_symbols = "",
 	luasnip = "󰃐",
 	nvim_lsp = "",
 	nvim_lua = "",
 	orgmode = "",
 	path = "",
+	aysc_path = "",
 	spell = "󰓆",
 	tmux = "",
 	treesitter = "",

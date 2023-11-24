@@ -79,11 +79,6 @@ M.config = function()
 			compare.length,
 			compare.order,
 		}
-		---@diagnostic disable-next-line: undefined-field
-		if _G.use_copilot then
-			table.insert(comparators, 1, require("copilot_cmp.comparators").prioritize)
-			table.insert(comparators, 2, require("copilot_cmp.comparators").score)
-		end
 		return comparators
 	end
 
