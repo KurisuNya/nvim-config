@@ -114,9 +114,9 @@ local M = {
 	{
 		"ggandor/leap.nvim",
 		config = function()
-			require("leap").add_default_mappings()
+			require("leap").add_default_mappings(true)
 		end,
-		event = "BufRead",
+		event = "VeryLazy",
 	},
 	{
 		"ggandor/leap-spooky.nvim",
