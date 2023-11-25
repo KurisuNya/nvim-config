@@ -1,7 +1,7 @@
 local M = {}
 M.keys = {
 	{
-		"]c",
+		"]h",
 		"<Cmd>Gitsigns next_hunk<CR>",
 		desc = "Next Git Hunk",
 		mode = "n",
@@ -9,7 +9,7 @@ M.keys = {
 		silent = true,
 	},
 	{
-		"[c",
+		"[h",
 		"<Cmd>Gitsigns prev_hunk<CR>",
 		desc = "Previous Git Hunk",
 		mode = "n",

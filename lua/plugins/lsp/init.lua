@@ -9,10 +9,12 @@ return {
 		config = require("plugins.lsp.nvim-treesitter").config,
 		dependencies = {
 			"andymass/vim-matchup",
+			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
 		build = ":TSUpdate",
 		event = "VeryLazy",
 	},
+	{ "nvim-treesitter/nvim-treesitter-textobjects" },
 	{ "windwp/nvim-ts-autotag" },
 	{ "andymass/vim-matchup" },
 

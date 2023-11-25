@@ -14,11 +14,8 @@ M.config = function()
 		return false
 	end
 
-	local function get_fg(name)
-		local hl = vim.api.nvim_get_hl and vim.api.nvim_get_hl(0, { name = name })
-			or vim.api.nvim_get_hl_by_name(name, true)
-		local fg = hl and (hl.fg or hl.foreground)
-		return fg and { fg = string.format("#%06x", fg) } or nil
+	local function get_color(group, attr)
+		return vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(group)), attr)
 	end
 
 	local function lsp_get_client_name()
@@ -141,7 +138,7 @@ M.config = function()
 					cond = function()
 						return not package.loaded["dap"] or require("dap").status() == "" and space_enough()
 					end,
-					color = get_fg("Comment"),
+					color = { fg = get_color("Comment", "fg#") },
 					icon = { "", align = "right", padding = { left = 0, right = 1 } },
 				},
 				{
@@ -151,7 +148,7 @@ M.config = function()
 					cond = function()
 						return package.loaded["dap"] and require("dap").status() ~= "" and space_enough()
 					end,
-					color = get_fg("Debug"),
+					color = { fg = get_color("Debug", "fg#") },
 				},
 				"encoding",
 				{

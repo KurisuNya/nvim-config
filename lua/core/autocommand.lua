@@ -1,5 +1,5 @@
 -- 关闭新行注释
-vim.api.nvim_create_autocmd({ "FileType" }, {
+vim.api.nvim_create_autocmd("FileType", {
 	pattern = "*",
 	callback = function()
 		vim.opt.formatoptions = vim.opt.formatoptions - { "c", "r", "o" }
@@ -22,6 +22,11 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 		end
 	end,
 })
+-- 自动删除标记
+vim.api.nvim_create_autocmd("BufRead", {
+	command = "silent! delmarks a-z0-9",
+})
+
 -- 使用 q 退出
 vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("CloseWithQ", { clear = true }),

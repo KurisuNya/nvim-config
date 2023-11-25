@@ -148,7 +148,7 @@ M.diffview_view_opened_hunk = function()
 	disable_barbar_keys()
 	original_buffers = get_buffers()
 	for _, buffer in ipairs(original_buffers) do
-		vim.api.nvim_buf_set_option(buffer, "buflisted", false)
+		vim.api.nvim_set_option_value("buflisted", false, { buf = buffer })
 	end
 	if not diffview_open_project then
 		actions.toggle_files()
@@ -164,8 +164,7 @@ M.diffview_view_close_hunk = function()
 		end
 	end
 	for _, buffer in ipairs(original_buffers) do
-		vim.api.nvim_buf_set_option(buffer, "buflisted", true)
-		vim.api.nvim_buf_set_option(buffer, "modifiable", true)
+		vim.api.nvim_set_option_value("buflisted", true, { buf = buffer })
 		vim.api.nvim_buf_call(buffer, function()
 			vim.opt_local.rnu = true
 			vim.opt_local.signcolumn = "yes"
@@ -173,8 +172,7 @@ M.diffview_view_close_hunk = function()
 	end
 end
 
-M.diffview_buffer_read_hunk = function(buffer)
-	vim.api.nvim_buf_set_option(buffer, "modifiable", false)
+M.diffview_buffer_read_hunk = function()
 	vim.opt_local.rnu = false
 	vim.opt_local.signcolumn = "no"
 	vim.cmd("normal !gg")

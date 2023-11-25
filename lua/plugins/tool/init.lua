@@ -119,19 +119,10 @@ local M = {
 		event = "BufRead",
 	},
 	{
-		"Weissle/easy-action",
-		keys = require("core.keymaps.easy-action").keys,
-		opts = {
-			jump_provider = "leap",
-			jump_provider_config = {
-				leap = {
-					action_select = {
-						default = function()
-							require("leap").leap({ target_windows = { vim.fn.win_getid() } })
-						end,
-					},
-				},
-			},
+		"ggandor/leap-spooky.nvim",
+		opts = {},
+		dependencies = {
+			"ggandor/leap.nvim",
 		},
 		event = "VeryLazy",
 	},
@@ -160,7 +151,7 @@ local M = {
 		keys = require("core.keymaps.marks").keys,
 		opts = {
 			default_mappings = false,
-			mappings = require("core.keymaps.marks").keymap_list,
+			force_write_shada = true,
 		},
 		event = "VeryLazy",
 	},
