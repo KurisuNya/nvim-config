@@ -118,14 +118,7 @@ local M = {
 		end,
 		event = "VeryLazy",
 	},
-	{
-		"ggandor/leap-spooky.nvim",
-		opts = {},
-		dependencies = {
-			"ggandor/leap.nvim",
-		},
-		event = "VeryLazy",
-	},
+	{ "ggandor/leap-spooky.nvim", opts = {}, event = "VeryLazy" },
 	{
 		"nguyenvukhang/nvim-toggler",
 		keys = require("core.keymaps.nvim-toggler").keys,
