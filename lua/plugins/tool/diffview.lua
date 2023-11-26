@@ -11,14 +11,6 @@ M.config = function()
 	require("diffview").setup({
 		enhanced_diff_hl = true,
 		show_help_hints = false,
-		view = {
-			default = {
-				winbar_info = true,
-			},
-			file_history = {
-				winbar_info = true,
-			},
-		},
 		file_panel = {
 			listing_style = "list",
 			win_config = {
