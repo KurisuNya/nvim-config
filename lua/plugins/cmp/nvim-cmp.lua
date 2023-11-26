@@ -44,21 +44,13 @@ M.config = function()
 
 	cmp.setup.cmdline("/", {
 		mapping = cmp.mapping.preset.cmdline(),
-		sources = {
-			{ name = "buffer" },
-		},
+		sources = { { name = "buffer" } },
 	})
 	cmp.setup.cmdline(":", {
 		mapping = cmp.mapping.preset.cmdline(),
 		sources = cmp.config.sources({
 			{ name = "async_path" },
-		}, {
-			{
-				name = "cmdline",
-				option = {
-					ignore_cmds = { "Man", "!" },
-				},
-			},
+			{ name = "cmdline", option = { ignore_cmds = { "Man", "!" } } },
 		}),
 	})
 
@@ -66,17 +58,7 @@ M.config = function()
 		sources = {},
 	})
 	cmp.setup.filetype({ "markdown" }, {
-		sources = {
-			{
-				name = "async_path",
-			},
-			{
-				name = "latex_symbols",
-				option = {
-					strategy = 2,
-				},
-			},
-		},
+		sources = custom.get_markdown_sources(),
 	})
 
 	-- autopair

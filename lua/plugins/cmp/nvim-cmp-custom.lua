@@ -59,6 +59,18 @@ M.get_sources = function()
 	return sources
 end
 
+M.get_markdown_sources = function()
+	local sources = {
+		{ name = "buffer" },
+		{ name = "async_path" },
+		{ name = "latex_symbols", option = { strategy = 2 } },
+	}
+	if _G.use_copilot then
+		table.insert(sources, { name = "copilot" })
+	end
+	return sources
+end
+
 local function lsp_scores(entry1, entry2)
 	local diff
 	if entry1.completion_item.score and entry2.completion_item.score then
