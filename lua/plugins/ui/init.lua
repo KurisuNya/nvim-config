@@ -28,6 +28,7 @@ return {
 		config = require("plugins.ui.lualine").config,
 		event = "VeryLazy",
 	},
+	{ "linrongbin16/lsp-progress.nvim", opts = {} },
 
 	-- notify
 	{
@@ -47,7 +48,6 @@ return {
 		config = require("plugins.ui.noice").config,
 		event = "VeryLazy",
 	},
-	{ "linrongbin16/lsp-progress.nvim", opts = {}, event = "VeryLazy" },
 	{
 		"stevearc/dressing.nvim",
 		init = function()

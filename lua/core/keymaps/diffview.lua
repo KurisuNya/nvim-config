@@ -1,6 +1,6 @@
 local M = {}
 M.keys = function()
-	local custom = require("plugins.tool.diffview_custom")
+	local custom = require("plugins.tool.diffview-custom")
 	vim.keymap.set("n", "<leader>gD", custom.diffview_open_project, {
 		silent = true,
 		noremap = true,
@@ -21,7 +21,7 @@ M.keys = function()
 end
 
 M.view_keymap_list = function()
-	local custom = require("plugins.tool.diffview_custom")
+	local custom = require("plugins.tool.diffview-custom")
 	local actions = require("diffview.actions")
 	local list = {
 		{ "n", "<leader>e", custom.diffview_toggle_files, { desc = "Files Toggle " } },
@@ -74,7 +74,7 @@ M.view_keymap_list = function()
 end
 
 M.file_panel_keymap_list = function()
-	local custom = require("plugins.tool.diffview_custom")
+	local custom = require("plugins.tool.diffview-custom")
 	local actions = require("diffview.actions")
 	local list = {
 		-- help panel
@@ -148,7 +148,7 @@ M.file_panel_keymap_list = function()
 end
 
 M.file_history_panel_keymap_list = function()
-	local custom = require("plugins.tool.diffview_custom")
+	local custom = require("plugins.tool.diffview-custom")
 	local actions = require("diffview.actions")
 	local list = {
 		-- panel

@@ -1,6 +1,6 @@
 local M = {}
 M.config = function()
-	local custom = require("plugins.tool.diffview_custom")
+	local custom = require("plugins.tool.diffview-custom")
 	local view_map_list = require("core.keymaps.diffview").view_keymap_list()
 	local file_panel_map_list = require("core.keymaps.diffview").file_panel_keymap_list()
 	local file_history_panel_map_list = require("core.keymaps.diffview").file_history_panel_keymap_list()
