@@ -79,6 +79,9 @@ M.config = function()
 			compare.length,
 			compare.order,
 		}
+		if _G.use_copilot then
+			table.insert(comparators, 1, require("copilot_cmp.comparators").prioritize)
+		end
 		return comparators
 	end
 
