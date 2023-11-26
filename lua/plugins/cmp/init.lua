@@ -63,6 +63,7 @@ local M = {
 		},
 	},
 	{ "KurisuNya/copilot-cmp", opts = {} },
+	{ "ofirgall/cmp-lspkind-priority", opts = {} },
 	{ "abecodes/tabout.nvim" },
 	{ "windwp/nvim-autopairs" },
 	{ "hrsh7th/cmp-nvim-lsp" },

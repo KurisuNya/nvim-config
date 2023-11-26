@@ -83,6 +83,7 @@ end
 
 M.get_comparators = function()
 	local comparators = {
+		require("cmp-lspkind-priority").compare,
 		compare.offset,
 		compare.exact,
 		lsp_scores,
@@ -90,7 +91,6 @@ M.get_comparators = function()
 		compare.recently_used,
 		compare.locality,
 		require("cmp-under-comparator").under,
-		compare.kind,
 		compare.length,
 		compare.order,
 	}
