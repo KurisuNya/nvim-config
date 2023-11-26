@@ -1,23 +1,12 @@
----@diagnostic disable: missing-fields, inject-field
+---@diagnostic disable: missing-fields, inject-field, undefined-field
 local M = {}
 M.config = function()
-	vim.opt.pumheight = 10 -- cmp number
+	vim.opt.pumheight = 15 -- cmp number
 	vim.opt.completeopt = "menu,menuone,noselect"
 
 	local cmp = require("cmp")
-	local map_list = require("core.keymaps.nvim-cmp").keymap_list
 	local compare = require("cmp.config.compare")
 	local icons = require("plugins.ui.icons")
-
-	compare.lsp_scores = function(entry1, entry2)
-		local diff
-		if entry1.completion_item.score and entry2.completion_item.score then
-			diff = (entry2.completion_item.score * entry2.score) - (entry1.completion_item.score * entry1.score)
-		else
-			diff = entry2.score - entry1.score
-		end
-		return (diff < 0)
-	end
 
 	local cmp_format = function(opts)
 		return function(entry, vim_item)
@@ -66,6 +55,16 @@ M.config = function()
 		end
 		return sources
 	end
+
+	compare.lsp_scores = function(entry1, entry2)
+		local diff
+		if entry1.completion_item.score and entry2.completion_item.score then
+			diff = (entry2.completion_item.score * entry2.score) - (entry1.completion_item.score * entry1.score)
+		else
+			diff = entry2.score - entry1.score
+		end
+		return (diff < 0)
+	end
 	local function get_comparators()
 		local comparators = {
 			compare.offset,
@@ -100,7 +99,7 @@ M.config = function()
 			completion = cmp.config.window.bordered(),
 			documentation = cmp.config.window.bordered(),
 		},
-		mapping = cmp.mapping.preset.insert(map_list),
+		mapping = cmp.mapping.preset.insert(require("core.keymaps.nvim-cmp").keymap_list),
 		sources = cmp.config.sources(get_sources()),
 		sorting = { comparators = get_comparators() },
 		formatting = {
