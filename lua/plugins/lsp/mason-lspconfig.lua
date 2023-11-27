@@ -8,6 +8,7 @@ M.config = function()
 			"jdtls",
 			"lemminx",
 			"lua_ls",
+			"matlab_ls",
 			"pyright",
 			"rust_analyzer",
 		},

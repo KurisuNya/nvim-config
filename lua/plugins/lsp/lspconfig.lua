@@ -26,6 +26,20 @@ M.config = function()
 		})
 	end
 
+	lspconfig["matlab_ls"].setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+		settings = {
+			matlab = {
+				indexWorkspace = true,
+				installPath = "/home/kurisunya/Matlab",
+				matlabConnectionTiming = "onStart",
+				telemetry = true,
+			},
+		},
+		single_file_support = true,
+	})
+
 	lspconfig["clangd"].setup({
 		capabilities = capabilities,
 		on_attach = on_attach,

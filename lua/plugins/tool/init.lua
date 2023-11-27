@@ -127,7 +127,7 @@ local M = {
 	},
 	{ "Darazaki/indent-o-matic", event = "BufRead", opts = {} },
 	{ "numToStr/Comment.nvim", opts = {}, event = "VeryLazy" },
-	{ "tpope/vim-surround", event = "VeryLazy" },
+	{ "kylechui/nvim-surround", opts = {}, event = "VeryLazy" },
 	{
 		"bkad/CamelCaseMotion",
 		keys = require("core.keymaps.camelcase").keys,

@@ -72,7 +72,7 @@ M.config = function()
 	})
 	cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
 
-	--tabout
+	-- tabout
 	require("tabout").setup({
 		tabouts = {
 			{ open = "'", close = "'" },

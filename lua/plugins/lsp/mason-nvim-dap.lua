@@ -5,7 +5,11 @@ M.config = function()
 	mason_nvim_dap.setup({
 		automatic_installation = true,
 		ensure_installed = {
+			"bash-debug-adapter",
+			"codelldb",
 			"debugpy",
+			"java-debug-adapter",
+			"java-test",
 		},
 		handlers = {
 			function(config)
