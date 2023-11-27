@@ -94,10 +94,17 @@ return {
 		event = "VeryLazy",
 	},
 	{
-		"norcalli/nvim-colorizer.lua",
+		"NvChad/nvim-colorizer.lua",
 		config = function()
-			vim.opt.termguicolors = true
-			require("colorizer").setup()
+			require("colorizer").setup({
+				filetypes = { "*" },
+				user_default_options = {
+					RRGGBBAA = true,
+					AARRGGBB = true,
+					tailwind = true,
+					always_update = true,
+				},
+			})
 		end,
 		event = "VeryLazy",
 	},
