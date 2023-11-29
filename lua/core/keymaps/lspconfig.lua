@@ -1,6 +1,6 @@
 local M = {}
 M.lspsaga_keys = function()
-	vim.keymap.set("n", "<leader>s", "<Cmd>Lspsaga outline<CR>", {
+	vim.keymap.set("n", "<leader>S", "<Cmd>Lspsaga outline<CR>", {
 		noremap = true,
 		silent = true,
 		desc = "Lsp Symbols Float",
@@ -9,7 +9,7 @@ end
 
 M.nvim_navbuddy_keys = {
 	{
-		"<leader>S",
+		"<leader>s",
 		"<Cmd>Navbuddy<CR>",
 		mode = "n",
 		noremap = true,

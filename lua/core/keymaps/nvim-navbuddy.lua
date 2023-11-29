@@ -2,6 +2,7 @@ local M = {}
 M.keymap_list = {
 	["<esc>"] = require("nvim-navbuddy.actions").close(), -- Close and cursor to original location
 	["q"] = require("nvim-navbuddy.actions").close(),
+	["<leader>s"] = require("nvim-navbuddy.actions").close(),
 	["j"] = require("nvim-navbuddy.actions").next_sibling(), -- down
 	["k"] = require("nvim-navbuddy.actions").previous_sibling(), -- up
 	["h"] = require("nvim-navbuddy.actions").parent(), -- Move to left panel
