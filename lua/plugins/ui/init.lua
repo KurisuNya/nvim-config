@@ -70,7 +70,6 @@ return {
 				backend = { "telescope" },
 			},
 		},
-		lazy = true,
 	},
 	{
 		"yorickpeterse/nvim-pqf",
@@ -102,6 +101,7 @@ return {
 					RRGGBBAA = true,
 					AARRGGBB = true,
 					tailwind = true,
+					names = false,
 					always_update = true,
 				},
 			})
