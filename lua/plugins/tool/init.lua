@@ -125,7 +125,7 @@ local M = {
 		config = require("plugins.tool.nvim-toggler").config,
 		event = "VeryLazy",
 	},
-	{ "Darazaki/indent-o-matic", event = "BufRead", opts = {} },
+	{ "Darazaki/indent-o-matic", opts = {}, event = "BufRead" },
 	{ "numToStr/Comment.nvim", opts = {}, event = "VeryLazy" },
 	{ "kylechui/nvim-surround", opts = {}, event = "VeryLazy" },
 	{
