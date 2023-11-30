@@ -9,6 +9,27 @@ local function space_enough()
 	return false
 end
 
+local function to_pattern(str)
+	local new_str = str:gsub("%%", "%%%%")
+	local special_chars = {
+		["%^"] = "%%^",
+		["%("] = "%%(",
+		["%)"] = "%%)",
+		["%["] = "%%[",
+		["%]"] = "%%]",
+		["%$"] = "%%$",
+		["%."] = "%%.",
+		["%*"] = "%%*",
+		["%+"] = "%%+",
+		["%-"] = "%%-",
+		["%?"] = "%%?",
+	}
+	for k, v in pairs(special_chars) do
+		new_str = new_str:gsub(k, v)
+	end
+	return new_str
+end
+
 local lsp_hidden_client = {
 	"null-ls",
 }
@@ -36,10 +57,16 @@ local function lsp_get_useful_message(messages)
 	if #messages == 0 then
 		return nil
 	end
-	local from, _ = messages[1]:find("%d")
-	if not from then
+
+	if not messages[1]:find("%d") then
 		return nil
 	end
+	for _, client in ipairs(lsp_hidden_client) do
+		if messages[1]:find(to_pattern(client)) then
+			return nil
+		end
+	end
+
 	return messages[1]
 end
 
