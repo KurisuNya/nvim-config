@@ -26,7 +26,6 @@ local M = {
 		opts = {
 			projects = { -- define project roots
 				"~/Documents/Projects/*",
-				"~/Documents/PlatformIO/Projects/*",
 				"~/.config/*",
 				"~/.local/share/nvim/lazy/*",
 			},
