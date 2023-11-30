@@ -90,6 +90,24 @@ M.lsp_on_attach = function()
 	})
 end
 
+M.null_ls_on_attach = function()
+	vim.keymap.set("n", "<leader>ca", "<Cmd>Lspsaga code_action<CR>", {
+		noremap = true,
+		silent = true,
+		desc = "Lsp Code Action",
+	})
+	vim.keymap.set("n", "[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", {
+		noremap = true,
+		silent = true,
+		desc = "Previous Lsp Diagnostic",
+	})
+	vim.keymap.set("n", "]d", "<Cmd>Lspsaga diagnostic_jump_next<CR>", {
+		noremap = true,
+		silent = true,
+		desc = "Next Lsp Diagnostic",
+	})
+end
+
 M.jdtls_debug_on_attach = function()
 	vim.keymap.set("n", "<leader>dj", require("jdtls.dap").test_class, {
 		noremap = true,

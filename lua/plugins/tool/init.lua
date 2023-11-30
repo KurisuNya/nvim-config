@@ -25,7 +25,7 @@ local M = {
 		end,
 		opts = {
 			projects = { -- define project roots
-				"~/Documents/Projects/*",
+				"~/Documents/Projects/*/*",
 				"~/.config/*",
 				"~/.local/share/nvim/lazy/*",
 			},
