@@ -3,10 +3,10 @@ M.config = function()
 	require("mason-null-ls").setup({
 		automatic_installation = true,
 		ensure_installed = {
+			"codespell",
 			"commitlint",
 			"cpplint",
 			"markdownlint",
-			"misspell",
 			"shellcheck",
 			"beautysh",
 			"black",

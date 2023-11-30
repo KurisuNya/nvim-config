@@ -22,9 +22,9 @@ M.config = function()
 			formatting.xmlformat,
 			-- linters
 			diagnostics.cpplint,
+			diagnostics.codespell,
 			diagnostics.commitlint,
 			diagnostics.markdownlint,
-			diagnostics.misspell,
 		},
 		-- configure format on save
 		on_attach = function(current_client, bufnr)
