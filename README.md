@@ -2,7 +2,7 @@
 
 Full lua nvim config using lazy.nvim as plugin manager.
 
-To make nvim start faster, most of plugins has been loded lazily.
+To make nvim start faster, most of plugins has been loaded lazily.
 
 Welcome to fork!!! 😊
 
@@ -16,7 +16,7 @@ Welcome to fork!!! 😊
 
 ![coding](https://cdn.kurisunya.top/cdn/2/2023/11/655ca814dde35.png)
 
-## Debuging
+## Debugging
 
 ![debugging](https://cdn.kurisunya.top/cdn/2/2023/11/6558f647241f1.png)
 
@@ -24,6 +24,6 @@ Welcome to fork!!! 😊
 
 * Remember to run `:checkhealth` and fix the errors.
 
-* If you are Winodws user, make sure `im-selcet` is available in your environment path.
+* If you are Windows user, make sure `im-select` is available in your environment path.
 
 There is the link of [im-select](https://github.com/daipeihust/im-select).

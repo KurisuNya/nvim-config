@@ -17,7 +17,7 @@ M.config = function()
 		return vim.fn.stdpath("cache") .. "/jdtls/" .. project_name .. "/workspace"
 	end
 
-	local function genarate_cmd()
+	local function generate_cmd()
 		local fname = vim.api.nvim_buf_get_name(0)
 		local root_dir = get_root_dir(fname)
 		local project_name = get_project_name(root_dir)
@@ -32,7 +32,7 @@ M.config = function()
 		end
 		return cmd
 	end
-	local function genarate_dap_bundles()
+	local function generate_dap_bundles()
 		local bundles = {} ---@type string[]
 		if plugin_exist("nvim-dap") and mason_registry.is_installed("java-debug-adapter") then
 			local java_dbg_pkg = mason_registry.get_package("java-debug-adapter")
@@ -59,14 +59,14 @@ M.config = function()
 
 	local function attach_jdtls()
 		local opts = {
-			cmd = genarate_cmd(),
+			cmd = generate_cmd(),
 			root_dir = get_root_dir(vim.api.nvim_buf_get_name(0)),
 			settings = {
 				java = {
 					signatureHelp = { enabled = true },
 				},
 			},
-			init_options = { bundles = genarate_dap_bundles() },
+			init_options = { bundles = generate_dap_bundles() },
 			on_attach = function(client, bufnr)
 				require("lsp-inlayhints").on_attach(client, bufnr)
 				require("core.keymaps.lspconfig").lsp_on_attach()

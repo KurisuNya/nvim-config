@@ -174,7 +174,7 @@ M.keys = {
 	{
 		"<A-,>",
 		"<Cmd>BufferMovePrevious<CR>",
-		desc = "Buffer Moveto Previous",
+		desc = "Buffer Move to Previous",
 		mode = "n",
 		noremap = true,
 		silent = true,

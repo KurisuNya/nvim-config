@@ -61,6 +61,7 @@ return {
 		},
 		event = "VeryLazy",
 	},
+	{ "davidmh/cspell.nvim" },
 	{
 		"nvimdev/lspsaga.nvim",
 		keys = require("core.keymaps.lspconfig").lspsaga_keys,

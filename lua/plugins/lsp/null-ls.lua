@@ -4,9 +4,12 @@ M.config = function()
 	local formatting = null_ls.builtins.formatting
 	local diagnostics = null_ls.builtins.diagnostics
 	local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+	local cspell = require("cspell")
 
 	null_ls.setup({
 		sources = {
+			-- code actions
+			cspell.code_actions,
 			-- formatters
 			formatting.clang_format.with({
 				filetypes = { "c", "cpp" },
@@ -21,9 +24,9 @@ M.config = function()
 			formatting.stylua,
 			formatting.xmlformat,
 			-- linters
-			diagnostics.cpplint,
-			diagnostics.codespell,
+			cspell.diagnostics,
 			diagnostics.commitlint,
+			diagnostics.cpplint,
 			diagnostics.markdownlint,
 		},
 		-- configure format on save

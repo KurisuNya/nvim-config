@@ -43,7 +43,7 @@ local function lsp_get_useful_message(messages)
 	return messages[1]
 end
 
-local function lsp_messages_formater(messages)
+local function lsp_messages_formatter(messages)
 	local message = lsp_get_useful_message(messages)
 	if not message then
 		return lsp_get_client_name()
@@ -73,7 +73,7 @@ M.source = {
 		provider = function()
 			return require("lsp-progress").progress({
 				max_size = lsp_get_max_length(),
-				format = lsp_messages_formater,
+				format = lsp_messages_formatter,
 			})
 		end,
 		cond = function()
