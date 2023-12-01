@@ -13,7 +13,7 @@ return {
 		end,
 		config = require("plugins.ui.barbar").config,
 		keys = require("core.keymaps.barbar").keys,
-		event = "BufRead",
+		event = "BufReadPre",
 	},
 	{
 		"nvim-lualine/lualine.nvim",
@@ -26,7 +26,7 @@ return {
 			end
 		end,
 		config = require("plugins.ui.lualine").config,
-		event = "BufRead",
+		event = "BufReadPre",
 	},
 	{ "linrongbin16/lsp-progress.nvim", opts = {} },
 
