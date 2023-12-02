@@ -89,15 +89,6 @@ local M = {
 		event = "VeryLazy",
 	},
 	{
-		"rhysd/git-messenger.vim",
-		keys = require("core.keymaps.git-messenger").keys,
-		init = function()
-			vim.g.git_messenger_no_default_mappings = true
-		end,
-		config = require("plugins.tool.git-messenger").config,
-		event = "VeryLazy",
-	},
-	{
 		"chrisgrieser/nvim-tinygit",
 		keys = require("core.keymaps.nvim-tinygit").keys,
 		ft = { "gitrebase", "gitcommit" },
@@ -221,6 +212,7 @@ local M = {
 		config = require("plugins.tool.nvim-spectre").config,
 		event = "VeryLazy",
 	},
+	{ "stevearc/stickybuf.nvim", opts = {}, event = "VeryLazy" },
 	{
 		"ziontee113/icon-picker.nvim",
 		keys = require("core.keymaps.icon-picker").keys,

@@ -2,8 +2,8 @@ local M = {}
 M.keys = function()
 	local nvim_dap_ui = require("dapui")
 	_G._debugui = false
-	vim.keymap.set("n", "<leader>de", function()
-		if package.loaded["dap"] and require("dap").status() ~= "" then
+	vim.keymap.set("n", "L", function()
+		if package.loaded["dap"] and require("dap").status() ~= "" and _G._debugui then
 			nvim_dap_ui.eval()
 		end
 	end, {

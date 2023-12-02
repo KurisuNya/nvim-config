@@ -6,6 +6,7 @@ local M = {
 	-- snip
 	{
 		"L3MON4D3/LuaSnip",
+		version = "v2.*",
 		dependencies = {
 			"rafamadriz/friendly-snippets",
 			config = function()
@@ -16,6 +17,7 @@ local M = {
 			history = true,
 			delete_check_events = "TextChanged",
 		},
+		build = "make install_jsregexp",
 		event = "VeryLazy",
 	},
 	{
