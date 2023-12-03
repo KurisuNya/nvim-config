@@ -12,6 +12,10 @@ M.config = function()
 		bg = get_color("BufferVisibleSign", "bg#"),
 		fg = get_color("BufferInactive", "fg#"),
 	})
+	vim.api.nvim_set_hl(0, "BufferInactiveSign", {
+		bg = get_color("BufferInactiveSign", "bg#"),
+		fg = get_color("BufferInactive", "fg#"),
+	})
 
 	require("barbar").setup({
 		animation = false,
@@ -40,12 +44,13 @@ M.config = function()
 			separator_at_end = false,
 			separator = { left = "▎", right = "" },
 			visible = { separator = { left = "▎", right = "" } },
+			inactive = { separator = { left = " ", right = "" } },
 		},
 		sidebar_filetypes = {
 			["neo-tree"] = { event = "BufWipeout", text = "FILE EXPLORER" },
 		},
-		maximum_padding = 2,
-		minimum_padding = 2,
+		maximum_padding = 1,
+		minimum_padding = 1,
 	})
 end
 return M

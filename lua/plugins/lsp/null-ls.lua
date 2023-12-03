@@ -30,7 +30,6 @@ M.config = function()
 			formatting.xmlformat,
 			-- linters
 			cspell.diagnostics.with({ config = cspell_config }),
-			diagnostics.commitlint,
 			diagnostics.cpplint,
 			diagnostics.markdownlint,
 		},
