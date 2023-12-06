@@ -70,7 +70,7 @@ keymap.set("n", "<C-Down>", "<C-w>j", opts)
 keymap.set("n", "<C-Up>", "<C-w>k", opts)
 keymap.set("n", "<C-Right>", "<C-w>l", opts)
 --行操作
-keymap.set("n", "<leader><Enter>", 'O<Esc>"_cc<Esc>j', {
+keymap.set("n", "<leader><Enter>", 'o<Esc>"_cc<Esc>', {
 	noremap = true,
 	silent = true,
 	desc = "Empty Line",
