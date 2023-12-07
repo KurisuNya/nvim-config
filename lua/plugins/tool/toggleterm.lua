@@ -10,16 +10,8 @@ M.config = function()
 		end,
 		open_mapping = require("core.keymaps.toggleterm").toggle_everywhere,
 		direction = "vertical",
-		highlights = {
-			FloatBorder = {
-				guifg = "#29a4bd",
-			},
-		},
-		float_opts = {
-			border = "rounded",
-			width = 100,
-			height = 30,
-		},
+		highlights = { FloatBorder = { guifg = "#29a4bd" } },
+		float_opts = { border = "rounded" },
 	})
 end
 return M

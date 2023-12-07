@@ -24,50 +24,51 @@ M.view_keymap_list = function()
 	local custom = require("plugins.tool.diffview-custom")
 	local actions = require("diffview.actions")
 	local list = {
-		{ "n", "<leader>e", custom.diffview_toggle_files, { desc = "Files Toggle " } },
-		{ "n", "<tab>", custom.diffview_next_entry, { desc = "File Diff Open Next" } },
-		{ "n", "<s-tab>", custom.diffview_prev_entry, { desc = "File Diff Open Previous" } },
-		{ "n", "s", custom.diffview_stage_hunk, { desc = "Git Toggle Staged" } },
-		{ "n", "S", custom.diffview_stage_buffer, { desc = "Git Toggle Staged" } },
-		{ "n", "u", custom.diffview_undo_stage_hunk, { desc = "Git Unstage All" } },
-		{ "n", "U", custom.diffview_undo_stage_all, { desc = "Git Unstage All" } },
+		{ "n", "g?", actions.help("view"), { desc = "? Open Help Panel" } },
 		{ "n", "<leader>q", actions.close, { desc = "Close Diffview" } },
-		{ "n", "[x", actions.prev_conflict, { desc = "Conflict Previous" } },
-		{ "n", "]x", actions.next_conflict, { desc = "Conflict Next" } },
-		{ "n", "<leader>co", actions.conflict_choose("ours"), { desc = "Conflict Choose Ours" } },
-		{ "n", "<leader>ct", actions.conflict_choose("theirs"), { desc = "Conflict Choose Theirs" } },
-		{ "n", "<leader>cb", actions.conflict_choose("base"), { desc = "Conflict Choose Base" } },
-		{ "n", "<leader>ca", actions.conflict_choose("all"), { desc = "Conflict Choose All" } },
-		{ "n", "<leader>cd", actions.conflict_choose("none"), { desc = "Conflict Delete Region" } },
+		{ "n", "<leader>e", custom.diffview_toggle_files, { desc = "Files Toggle (Project)" } },
+		{ "n", "<tab>", custom.diffview_next_entry, { desc = "File Diff Open Next (Project)" } },
+		{ "n", "<s-tab>", custom.diffview_prev_entry, { desc = "File Diff Open Previous (Project)" } },
+		{ "n", "s", custom.diffview_stage_hunk, { desc = "Git Toggle Staged (Project)" } },
+		{ "n", "S", custom.diffview_stage_buffer, { desc = "Git Toggle Staged (Project)" } },
+		{ "n", "u", custom.diffview_undo_stage_hunk, { desc = "Git Unstage All (Project)" } },
+		{ "n", "U", custom.diffview_undo_stage_all, { desc = "Git Unstage All (Project)" } },
+		{ "n", "[x", custom.diffview_prev_conflict, { desc = "Conflict Previous (Project)" } },
+		{ "n", "]x", custom.diffview_next_conflict, { desc = "Conflict Next (Project)" } },
+		{ "n", "<leader>co", custom.diffview_conflict_choose_ours, { desc = "Conflict Choose Ours (Project)" } },
+		{ "n", "<leader>ct", custom.diffview_conflict_choose_theirs, { desc = "Conflict Choose Theirs (Project)" } },
+		{ "n", "<leader>cb", custom.diffview_conflict_choose_base, { desc = "Conflict Choose Base (Project)" } },
+		{ "n", "<leader>ca", custom.diffview_conflict_choose_all, { desc = "Conflict Choose All (Project)" } },
+		{ "n", "<leader>cd", custom.diffview_conflict_choose_none, { desc = "Conflict Delete Region (Project)" } },
 		{
 			"n",
 			"<leader>cO",
-			actions.conflict_choose_all("ours"),
-			{ desc = "Conflict Choose Ours Whole File" },
+			custom.diffview_conflict_choose_all_ours,
+			{ desc = "Conflict Choose Ours All (Project)" },
 		},
 		{
 			"n",
 			"<leader>cT",
-			actions.conflict_choose_all("theirs"),
-			{ desc = "Conflict Choose Theirs Whole File" },
+			custom.diffview_conflict_choose_all_theirs,
+			{ desc = "Conflict Choose Theirs All (Project)" },
 		},
 		{
 			"n",
 			"<leader>cB",
-			actions.conflict_choose_all("base"),
-			{ desc = "Conflict Choose Base Whole File" },
+			custom.diffview_conflict_choose_all_base,
+			{ desc = "Conflict Choose Base All (Project)" },
 		},
 		{
 			"n",
 			"<leader>cA",
-			actions.conflict_choose_all("all"),
-			{ desc = "Conflict Choose All Whole File" },
+			custom.diffview_conflict_choose_all_all,
+			{ desc = "Conflict Choose All All (Project)" },
 		},
 		{
 			"n",
 			"<leader>cD",
-			actions.conflict_choose_all("none"),
-			{ desc = "Conflict Delete Region Whole File" },
+			custom.diffview_conflict_choose_all_none,
+			{ desc = "Conflict Delete Region All (Project)" },
 		},
 	}
 	return list
@@ -78,7 +79,7 @@ M.file_panel_keymap_list = function()
 	local actions = require("diffview.actions")
 	local list = {
 		-- help panel
-		{ "n", "g?", actions.help("file_panel"), { desc = "Open Help Panel" } },
+		{ "n", "g?", actions.help("file_panel"), { desc = "? Open Help Panel" } },
 		-- basic
 		{
 			"n",
@@ -152,7 +153,7 @@ M.file_history_panel_keymap_list = function()
 	local actions = require("diffview.actions")
 	local list = {
 		-- panel
-		{ "n", "g?", actions.help("file_panel"), { desc = "Open Help Panel" } },
+		{ "n", "g?", actions.help("file_panel"), { desc = "? Open Help Panel" } },
 		{ "n", "g!", actions.options, { desc = "Open Option Panel" } },
 		--basic
 		{
@@ -202,7 +203,7 @@ M.diff3_keymap_list = function()
 			actions.diffget("theirs"),
 			{ desc = "Load Theirs Diff Hunk Of The File" },
 		},
-		{ "n", "g?", actions.help({ "view", "diff3" }), { desc = "Open Help Panel" } },
+		{ "n", "g?", actions.help({ "view", "diff3" }), { desc = "? Open Help Panel" } },
 	}
 	return list
 end
@@ -219,7 +220,7 @@ end
 M.option_panel_keymap_list = function()
 	local actions = require("diffview.actions")
 	local list = {
-		{ "n", "g?", actions.help("option_panel"), { desc = "Open Help Panel" } },
+		{ "n", "g?", actions.help("option_panel"), { desc = "? Open Help Panel" } },
 		{ "n", "<tab>", actions.select_entry, { desc = "Change Current Option" } },
 		{ "n", "<cr>", actions.select_entry, { desc = "Change Current Option" } },
 		{ "n", "q", actions.close, { desc = "Close Option Panel" } },
