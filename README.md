@@ -10,7 +10,7 @@ Welcome to fork!!! 😊
 
 ### Dashboard
 
-![dashboard](https://cdn.kurisunya.top/cdn/2/2023/11/655cc25d3c51d.png)
+![dashboard](https://cdn.kurisunya.top/cdn/2/2023/12/6572452964a59.png)
 
 ### Coding
 
