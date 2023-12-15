@@ -26,6 +26,14 @@ M.config = function()
 		})
 	end
 
+	lspconfig["ruff_lsp"].setup({
+		on_attach = function(client, bufnr)
+			client.server_capabilities.hoverProvider = false
+			on_attach(client, bufnr)
+		end,
+		capabilities = capabilities,
+	})
+
 	lspconfig["matlab_ls"].setup({
 		capabilities = capabilities,
 		on_attach = on_attach,

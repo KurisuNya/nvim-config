@@ -10,6 +10,7 @@ M.config = function()
 			"lua_ls",
 			"matlab_ls",
 			"pyright",
+			"ruff_lsp",
 			"rust_analyzer",
 		},
 	})
