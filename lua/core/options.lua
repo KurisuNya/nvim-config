@@ -47,6 +47,8 @@ vim.opt.splitright = true
 vim.opt.autoread = true
 -- diff 使用对角线
 vim.opt.fillchars:append({ diff = "╱" })
+-- disable modeline
+vim.opt.modeline = false
 -- windows powershell
 if vim.loop.os_uname().sysname == "Windows_NT" then
 	local powershell_options = {

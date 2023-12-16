@@ -16,8 +16,8 @@ M.config = function()
 	local simple_servers = {
 		"bashls",
 		"lemminx",
-		"pyright",
 		"rust_analyzer",
+		"pyright",
 	}
 	for _, server in ipairs(simple_servers) do
 		lspconfig[server].setup({
@@ -48,13 +48,43 @@ M.config = function()
 		single_file_support = true,
 	})
 
+	local function get_binary_path_list(binaries)
+		local path_list = {}
+		for _, binary in ipairs(binaries) do
+			local path = vim.fn.exepath(binary)
+			if path ~= "" then
+				table.insert(path_list, path)
+			end
+		end
+		return table.concat(path_list, ",")
+	end
+
 	lspconfig["clangd"].setup({
 		capabilities = capabilities,
 		on_attach = on_attach,
 		cmd = {
 			"clangd",
-			"--offset-encoding=utf-16",
+			"-j=12",
+			"--enable-config",
 			"--background-index",
+			"--pch-storage=memory",
+			-- You MUST set this arg ↓ to your c/cpp compiler location (if not included)!
+			"--query-driver="
+				.. get_binary_path_list({
+					"clang++",
+					"clang",
+					"gcc",
+					"g++",
+					"arm-none-eabi-gcc",
+				}),
+			"--clang-tidy",
+			"--all-scopes-completion",
+			"--completion-style=detailed",
+			"--header-insertion-decorators",
+			"--header-insertion=iwyu",
+			"--limit-references=3000",
+			"--limit-results=350",
+			"--offset-encoding=utf-16",
 			"--suggest-missing-includes",
 		},
 	})
@@ -75,7 +105,14 @@ M.config = function()
 				},
 				workspace = {
 					checkThirdParty = "Disable",
+					library = {
+						[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+						[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+					},
+					maxPreload = 100000,
+					preloadFileSize = 10000,
 				},
+				telemetry = { enable = false },
 			},
 		},
 	})

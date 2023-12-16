@@ -1,4 +1,5 @@
 local M = {}
+local icons = require("plugins.ui.icons")
 M.config = function()
 	local map_list = require("core.keymaps.lspconfig")
 	require("lspsaga").setup({
@@ -17,6 +18,8 @@ M.config = function()
 			keys = map_list.lspsaga_outline_keymap,
 		},
 		ui = {
+			expand = icons.ui.ArrowClose,
+			collapse = icons.ui.ArrowOpen,
 			lines = { "└", "├", "│", "─", "┌" },
 		},
 	})

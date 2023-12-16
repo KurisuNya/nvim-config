@@ -54,7 +54,7 @@ M.lsp_on_attach = function()
 		silent = true,
 		desc = "Lsp Code Action",
 	})
-	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {
+	vim.keymap.set("n", "<leader>rn", "<Cmd>Lspsaga rename<CR>", {
 		noremap = true,
 		silent = true,
 		desc = "Lsp Rename",
