@@ -30,7 +30,6 @@ M.config = function()
 			-- linters
 			cspell.diagnostics.with({ config = cspell_config }),
 			diagnostics.cpplint,
-			diagnostics.markdownlint,
 		},
 		-- configure format on save
 		on_attach = function(current_client, bufnr)
