@@ -1,3 +1,14 @@
+local function get_binary_path_list(binaries)
+	local path_list = {}
+	for _, binary in ipairs(binaries) do
+		local path = vim.fn.exepath(binary)
+		if path ~= "" then
+			table.insert(path_list, path)
+		end
+	end
+	return table.concat(path_list, ",")
+end
+
 local M = {}
 M.config = function()
 	local lspconfig = require("lspconfig")
@@ -16,7 +27,6 @@ M.config = function()
 	local simple_servers = {
 		"bashls",
 		"lemminx",
-		"rust_analyzer",
 		"pyright",
 	}
 	for _, server in ipairs(simple_servers) do
@@ -24,39 +34,6 @@ M.config = function()
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
-	end
-
-	lspconfig["ruff_lsp"].setup({
-		on_attach = function(client, bufnr)
-			client.server_capabilities.hoverProvider = false
-			on_attach(client, bufnr)
-		end,
-		capabilities = capabilities,
-	})
-
-	lspconfig["matlab_ls"].setup({
-		capabilities = capabilities,
-		on_attach = on_attach,
-		settings = {
-			matlab = {
-				indexWorkspace = true,
-				installPath = "/home/kurisunya/Matlab",
-				matlabConnectionTiming = "onStart",
-				telemetry = true,
-			},
-		},
-		single_file_support = true,
-	})
-
-	local function get_binary_path_list(binaries)
-		local path_list = {}
-		for _, binary in ipairs(binaries) do
-			local path = vim.fn.exepath(binary)
-			if path ~= "" then
-				table.insert(path_list, path)
-			end
-		end
-		return table.concat(path_list, ",")
 	end
 
 	lspconfig["clangd"].setup({

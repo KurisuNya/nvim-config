@@ -130,4 +130,8 @@ M.lspsaga_finder_keymap = {
 	toggle_or_open = "<CR>",
 	quit = { "<Esc>", "q" },
 }
+M.lspsaga_code_action_keymap = {
+	quit = { "<Esc>", "q" },
+	exec = "<CR>",
+}
 return M

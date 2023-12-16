@@ -25,7 +25,6 @@ M.config = function()
 			formatting.beautysh,
 			formatting.black,
 			formatting.google_java_format,
-			formatting.rustfmt,
 			formatting.stylua,
 			formatting.xmlformat,
 			-- linters
