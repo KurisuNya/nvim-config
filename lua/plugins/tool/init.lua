@@ -34,7 +34,7 @@ local M = {
 		dependencies = {
 			"Shatur/neovim-session-manager",
 		},
-		event = "VeryLazy",
+		lazy = false,
 	},
 	{ "Shatur/neovim-session-manager" },
 
