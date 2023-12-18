@@ -45,7 +45,11 @@ end
 
 local function lsp_get_client_name()
 	local client_names = {}
-	for _, client in ipairs(vim.lsp.get_active_clients()) do
+	for _, client in
+		ipairs(vim.lsp.get_active_clients({
+			bufnr = vim.api.nvim_get_current_buf(),
+		}))
+	do
 		if client and client.name ~= "" and not lsp_is_hidden_client(client.name) then
 			table.insert(client_names, 1, client.name)
 		end

@@ -64,14 +64,16 @@ return {
 	{ "davidmh/cspell.nvim" },
 	{
 		"nvimdev/lspsaga.nvim",
-		keys = require("core.keymaps.lspconfig").lspsaga_keys,
 		config = require("plugins.lsp.lspsaga").config,
 		event = "VeryLazy",
 	},
-	{ "KurisuNya/nvim-gtd", opts = {}, event = "VeryLazy" },
+	{
+		"KurisuNya/nvim-gtd",
+		config = require("plugins.lsp.gtd").config,
+		event = "VeryLazy",
+	},
 	{
 		"SmiteshP/nvim-navbuddy",
-		keys = require("core.keymaps.lspconfig").nvim_navbuddy_keys,
 		config = require("plugins.lsp.nvim-navbuddy").config,
 		dependencies = {
 			"SmiteshP/nvim-navic",

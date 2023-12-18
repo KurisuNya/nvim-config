@@ -42,5 +42,14 @@ M.config = function()
 			auto_attach = true,
 		},
 	})
+
+	vim.api.nvim_create_autocmd("LspAttach", {
+		group = vim.api.nvim_create_augroup("nvim_navbuddy_attach", {}),
+		callback = function(args)
+			local bufnr = args.buf ---@type number
+			local client = vim.lsp.get_client_by_id(args.data.client_id)
+			require("core.keymaps.lspconfig").nvim_navbuddy_on_attach(client, bufnr)
+		end,
+	})
 end
 return M

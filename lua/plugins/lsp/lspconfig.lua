@@ -17,28 +17,37 @@ M.config = function()
 	require("neodev").setup({})
 	lsp_inlayhints.setup({ inlay_hints = { parameter_hints = { prefix = "" } } })
 
-	local on_attach = function(client, bufnr)
-		lsp_inlayhints.on_attach(client, bufnr)
-		require("core.keymaps.lspconfig").lsp_on_attach()
-	end
-	local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 	-- lsp-server settings
+	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 	local simple_servers = {
 		"bashls",
 		"lemminx",
-		"pyright",
 	}
 	for _, server in ipairs(simple_servers) do
 		lspconfig[server].setup({
-			on_attach = on_attach,
 			capabilities = capabilities,
 		})
 	end
 
+	lspconfig["pyright"].setup({
+		capabilities = capabilities,
+		root_dir = function(fname)
+			local root_files = {
+				"pyproject.toml",
+				"setup.py",
+				"setup.cfg",
+				"requirements.txt",
+				"Pipfile",
+				"pyrightconfig.json",
+			}
+			return lspconfig.util.root_pattern(unpack(root_files))(fname)
+				or lspconfig.util.find_git_ancestor(fname)
+				or vim.fn.getcwd()
+		end,
+	})
+
 	lspconfig["clangd"].setup({
 		capabilities = capabilities,
-		on_attach = on_attach,
 		cmd = {
 			"clangd",
 			"-j=12",
@@ -68,7 +77,6 @@ M.config = function()
 
 	lspconfig["lua_ls"].setup({
 		capabilities = capabilities,
-		on_attach = on_attach,
 		settings = {
 			Lua = {
 				hint = {
@@ -92,6 +100,16 @@ M.config = function()
 				telemetry = { enable = false },
 			},
 		},
+	})
+
+	vim.api.nvim_create_autocmd("LspAttach", {
+		group = vim.api.nvim_create_augroup("lspconfig_attach", {}),
+		callback = function(args)
+			local bufnr = args.buf ---@type number
+			local client = vim.lsp.get_client_by_id(args.data.client_id)
+			lsp_inlayhints.on_attach(client, bufnr)
+			require("core.keymaps.lspconfig").lspconfig_on_attach(client, bufnr)
+		end,
 	})
 
 	-- lsp-ui

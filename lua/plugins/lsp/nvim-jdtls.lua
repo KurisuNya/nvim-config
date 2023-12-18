@@ -67,20 +67,27 @@ M.config = function()
 				},
 			},
 			init_options = { bundles = generate_dap_bundles() },
-			on_attach = function(client, bufnr)
-				require("lsp-inlayhints").on_attach(client, bufnr)
-				require("core.keymaps.lspconfig").lsp_on_attach()
+			capabilities = require("cmp_nvim_lsp").default_capabilities(),
+		}
+		nvim_jdtls.start_or_attach(opts)
+		vim.api.nvim_create_autocmd("LspAttach", {
+			group = vim.api.nvim_create_augroup("jdtls_debug_attach", {}),
+			callback = function(args)
+				local bufnr = args.buf ---@type number
+				local client = vim.lsp.get_client_by_id(args.data.client_id)
+				if client.name ~= "jdtls" then
+					return
+				end
+
 				if plugin_exist("nvim-dap") and mason_registry.is_installed("java-debug-adapter") then
 					nvim_jdtls.setup_dap({ hotcodereplace = "auto", config_overrides = {} })
 					require("jdtls.dap").setup_dap_main_class_configs()
 				end
 				if mason_registry.is_installed("java-test") then
-					require("core.keymaps.lspconfig").jdtls_debug_on_attach()()
+					require("core.keymaps.lspconfig").jdtls_debug_on_attach(client, bufnr)
 				end
 			end,
-			capabilities = require("cmp_nvim_lsp").default_capabilities(),
-		}
-		nvim_jdtls.start_or_attach(opts)
+		})
 	end
 	vim.api.nvim_create_autocmd("FileType", { pattern = "java", callback = attach_jdtls })
 end

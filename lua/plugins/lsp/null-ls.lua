@@ -3,7 +3,6 @@ M.config = function()
 	local null_ls = require("null-ls")
 	local formatting = null_ls.builtins.formatting
 	local diagnostics = null_ls.builtins.diagnostics
-	local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 	local cspell = require("cspell")
 	local cspell_config = {
 		find_json = function(cwd)
@@ -31,26 +30,38 @@ M.config = function()
 			cspell.diagnostics.with({ config = cspell_config }),
 			diagnostics.cpplint,
 		},
-		-- configure format on save
-		on_attach = function(current_client, bufnr)
-			require("core.keymaps.lspconfig").null_ls_on_attach()
-			if current_client.supports_method("textDocument/formatting") then
-				vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-				vim.api.nvim_create_autocmd("BufWritePre", {
-					group = augroup,
-					buffer = bufnr,
-					callback = function()
-						vim.lsp.buf.format({
-							filter = function(client)
-								return client.name == "null-ls"
-							end,
-							bufnr = bufnr,
-						})
-					end,
-				})
+		fallback_severity = vim.diagnostic.severity.WARN,
+	})
+
+	local augroup = vim.api.nvim_create_augroup("null_ls_attach", {})
+
+	local function null_ls_format(args)
+		local buffer = args.buf ---@type number
+		vim.lsp.buf.format({
+			filter = function(client)
+				return client.name == "null-ls"
+			end,
+			bufnr = buffer,
+		})
+	end
+
+	local function format_on_save(bufnr)
+		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = augroup,
+			buffer = bufnr,
+			callback = null_ls_format,
+		})
+	end
+
+	vim.api.nvim_create_autocmd("LspAttach", {
+		callback = function(args)
+			local bufnr = args.buf ---@type number
+			local client = vim.lsp.get_client_by_id(args.data.client_id)
+			if client.supports_method("textDocument/formatting") then
+				format_on_save(bufnr)
 			end
 		end,
-		fallback_severity = vim.diagnostic.severity.WARN,
 	})
 end
 return M
