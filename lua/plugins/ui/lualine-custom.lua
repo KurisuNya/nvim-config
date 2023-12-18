@@ -32,6 +32,7 @@ end
 
 local lsp_hidden_client = {
 	"null-ls",
+	"copilot",
 }
 
 local function lsp_is_hidden_client(client_name)
