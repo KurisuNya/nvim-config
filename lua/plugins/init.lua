@@ -23,7 +23,7 @@ require("lazy").setup({
 	{ "nvim-lua/plenary.nvim" },
 	{ "kevinhwang91/promise-async" },
 	-- ui dependence
-	{ "MunifTanjim/nui.nvim", lazy = false },
+	{ "MunifTanjim/nui.nvim" },
 	{
 		"nvim-tree/nvim-web-devicons",
 		opts = { color_icons = true, default = true, strict = true },

@@ -7,7 +7,7 @@ local M = {
 	{
 		"goolord/alpha-nvim",
 		config = require("plugins.tool.alpha-nvim").config,
-		lazy = false,
+		event = "VimEnter",
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
@@ -34,7 +34,7 @@ local M = {
 		dependencies = {
 			"Shatur/neovim-session-manager",
 		},
-		lazy = false,
+		event = "VeryLazy",
 	},
 	{ "Shatur/neovim-session-manager" },
 
@@ -48,7 +48,7 @@ local M = {
 			"nvim-telescope/telescope-fzf-native.nvim",
 			"nvim-telescope/telescope-frecency.nvim",
 		},
-		event = "VeryLazy",
+		event = "VimEnter",
 	},
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
