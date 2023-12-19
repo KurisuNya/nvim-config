@@ -17,7 +17,7 @@ M.colorscheme_plugin = {
 		vim.cmd.colorscheme("tokyonight-storm")
 		vim.api.nvim_set_hl(0, "LspSignatureActiveParameter", { link = "Visual" })
 	end,
-	event = "VimEnter",
+	lazy = false,
 }
 M.lualine = "tokyonight"
 return M
