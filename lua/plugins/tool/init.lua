@@ -47,7 +47,7 @@ local M = {
 			"debugloop/telescope-undo.nvim",
 			"nvim-telescope/telescope-fzf-native.nvim",
 		},
-		event = "VimEnter",
+		event = "VeryLazy",
 	},
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
