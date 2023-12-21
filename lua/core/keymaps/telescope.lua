@@ -46,7 +46,7 @@ M.keys = {
 		mode = "n",
 		noremap = true,
 		silent = true,
-		desc = "Find Commit",
+		desc = "Find Branch",
 	},
 	{
 		"<leader>u",
