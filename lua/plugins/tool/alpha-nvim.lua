@@ -85,16 +85,16 @@ M.config = function()
 	dashboard.button = button
 
 	dashboard.section.buttons.val = {
-		dashboard.button("p", "  Open Projects", "<Cmd>Telescope neovim-project history<CR>"),
+		dashboard.button("p", "  Open Project", "<Cmd>Telescope neovim-project history<CR>"),
 		dashboard.button("f", "  Find Project", "<Cmd>Telescope neovim-project discover<CR>"),
 		dashboard.button("s", "  Last Session", "<Cmd>NeovimProjectLoadRecent<cr>"),
 		dashboard.button("h", "  File History", "<Cmd>Telescope oldfiles<CR>"),
-		dashboard.button("c", "  File Frecency", "<Cmd>Telescope frecency<CR>"),
+		dashboard.button("m", "  Plugin Manager", "<Cmd> Lazy <CR>"),
 	}
 
 	-- layout
 	dashboard.config.layout = {
-		{ type = "padding", val = 3 },
+		{ type = "padding", val = 2 },
 		dashboard.section.header,
 		{ type = "padding", val = 5 },
 		dashboard.section.buttons,

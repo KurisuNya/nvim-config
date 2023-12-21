@@ -46,7 +46,6 @@ local M = {
 		dependencies = {
 			"debugloop/telescope-undo.nvim",
 			"nvim-telescope/telescope-fzf-native.nvim",
-			"nvim-telescope/telescope-frecency.nvim",
 		},
 		event = "VimEnter",
 	},
@@ -57,13 +56,6 @@ local M = {
 			.. "cmake --install build --prefix build",
 	},
 	{ "debugloop/telescope-undo.nvim" },
-	{
-		"nvim-telescope/telescope-frecency.nvim",
-		dependencies = {
-			"kkharji/sqlite.lua",
-		},
-	},
-	{ "kkharji/sqlite.lua" },
 
 	-- git
 	{
