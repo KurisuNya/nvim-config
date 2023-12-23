@@ -206,7 +206,7 @@ local M = {
 	},
 	{ "stevearc/stickybuf.nvim", opts = {}, event = "VeryLazy" },
 	{
-		"ziontee113/icon-picker.nvim",
+		"KurisuNya/icon-picker.nvim",
 		keys = require("core.keymaps.icon-picker").keys,
 		opts = {
 			disable_legacy_commands = true,
