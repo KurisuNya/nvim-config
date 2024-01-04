@@ -22,6 +22,7 @@ M.config = function()
 	local simple_servers = {
 		"bashls",
 		"lemminx",
+		"taplo",
 	}
 	for _, server in ipairs(simple_servers) do
 		lspconfig[server].setup({

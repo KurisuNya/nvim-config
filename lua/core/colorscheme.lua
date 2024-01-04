@@ -11,7 +11,7 @@ M.colorscheme_plugin = {
 			styles = {
 				comments = { italic = true },
 				keywords = { italic = true },
-				floats = "normal",
+				-- floats = "normal",
 			},
 		})
 		vim.cmd.colorscheme("tokyonight-storm")

@@ -33,13 +33,24 @@ M.config = function()
 		fallback_severity = vim.diagnostic.severity.WARN,
 	})
 
+	local specific_clients = {
+		"taplo",
+	}
+
 	local augroup = vim.api.nvim_create_augroup("null_ls_attach", {})
+
+	local function is_specific_client(client_name)
+		if vim.tbl_contains(specific_clients, client_name) then
+			return true
+		end
+		return false
+	end
 
 	local function null_ls_format(args)
 		local buffer = args.buf ---@type number
 		vim.lsp.buf.format({
 			filter = function(client)
-				return client.name == "null-ls"
+				return client.name == "null-ls" or is_specific_client(client.name)
 			end,
 			bufnr = buffer,
 		})
