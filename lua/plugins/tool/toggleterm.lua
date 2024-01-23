@@ -9,7 +9,7 @@ M.config = function()
 			end
 		end,
 		open_mapping = require("core.keymaps.toggleterm").toggle_everywhere,
-		direction = "vertical",
+		direction = "float",
 		highlights = { FloatBorder = { guifg = "#29a4bd" } },
 		float_opts = { border = "rounded" },
 	})

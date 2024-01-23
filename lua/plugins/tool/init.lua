@@ -225,6 +225,11 @@ local M = {
 		},
 		event = "VeryLazy",
 	},
+	{
+		"LunarVim/bigfile.nvim",
+		config = require("plugins.tool.bigfile").config,
+		event = "VeryLazy",
+	},
 }
 
 if vim.loop.os_uname().sysname == "Linux" then
