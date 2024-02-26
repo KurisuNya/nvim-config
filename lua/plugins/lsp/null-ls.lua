@@ -2,7 +2,6 @@ local M = {}
 M.config = function()
 	local null_ls = require("null-ls")
 	local formatting = null_ls.builtins.formatting
-	local diagnostics = null_ls.builtins.diagnostics
 	local cspell = require("cspell")
 	local cspell_config = {
 		find_json = function(cwd)
@@ -21,20 +20,19 @@ M.config = function()
 			formatting.prettier.with({
 				disabled_filetypes = { "markdown" },
 			}),
-			formatting.beautysh,
 			formatting.black,
 			formatting.google_java_format,
+			formatting.shfmt,
 			formatting.stylua,
-			formatting.xmlformat,
 			-- linters
 			cspell.diagnostics.with({ config = cspell_config }),
-			diagnostics.cpplint,
 		},
 		fallback_severity = vim.diagnostic.severity.WARN,
 	})
 
 	local specific_clients = {
 		"taplo",
+		"lemminx",
 	}
 
 	local augroup = vim.api.nvim_create_augroup("null_ls_attach", {})
