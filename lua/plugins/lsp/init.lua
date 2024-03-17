@@ -86,6 +86,11 @@ return {
 		opts = {},
 		event = "VeryLazy",
 	},
+	{
+		"linux-cultist/venv-selector.nvim",
+		config = require("plugins.lsp.venv-selector-nvim").config,
+		event = "VeryLazy",
+	},
 	{ "SmiteshP/nvim-navic" },
 	{ "folke/neodev.nvim" },
 	{ "lvimuser/lsp-inlayhints.nvim" },
