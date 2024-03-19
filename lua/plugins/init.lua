@@ -21,6 +21,7 @@ require("lazy").setup({
 	-- utils
 	{ "nvim-lua/plenary.nvim" },
 	{ "kevinhwang91/promise-async" },
+	{ "nvim-neotest/nvim-nio" },
 	-- ui dependence
 	{ "MunifTanjim/nui.nvim" },
 	{
