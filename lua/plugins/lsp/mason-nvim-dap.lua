@@ -11,22 +11,6 @@ M.config = function()
 			"java-debug-adapter",
 			"java-test",
 		},
-		handlers = {
-			function(config)
-				mason_nvim_dap.default_setup(config)
-			end,
-			python = function(config)
-				config.adapters = {
-					type = "executable",
-					command = "/usr/bin/python3",
-					args = {
-						"-m",
-						"debugpy.adapter",
-					},
-				}
-				mason_nvim_dap.default_setup(config)
-			end,
-		},
 	})
 end
 return M

@@ -113,6 +113,11 @@ return {
 		event = "VeryLazy",
 	},
 	{
+		"mfussenegger/nvim-dap-python",
+		config = require("plugins.lsp.nvim-dap-python").config,
+		event = "VeryLazy",
+	},
+	{
 		"Weissle/persistent-breakpoints.nvim",
 		keys = require("core.keymaps.nvim-dap").persistent_breakpoints_keys,
 		event = "VeryLazy",

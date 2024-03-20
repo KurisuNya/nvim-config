@@ -57,6 +57,7 @@ M.config = function()
 				hide_gitignored = false,
 				hide_by_name = {
 					"node_modules",
+					"__pycache__",
 				},
 				hide_by_pattern = {},
 				always_show = {
