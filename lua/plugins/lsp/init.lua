@@ -1,7 +1,7 @@
 -------------------
 --  lsp-plugins  --
 -------------------
-return {
+local M = {
 
 	-- treesitter
 	{
@@ -61,7 +61,6 @@ return {
 		},
 		event = "VeryLazy",
 	},
-	{ "davidmh/cspell.nvim" },
 	{
 		"nvimdev/lspsaga.nvim",
 		config = require("plugins.lsp.lspsaga").config,
@@ -128,3 +127,12 @@ return {
 		keys = require("core.keymaps.nvim-dap").goto_breakpoints_keys,
 	},
 }
+if vim.loop.os_uname().sysname ~= "Windows_NT" then
+	local plugins = {
+		{ "davidmh/cspell.nvim" },
+	}
+	for _, plugin in ipairs(plugins) do
+		table.insert(M, plugin)
+	end
+end
+return M

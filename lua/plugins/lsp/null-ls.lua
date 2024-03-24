@@ -2,35 +2,40 @@ local M = {}
 M.config = function()
 	local null_ls = require("null-ls")
 	local formatting = null_ls.builtins.formatting
-	local cspell = require("cspell")
-	local cspell_config = {
-		find_json = function(cwd)
-			return vim.fn.expand(vim.fn.stdpath("data") .. "/cspell.json")
-		end,
+	local diagnostics = null_ls.builtins.diagnostics
+
+	local sources = {
+		-- formatters
+		formatting.clang_format.with({
+			filetypes = { "c", "cpp" },
+		}),
+		formatting.prettier.with({
+			disabled_filetypes = { "markdown" },
+		}),
+		formatting.black,
+		formatting.google_java_format,
+		formatting.shfmt,
+		formatting.stylua,
 	}
 
-	if vim.fn.filereadable(cspell_config.find_json()) == 0 then
-		cspell_config = nil
+	if vim.loop.os_uname().sysname == "Windows_NT" then
+		table.insert(sources, diagnostics.codespell)
+	else
+		local cspell = require("cspell")
+		local cspell_config = {
+			find_json = function(cwd)
+				return vim.fn.expand(vim.fn.stdpath("data") .. "/cspell.json")
+			end,
+		}
+		if vim.fn.filereadable(cspell_config.find_json()) == 0 then
+			cspell_config = nil
+		end
+		table.insert(sources, cspell.code_actions.with({ config = cspell_config }))
+		table.insert(sources, cspell.diagnostics.with({ config = cspell_config }))
 	end
 
 	null_ls.setup({
-		sources = {
-			-- code actions
-			cspell.code_actions.with({ config = cspell_config }),
-			-- formatters
-			formatting.clang_format.with({
-				filetypes = { "c", "cpp" },
-			}),
-			formatting.prettier.with({
-				disabled_filetypes = { "markdown" },
-			}),
-			formatting.black,
-			formatting.google_java_format,
-			formatting.shfmt,
-			formatting.stylua,
-			-- linters
-			cspell.diagnostics.with({ config = cspell_config }),
-		},
+		sources = sources,
 		fallback_severity = vim.diagnostic.severity.WARN,
 	})
 
