@@ -9,6 +9,10 @@ M.config = function()
 		end,
 	}
 
+	if vim.fn.filereadable(cspell_config.find_json()) == 0 then
+		cspell_config = nil
+	end
+
 	null_ls.setup({
 		sources = {
 			-- code actions
