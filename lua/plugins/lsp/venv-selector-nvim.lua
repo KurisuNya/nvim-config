@@ -5,9 +5,9 @@ M.config = function()
 
 	local function shell_hook(venv_path, venv_python)
 		if vim.loop.os_uname().sysname == "Windows_NT" then
-			local script_path = venv_path .. "/Scripts/activate"
+			local script_path = venv_path .. "/Scripts/Activate.ps1"
 			if vim.fn.filereadable(script_path) == 1 then
-				vim.fn.system("./activate.ps1")
+				vim.fn.system("Activate.ps1")
 			end
 		else
 			local script_path = venv_path .. "/bin/activate"
