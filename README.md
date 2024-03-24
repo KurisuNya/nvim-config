@@ -10,15 +10,15 @@ Welcome to fork!!! 😊
 
 ### Dashboard
 
-![dashboard](https://cdn.kurisunya.top/cdn/2/2023/12/6572452964a59.png)
+![dashboard](./assert/dashboard.png)
 
 ### Coding
 
-![coding](https://cdn.kurisunya.top/cdn/2/2023/11/655ca814dde35.png)
+![coding](./assert/coding.png)
 
 ## Debugging
 
-![debugging](https://cdn.kurisunya.top/cdn/2/2023/11/6558f647241f1.png)
+![debugging](./assert/debugging.png)
 
 ## Tips
 
