@@ -4,9 +4,16 @@ M.config = function()
 	local venv_selector = require("venv-selector")
 
 	local function shell_hook(venv_path, venv_python)
-		local script_path = venv_path .. "/bin/activate"
-		if vim.fn.filereadable(script_path) == 1 then
-			vim.fn.system("source " .. script_path)
+		if vim.loop.os_uname().sysname == "Windows_NT" then
+			local script_path = venv_path .. "/Scripts/activate"
+			if vim.fn.filereadable(script_path) == 1 then
+				vim.fn.system("./activate.ps1")
+			end
+		else
+			local script_path = venv_path .. "/bin/activate"
+			if vim.fn.filereadable(script_path) == 1 then
+				vim.fn.system("source " .. script_path)
+			end
 		end
 	end
 
