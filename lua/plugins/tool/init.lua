@@ -29,7 +29,8 @@ local M = {
 				"~/.config/*",
 				"~/.local/share/nvim/lazy/*",
 			},
-			last_session_on_startup = false,
+			last_session_on_startup = true,
+			dashboard_mode = true,
 		},
 		dependencies = {
 			"Shatur/neovim-session-manager",
@@ -206,7 +207,7 @@ local M = {
 	},
 	{ "stevearc/stickybuf.nvim", opts = {}, event = "VeryLazy" },
 	{
-		"KurisuNya/icon-picker.nvim",
+		"ziontee113/icon-picker.nvim",
 		keys = require("core.keymaps.icon-picker").keys,
 		opts = {
 			disable_legacy_commands = true,
