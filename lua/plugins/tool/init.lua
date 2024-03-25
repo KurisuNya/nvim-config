@@ -122,15 +122,6 @@ local M = {
 		opts = {},
 		event = "VeryLazy",
 	},
-	{
-		"chentoast/marks.nvim",
-		keys = require("core.keymaps.marks").keys,
-		opts = {
-			default_mappings = false,
-			force_write_shada = true,
-		},
-		event = "VeryLazy",
-	},
 
 	-- markdown
 	{
