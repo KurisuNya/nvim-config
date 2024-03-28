@@ -4,9 +4,10 @@ M.config = function()
 	local function get_color(group, attr)
 		return vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(group)), attr)
 	end
+
 	vim.api.nvim_set_hl(0, "BufferCurrentSign", {
 		bg = get_color("BufferCurrentSign", "bg#"),
-		fg = "#7aa2f7",
+		fg = get_color("Title", "fg#"),
 	})
 	vim.api.nvim_set_hl(0, "BufferVisibleSign", {
 		bg = get_color("BufferVisibleSign", "bg#"),
@@ -45,12 +46,14 @@ M.config = function()
 			separator = { left = "▎", right = "" },
 			visible = { separator = { left = "▎", right = "" } },
 			inactive = { separator = { left = " ", right = "" } },
+			pinned = { button = icons.ui.pinned, filename = true },
 		},
 		sidebar_filetypes = {
 			["neo-tree"] = { event = "BufWipeout", text = "FILE EXPLORER" },
 		},
 		maximum_padding = 1,
 		minimum_padding = 1,
+		no_name_title = "Empty",
 	})
 end
 return M

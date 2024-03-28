@@ -102,6 +102,7 @@ M.ui = {
 	ArrowClose = "",
 	ArrowOpen = "",
 	Indicator = "",
+	pinned = "",
 }
 
 return M
