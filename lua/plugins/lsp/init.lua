@@ -40,6 +40,8 @@ local M = {
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
+			"folke/neodev.nvim",
+			"lvimuser/lsp-inlayhints.nvim",
 		},
 		event = "VeryLazy",
 	},
@@ -81,6 +83,7 @@ local M = {
 	},
 	{
 		"folke/trouble.nvim",
+		branch = "dev",
 		keys = require("core.keymaps.trouble").keys,
 		opts = {},
 		event = "VeryLazy",
@@ -91,8 +94,6 @@ local M = {
 		event = "VeryLazy",
 	},
 	{ "SmiteshP/nvim-navic" },
-	{ "folke/neodev.nvim" },
-	{ "lvimuser/lsp-inlayhints.nvim" },
 
 	-- dap
 	{
@@ -125,6 +126,15 @@ local M = {
 	{
 		"ofirgall/goto-breakpoints.nvim",
 		keys = require("core.keymaps.nvim-dap").goto_breakpoints_keys,
+	},
+	{
+		"nvim-neotest/neotest",
+		dependencies = {
+			"nvim-neotest/neotest-python",
+		},
+		keys = require("core.keymaps.neotest").keys,
+		config = require("plugins.lsp.neotest").config,
+		event = "VeryLazy",
 	},
 }
 if vim.loop.os_uname().sysname ~= "Windows_NT" then

@@ -90,7 +90,7 @@ M.nvim_navbuddy_on_attach = function(client, bufnr)
 	if client.name == "copilot" or client.name == "null-ls" then
 		return
 	end
-	lsp_keymap_set("n", "<leader>s", "<Cmd>Navbuddy<CR>", {
+	lsp_keymap_set("n", "<leader>S", "<Cmd>Navbuddy<CR>", {
 		buffer = bufnr,
 		desc = "Lsp Symbols Explorer",
 	})
@@ -101,10 +101,6 @@ M.lspsaga_on_attach = function(client, bufnr)
 		return
 	end
 	if client.name ~= "null-ls" then
-		lsp_keymap_set("n", "<leader>S", "<Cmd>Lspsaga outline<CR>", {
-			buffer = bufnr,
-			desc = "Lsp Symbols Float",
-		})
 		lsp_keymap_set("n", "gr", "<Cmd>Lspsaga finder<CR>", {
 			buffer = bufnr,
 			desc = "Lsp Find Reference",

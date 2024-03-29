@@ -14,7 +14,11 @@ M.config = function()
 	local lspconfig = require("lspconfig")
 	local lsp_inlayhints = require("lsp-inlayhints")
 
-	require("neodev").setup({})
+	local neodev_opts = {}
+	if require("lazy.core.config").spec.plugins["neotest"] ~= nil then
+		neodev_opts = { library = { plugins = { "neotest" }, types = true } }
+	end
+	require("neodev").setup(neodev_opts)
 	lsp_inlayhints.setup({ inlay_hints = { parameter_hints = { prefix = "" } } })
 
 	-- lsp-server settings

@@ -21,6 +21,7 @@ require("lazy").setup({
 	{ "nvim-lua/plenary.nvim" },
 	{ "kevinhwang91/promise-async" },
 	{ "nvim-neotest/nvim-nio" },
+	{ "antoinemadec/FixCursorHold.nvim" },
 	-- ui dependence
 	{ "MunifTanjim/nui.nvim" },
 	{

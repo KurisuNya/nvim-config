@@ -1,7 +1,7 @@
 local M = {}
 M.keys = {
 	{
-		"<leader>t",
+		"<leader>ft",
 		"<Cmd>ToggleTerm direction=float<CR>",
 		mode = "n",
 		noremap = true,
