@@ -19,7 +19,7 @@ M.keys = {
 	{
 		"<leader>tt",
 		function()
-			require("neotest").run.run(vim.uv.cwd() .. "/tests")
+			require("neotest").run.run(vim.uv.cwd())
 			open_summary()
 		end,
 		desc = "Test All Test Files",

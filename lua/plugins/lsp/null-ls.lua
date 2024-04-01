@@ -16,6 +16,7 @@ M.config = function()
 		formatting.google_java_format,
 		formatting.shfmt,
 		formatting.stylua,
+		formatting.ktlint,
 	}
 
 	if vim.loop.os_uname().sysname == "Windows_NT" then

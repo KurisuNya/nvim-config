@@ -5,6 +5,7 @@ local ensure_installed = {
 	"black",
 	"clang-format",
 	"google-java-format",
+	"ktlint",
 	"prettier",
 	"shfmt",
 	"stylua",

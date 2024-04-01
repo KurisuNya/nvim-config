@@ -131,6 +131,7 @@ local M = {
 		"nvim-neotest/neotest",
 		dependencies = {
 			"nvim-neotest/neotest-python",
+			"rcasia/neotest-java",
 		},
 		keys = require("core.keymaps.neotest").keys,
 		config = require("plugins.lsp.neotest").config,

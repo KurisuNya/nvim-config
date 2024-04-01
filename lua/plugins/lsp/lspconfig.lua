@@ -34,23 +34,6 @@ M.config = function()
 		})
 	end
 
-	lspconfig["pyright"].setup({
-		capabilities = capabilities,
-		root_dir = function(fname)
-			local root_files = {
-				"pyproject.toml",
-				"setup.py",
-				"setup.cfg",
-				"requirements.txt",
-				"Pipfile",
-				"pyrightconfig.json",
-			}
-			return lspconfig.util.root_pattern(unpack(root_files))(fname)
-				or lspconfig.util.find_git_ancestor(fname)
-				or vim.fn.getcwd()
-		end,
-	})
-
 	lspconfig["clangd"].setup({
 		capabilities = capabilities,
 		cmd = {
@@ -80,6 +63,13 @@ M.config = function()
 		},
 	})
 
+	lspconfig["kotlin_language_server"].setup({
+		capabilities = capabilities,
+		init_options = {
+			storagePath = vim.fn.stdpath("data"),
+		},
+	})
+
 	lspconfig["lua_ls"].setup({
 		capabilities = capabilities,
 		settings = {
@@ -101,6 +91,23 @@ M.config = function()
 				telemetry = { enable = false },
 			},
 		},
+	})
+
+	lspconfig["pyright"].setup({
+		capabilities = capabilities,
+		root_dir = function(fname)
+			local root_files = {
+				"pyproject.toml",
+				"setup.py",
+				"setup.cfg",
+				"requirements.txt",
+				"Pipfile",
+				"pyrightconfig.json",
+			}
+			return lspconfig.util.root_pattern(unpack(root_files))(fname)
+				or lspconfig.util.find_git_ancestor(fname)
+				or vim.fn.getcwd()
+		end,
 	})
 
 	vim.api.nvim_create_autocmd("LspAttach", {

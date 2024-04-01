@@ -6,6 +6,7 @@ M.config = function()
 			"bashls",
 			"clangd",
 			"jdtls",
+			"kotlin_language_server",
 			"lemminx",
 			"lua_ls",
 			"pyright",
