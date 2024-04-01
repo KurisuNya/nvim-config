@@ -23,7 +23,6 @@ keymap.set({ "n", "x" }, "<S-Up>", "5gk", opts)
 --   normal-mod   --
 --------------------
 --编辑器保存退出
-keymap.set("n", "<C-s>", "<Cmd>w<CR>", opts)
 keymap.set("n", "<leader>w", "<Cmd>w<CR>", {
 	noremap = true,
 	silent = true,
@@ -61,10 +60,6 @@ keymap.set("n", "<leader><Down>", "<Cmd>sp<CR>", {
 	silent = true,
 	desc = "Horizontal Spilt Window",
 })
-keymap.set("n", "<C-h>", "<C-w>h", opts)
-keymap.set("n", "<C-j>", "<C-w>j", opts)
-keymap.set("n", "<C-k>", "<C-w>k", opts)
-keymap.set("n", "<C-l>", "<C-w>l", opts)
 keymap.set("n", "<C-Left>", "<C-w>h", opts)
 keymap.set("n", "<C-Down>", "<C-w>j", opts)
 keymap.set("n", "<C-Up>", "<C-w>k", opts)
@@ -100,10 +95,6 @@ keymap.set("x", ">", ">gv")
 --   terminal-mod   --
 ----------------------
 --终端窗口操作
-keymap.set("t", "<C-h>", [[ <C-\><C-N><C-w>h ]], opts)
-keymap.set("t", "<C-j>", [[ <C-\><C-N><C-w>j ]], opts)
-keymap.set("t", "<C-k>", [[ <C-\><C-N><C-w>k ]], opts)
-keymap.set("t", "<C-l>", [[ <C-\><C-N><C-w>l ]], opts)
 keymap.set("t", "<C-Left>", [[ <C-\><C-N><C-w>h ]], opts)
 keymap.set("t", "<C-Down>", [[ <C-\><C-N><C-w>j ]], opts)
 keymap.set("t", "<C-Up>", [[ <C-\><C-N><C-w>k ]], opts)
