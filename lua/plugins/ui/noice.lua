@@ -1,4 +1,10 @@
 local M = {}
+local open_help = function(word)
+	if vim.o.filetype == "noice" then
+		vim.cmd.close()
+	end
+	vim.cmd.help(word)
+end
 M.config = function()
 	vim.opt.cmdheight = 0
 	require("noice").setup({
@@ -12,7 +18,7 @@ M.config = function()
 		},
 		markdown = {
 			hover = {
-				["|(%S-)|"] = vim.cmd.help,
+				["|(%S-)|"] = open_help,
 				["%[.-%]%((jdt%S-)%)"] = require("jdtls").open_classfile,
 				["%[.-%]%((http%S-)%)"] = require("noice.util").open,
 			},
