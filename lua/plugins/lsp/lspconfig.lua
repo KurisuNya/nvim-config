@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 local function get_binary_path_list(binaries)
 	local path_list = {}
 	for _, binary in ipairs(binaries) do
@@ -9,17 +10,31 @@ local function get_binary_path_list(binaries)
 	return table.concat(path_list, ",")
 end
 
+local function plugin_exist(plugin)
+	return require("lazy.core.config").spec.plugins[plugin] ~= nil
+end
+
 local M = {}
 M.config = function()
-	local lspconfig = require("lspconfig")
-	local lsp_inlayhints = require("lsp-inlayhints")
-
-	local neodev_opts = {}
-	if require("lazy.core.config").spec.plugins["neotest"] ~= nil then
-		neodev_opts = { library = { plugins = { "neotest" }, types = true } }
+	if plugin_exist("neoconf.nvim") then
+		local plugin = require("lazy.core.config").spec.plugins["neoconf.nvim"]
+		require("neoconf").setup(require("lazy.core.plugin").values(plugin, "opts", false))
 	end
-	require("neodev").setup(neodev_opts)
-	lsp_inlayhints.setup({ inlay_hints = { parameter_hints = { prefix = "" } } })
+
+	local lspconfig = require("lspconfig")
+
+	-- lsp on_attach
+	local function on_attach(client, bufnr)
+		require("core.keymaps.lspconfig").lspconfig_on_attach(client, bufnr)
+	end
+	if plugin_exist("lsp-inlayhints.nvim") then
+		local lsp_inlayhints = require("lsp-inlayhints")
+		lsp_inlayhints.setup({ inlay_hints = { parameter_hints = { prefix = "" } } })
+		on_attach = function(client, bufnr)
+			require("core.keymaps.lspconfig").lspconfig_on_attach(client, bufnr)
+			lsp_inlayhints.on_attach(client, bufnr)
+		end
+	end
 
 	-- lsp-server settings
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -115,8 +130,7 @@ M.config = function()
 		callback = function(args)
 			local bufnr = args.buf ---@type number
 			local client = vim.lsp.get_client_by_id(args.data.client_id)
-			lsp_inlayhints.on_attach(client, bufnr)
-			require("core.keymaps.lspconfig").lspconfig_on_attach(client, bufnr)
+			on_attach(client, bufnr)
 		end,
 	})
 

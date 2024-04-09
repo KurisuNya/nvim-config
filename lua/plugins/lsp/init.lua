@@ -40,8 +40,14 @@ local M = {
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
-			"folke/neodev.nvim",
 			"lvimuser/lsp-inlayhints.nvim",
+			{
+				"folke/neoconf.nvim",
+				cmd = "Neoconf",
+				config = false,
+				dependencies = { "nvim-lspconfig" },
+			},
+			{ "folke/neodev.nvim", opts = {} },
 		},
 		event = "VeryLazy",
 	},
