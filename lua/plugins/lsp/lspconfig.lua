@@ -53,10 +53,7 @@ M.config = function()
 		capabilities = capabilities,
 		cmd = {
 			"clangd",
-			"-j=12",
-			"--enable-config",
-			"--background-index",
-			"--pch-storage=memory",
+			"--offset-encoding=utf-16",
 			-- You MUST set this arg ↓ to your c/cpp compiler location (if not included)!
 			"--query-driver="
 				.. get_binary_path_list({
@@ -66,15 +63,20 @@ M.config = function()
 					"g++",
 					"arm-none-eabi-gcc",
 				}),
+			"-j=12",
+			"--enable-config",
+			"--background-index",
+			"--pch-storage=memory",
 			"--clang-tidy",
 			"--all-scopes-completion",
 			"--completion-style=detailed",
+			"--suggest-missing-includes",
+			"--function-arg-placeholders=false",
 			"--header-insertion-decorators",
 			"--header-insertion=iwyu",
 			"--limit-references=3000",
 			"--limit-results=350",
-			"--offset-encoding=utf-16",
-			"--suggest-missing-includes",
+			"--cross-file-rename",
 		},
 	})
 
