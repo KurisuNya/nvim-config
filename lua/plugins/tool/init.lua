@@ -24,11 +24,7 @@ local M = {
 			vim.opt.sessionoptions:append("globals")
 		end,
 		opts = {
-			projects = { -- define project roots
-				"~/Documents/Projects/*/*",
-				"~/.config/*",
-				"~/.local/share/nvim/lazy/*",
-			},
+			projects = _G.project_dir,
 			last_session_on_startup = true,
 			dashboard_mode = true,
 		},
