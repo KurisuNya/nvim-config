@@ -97,6 +97,7 @@ local M = {
 	{
 		"linux-cultist/venv-selector.nvim",
 		config = require("plugins.lsp.venv-selector-nvim").config,
+		keys = require("core.keymaps.venv-selector-nvim").keys,
 		event = "VeryLazy",
 	},
 	{ "SmiteshP/nvim-navic" },

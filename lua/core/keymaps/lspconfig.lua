@@ -53,12 +53,6 @@ M.lspconfig_on_attach = function(client, bufnr)
 			buffer = bufnr,
 			desc = "Code Organize Imports",
 		})
-		if require("lazy.core.config").spec.plugins["venv-selector.nvim"] ~= nil then
-			lsp_keymap_set("n", "<leader>cv", "<Cmd>VenvSelect<CR>", {
-				buffer = bufnr,
-				desc = "Change Venv",
-			})
-		end
 	end
 	lsp_keymap_set("n", "H", vim.lsp.buf.hover, {
 		buffer = bufnr,
