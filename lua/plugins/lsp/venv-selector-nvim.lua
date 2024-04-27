@@ -42,19 +42,7 @@ M.config = function()
 		desc = "Auto select virtualenv Nvim open",
 		pattern = { "AlphaClosed", "BufRead" },
 		callback = function()
-			local root_dir = vim.fn.getcwd() .. ";"
-
-			for _, name in ipairs(opts.name) do
-				local venv = vim.fn.finddir(name, root_dir)
-				if venv ~= "" then
-					venv_selector.retrieve_from_cache()
-					return
-				end
-			end
-			local venv = vim.fn.findfile("pyproject.toml", root_dir)
-			if venv ~= "" then
-				venv_selector.retrieve_from_cache()
-			end
+			venv_selector.retrieve_from_cache()
 		end,
 		once = true,
 	})
