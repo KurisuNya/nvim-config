@@ -18,7 +18,6 @@ M.config = function()
 			"jsdoc",
 			"json",
 			"jsonc",
-			"kotlin",
 			"lua",
 			"luadoc",
 			"luap",

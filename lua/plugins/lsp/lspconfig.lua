@@ -80,13 +80,6 @@ M.config = function()
 		},
 	})
 
-	lspconfig["kotlin_language_server"].setup({
-		capabilities = capabilities,
-		init_options = {
-			storagePath = vim.fn.stdpath("data"),
-		},
-	})
-
 	lspconfig["lua_ls"].setup({
 		capabilities = capabilities,
 		settings = {

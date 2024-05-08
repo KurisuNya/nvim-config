@@ -66,6 +66,9 @@ M.lspconfig_on_attach = function(client, bufnr)
 		buffer = bufnr,
 		desc = "Lsp Signature Help",
 	})
+	lsp_keymap_set("n", "<leader>lr", "<Cmd>LspRestart<CR>", {
+		desc = "Lsp Reload",
+	})
 end
 
 M.gtd_on_attach = function(client, bufnr)
