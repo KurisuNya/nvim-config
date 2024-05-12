@@ -30,6 +30,8 @@ local M = {
 		},
 		dependencies = {
 			"Shatur/neovim-session-manager",
+			"nvim-neo-tree/neo-tree.nvim",
+			"romgrk/barbar.nvim",
 		},
 		event = "VeryLazy",
 	},
@@ -92,9 +94,7 @@ local M = {
 	-- operations
 	{
 		"ggandor/leap.nvim",
-		config = function()
-			require("leap").add_default_mappings(true)
-		end,
+		keys = require("core.keymaps.leap-nvim").keys,
 		event = "VeryLazy",
 	},
 	{ "ggandor/leap-spooky.nvim", opts = {}, event = "VeryLazy" },
