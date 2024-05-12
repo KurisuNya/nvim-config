@@ -1,11 +1,11 @@
--- 关闭新行注释
+-- disable auto comment
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "*",
 	callback = function()
 		vim.opt.formatoptions = vim.opt.formatoptions - { "c", "r", "o" }
 	end,
 })
--- 重新打开恢复光标
+-- restore cursor position
 vim.api.nvim_create_autocmd("BufReadPost", {
 	group = vim.api.nvim_create_augroup("LastLoc", { clear = true }),
 	callback = function(event)
@@ -22,12 +22,11 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 		end
 	end,
 })
--- 自动删除标记
+-- auto delete marks
 vim.api.nvim_create_autocmd("BufRead", {
 	command = "silent! delmarks a-z0-9",
 })
-
--- 使用 q 退出
+-- q to close
 vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("CloseWithQ", { clear = true }),
 	pattern = {
@@ -51,7 +50,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
 	end,
 })
--- 自动重载split
+-- auto resize split
 vim.api.nvim_create_autocmd({ "VimResized" }, {
 	group = vim.api.nvim_create_augroup("ResizeSplit", { clear = true }),
 	callback = function()
@@ -60,7 +59,7 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 		vim.cmd("tabnext " .. current_tab)
 	end,
 })
--- 自动创建目录
+-- auto create dir
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	group = vim.api.nvim_create_augroup("AutoCreateDir", { clear = true }),
 	callback = function(event)
@@ -71,7 +70,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 		vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
 	end,
 })
--- 自动折行
+-- auto wrap
 vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("WrapSpell", { clear = true }),
 	pattern = { "gitcommit", "markdown" },
@@ -79,7 +78,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt_local.wrap = true
 	end,
 })
--- Windows 中英文自动切换
+-- windows auto switch input method
 if vim.loop.os_uname().sysname == "Windows_NT" then
 	local im_english = "im-select 1033"
 	local im_chinese = "im-select 2052"

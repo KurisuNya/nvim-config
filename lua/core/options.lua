@@ -1,54 +1,58 @@
----------------
---  options  --
----------------
--- 使用系统剪切板
+--------------
+--  editor  --
+--------------
+-- use system clipboard
 vim.opt.clipboard:append("unnamedplus")
--- 光标周围保留8行8列
-vim.opt.scrolloff = 8
-vim.opt.sidescrolloff = 8
--- 使用相对行号
-vim.opt.number = true
-vim.opt.relativenumber = true
--- 高亮所在行
-vim.opt.cursorline = true
--- 显示左侧图标指示列
-vim.opt.signcolumn = "yes"
--- 显示右侧参考线
-vim.opt.colorcolumn = "100"
--- Tab长度
+-- default tab size
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftround = true
 vim.opt.shiftwidth = 2
--- 空格替代tab
+-- use spaces instead of tabs
 vim.opt.expandtab = true
--- 新行对齐当前行
+-- smart indent
 vim.opt.autoindent = true
 vim.opt.smartindent = true
--- 搜索智能大小写
+-- smart search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
--- 边输入边搜索
-vim.opt.incsearch = true
--- 禁止折行
-vim.opt.wrap = false
--- 鼠标支持
-vim.opt.mouse = "a"
--- 禁止创建备份文件
+-- disable swap, backup and writebackup
 vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.swapfile = false
--- 更小更新时间
-vim.opt.updatetime = 300
--- 分屏方向
+-- split direction
 vim.opt.splitbelow = true
 vim.opt.splitright = true
--- 当文件被外部程序修改时，自动加载
+-- auto read file when changed
 vim.opt.autoread = true
--- diff 使用对角线
+-- mouse support
+vim.opt.mouse = "a"
+--------------
+--  visual  --
+--------------
+-- 8 lines from the top/bottom when scrolling
+vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 8
+-- use relative line numbers
+vim.opt.number = true
+vim.opt.relativenumber = true
+-- highlight current line
+vim.opt.cursorline = true
+-- display sign column
+vim.opt.signcolumn = "yes"
+-- display line column
+vim.opt.colorcolumn = "100"
+-- no wrap
+vim.opt.wrap = false
+-- incremental search
+vim.opt.incsearch = true
+-- diff symbol
 vim.opt.fillchars:append({ diff = "╱" })
 -- disable modeline
 vim.opt.modeline = false
+--------------
+--  others  --
+--------------
 -- windows powershell
 if vim.loop.os_uname().sysname == "Windows_NT" then
 	local powershell_options = {
