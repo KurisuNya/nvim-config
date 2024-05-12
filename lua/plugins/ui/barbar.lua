@@ -23,6 +23,7 @@ M.config = function()
 		tabpages = false,
 		highlight_visible = true,
 		modified = { button = icons.git.Modified },
+		focus_on_close = "left",
 		icons = {
 			diagnostics = {
 				[vim.diagnostic.severity.ERROR] = {
