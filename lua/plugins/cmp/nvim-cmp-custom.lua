@@ -1,6 +1,5 @@
 ---@diagnostic disable: undefined-field
 local icons = require("plugins.ui.icons")
-local compare = require("cmp.config.compare")
 
 local M = {}
 
@@ -48,9 +47,9 @@ end
 
 M.get_sources = function()
 	local sources = {
+		{ name = "async_path" },
 		{ name = "nvim_lsp", max_item_count = 350 },
 		{ name = "luasnip" },
-		{ name = "async_path" },
 		{ name = "buffer", max_item_count = 5 },
 	}
 	if _G.use_copilot then
@@ -61,8 +60,8 @@ end
 
 M.get_markdown_sources = function()
 	local sources = {
-		{ name = "buffer" },
 		{ name = "async_path" },
+		{ name = "buffer" },
 		{ name = "latex_symbols", option = { strategy = 2 } },
 	}
 	if _G.use_copilot then
@@ -70,34 +69,4 @@ M.get_markdown_sources = function()
 	end
 	return sources
 end
-
-local function lsp_scores(entry1, entry2)
-	local diff
-	if entry1.completion_item.score and entry2.completion_item.score then
-		diff = (entry2.completion_item.score * entry2.score) - (entry1.completion_item.score * entry1.score)
-	else
-		diff = entry2.score - entry1.score
-	end
-	return (diff < 0)
-end
-
-M.get_comparators = function()
-	local comparators = {
-		require("cmp-lspkind-priority").compare,
-		compare.offset,
-		compare.exact,
-		lsp_scores,
-		compare.score,
-		compare.recently_used,
-		compare.locality,
-		require("cmp-under-comparator").under,
-		compare.length,
-		compare.order,
-	}
-	if _G.use_copilot then
-		table.insert(comparators, 1, require("copilot_cmp.comparators").prioritize)
-	end
-	return comparators
-end
-
 return M

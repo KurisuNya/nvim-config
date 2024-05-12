@@ -28,9 +28,7 @@ M.keymap_list = {
 	["<CR>"] = cmp.mapping(function(fallback)
 		if not cmp.visible() then
 			fallback()
-			return
-		end
-		if cmp.get_selected_entry() then
+		elseif cmp.get_selected_entry() then
 			cmp.confirm({
 				behavior = cmp.ConfirmBehavior.Replace,
 				select = false,

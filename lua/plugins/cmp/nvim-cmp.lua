@@ -21,7 +21,6 @@ M.config = function()
 		},
 		mapping = cmp.mapping.preset.insert(require("core.keymaps.nvim-cmp").keymap_list),
 		sources = cmp.config.sources(custom.get_sources()),
-		sorting = { comparators = custom.get_comparators() },
 		formatting = {
 			fields = { "abbr", "kind", "menu" },
 			format = custom.cmp_format({
@@ -41,7 +40,6 @@ M.config = function()
 			}),
 		},
 	})
-
 	cmp.setup.cmdline("/", {
 		mapping = cmp.mapping.preset.cmdline(),
 		sources = { { name = "buffer" } },
@@ -53,7 +51,6 @@ M.config = function()
 			{ name = "cmdline", option = { ignore_cmds = { "Man", "!" } } },
 		}),
 	})
-
 	cmp.setup.filetype({ "TelescopePrompt" }, {
 		sources = {},
 	})
