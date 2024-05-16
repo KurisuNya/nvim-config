@@ -11,16 +11,16 @@ M.colorscheme_plugin = {
 			styles = {
 				comments = { italic = true },
 				keywords = { italic = true },
-				-- floats = "normal",
 			},
 			on_highlights = function(hl, c)
 				hl.TelescopePromptNormal = hl.TelescopeNormal
 				hl.TelescopePromptBorder = hl.TelescopeBorder
 				hl.TelescopePromptTitle = hl.TelescopeTitle
+				hl.LspSignatureActiveParameter = hl.Visual
+				hl.CursorLineNr = { fg = c.dark5 }
 			end,
 		})
 		vim.cmd.colorscheme("tokyonight-storm")
-		vim.api.nvim_set_hl(0, "LspSignatureActiveParameter", { link = "Visual" })
 	end,
 	lazy = false,
 }
