@@ -27,14 +27,6 @@ M.config = function()
 	local function on_attach(client, bufnr)
 		require("core.keymaps.lspconfig").lspconfig_on_attach(client, bufnr)
 	end
-	if plugin_exist("lsp-inlayhints.nvim") then
-		local lsp_inlayhints = require("lsp-inlayhints")
-		lsp_inlayhints.setup({ inlay_hints = { parameter_hints = { prefix = "" } } })
-		on_attach = function(client, bufnr)
-			require("core.keymaps.lspconfig").lspconfig_on_attach(client, bufnr)
-			lsp_inlayhints.on_attach(client, bufnr)
-		end
-	end
 
 	-- lsp-server settings
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()

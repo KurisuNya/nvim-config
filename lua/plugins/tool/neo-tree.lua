@@ -1,21 +1,15 @@
 local M = {}
 M.config = function()
 	local icons = require("plugins.ui.icons")
-	vim.fn.sign_define("DiagnosticSignError", {
-		text = icons.diagnostics.Error,
-		texthl = "DiagnosticSignError",
-	})
-	vim.fn.sign_define("DiagnosticSignWarn", {
-		text = icons.diagnostics.Warning,
-		texthl = "DiagnosticSignWarn",
-	})
-	vim.fn.sign_define("DiagnosticSignInfo", {
-		text = icons.diagnostics.Info,
-		texthl = "DiagnosticSignInfo",
-	})
-	vim.fn.sign_define("DiagnosticSignHint", {
-		text = icons.diagnostics.Hint,
-		texthl = "DiagnosticSignHint",
+	vim.diagnostic.config({
+		signs = {
+			text = {
+				[1] = icons.diagnostics.Error,
+				[2] = icons.diagnostics.Warning,
+				[3] = icons.diagnostics.Info,
+				[4] = icons.diagnostics.Hint,
+			},
+		},
 	})
 
 	vim.g.neo_tree_remove_legacy_commands = 1

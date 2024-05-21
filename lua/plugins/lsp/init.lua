@@ -40,7 +40,6 @@ local M = {
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
-			"lvimuser/lsp-inlayhints.nvim",
 			{
 				"folke/neoconf.nvim",
 				cmd = "Neoconf",
@@ -50,6 +49,20 @@ local M = {
 			{ "folke/neodev.nvim", opts = {} },
 		},
 		event = "VeryLazy",
+	},
+	{
+		"MysticalDevil/inlay-hints.nvim",
+		event = "LspAttach",
+		config = function()
+			require("inlay-hints").setup()
+		end,
+	},
+	{
+		"felpafel/inlay-hint.nvim",
+		event = "LspAttach",
+		config = function()
+			require("inlay-hint").setup({ virt_text_pos = "right_align" })
+		end,
 	},
 	{
 		"mfussenegger/nvim-jdtls",

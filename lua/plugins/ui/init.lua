@@ -116,11 +116,6 @@ return {
 		end,
 		event = "VeryLazy",
 	},
-	{
-		"anuvyklack/pretty-fold.nvim",
-		config = require("plugins.ui.pretty-fold").config,
-		event = "VeryLazy",
-	},
 	{ "RRethy/vim-illuminate", event = "VeryLazy" },
 	{ "karb94/neoscroll.nvim", opts = {}, event = "VeryLazy" },
 	{ "nacro90/numb.nvim", opts = {}, event = "VeryLazy" },

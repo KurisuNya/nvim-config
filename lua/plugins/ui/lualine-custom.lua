@@ -47,7 +47,7 @@ end
 local function lsp_get_client_name()
 	local client_names = {}
 	for _, client in
-		ipairs(vim.lsp.get_active_clients({
+		ipairs(vim.lsp.get_clients({
 			bufnr = vim.api.nvim_get_current_buf(),
 		}))
 	do

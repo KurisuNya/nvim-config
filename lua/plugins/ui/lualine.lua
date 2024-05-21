@@ -50,7 +50,14 @@ M.config = function()
 				},
 				{
 					noice.api.status.mode.get,
-					cond = noice.api.status.mode.has,
+					cond = function()
+						if not noice.api.status.mode.has() then
+							return false
+						elseif not noice.api.status.mode.get():find("@") then
+							return false
+						end
+						return true
+					end,
 				},
 			},
 			lualine_x = {
