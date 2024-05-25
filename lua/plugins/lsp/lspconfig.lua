@@ -122,22 +122,21 @@ M.config = function()
 	})
 
 	-- lsp-ui
-	local function lspSymbol(name, icon)
-		local hl = "DiagnosticSign" .. name
-		vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
-	end
 	local icons = require("plugins.ui.icons")
-	lspSymbol("Error", icons.diagnostics.Error)
-	lspSymbol("Info", icons.diagnostics.Info)
-	lspSymbol("Hint", icons.diagnostics.Hint)
-	lspSymbol("Warn", icons.diagnostics.Warning)
 	vim.diagnostic.config({
 		virtual_text = {
 			spacing = 4,
 			source = "if_many",
 			prefix = "●",
 		},
-		signs = true,
+		signs = {
+			text = {
+				[1] = icons.diagnostics.Error,
+				[2] = icons.diagnostics.Warning,
+				[3] = icons.diagnostics.Info,
+				[4] = icons.diagnostics.Hint,
+			},
+		},
 		underline = true,
 		update_in_insert = false,
 		severity_sort = true,

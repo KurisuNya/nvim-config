@@ -1,7 +1,13 @@
 ---@diagnostic disable: missing-fields
 local M = {}
 M.config = function()
-	require("nvim-ts-autotag").setup()
+	require("nvim-ts-autotag").setup({
+		opts = {
+			enable_rename = true,
+			enable_close = true,
+			enable_close_on_slash = false,
+		},
+	})
 	require("nvim-treesitter.configs").setup({
 		ensure_installed = {
 			"bash",
@@ -41,12 +47,6 @@ M.config = function()
 		highlight = {
 			enable = true,
 			additional_vim_regex_highlighting = false,
-		},
-		autotag = {
-			enable = true,
-			enable_rename = true,
-			enable_close = true,
-			enable_close_on_slash = true,
 		},
 		indent = {
 			enable = true,
