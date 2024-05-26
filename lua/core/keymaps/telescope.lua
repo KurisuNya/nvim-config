@@ -25,14 +25,6 @@ M.keys = {
 		desc = "Find String",
 	},
 	{
-		"<leader>fp",
-		"<Cmd>Telescope neovim-project discover<CR>",
-		mode = "n",
-		noremap = true,
-		silent = true,
-		desc = "Find project",
-	},
-	{
 		"<leader>fc",
 		"<Cmd>Telescope git_commits<CR>",
 		mode = "n",

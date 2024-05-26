@@ -1,16 +1,6 @@
 local M = {}
 M.config = function()
 	local icons = require("plugins.ui.icons")
-	vim.diagnostic.config({
-		signs = {
-			text = {
-				[1] = icons.diagnostics.Error,
-				[2] = icons.diagnostics.Warning,
-				[3] = icons.diagnostics.Info,
-				[4] = icons.diagnostics.Hint,
-			},
-		},
-	})
 
 	vim.g.neo_tree_remove_legacy_commands = 1
 	require("neo-tree").setup({

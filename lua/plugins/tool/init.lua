@@ -17,25 +17,17 @@ local M = {
 		event = "VeryLazy",
 	},
 
-	-- session
+	-- project
 	{
-		"coffebar/neovim-project",
-		init = function()
-			vim.opt.sessionoptions:append("globals")
-		end,
-		opts = {
-			projects = _G.project_dir,
-			last_session_on_startup = true,
-			dashboard_mode = true,
-		},
+		"gnikdroy/projections.nvim",
+		branch = "pre_release",
+		keys = require("core.keymaps.projections-nvim").keys,
+		config = require("plugins.tool.projections-nvim").config,
 		dependencies = {
-			"Shatur/neovim-session-manager",
-			"nvim-neo-tree/neo-tree.nvim",
 			"romgrk/barbar.nvim",
 		},
 		event = "VeryLazy",
 	},
-	{ "Shatur/neovim-session-manager" },
 
 	-- telescope
 	{
