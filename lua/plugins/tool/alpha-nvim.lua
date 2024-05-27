@@ -84,22 +84,9 @@ M.config = function()
 	end
 	dashboard.button = button
 
-	local Session = require("projections.session")
-	local function load_last_session()
-		if vim.fn.argc() ~= 0 then
-			return
-		end
-		local session_info = Session.info(vim.loop.cwd())
-		if session_info == nil then
-			Session.restore_latest()
-		else
-			Session.restore(vim.loop.cwd())
-		end
-	end
-	vim.api.nvim_create_user_command("LastSession", load_last_session, {})
 	dashboard.section.buttons.val = {
 		dashboard.button("p", "  Open Project", "<Cmd>Telescope projections<CR>"),
-		dashboard.button("s", "  Last Session", "<Cmd>LastSession<CR>"),
+		dashboard.button("s", "  Last Session", "<Cmd>ProjectionsLastSession<CR>"),
 		dashboard.button("h", "  File History", "<Cmd>Telescope oldfiles<CR>"),
 		dashboard.button("l", "󰒲  Lazy Manager", "<Cmd> Lazy <CR>"),
 		dashboard.button("m", "  Mason Manager", "<Cmd> Mason <CR>"),

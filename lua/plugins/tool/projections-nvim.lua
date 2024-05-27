@@ -1,4 +1,8 @@
 local M = {}
+M.init = function()
+	vim.opt.sessionoptions:append("localoptions")
+	vim.opt.sessionoptions:append("globals")
+end
 M.config = function()
 	require("projections").setup({
 		workspaces = _G.workspaces,
@@ -14,6 +18,17 @@ M.config = function()
 	require("telescope").load_extension("projections")
 
 	local Session = require("projections.session")
+	vim.api.nvim_create_user_command("ProjectionsLastSession", function()
+		if vim.fn.argc() ~= 0 then
+			return
+		end
+		local session_info = Session.info(vim.loop.cwd())
+		if session_info == nil then
+			Session.restore_latest()
+		else
+			Session.restore(vim.loop.cwd())
+		end
+	end, {})
 	vim.api.nvim_create_autocmd({ "VimLeavePre" }, {
 		callback = function()
 			Session.store(vim.loop.cwd())
@@ -27,7 +42,5 @@ M.config = function()
 			end
 		end,
 	})
-	vim.opt.sessionoptions:append("localoptions")
-	vim.opt.sessionoptions:append("globals")
 end
 return M

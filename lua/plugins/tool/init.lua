@@ -21,6 +21,7 @@ local M = {
 	{
 		"gnikdroy/projections.nvim",
 		branch = "pre_release",
+		init = require("plugins.tool.projections-nvim").init,
 		keys = require("core.keymaps.projections-nvim").keys,
 		config = require("plugins.tool.projections-nvim").config,
 		dependencies = {
