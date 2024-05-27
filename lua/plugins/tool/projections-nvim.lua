@@ -2,6 +2,14 @@ local M = {}
 M.config = function()
 	require("projections").setup({
 		workspaces = _G.workspaces,
+		sessions_directory = vim.fn.expand(vim.fn.stdpath("data") .. "/projections_sessions"),
+		store_hooks = {
+			pre = function()
+				if pcall(require, "neo-tree") then
+					vim.cmd([[Neotree action=close]])
+				end
+			end,
+		},
 	})
 	require("telescope").load_extension("projections")
 
