@@ -1,6 +1,5 @@
 local M = {}
 M.init = function()
-	vim.opt.sessionoptions:append("localoptions")
 	vim.opt.sessionoptions:append("globals")
 end
 M.config = function()
