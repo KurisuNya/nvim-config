@@ -102,7 +102,6 @@ local M = {
 	},
 	{
 		"folke/trouble.nvim",
-		branch = "dev",
 		keys = require("core.keymaps.trouble").keys,
 		opts = {},
 		event = "VeryLazy",

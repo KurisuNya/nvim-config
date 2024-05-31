@@ -1,3 +1,4 @@
+---@diagnostic disable: param-type-mismatch
 local M = {}
 M.init = function()
 	vim.opt.sessionoptions:append("globals")
