@@ -108,6 +108,7 @@ local M = {
 	},
 	{
 		"linux-cultist/venv-selector.nvim",
+		branch = "regexp",
 		config = require("plugins.lsp.venv-selector-nvim").config,
 		keys = require("core.keymaps.venv-selector-nvim").keys,
 		event = "VeryLazy",
