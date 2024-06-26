@@ -94,6 +94,11 @@ local M = {
 		config = require("plugins.tool.nvim-toggler").config,
 		event = "VeryLazy",
 	},
+	{
+		"echasnovski/mini.pairs",
+		config = require("plugins.tool.mini-pairs").config,
+		event = "VeryLazy",
+	},
 	{ "Darazaki/indent-o-matic", opts = {}, event = "BufRead" },
 	{ "numToStr/Comment.nvim", opts = {}, event = "VeryLazy" },
 	{ "kylechui/nvim-surround", opts = {}, event = "VeryLazy" },

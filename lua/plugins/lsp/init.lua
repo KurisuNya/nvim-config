@@ -8,7 +8,6 @@ local M = {
 		"nvim-treesitter/nvim-treesitter",
 		config = require("plugins.lsp.nvim-treesitter").config,
 		dependencies = {
-			"andymass/vim-matchup",
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
 		build = ":TSUpdate",
@@ -16,7 +15,6 @@ local M = {
 	},
 	{ "nvim-treesitter/nvim-treesitter-textobjects" },
 	{ "windwp/nvim-ts-autotag" },
-	{ "andymass/vim-matchup" },
 
 	-- mason
 	{ "williamboman/mason.nvim", opts = {}, event = "VeryLazy" },
@@ -61,7 +59,7 @@ local M = {
 		"felpafel/inlay-hint.nvim",
 		event = "LspAttach",
 		config = function()
-			require("inlay-hint").setup({ virt_text_pos = "right_align" })
+			require("inlay-hint").setup()
 		end,
 	},
 	{

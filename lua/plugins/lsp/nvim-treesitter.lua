@@ -50,10 +50,6 @@ M.config = function()
 		},
 		indent = {
 			enable = true,
-			disable = { "python" },
-		},
-		matchup = {
-			enable = true,
 		},
 		textobjects = {
 			select = {
