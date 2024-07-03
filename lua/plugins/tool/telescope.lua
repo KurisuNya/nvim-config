@@ -48,7 +48,7 @@ M.config = function()
 				use_delta = true,
 				side_by_side = false,
 				use_custom_command = nil,
-				diff_context_lines = vim.o.scrolloff,
+				vim_diff_opts = { ctxlen = 8 },
 				entry_format = "state #$ID, $STAT, $TIME",
 				mappings = {
 					i = {
