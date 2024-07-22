@@ -125,7 +125,7 @@ M.config = function()
 	local icons = require("plugins.ui.icons")
 	vim.diagnostic.config({
 		virtual_text = {
-			spacing = 4,
+			spacing = 2,
 			source = "if_many",
 			prefix = "●",
 		},
