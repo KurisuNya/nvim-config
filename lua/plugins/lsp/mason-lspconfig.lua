@@ -9,6 +9,7 @@ M.config = function()
 			"lemminx",
 			"lua_ls",
 			"pyright",
+			"taplo",
 		},
 	})
 end
