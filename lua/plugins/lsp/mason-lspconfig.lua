@@ -10,6 +10,7 @@ M.config = function()
 			"lua_ls",
 			"pyright",
 			"taplo",
+			"jsonls",
 		},
 	})
 end

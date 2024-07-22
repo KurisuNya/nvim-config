@@ -33,6 +33,7 @@ M.config = function()
 	local simple_servers = {
 		"bashls",
 		"lemminx",
+		"jsonls",
 		"taplo",
 	}
 	for _, server in ipairs(simple_servers) do
