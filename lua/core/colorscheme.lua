@@ -23,6 +23,7 @@ M.colorscheme_plugin = {
 		vim.cmd.colorscheme("tokyonight-storm")
 	end,
 	lazy = false,
+	priority = 10000,
 }
 M.lualine = "tokyonight"
 return M
