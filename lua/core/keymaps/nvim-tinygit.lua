@@ -15,5 +15,10 @@ M.keys = function()
 		silent = true,
 		desc = "Git History File",
 	})
+	vim.keymap.set("n", "<leader>gs", require("tinygit").interactiveStaging, {
+		noremap = true,
+		silent = true,
+		desc = "Git History File",
+	})
 end
 return M
