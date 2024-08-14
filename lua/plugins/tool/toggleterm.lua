@@ -12,6 +12,10 @@ M.config = function()
 		direction = "float",
 		highlights = { FloatBorder = { guifg = "#29a4bd" } },
 		float_opts = { border = "rounded" },
+		on_create = function(term)
+			term.display_name = "Terminal " .. term.id
+			require("toggleterm.ui").update_float(term)
+		end,
 	})
 end
 return M
