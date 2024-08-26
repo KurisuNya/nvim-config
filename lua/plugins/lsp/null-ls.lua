@@ -24,7 +24,13 @@ M.config = function()
 		local cspell = require("cspell")
 		local cspell_config = {
 			find_json = function(cwd)
-				return vim.fn.expand(vim.fn.stdpath("data") .. "/cspell.json")
+				local file_name = ".cspell.json"
+				local local_config = vim.fn.expand(vim.inspect(cwd) .. "/" .. file_name)
+				local global_config = vim.fn.expand(vim.fn.stdpath("data") .. "/" .. file_name)
+				if vim.fn.filereadable(local_config) == 1 then
+					return local_config
+				end
+				return global_config
 			end,
 		}
 		if vim.fn.filereadable(cspell_config.find_json()) == 0 then
