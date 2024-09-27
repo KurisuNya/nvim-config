@@ -61,7 +61,6 @@ M.cmp = {
 	spell = "󰓆",
 	tmux = "",
 	treesitter = "",
-	undefined = "",
 }
 
 M.diagnostics = {

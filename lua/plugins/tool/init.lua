@@ -161,7 +161,7 @@ local M = {
 			vim.g.table_mode_tableize_map = "<leader><Bar>"
 			vim.g.table_mode_corner = "|"
 		end,
-		ft = "markdown",
+		event = "VeryLazy",
 	},
 
 	-- other
