@@ -72,9 +72,9 @@ return {
 		},
 	},
 	{
-		"yorickpeterse/nvim-pqf",
-		config = require("plugins.ui.nvim-pqf").config,
-		event = "VeryLazy",
+		"stevearc/quicker.nvim",
+		opts = {},
+		event = "FileType qf",
 	},
 	{
 		"lukas-reineke/virt-column.nvim",

@@ -6,7 +6,7 @@ M.config = function()
 	local function plugin_exist(plugin)
 		return require("lazy.core.config").spec.plugins[plugin] ~= nil
 	end
-	local get_root_dir = require("lspconfig.server_configurations.jdtls").default_config.root_dir
+	local get_root_dir = require("lspconfig.configs.jdtls").default_config.root_dir
 	local function get_project_name(root_dir)
 		return root_dir and vim.fs.basename(root_dir)
 	end
