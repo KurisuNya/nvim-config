@@ -51,20 +51,6 @@ local M = {
 		},
 		event = "VeryLazy",
 	},
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		build = ":Copilot auth",
-		opts = {
-			suggestion = { enabled = false },
-			panel = { enabled = false },
-			filetypes = {
-				markdown = true,
-				help = true,
-			},
-		},
-	},
-	{ "KurisuNya/copilot-cmp", opts = {} },
 	{ "ofirgall/cmp-lspkind-priority", opts = {} },
 	{ "abecodes/tabout.nvim" },
 	{ "windwp/nvim-autopairs" },
@@ -79,6 +65,17 @@ local M = {
 
 ---@diagnostic disable-next-line: undefined-field
 if _G.use_copilot then
+	table.insert(M, {
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		build = ":Copilot auth",
+		opts = {
+			suggestion = { enabled = false },
+			panel = { enabled = false },
+			filetypes = { markdown = true, help = true },
+		},
+	})
+	table.insert(M, { "KurisuNya/copilot-cmp", opts = {} })
 	for _, plugin in ipairs(M) do
 		local from, _ = plugin[1]:find("nvim%-cmp")
 		if from then
