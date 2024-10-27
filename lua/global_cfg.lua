@@ -42,10 +42,23 @@ KurisuNya.config.treesitter_ensure_installed = {
 }
 -- stylua: ignore end
 KurisuNya.config.lsp_ensure_installed = {
+	"bash-language-server",
+	"clangd",
+	"jdtls",
+	"json-lsp",
+	"lemminx",
+	"lua-language-server",
+	"pyright",
 	"taplo",
 }
-KurisuNya.config.dap_ensure_installed = {}
-KurisuNya.config.linter_ensure_installed = {}
+KurisuNya.config.dap_ensure_installed = {
+	"bash-debug-adapter",
+	"codelldb",
+	"debugpy",
+	"java-debug-adapter",
+	"java-test",
+}
+KurisuNya.config.linter_ensure_installed = { "shellcheck" }
 KurisuNya.config.formatter_ensure_installed = {
 	"black",
 	"clang-format",
