@@ -47,9 +47,6 @@ end
 
 M.plugin_exist = function(name)
 	local exists = require("lazy.core.config").spec.plugins[name] ~= nil
-	if not exists then
-		vim.notify("Plugin " .. name .. " does not exist", "error")
-	end
 	return exists
 end
 
