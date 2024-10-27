@@ -1,39 +1,19 @@
---------------------------------
---                            --
---    plugin-manager-setup    --
---                            --
---------------------------------
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+local lazy_path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazy_path) then
 	vim.fn.system({
 		"git",
 		"clone",
 		"https://github.com/KurisuNya/lazy.nvim.git",
-		lazypath,
+		lazy_path,
 	})
 end
-vim.opt.rtp:prepend(lazypath)
+vim.opt.rtp:prepend(lazy_path)
 require("lazy").setup({
-	--------------------------
-	-- normal dependencies --
-	--------------------------
-	-- utils
-	{ "nvim-lua/plenary.nvim" },
-	{ "kevinhwang91/promise-async" },
-	{ "nvim-neotest/nvim-nio" },
-	{ "antoinemadec/FixCursorHold.nvim" },
-	-- ui dependence
-	{ "MunifTanjim/nui.nvim" },
-	{
-		"nvim-tree/nvim-web-devicons",
-		opts = { color_icons = true, default = true, strict = true },
-	},
-
-	{ require("core.colorscheme").colorscheme_plugin },
-	{ require("plugins.ui") },
-	{ require("plugins.cmp") },
-	{ require("plugins.lsp") },
-	{ require("plugins.tool") },
+	require("plugins.dependencies"),
+	require("plugins.ui"),
+	require("plugins.editor"),
+	require("plugins.coding"),
+	require("plugins.language"),
 }, {
 	defaults = {
 		lazy = true,

@@ -25,8 +25,6 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 -- auto read file when changed
 vim.opt.autoread = true
--- mouse support
-vim.opt.mouse = "a"
 --------------
 --  visual  --
 --------------
@@ -67,23 +65,8 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
 		vim.opt[option] = value
 	end
 end
--- add osc52 clipboard if system clipboard is not available
-local function check_clipboard()
-	if
-		os.getenv("TMUX")
-		and vim.fn.executable("tmux") == 1
-		and vim.fn.executable("pbpaste") == 1
-		and not vim.health.cmd_ok("pbpaste")
-	then
-		return false
-	end
-	local clipboard_tool = vim.fn["provider#clipboard#Executable"]()
-	if vim.g.clipboard ~= nil and clipboard_tool == "" or clipboard_tool:find("^%s*$") then
-		return false
-	end
-	return true
-end
-if not check_clipboard() then
+-- clipboard for ssh
+if os.getenv("SSH_TTY") then
 	vim.g.clipboard = {
 		name = "OSC 52",
 		copy = {

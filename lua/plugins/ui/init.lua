@@ -1,10 +1,20 @@
----@diagnostic disable: inject-field
-------------------
---  ui-plugins  --
-------------------
-return {
-
-	-- bars and lines
+---@diagnostic disable: missing-fields
+require("plugins.ui.diagnostic")
+local M = {
+	-- colorscheme
+	{
+		"folke/tokyonight.nvim",
+		config = require("plugins.ui.tokyonight").config,
+		lazy = false,
+		priority = 1000,
+	},
+	-- dashboard
+	{
+		"goolord/alpha-nvim",
+		config = require("plugins.ui.alpha-nvim").config,
+		event = "VimEnter",
+	},
+	-- bar and line
 	{
 		"romgrk/barbar.nvim",
 		init = function()
@@ -12,12 +22,15 @@ return {
 			vim.opt.showtabline = 0
 		end,
 		config = require("plugins.ui.barbar").config,
-		keys = require("core.keymaps.barbar").keys,
+		keys = require("keymaps.plugins.barbar").keys,
 		event = "BufReadPre",
 	},
 	{
 		"nvim-lualine/lualine.nvim",
 		init = function()
+			vim.opt.showmode = false
+			vim.opt.ruler = false
+			vim.opt.cmdheight = 0
 			vim.g.lualine_laststatus = vim.o.laststatus
 			if vim.fn.argc(-1) > 0 then
 				vim.o.statusline = " "
@@ -29,95 +42,29 @@ return {
 		event = "BufReadPre",
 	},
 	{ "linrongbin16/lsp-progress.nvim", opts = {} },
-
-	-- notify
-	{
-		"rcarriga/nvim-notify",
-		opts = {
-			render = "wrapped-compact",
-			stages = "static",
-			timeout = 4000,
-		},
-		event = "VeryLazy",
-	},
-
 	-- better ui
 	{
+		"stevearc/dressing.nvim",
+		init = require("plugins.ui.dressing-nvim").init,
+		config = require("plugins.ui.dressing-nvim").config,
+	},
+	{
 		"KurisuNya/noice.nvim",
-		keys = require("core.keymaps.lspconfig").noice_keys,
+		keys = require("keymaps.plugins.noice").keys,
 		config = require("plugins.ui.noice").config,
 		event = "VeryLazy",
 	},
 	{
-		"stevearc/dressing.nvim",
-		init = function()
-			---@diagnostic disable-next-line: duplicate-set-field
-			vim.ui.select = function(...)
-				require("lazy").load({ plugins = { "dressing.nvim" } })
-				return vim.ui.select(...)
-			end
-			---@diagnostic disable-next-line: duplicate-set-field
-			vim.ui.input = function(...)
-				require("lazy").load({ plugins = { "dressing.nvim" } })
-				return vim.ui.input(...)
-			end
-		end,
-		opts = {
-			input = {
-				insert_only = false,
-			},
-			select = {
-				backend = { "telescope" },
-			},
-		},
+		"rcarriga/nvim-notify",
+		opts = { render = "wrapped-compact", stages = "static", timeout = 4000 },
+		event = "VeryLazy",
 	},
-	{
-		"stevearc/quicker.nvim",
-		opts = {},
-		event = "FileType qf",
-	},
+	{ "stevearc/quicker.nvim", opts = {}, event = "FileType qf" },
 	{
 		"lukas-reineke/virt-column.nvim",
-		init = function()
-			vim.api.nvim_set_hl(0, "VirtColumn", { fg = "#3b4261", bg = "NONE" })
-		end,
-		opts = {
-			char = "▕",
-			highlight = "VirtColumn",
-		},
+		opts = { char = "▕", highlight = "VirtColumn" },
 		event = "VeryLazy",
 	},
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		config = require("plugins.ui.indent-blankline").config,
-		event = "VeryLazy",
-	},
-	{
-		"NvChad/nvim-colorizer.lua",
-		config = function()
-			require("colorizer").setup({
-				filetypes = { "*" },
-				user_default_options = {
-					RRGGBBAA = true,
-					AARRGGBB = true,
-					tailwind = true,
-					names = false,
-					always_update = true,
-				},
-			})
-		end,
-		event = "VeryLazy",
-	},
-	{
-		"machakann/vim-highlightedyank",
-		config = function()
-			vim.g.highlightedyank_highlight_duration = 400
-			vim.b.highlightedyank_highlight_duration = 400
-		end,
-		event = "VeryLazy",
-	},
-	{ "RRethy/vim-illuminate", event = "VeryLazy" },
-	{ "karb94/neoscroll.nvim", opts = {}, event = "VeryLazy" },
-	{ "nacro90/numb.nvim", opts = {}, event = "VeryLazy" },
-	{ "nvimdev/hlsearch.nvim", opts = {}, event = "VeryLazy" },
+	{ "stevearc/stickybuf.nvim", opts = {}, event = "VeryLazy" },
 }
+return M

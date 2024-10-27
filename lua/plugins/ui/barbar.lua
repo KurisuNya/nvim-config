@@ -1,24 +1,8 @@
 local M = {}
 M.config = function()
 	local icons = require("plugins.ui.icons")
-	local function get_color(group, attr)
-		return vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(group)), attr)
-	end
 
-	vim.api.nvim_set_hl(0, "BufferCurrentSign", {
-		bg = get_color("BufferCurrentSign", "bg#"),
-		fg = get_color("Title", "fg#"),
-	})
-	vim.api.nvim_set_hl(0, "BufferVisibleSign", {
-		bg = get_color("BufferVisibleSign", "bg#"),
-		fg = get_color("BufferInactive", "fg#"),
-	})
-	vim.api.nvim_set_hl(0, "BufferInactiveSign", {
-		bg = get_color("BufferInactiveSign", "bg#"),
-		fg = get_color("BufferInactive", "fg#"),
-	})
-
-	require("barbar").setup({
+	local opts = {
 		animation = false,
 		tabpages = false,
 		highlight_visible = true,
@@ -49,12 +33,16 @@ M.config = function()
 			inactive = { separator = { left = " ", right = "" } },
 			pinned = { button = icons.ui.pinned, filename = true },
 		},
-		sidebar_filetypes = {
-			["neo-tree"] = { event = "BufWipeout", text = "FILE EXPLORER" },
-		},
 		maximum_padding = 1,
 		minimum_padding = 1,
 		no_name_title = "Empty",
-	})
+	}
+
+	if KurisuNya.utils.plugin_exist("neo-tree.nvim") then
+		opts.sidebar_filetypes = {
+			["neo-tree"] = { event = "BufWipeout", text = "FILE EXPLORER" },
+		}
+	end
+	require("barbar").setup(opts)
 end
 return M
