@@ -24,8 +24,6 @@ Welcome to fork!!! 😊
 
 the macro key is remapped to `<leader>M`
 
-other mappings can be found in `lua/core/keymaps`
-
 ## Screenshots
 
 ### Dashboard
