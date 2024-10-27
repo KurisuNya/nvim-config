@@ -104,7 +104,7 @@ local M = {
 			{
 				"mfussenegger/nvim-dap",
 				keys = require("keymaps.plugins.nvim-dap").keys,
-				dependencies = { "jay-babu/mason-nvim-dap.nvim" },
+				dependencies = { "jay-babu/mason-nvim-dap.nvim", opts = { handlers = {} } },
 			},
 			{
 				"mfussenegger/nvim-dap-python",

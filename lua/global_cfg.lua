@@ -33,7 +33,7 @@ KurisuNya.config.workspaces = {
 -- stylua: ignore start
 KurisuNya.config.treesitter_ensure_installed = {
 	"bash", "c", "comment", "cpp", "css",
-	"diff", "gitcommit", "gitignore", "html", "java",
+	"diff", "fish", "gitcommit", "gitignore", "html", "java",
 	"javascript", "jsdoc", "json", "jsonc", "lua",
 	"luadoc", "luap", "markdown", "markdown_inline", "matlab",
 	"ninja", "php", "python", "query", "regex",
