@@ -5,6 +5,10 @@ M.keys = function()
 		nvim_dap_ui.toggle({ reset = true })
 		PluginVar.debugui = not PluginVar.debugui
 	end, { noremap = true, silent = true, desc = "Dap UI Toggle" })
+
+	vim.keymap.set("n", "<leader>de", function()
+		nvim_dap_ui.eval()
+	end, { noremap = true, silent = true, desc = "Dap UI Eval" })
 end
 M.normal_mappings = {
 	edit = "e",
