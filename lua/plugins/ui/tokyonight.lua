@@ -39,18 +39,18 @@ M.config = function()
 	-- nvim-dap-ui
 	vim.api.nvim_set_hl(0, "DapBreakpoint", {
 		ctermbg = 0,
-		fg = KurisuNya.utils.get_hl_color("DiagnosticError", "fg#"),
-		bg = KurisuNya.utils.get_hl_color("CursorLine", "bg#"),
+		fg = KurisuNya.utils.get_hl_color("DiagnosticVirtualTextError", "fg#"),
+		bg = KurisuNya.utils.get_hl_color("DiagnosticVirtualTextError", "bg#"),
 	})
 	vim.api.nvim_set_hl(0, "DapLogPoint", {
 		ctermbg = 0,
-		fg = KurisuNya.utils.get_hl_color("DiagnosticInfo", "fg#"),
-		bg = KurisuNya.utils.get_hl_color("CursorLine", "bg#"),
+		fg = KurisuNya.utils.get_hl_color("DiagnosticVirtualTextInfo", "fg#"),
+		bg = KurisuNya.utils.get_hl_color("DiagnosticVirtualTextInfo", "bg#"),
 	})
 	vim.api.nvim_set_hl(0, "DapStopped", {
 		ctermbg = 0,
-		fg = KurisuNya.utils.get_hl_color("diagnosticHint", "fg#"),
-		bg = KurisuNya.utils.get_hl_color("CursorLine", "bg#"),
+		fg = KurisuNya.utils.get_hl_color("DiagnosticVirtualTextHint", "fg#"),
+		bg = KurisuNya.utils.get_hl_color("DiagnosticVirtualTextHint", "bg#"),
 	})
 end
 return M
