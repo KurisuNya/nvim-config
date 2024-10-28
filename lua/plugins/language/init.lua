@@ -34,9 +34,14 @@ local M = {
 				config = false,
 				dependencies = { "nvim-lspconfig" },
 			},
-			{ "folke/neodev.nvim", opts = {} },
 		},
 		event = "VeryLazy",
+	},
+	{
+		"folke/lazydev.nvim",
+		dependencies = { { "Bilal2453/luvit-meta" } },
+		opts = { library = { { path = "luvit-meta/library", words = { "vim%.uv" } } } },
+		ft = "lua",
 	},
 	{
 		"mfussenegger/nvim-jdtls",

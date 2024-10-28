@@ -127,6 +127,9 @@ M.get_normal_sources = function()
 	if KurisuNya.config.use_copilot then
 		table.insert(sources, { name = "copilot" })
 	end
+	if KurisuNya.utils.plugin_exist("lazydev.nvim") then
+		table.insert(sources, { name = "lazydev", group_index = 0 })
+	end
 	return sources
 end
 
