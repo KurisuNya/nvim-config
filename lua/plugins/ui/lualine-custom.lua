@@ -115,7 +115,7 @@ M.source = {
 		cond = function()
 			return not is_dap_started() and space_enough()
 		end,
-		color = { fg = KurisuNya.utils.get_hl_color("Comment", "fg#") },
+		color = { fg = KurisuNya.utils.get_hl_color("LualineLsp", "fg#") },
 		icon = { "", align = "right", padding = { left = 0, right = 1 } },
 		create_autocmd = function()
 			vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
@@ -133,7 +133,7 @@ M.source = {
 		cond = function()
 			return is_dap_started() and space_enough()
 		end,
-		color = { fg = KurisuNya.utils.get_hl_color("Debug", "fg#") },
+		color = { fg = KurisuNya.utils.get_hl_color("LualineDebug", "fg#") },
 	},
 }
 M.space_enough = space_enough
