@@ -4,6 +4,7 @@ M.init = function()
 	vim.opt.sessionoptions:append("globals")
 end
 M.config = function()
+	local loop = (vim.uv or vim.loop)
 	require("projections").setup({
 		workspaces = KurisuNya.config.workspaces,
 		sessions_directory = vim.fn.expand(vim.fn.stdpath("data") .. "/projections_sessions"),
@@ -28,23 +29,23 @@ M.config = function()
 		if vim.fn.argc() ~= 0 then
 			return
 		end
-		local session_info = Session.info(vim.loop.cwd())
+		local session_info = Session.info(loop.cwd())
 		if session_info == nil then
 			Session.restore_latest()
 		else
-			Session.restore(vim.loop.cwd())
+			Session.restore(loop.cwd())
 		end
 	end, {})
 	vim.api.nvim_create_autocmd({ "VimLeavePre" }, {
 		callback = function()
-			Session.store(vim.loop.cwd())
+			Session.store(loop.cwd())
 		end,
 	})
 	local switcher = require("projections.switcher")
 	vim.api.nvim_create_autocmd({ "VimEnter" }, {
 		callback = function()
 			if vim.fn.argc() == 0 then
-				switcher.switch(vim.loop.cwd())
+				switcher.switch(loop.cwd())
 			end
 		end,
 	})

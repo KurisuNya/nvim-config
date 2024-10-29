@@ -184,7 +184,7 @@ local M = {
 	{ "Darazaki/indent-o-matic", opts = {}, event = "BufRead" },
 }
 -- linux
-if vim.loop.os_uname().sysname == "Linux" then
+if KurisuNya.utils.is_linux() then
 	local linux_plugins = {
 		{ "h-hg/fcitx.nvim", event = "VeryLazy" },
 		{

@@ -10,6 +10,9 @@ end
 M.is_windows = function()
 	return M.get_os():find("Windows") ~= nil
 end
+M.is_linux = function()
+	return M.get_os():find("Linux") ~= nil
+end
 M.get_hl_color = function(group, attr)
 	return vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(group)), attr)
 end
