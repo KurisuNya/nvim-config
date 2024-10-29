@@ -5,8 +5,8 @@ M.config = function()
 	local opts = {
 		options = {
 			globalstatus = vim.o.laststatus == 3,
-			section_separators = { left = "", right = "" },
-			component_separators = { left = "", right = "" },
+			section_separators = KurisuNya.config.lualine_section_separators,
+			component_separators = KurisuNya.config.lualine_component_separators,
 		},
 		extensions = { "lazy" },
 		sections = {

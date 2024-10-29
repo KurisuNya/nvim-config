@@ -10,7 +10,11 @@ M.config = function()
 		end,
 		open_mapping = require("keymaps.plugins.toggleterm").toggle_everywhere,
 		direction = "float",
-		highlights = { FloatBorder = { guifg = "#29a4bd" } },
+		highlights = {
+			FloatBorder = {
+				guifg = KurisuNya.utils.get_hl_color("FloatBorder", "fg#"),
+			},
+		},
 		float_opts = { border = "rounded" },
 		on_create = function(term)
 			term.display_name = "Terminal " .. term.id
