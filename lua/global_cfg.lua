@@ -30,11 +30,6 @@ end
 M.use_copilot = true
 -- configs
 M.workspaces = {
-	{ "~/Documents/Projects/Develop", {} },
-	{ "~/Documents/Projects/Reference", {} },
-	{ "~/Documents/Projects/Fork", {} },
-	{ "~/Documents/Projects/Test", {} },
-	{ "~/Documents/Projects/HomeWork", {} },
 	"~/.config",
 	"~/.local/share/nvim/lazy",
 }
