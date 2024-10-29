@@ -62,7 +62,8 @@ M.telescope_livegrep_args = {
 	"--glob", "!**/node_modules/*",
 }
 M.telescope_find_files_args = {
-	"fd", "--type", "file", "--hidden",
+	"fd", "--type", "file",
+	"--hidden", "--color", "never",
 	"-E", "**/.git/*",
 	"-E", "**/node_modules/*",
 }
