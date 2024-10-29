@@ -16,7 +16,7 @@ M.config = function()
 	local linters = {
 		diagnostics.fish,
 	}
-	if vim.loop.os_uname().sysname == "Windows_NT" then
+	if KurisuNya.utils.is_windows() then
 		table.insert(linters, diagnostics.codespell)
 	else
 		local cspell = require("cspell")

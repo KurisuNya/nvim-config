@@ -164,10 +164,8 @@ local M = {
 		event = "VeryLazy",
 	},
 }
-if vim.loop.os_uname().sysname ~= "Windows_NT" then
-	local plugins = {
-		{ "davidmh/cspell.nvim" },
-	}
+if not KurisuNya.utils.is_windows() then
+	local plugins = { { "davidmh/cspell.nvim" } }
 	for _, plugin in ipairs(plugins) do
 		table.insert(M, plugin)
 	end

@@ -5,7 +5,7 @@ M.config = function()
 		return
 	end
 	local path = mason_registry.get_package("debugpy"):get_install_path()
-	if vim.loop.os_uname().sysname == "Windows_NT" then
+	if KurisuNya.utils.is_windows() then
 		require("dap-python").setup(path .. "/venv/Scripts/python.exe")
 	else
 		require("dap-python").setup(path .. "/venv/bin/python")

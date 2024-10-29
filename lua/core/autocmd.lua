@@ -60,7 +60,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 -- windows auto switch input method
-if vim.loop.os_uname().sysname == "Windows_NT" and vim.fn.executable("im-select") == 1 then
+if KurisuNya.utils.is_windows() and vim.fn.executable("im-select") == 1 then
 	local im_english = "im-select 1033"
 	local im_chinese = "im-select 2052"
 	vim.api.nvim_command("autocmd VimEnter * :silent :!" .. im_english)
