@@ -1,8 +1,7 @@
 ---@diagnostic disable: missing-fields
 local M = {}
-M.config = function()
+M.config = function(name)
 	require("tokyonight").setup({
-		style = "storm",
 		lualine_bold = true,
 		styles = {
 			comments = { italic = true },
@@ -23,7 +22,7 @@ M.config = function()
 			hl.BufferVisibleSign = { fg = hl.BufferInactive.fg, bg = hl.BufferVisible.bg }
 			hl.BufferInactiveSign = hl.BufferInactive
 			-- indent-blankline
-			hl.IBLSelected = { fg = hl.IncSearch.bg }
+			hl.IblScope = { fg = hl.IncSearch.bg }
 			-- nvim-dap-ui
 			hl.DapBreakpoint = hl.DiagnosticVirtualTextError
 			hl.DapLogPoint = hl.DiagnosticVirtualTextInfo
@@ -33,6 +32,6 @@ M.config = function()
 			hl.LualineDebug = hl.Debug
 		end,
 	})
-	vim.cmd.colorscheme("tokyonight-storm")
+	vim.cmd.colorscheme(name)
 end
 return M

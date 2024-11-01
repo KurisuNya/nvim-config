@@ -29,6 +29,7 @@ end
 -- flags
 M.use_copilot = true
 -- configs
+M.colorscheme = "tokyonight-storm"
 M.workspaces = {
 	"~/.config",
 	"~/.local/share/nvim/lazy",

@@ -2,12 +2,7 @@
 require("plugins.ui.diagnostic")
 local M = {
 	-- colorscheme
-	{
-		"folke/tokyonight.nvim",
-		config = require("plugins.ui.tokyonight").config,
-		lazy = false,
-		priority = 1000,
-	},
+	require("plugins.ui.colorscheme"),
 	-- dashboard
 	{
 		"goolord/alpha-nvim",
