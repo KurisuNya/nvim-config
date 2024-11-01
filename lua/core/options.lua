@@ -46,6 +46,8 @@ vim.opt.wrap = false
 vim.opt.incsearch = true
 -- diff symbol
 vim.opt.fillchars:append({ diff = "╱" })
+-- eob symbol
+vim.opt.fillchars:append({ eob = " " })
 -- disable modeline
 vim.opt.modeline = false
 --------------

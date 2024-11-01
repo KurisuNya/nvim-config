@@ -3,18 +3,35 @@ local colorscheme_plugin_map = {
 	["tokyonight-storm"] = "folke/tokyonight.nvim",
 	["tokyonight-day"] = "folke/tokyonight.nvim",
 	["tokyonight-moon"] = "folke/tokyonight.nvim",
+
 	["catppuccin-latte"] = "catppuccin/nvim",
 	["catppuccin-frappe"] = "catppuccin/nvim",
 	["catppuccin-macchiato"] = "catppuccin/nvim",
 	["catppuccin-mocha"] = "catppuccin/nvim",
+
+	["material-darker"] = "marko-cerovac/material.nvim",
+	["material-lighter"] = "marko-cerovac/material.nvim",
+	["material-oceanic"] = "marko-cerovac/material.nvim",
+	["material-palenight"] = "marko-cerovac/material.nvim",
+	["material-deep-ocean"] = "marko-cerovac/material.nvim",
+
+	["ayu-dark"] = "Shatur/neovim-ayu",
+	["ayu-light"] = "Shatur/neovim-ayu",
+	["ayu-mirage"] = "Shatur/neovim-ayu",
 }
+
+local simple_config = function(name)
+	vim.cmd.colorscheme(name)
+end
 local plugin_config_map = {
 	["folke/tokyonight.nvim"] = function(name)
 		require("plugins.ui.colorscheme.tokyonight").config(name)
 	end,
-	["catppuccin/nvim"] = function(name)
-		require("plugins.ui.colorscheme.catppuccino").config(name)
+	["catppuccin/nvim"] = simple_config,
+	["marko-cerovac/material.nvim"] = function(name)
+		require("plugins.ui.colorscheme.material").config(name)
 	end,
+	["Shatur/neovim-ayu"] = simple_config,
 }
 
 local switch_to_colorscheme = function(name)
@@ -51,6 +68,8 @@ end
 local M = {
 	{ "folke/tokyonight.nvim" },
 	{ "catppuccin/nvim", name = "catppuccin" },
+	{ "marko-cerovac/material.nvim" },
+	{ "Shatur/neovim-ayu" },
 }
 local colorscheme = KurisuNya.config.colorscheme
 local plugin_name = colorscheme_plugin_map[colorscheme]
