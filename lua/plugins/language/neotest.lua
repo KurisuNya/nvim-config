@@ -8,7 +8,7 @@ M.config = function()
 				runner = "pytest",
 				python = function()
 					if KurisuNya.utils.plugin_exist("venv-selector.nvim") then
-						return require("venv-selector").get_active_path()
+						return require("venv-selector").python()
 					end
 				end,
 			}),
