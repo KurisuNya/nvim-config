@@ -134,10 +134,7 @@ local M = {
 	-- test
 	{
 		"nvim-neotest/neotest",
-		dependencies = {
-			"nvim-neotest/neotest-python",
-			"rcasia/neotest-java",
-		},
+		dependencies = { "nvim-neotest/neotest-python" },
 		init = function()
 			table.insert(KurisuNya.config.close_before_session_filetypes, "neotest-summary")
 		end,

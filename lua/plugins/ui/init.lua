@@ -45,6 +45,7 @@ local M = {
 	},
 	{
 		"KurisuNya/noice.nvim",
+		commit = "0893a5d",
 		keys = require("keymaps.plugins.noice").keys,
 		config = require("plugins.ui.noice").config,
 		event = "VeryLazy",
