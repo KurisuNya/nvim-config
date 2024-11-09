@@ -6,19 +6,25 @@ end
 M.keymaps = {
 	hover_doc = {
 		key = "H",
-		cmd = vim.lsp.buf.hover,
+		cmd = function()
+			return vim.lsp.buf.hover()
+		end,
 		mode = "n",
 		opts = extend_desc("Lsp Hover Doc"),
 	},
 	signature_help = {
 		key = "gH",
-		cmd = vim.lsp.buf.signature_help,
+		cmd = function()
+			return vim.lsp.buf.signature_help()
+		end,
 		mode = "n",
 		opts = extend_desc("Lsp Signature Help"),
 	},
 	signature_help_insert = {
 		key = "<C-h>",
-		cmd = vim.lsp.buf.signature_help,
+		cmd = function()
+			return vim.lsp.buf.signature_help()
+		end,
 		mode = "i",
 		opts = extend_desc("Lsp Signature Help"),
 	},
