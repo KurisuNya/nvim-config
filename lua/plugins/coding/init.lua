@@ -10,7 +10,7 @@ local M = {
 		config = require("plugins.coding.nvim-treesitter").config,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
-			{ "nvim-treesitter/nvim-treesitter-context", opts = {} },
+			{ "nvim-treesitter/nvim-treesitter-context", opts = { max_lines = 3 } },
 		},
 		build = ":TSUpdate",
 		event = "VeryLazy",

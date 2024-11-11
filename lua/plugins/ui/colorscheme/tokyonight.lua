@@ -30,6 +30,11 @@ M.config = function(name)
 			-- lualine
 			hl.LualineLsp = hl.Comment
 			hl.LualineDebug = hl.Debug
+			-- treesitter context
+			hl.TreesitterContextLineNumber = {
+				fg = hl.CursorLineNr.fg,
+				bg = hl.TreesitterContext.bg,
+			}
 		end,
 	})
 	vim.cmd.colorscheme(name)
