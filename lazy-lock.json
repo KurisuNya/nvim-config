@@ -82,6 +82,7 @@
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
   "projections.nvim": { "branch": "pre_release", "commit": "889914169fa1f5c00fb8659653b5a8330fb223e6" },
   "quicker.nvim": { "branch": "master", "commit": "1fc29de2172235c076aa1ead6f1ee772398de732" },
+  "snacks.nvim": { "branch": "main", "commit": "7f9f691a12d0665146b25a44323f21e18aa46c24" },
   "sniprun": { "branch": "master", "commit": "67ac2d84d03f3b857d59571ff5fefb6080dffa2d" },
   "stickybuf.nvim": { "branch": "master", "commit": "183b9569bef78f44b17c078214f7d731f19cbefe" },
   "suda.vim": { "branch": "master", "commit": "b97fab52f9cdeabe2bbb5eb98d82356899f30829" },
