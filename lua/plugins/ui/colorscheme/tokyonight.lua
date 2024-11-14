@@ -35,6 +35,8 @@ M.config = function(name)
 				fg = hl.CursorLineNr.fg,
 				bg = hl.TreesitterContext.bg,
 			}
+			-- gtd
+			hl.GtdBeacon = { bg = "#c43963" }
 		end,
 	})
 	vim.cmd.colorscheme(name)
