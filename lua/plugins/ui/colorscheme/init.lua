@@ -23,29 +23,45 @@ local colorscheme_plugin_map = {
 local simple_config = function(name)
 	vim.cmd.colorscheme(name)
 end
+local special_config = function(name)
+	if KurisuNya.utils.plugin_exist("nvim-gtd") then
+		require("gtd").setup_highlights()
+	end
+end
+
 local plugin_config_map = {
 	["folke/tokyonight.nvim"] = function(name)
 		require("plugins.ui.colorscheme.tokyonight").config(name)
 	end,
-	["catppuccin/nvim"] = simple_config,
+	["catppuccin/nvim"] = function(name)
+		simple_config(name)
+		special_config(name)
+	end,
 	["marko-cerovac/material.nvim"] = function(name)
 		require("plugins.ui.colorscheme.material").config(name)
+		special_config(name)
 	end,
-	["Shatur/neovim-ayu"] = simple_config,
+	["Shatur/neovim-ayu"] = function(name)
+		simple_config(name)
+		special_config(name)
+	end,
 }
 
-local switch_to_colorscheme = function(name)
+local switch_to_colorscheme = function(name, notify)
 	local plugin_name = colorscheme_plugin_map[name]
 	if not plugin_name then
 		vim.notify("Colorscheme " .. name .. " not found", vim.log.levels.ERROR)
 		return
 	end
 	plugin_config_map[plugin_name](name)
-	vim.notify("Switched to colorscheme " .. name, vim.log.levels.INFO)
+	if notify then
+		vim.notify("Switched to colorscheme " .. name, vim.log.levels.INFO)
+	end
 end
+
 vim.api.nvim_create_user_command("ColorschemeSwitch", function(opts)
 	local params = vim.split(opts.args, "%s+", { trimempty = true })
-	switch_to_colorscheme(params[1])
+	switch_to_colorscheme(params[1], true)
 end, {
 	nargs = 1,
 	complete = function(_, cmd_line)
@@ -77,7 +93,7 @@ if plugin_name then
 	for _, plugin in ipairs(M) do
 		if plugin[1] == plugin_name then
 			plugin.config = function()
-				plugin_config_map[plugin_name](colorscheme)
+				switch_to_colorscheme(colorscheme)
 			end
 			plugin.lazy = false
 			plugin.priority = 1000
