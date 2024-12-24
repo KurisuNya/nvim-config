@@ -9,7 +9,7 @@ M.keys = {
 		silent = true,
 	},
 	{
-		"[q",
+		"[x",
 		function()
 			if require("trouble").is_open() then
 				require("trouble").prev({ skip_groups = true, jump = true })
@@ -23,7 +23,7 @@ M.keys = {
 		desc = "Previous trouble/quickfix item",
 	},
 	{
-		"]q",
+		"]x",
 		function()
 			if require("trouble").is_open() then
 				require("trouble").next({ skip_groups = true, jump = true })

@@ -116,11 +116,11 @@ if KurisuNya.config.use_copilot then
 			filetypes = { markdown = true, help = true },
 		},
 	})
-	table.insert(M, { "KurisuNya/copilot-cmp", opts = {} })
+	table.insert(M, { "zbirenbaum/copilot-cmp", opts = {} })
 	for _, plugin in ipairs(M) do
 		if type(plugin) == "table" and plugin[1] == "hrsh7th/nvim-cmp" then
 			table.insert(plugin.dependencies, "zbirenbaum/copilot.lua")
-			table.insert(plugin.dependencies, "KurisuNya/copilot-cmp")
+			table.insert(plugin.dependencies, "zbirenbaum/copilot-cmp")
 		end
 	end
 end
