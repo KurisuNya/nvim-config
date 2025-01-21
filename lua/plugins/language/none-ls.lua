@@ -20,8 +20,9 @@ M.config = function()
 		table.insert(linters, diagnostics.codespell)
 	else
 		local cspell = require("cspell")
-		table.insert(linters, cspell.code_actions)
-		table.insert(linters, cspell.diagnostics)
+		local opts = { disabled_filetypes = { "tex" } }
+		table.insert(linters, cspell.code_actions.with(opts))
+		table.insert(linters, cspell.diagnostics.with(opts))
 	end
 
 	null_ls.setup({

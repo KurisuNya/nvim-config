@@ -26,15 +26,7 @@ local M = {
 	{
 		"neovim/nvim-lspconfig",
 		config = require("plugins.language.lspconfig").config,
-		dependencies = {
-			"williamboman/mason-lspconfig.nvim",
-			{
-				"folke/neoconf.nvim",
-				cmd = "Neoconf",
-				config = false,
-				dependencies = { "nvim-lspconfig" },
-			},
-		},
+		dependencies = { "williamboman/mason-lspconfig.nvim" },
 		event = "VeryLazy",
 	},
 	{
@@ -158,6 +150,16 @@ local M = {
 		branch = "regexp",
 		keys = require("keymaps.plugins.venv-selector-nvim").keys,
 		config = require("plugins.language.venv-selector-nvim").config,
+		event = "VeryLazy",
+	},
+	{
+		"lervag/vimtex",
+		init = function()
+			vim.g.vimtex_view_method = "zathura"
+			vim.g.vimtex_compiler_method = "tectonic"
+			vim.g.vimtex_quickfix_mode = 0
+			vim.g.maplocalleader = ","
+		end,
 		event = "VeryLazy",
 	},
 }

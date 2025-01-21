@@ -105,22 +105,6 @@ local M = {
 		end,
 		ft = "markdown",
 	},
-	{
-		"KurisuNya/clipboard-image.nvim",
-		keys = require("keymaps.plugins.clipboard-image").keys,
-		opts = {
-			markdown = {
-				img_dir = "~/Pictures/Markdown",
-				img_dir_txt = "~/Pictures/Markdown",
-				paste_handler = function(affix, path_txt) end,
-				img_handler = function(img)
-					require("nvim-picgo").upload_imagefile({ path = img.path })
-				end,
-			},
-		},
-		dependencies = { { "KurisuNya/nvim-picgo", opts = { auto_paste = true }, ft = "markdown" } },
-		ft = "markdown",
-	},
 	-- misc
 	{
 		"folke/trouble.nvim",

@@ -12,10 +12,6 @@ end
 
 local M = {}
 M.config = function()
-	if KurisuNya.utils.plugin_exist("neoconf.nvim") then
-		local plugin = require("lazy.core.config").spec.plugins["neoconf.nvim"]
-		require("neoconf").setup(require("lazy.core.plugin").values(plugin, "opts", false))
-	end
 	local lspconfig = require("lspconfig")
 
 	local simple_servers = {
@@ -23,6 +19,7 @@ M.config = function()
 		"lemminx",
 		"jsonls",
 		"taplo",
+		"texlab",
 	}
 	for _, server in ipairs(simple_servers) do
 		lspconfig[server].setup({})

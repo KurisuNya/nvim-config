@@ -4,7 +4,10 @@ M.config = function()
 	local module = require("keymaps.plugins.nvim-treesitter")
 	require("nvim-treesitter.configs").setup({
 		ensure_installed = KurisuNya.config.treesitter_ensure_installed,
-		highlight = { enable = true },
+		highlight = {
+			enable = true,
+			disable = { "latex" },
+		},
 		indent = { enable = true, disable = { "python" } },
 		incremental_selection = {
 			enable = true,

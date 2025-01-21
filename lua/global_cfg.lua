@@ -84,7 +84,7 @@ M.treesitter_ensure_installed = {
 	"javascript", "jsdoc", "json", "jsonc", "lua",
 	"luadoc", "luap", "markdown", "markdown_inline", "matlab",
 	"ninja", "php", "python", "query", "regex",
-	"rst", "rust", "scss", "toml", "tsx",
+	"ron", "rst", "rust", "scss", "toml", "tsx",
 	"typescript", "vim", "vimdoc", "yaml", "yuck",
 }
 -- stylua: ignore end
@@ -97,6 +97,8 @@ M.lsp_ensure_installed = {
 	"lua-language-server",
 	"pyright",
 	"taplo",
+	"tectonic",
+	"texlab",
 }
 M.dap_ensure_installed = {
 	"bash-debug-adapter",

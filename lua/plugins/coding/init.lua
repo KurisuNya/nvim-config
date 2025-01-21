@@ -58,7 +58,7 @@ local M = {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-cmdline",
 			"kdheepak/cmp-latex-symbols",
-			{ url = "https://codeberg.org/FelipeLema/cmp-async-path.git" },
+			{ "FelipeLema/cmp-async-path" },
 			{ "kawre/neotab.nvim", opts = { tabkey = "", behavior = "closing" }, event = "VeryLazy" },
 		},
 		event = "VeryLazy",
@@ -116,11 +116,11 @@ if KurisuNya.config.use_copilot then
 			filetypes = { markdown = true, help = true },
 		},
 	})
-	table.insert(M, { "zbirenbaum/copilot-cmp", opts = {} })
+	table.insert(M, { "KurisuNya/copilot-cmp", opts = {} })
 	for _, plugin in ipairs(M) do
 		if type(plugin) == "table" and plugin[1] == "hrsh7th/nvim-cmp" then
 			table.insert(plugin.dependencies, "zbirenbaum/copilot.lua")
-			table.insert(plugin.dependencies, "zbirenbaum/copilot-cmp")
+			table.insert(plugin.dependencies, "KurisuNya/copilot-cmp")
 		end
 	end
 end
