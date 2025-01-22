@@ -10,7 +10,7 @@ M.keys = function()
 		silent = true,
 		desc = "Git Push",
 	})
-	vim.keymap.set("n", "<leader>gh", require("tinygit").searchFileHistory, {
+	vim.keymap.set("n", "<leader>gh", require("tinygit").fileHistory, {
 		noremap = true,
 		silent = true,
 		desc = "Git History File",

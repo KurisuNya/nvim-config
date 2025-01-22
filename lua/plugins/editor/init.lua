@@ -105,6 +105,17 @@ local M = {
 		end,
 		ft = "markdown",
 	},
+	{
+		"KurisuNya/clipboard-image.nvim",
+		keys = require("keymaps.plugins.clipboard-image").keys,
+		opts = {
+			markdown = {
+				img_dir = "./assets/img",
+				img_dir_txt = "./assets/img",
+			},
+		},
+		ft = "markdown",
+	},
 	-- misc
 	{
 		"folke/trouble.nvim",
