@@ -50,15 +50,16 @@ local M = {
 		event = "VeryLazy",
 	},
 	{
-		"hrsh7th/nvim-cmp",
+		"iguanacucumber/magazine.nvim",
+		name = "nvim-cmp",
 		config = require("plugins.coding.nvim-cmp").config,
 		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
+			{ "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
+			{ "iguanacucumber/mag-buffer", name = "cmp-buffer" },
+			{ "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
+			{ url = "https://codeberg.org/FelipeLema/cmp-async-path.git" },
 			"saadparwaiz1/cmp_luasnip",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-cmdline",
 			"kdheepak/cmp-latex-symbols",
-			{ "FelipeLema/cmp-async-path" },
 			{ "kawre/neotab.nvim", opts = { tabkey = "", behavior = "closing" }, event = "VeryLazy" },
 		},
 		event = "VeryLazy",
@@ -118,7 +119,7 @@ if KurisuNya.config.use_copilot then
 	})
 	table.insert(M, { "KurisuNya/copilot-cmp", opts = {} })
 	for _, plugin in ipairs(M) do
-		if type(plugin) == "table" and plugin[1] == "hrsh7th/nvim-cmp" then
+		if type(plugin) == "table" and plugin[1] == "iguanacucumber/magazine.nvim" then
 			table.insert(plugin.dependencies, "zbirenbaum/copilot.lua")
 			table.insert(plugin.dependencies, "KurisuNya/copilot-cmp")
 		end
