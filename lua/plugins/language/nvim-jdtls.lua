@@ -12,11 +12,17 @@ M.config = function()
 	local function get_jdtls_workspace_dir(project_name)
 		return vim.fn.stdpath("cache") .. "/jdtls/" .. project_name .. "/workspace"
 	end
+	local cmd = { vim.fn.exepath("jdtls") }
+	if KurisuNya.utils.plugin_exist("mason.nvim") then
+		local mason_registry = require("mason-registry")
+		local lombok_jar = mason_registry.get_package("jdtls"):get_install_path() .. "/lombok.jar"
+		table.insert(cmd, string.format("--jvm-arg=-javaagent:%s", lombok_jar))
+	end
 	local function generate_cmd()
 		local fname = vim.api.nvim_buf_get_name(0)
 		local root_dir = get_root_dir(fname)
 		local project_name = get_project_name(root_dir)
-		local cmd = { vim.fn.exepath("jdtls") }
+		local command = vim.deepcopy(cmd)
 		if project_name then
 			vim.list_extend(cmd, {
 				"-configuration",
@@ -25,7 +31,7 @@ M.config = function()
 				get_jdtls_workspace_dir(project_name),
 			})
 		end
-		return cmd
+		return command
 	end
 
 	local mason_registry = require("mason-registry")
