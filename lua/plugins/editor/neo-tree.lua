@@ -4,7 +4,7 @@ M.config = function()
 	local mappings = require("keymaps.plugins.neo-tree").get_mappings()
 
 	vim.g.neo_tree_remove_legacy_commands = 1
-	require("neo-tree").setup({
+	local opts = {
 		close_if_last_window = true,
 		popup_border_style = "rounded",
 
@@ -40,15 +40,24 @@ M.config = function()
 			follow_current_file = { enabled = true, leave_dirs_open = false },
 			use_libuv_file_watcher = true,
 		},
+	}
 
-		event_handlers = {
-			{
-				event = "file_opened",
-				handler = function(file_path)
-					require("neo-tree.command").execute({ action = "close" })
-				end,
-			},
-		},
-	})
+	local events = require("neo-tree.events")
+	local function close_tree()
+		require("neo-tree.command").execute({ action = "close" })
+	end
+	opts.event_handlers = { { event = events.FILE_OPENED, handler = close_tree } }
+
+	if KurisuNya.utils.plugin_exist("snacks.nvim") then
+		local function on_move(data)
+			Snacks.rename.on_rename_file(data.source, data.destination)
+		end
+		vim.list_extend(opts.event_handlers, {
+			{ event = events.FILE_MOVED, handler = on_move },
+			{ event = events.FILE_RENAMED, handler = on_move },
+		})
+	end
+
+	require("neo-tree").setup(opts)
 end
 return M

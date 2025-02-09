@@ -172,7 +172,15 @@ local M = {
 		config = require("plugins.editor.bigfile").config,
 		event = "VeryLazy",
 	},
-	{ "karb94/neoscroll.nvim", opts = {}, event = "VeryLazy" },
+	{
+		"folke/snacks.nvim",
+		config = function()
+			require("snacks").setup({ quickfile = { enabled = true } })
+			vim.opt.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
+		end,
+		event = "VeryLazy",
+	},
+	{ "karb94/neoscroll.nvim", opts = { duration_multiplier = 0.5 }, event = "VeryLazy" },
 	{ "nacro90/numb.nvim", opts = {}, event = "VeryLazy" },
 	{ "nvimdev/hlsearch.nvim", opts = {}, event = "VeryLazy" },
 	{ "RRethy/vim-illuminate", event = "VeryLazy" },
