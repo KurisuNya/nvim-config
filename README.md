@@ -28,12 +28,12 @@ the macro key is remapped to `<leader>M`
 
 ### Dashboard
 
-![dashboard](./assert/dashboard.png)
+![dashboard](./assets/dashboard.png)
 
 ### Coding
 
-![coding](./assert/coding.png)
+![coding](./assets/coding.png)
 
 ### Debugging
 
-![debugging](./assert/debugging.png)
+![debugging](./assets/debugging.png)
