@@ -67,9 +67,27 @@ local M = {
 		event = "VeryLazy",
 	},
 	{
-		"SmiteshP/nvim-navbuddy",
-		config = require("plugins.language.nvim-navbuddy").config,
-		dependencies = { "SmiteshP/nvim-navic" },
+		"bassamsdata/namu.nvim",
+		keys = require("keymaps.plugins.namu-nvim").keys,
+		config = function()
+			require("namu").setup({
+				namu_symbols = {
+					enable = true,
+					options = {
+						window = { title_prefix = " " },
+						multiselect = { enabled = false },
+						movement = {
+							next = { "<C-n>", "<DOWN>", "<TAB>" },
+							previous = { "<C-p>", "<UP>", "<S-TAB>" },
+							close = { "<ESC>" },
+							select = { "<CR>" },
+						},
+					},
+				},
+				ui_select = { enable = false },
+				colorscheme = { enable = false },
+			})
+		end,
 		event = "VeryLazy",
 	},
 	{
