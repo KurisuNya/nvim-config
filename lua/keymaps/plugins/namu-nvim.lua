@@ -2,7 +2,7 @@ local M = {}
 
 M.keys = {
 	{
-		"<leader>s",
+		"<leader>S",
 		"<cmd>Namu symbols<cr>",
 		desc = "Toggle Test Summary",
 		silent = true,
