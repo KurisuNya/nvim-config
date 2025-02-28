@@ -155,13 +155,12 @@ local M = {
 		"NvChad/nvim-colorizer.lua",
 		config = function()
 			require("colorizer").setup({
-				filetypes = { "*" },
 				user_default_options = {
-					RRGGBBAA = true,
-					AARRGGBB = true,
-					tailwind = true,
 					names = false,
-					always_update = true,
+					RGB = true,
+					RGBA = true,
+					RRGGBB = true,
+					RRGGBBAA = true,
 				},
 			})
 		end,
