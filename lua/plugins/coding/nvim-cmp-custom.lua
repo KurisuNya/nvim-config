@@ -14,7 +14,6 @@ M.get_keymap_list = function(keymaps)
 
 	local function select_next_item(fallback)
 		if cmp.visible() then
-			-- cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
 			cmp.select_next_item()
 		else
 			neotab.tabout()
@@ -22,7 +21,6 @@ M.get_keymap_list = function(keymaps)
 	end
 	local function select_prev_item(fallback)
 		if cmp.visible() then
-			-- cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
 			cmp.select_prev_item()
 		else
 			fallback()
