@@ -14,14 +14,16 @@ M.get_keymap_list = function(keymaps)
 
 	local function select_next_item(fallback)
 		if cmp.visible() then
-			cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+			-- cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+			cmp.select_next_item()
 		else
 			neotab.tabout()
 		end
 	end
 	local function select_prev_item(fallback)
 		if cmp.visible() then
-			cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+			-- cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+			cmp.select_prev_item()
 		else
 			fallback()
 		end
@@ -31,7 +33,7 @@ M.get_keymap_list = function(keymaps)
 		local luasnip = require("luasnip")
 		select_next_item = function(fallback)
 			if cmp.visible() then
-				cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+				cmp.select_next_item()
 			elseif luasnip.expand_or_jumpable() then
 				luasnip.expand_or_jump()
 			else
@@ -40,7 +42,7 @@ M.get_keymap_list = function(keymaps)
 		end
 		select_prev_item = function(fallback)
 			if cmp.visible() then
-				cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+				cmp.select_prev_item()
 			elseif luasnip.jumpable(-1) then
 				luasnip.jump(-1)
 			else
