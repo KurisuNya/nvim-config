@@ -8,7 +8,7 @@ M.config = function()
 			enable = true,
 			disable = { "latex" },
 		},
-		indent = { enable = true, disable = { "python" } },
+		indent = { enable = true },
 		incremental_selection = {
 			enable = true,
 			keymaps = module.incremental_selection.keymaps,

@@ -2,7 +2,7 @@
 --  editor  --
 --------------
 -- use system clipboard
-vim.opt.clipboard:append("unnamedplus")
+vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
 -- default tab size
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -11,7 +11,6 @@ vim.opt.shiftwidth = 2
 -- use spaces instead of tabs
 vim.opt.expandtab = true
 -- smart indent
-vim.opt.autoindent = true
 vim.opt.smartindent = true
 -- smart search
 vim.opt.ignorecase = true
@@ -25,6 +24,10 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 -- auto read file when changed
 vim.opt.autoread = true
+-- presistent undo
+vim.opt.undofile = true
+vim.opt.undolevels = 10000
+vim.opt.updatetime = 200 -- Save swap file and trigger CursorHold
 --------------
 --  visual  --
 --------------
@@ -44,10 +47,15 @@ vim.opt.colorcolumn = "100"
 vim.opt.wrap = false
 -- incremental search
 vim.opt.incsearch = true
--- diff symbol
-vim.opt.fillchars:append({ diff = "╱" })
--- eob symbol
-vim.opt.fillchars:append({ eob = " " })
+-- symbols
+vim.opt.fillchars = {
+	foldopen = "",
+	foldclose = "",
+	fold = " ",
+	foldsep = " ",
+	diff = "╱",
+	eob = " ",
+}
 -- disable modeline
 vim.opt.modeline = false
 --------------
@@ -66,18 +74,4 @@ if KurisuNya.utils.is_windows() then
 	for option, value in pairs(powershell_options) do
 		vim.opt[option] = value
 	end
-end
--- clipboard for ssh
-if os.getenv("SSH_TTY") then
-	vim.g.clipboard = {
-		name = "OSC 52",
-		copy = {
-			["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-			["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-		},
-		paste = {
-			["+"] = require("vim.ui.clipboard.osc52").paste("+"),
-			["*"] = require("vim.ui.clipboard.osc52").paste("*"),
-		},
-	}
 end
