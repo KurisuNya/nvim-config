@@ -10,6 +10,10 @@ local function get_binary_path_list(binaries)
 	return table.concat(path_list, ",")
 end
 
+local function find_git_ancestor(fname)
+	return vim.fs.dirname(vim.fs.find(".git", { path = fname, upward = true })[1])
+end
+
 local M = {}
 M.config = function()
 	local lspconfig = require("lspconfig")
@@ -84,9 +88,7 @@ M.config = function()
 				"Pipfile",
 				"pyrightconfig.json",
 			}
-			return lspconfig.util.root_pattern(unpack(root_files))(fname)
-				or lspconfig.util.find_git_ancestor(fname)
-				or vim.fn.getcwd()
+			return lspconfig.util.root_pattern(unpack(root_files))(fname) or find_git_ancestor(fname) or vim.fn.getcwd()
 		end,
 	})
 

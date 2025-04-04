@@ -24,5 +24,9 @@ M.config = function()
 	KurisuNya.utils.lsp_keymap_set_by_method("textDocument/diagnostics", keymaps.diagnostics)
 	KurisuNya.utils.lsp_keymap_set_by_method("textDocument/diagnostics", keymaps.diagnostic_jump_prev)
 	KurisuNya.utils.lsp_keymap_set_by_method("textDocument/diagnostics", keymaps.diagnostic_jump_next)
+	KurisuNya.utils.lsp_keymap_set_by_method("textDocument/diagnostics", keymaps.diagnostic_prev_warn)
+	KurisuNya.utils.lsp_keymap_set_by_method("textDocument/diagnostics", keymaps.diagnostic_next_warn)
+	KurisuNya.utils.lsp_keymap_set_by_method("textDocument/diagnostics", keymaps.diagnostic_prev_error)
+	KurisuNya.utils.lsp_keymap_set_by_method("textDocument/diagnostics", keymaps.diagnostic_next_error)
 end
 return M

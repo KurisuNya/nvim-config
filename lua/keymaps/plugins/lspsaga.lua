@@ -24,7 +24,7 @@ M.keymaps = {
 	},
 	diagnostics = {
 		key = "<leader>D",
-		cmd = "<Cmd>Lspsaga show_line_diagnostics<CR>",
+		cmd = "<Cmd>Lspsaga show_buf_diagnostics<CR>",
 		mode = "n",
 		opts = extend_desc("Lsp Line Diagnostic"),
 	},
@@ -39,6 +39,38 @@ M.keymaps = {
 		cmd = "<Cmd>Lspsaga diagnostic_jump_next<CR>",
 		mode = "n",
 		opts = extend_desc("Next Lsp Diagnostic"),
+	},
+	diagnostic_prev_warn = {
+		key = "[w",
+		cmd = function()
+			require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.WARN })
+		end,
+		mode = "n",
+		opts = extend_desc("Previous Lsp Diagnostic(Warning)"),
+	},
+	diagnostic_next_warn = {
+		key = "]w",
+		cmd = function()
+			require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.WARN })
+		end,
+		mode = "n",
+		opts = extend_desc("Next Lsp Diagnostic(Warning)"),
+	},
+	diagnostic_prev_error = {
+		key = "[e",
+		cmd = function()
+			require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+		end,
+		mode = "n",
+		opts = extend_desc("Previous Lsp Diagnostic(Error)"),
+	},
+	diagnostic_next_error = {
+		key = "]e",
+		cmd = function()
+			require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+		end,
+		mode = "n",
+		opts = extend_desc("Next Lsp Diagnostic(Error)"),
 	},
 }
 M.outline_keymap = {

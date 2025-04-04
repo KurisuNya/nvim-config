@@ -6,6 +6,7 @@ M.config = function()
 			require("neotest-python")({
 				dap = { justMyCode = false },
 				runner = "pytest",
+				args = { "--cov", "src", "--cov-report=html" },
 				python = function()
 					if KurisuNya.utils.plugin_exist("venv-selector.nvim") then
 						return require("venv-selector").python()

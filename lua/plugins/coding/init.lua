@@ -112,9 +112,10 @@ if KurisuNya.config.use_copilot then
 		cmd = "Copilot",
 		build = ":Copilot auth",
 		opts = {
+			copilot_model = "gpt-4o-copilot",
 			suggestion = { enabled = false },
 			panel = { enabled = false },
-			filetypes = { markdown = true, help = true },
+			filetypes = { markdown = true, yaml = true, help = true },
 		},
 	})
 	table.insert(M, { "KurisuNya/copilot-cmp", opts = {} })

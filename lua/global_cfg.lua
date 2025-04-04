@@ -37,7 +37,7 @@ M.workspaces = {
 M.lualine_section_separators = { left = "", right = "" }
 M.lualine_component_separators = { left = "", right = "" }
 M.lualine_hidden_lsp = { "copilot", "null-ls" }
-M.close_before_session_filetypes = { "qf", "help" }
+M.close_before_session_filetypes = { "qf", "help", "gitcommit" }
 M.toggle_pairs = {
 	["true"] = "false",
 	["True"] = "False",
