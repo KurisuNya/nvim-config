@@ -41,6 +41,7 @@ M.config = function()
 	end
 	KurisuNya.utils.lsp_on_attach(filter, function(client, bufnr)
 		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = KurisuNya.utils.create_augroup("format_on_save"),
 			buffer = bufnr,
 			callback = function()
 				vim.lsp.buf.format({ id = client.id, bufnr = bufnr })

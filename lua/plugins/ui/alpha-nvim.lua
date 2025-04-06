@@ -11,6 +11,7 @@ M.config = function()
 	if vim.o.filetype == "lazy" then
 		vim.cmd.close()
 		vim.api.nvim_create_autocmd("User", {
+			group = KurisuNya.utils.create_augroup("show_lazy"),
 			once = true,
 			pattern = "AlphaReady",
 			callback = function()
@@ -20,6 +21,7 @@ M.config = function()
 	end
 	dashboard.section.footer.opts.hl = "Comment"
 	vim.api.nvim_create_autocmd("User", {
+		group = KurisuNya.utils.create_augroup("show_footer"),
 		once = true,
 		pattern = "LazyVimStarted",
 		callback = function()

@@ -16,10 +16,12 @@ end
 M.get_hl_color = function(group, attr)
 	return vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(group)), attr)
 end
-local lsp_group = vim.api.nvim_create_augroup("KurisuNyaLsp", {})
+M.create_augroup = function(name)
+	return vim.api.nvim_create_augroup("kurisunya_" .. name, { clear = true })
+end
 M.lsp_on_attach = function(filter, fn)
 	vim.api.nvim_create_autocmd("LspAttach", {
-		group = lsp_group,
+		group = M.create_augroup("lsp_attach"),
 		callback = function(args)
 			local bufnr = args.buf
 			local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -90,6 +92,7 @@ M.on_plugin_loaded = function(name, fn)
 		fn(name)
 	else
 		vim.api.nvim_create_autocmd("User", {
+			group = M.create_augroup("on_" .. name .. "_load"),
 			pattern = "LazyLoad",
 			callback = function(event)
 				if event.data == name then

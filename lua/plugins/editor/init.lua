@@ -139,14 +139,6 @@ local M = {
 		event = "VeryLazy",
 	},
 	{
-		"machakann/vim-highlightedyank",
-		config = function()
-			vim.g.highlightedyank_highlight_duration = 400
-			vim.b.highlightedyank_highlight_duration = 400
-		end,
-		event = "VeryLazy",
-	},
-	{
 		"lukas-reineke/indent-blankline.nvim",
 		config = require("plugins.editor.indent-blankline").config,
 		event = "VeryLazy",

@@ -37,12 +37,14 @@ M.config = function()
 		end
 	end, {})
 	vim.api.nvim_create_autocmd({ "VimLeavePre" }, {
+		group = KurisuNya.utils.create_augroup("store_session"),
 		callback = function()
 			Session.store(loop.cwd())
 		end,
 	})
 	local switcher = require("projections.switcher")
 	vim.api.nvim_create_autocmd({ "VimEnter" }, {
+		group = KurisuNya.utils.create_augroup("switch_session"),
 		callback = function()
 			if vim.fn.argc() == 0 then
 				switcher.switch(loop.cwd())

@@ -118,9 +118,8 @@ M.source = {
 		color = { fg = KurisuNya.utils.get_hl_color("LualineLsp", "fg#") },
 		icon = { "", align = "right", padding = { left = 0, right = 1 } },
 		create_autocmd = function()
-			vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
 			vim.api.nvim_create_autocmd("User", {
-				group = "lualine_augroup",
+				group = KurisuNya.utils.create_augroup("refresh_lsp_progress"),
 				pattern = "LspProgressStatusUpdated",
 				callback = require("lualine").refresh,
 			})

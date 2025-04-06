@@ -96,6 +96,10 @@ M.config = function()
 			KurisuNya.utils.buffer_keymap_set(keymaps.test_class, bufnr)
 		end)
 	end
-	vim.api.nvim_create_autocmd("FileType", { pattern = "java", callback = attach_jdtls })
+	vim.api.nvim_create_autocmd("FileType", {
+		group = KurisuNya.utils.create_augroup("jdtls"),
+		pattern = "java",
+		callback = attach_jdtls,
+	})
 end
 return M

@@ -70,7 +70,7 @@ M.config = function()
 		PluginVar.debugui = false
 	end
 	vim.api.nvim_create_autocmd({ "VimResized" }, {
-		group = vim.api.nvim_create_augroup("ResizeDapUI", { clear = true }),
+		group = KurisuNya.utils.create_augroup("dap_resize_ui"),
 		callback = function()
 			if PluginVar.debugui then
 				nvim_dap_ui.toggle({ reset = true })
