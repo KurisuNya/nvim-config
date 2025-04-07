@@ -19,9 +19,10 @@ end
 M.create_augroup = function(name)
 	return vim.api.nvim_create_augroup("kurisunya_" .. name, { clear = true })
 end
+local lsp_attach_augroup = M.create_augroup("lsp_attach")
 M.lsp_on_attach = function(filter, fn)
 	vim.api.nvim_create_autocmd("LspAttach", {
-		group = M.create_augroup("lsp_attach"),
+		group = lsp_attach_augroup,
 		callback = function(args)
 			local bufnr = args.buf
 			local client = vim.lsp.get_client_by_id(args.data.client_id)
