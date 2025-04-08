@@ -39,9 +39,10 @@ M.config = function()
 		local is_format_client = vim.tbl_contains(format_clients, client.name)
 		return is_format_client and client.supports_method("textDocument/formatting")
 	end
+	local format_on_save_augroup = KurisuNya.utils.create_augroup("format_on_save")
 	KurisuNya.utils.lsp_on_attach(filter, function(client, bufnr)
 		vim.api.nvim_create_autocmd("BufWritePre", {
-			group = KurisuNya.utils.create_augroup("format_on_save"),
+			group = format_on_save_augroup,
 			buffer = bufnr,
 			callback = function()
 				vim.lsp.buf.format({ id = client.id, bufnr = bufnr })

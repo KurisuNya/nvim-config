@@ -28,6 +28,14 @@ vim.opt.autoread = true
 vim.opt.undofile = true
 vim.opt.undolevels = 10000
 vim.opt.updatetime = 200 -- Save swap file and trigger CursorHold
+-- diff options
+vim.opt.diffopt = {
+	"internal",
+	"filler",
+	"closeoff",
+	"linematch:60",
+	"foldcolumn:0",
+}
 --------------
 --  visual  --
 --------------

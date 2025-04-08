@@ -14,6 +14,7 @@ local M = {
 		},
 		build = ":TSUpdate",
 		event = "VeryLazy",
+		lazy = vim.fn.argc(-1) == 0,
 	},
 	-- cmp and snip
 	{

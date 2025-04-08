@@ -56,6 +56,18 @@ keymap.set("n", "<leader><Down>", "<Cmd>sp<CR>", {
 	silent = true,
 	desc = "Horizontal Spilt Window",
 })
+-- local diff_open = false
+keymap.set("n", "<leader>dd", function()
+	if vim.api.nvim_get_option_value("diff", {}) then
+		vim.cmd("windo diffoff")
+	else
+		vim.cmd("windo diffthis")
+	end
+end, {
+	noremap = true,
+	silent = true,
+	desc = "Diff Toggle",
+})
 keymap.set("n", "<C-Left>", "<C-w>h", opts)
 keymap.set("n", "<C-Down>", "<C-w>j", opts)
 keymap.set("n", "<C-Up>", "<C-w>k", opts)

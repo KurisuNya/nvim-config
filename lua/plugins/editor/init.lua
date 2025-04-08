@@ -93,6 +93,20 @@ local M = {
 		config = require("plugins.editor.diffview").config,
 		event = "VeryLazy",
 	},
+	{
+		"akinsho/git-conflict.nvim",
+		version = "*",
+		opts = {
+			disable_diagnostics = true,
+			highlights = {
+				current = "DiffText",
+				incoming = "DiffAdd",
+				ancestor = "DiffDelete",
+			},
+		},
+		-- config = true,
+		event = "VeryLazy",
+	},
 	-- markdown
 	{
 		"iamcco/markdown-preview.nvim",

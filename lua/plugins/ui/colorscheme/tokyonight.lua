@@ -33,10 +33,11 @@ M.config = function(name)
 			-- treesitter context
 			hl.TreesitterContextLineNumber = {
 				fg = hl.CursorLineNr.fg,
-				bg = hl.TreesitterContext.bg,
+				bg = hl.PmenuSel.bg,
 			}
 			-- gtd
 			hl.GtdBeacon = { bg = "#c43963" }
+			hl.SagaBeacon = { bg = "#c43963" }
 		end,
 	})
 	vim.cmd.colorscheme(name)

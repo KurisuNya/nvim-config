@@ -16,6 +16,7 @@ M.q_close_filetypes = {
 	"checkhealth",
 	"neotest-summary",
 	"neotest-output-panel",
+	"netrw",
 }
 M.wrap_spell_filetypes = { "gitcommit", "markdown" }
 if not KurisuNya.enable_plugin then
@@ -37,7 +38,7 @@ M.workspaces = {
 M.lualine_section_separators = { left = "", right = "" }
 M.lualine_component_separators = { left = "", right = "" }
 M.lualine_hidden_lsp = { "copilot", "null-ls" }
-M.close_before_session_filetypes = { "qf", "help", "gitcommit" }
+M.close_before_session_filetypes = { "qf", "help", "gitcommit", "netrw" }
 M.toggle_pairs = {
 	["true"] = "false",
 	["True"] = "False",
