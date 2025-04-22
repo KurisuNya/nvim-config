@@ -80,7 +80,7 @@ M.telescope_find_files_args = {
 	"-E", "**/node_modules/*",
 }
 M.treesitter_ensure_installed = {
-	"bash", "c", "comment", "cpp", "css",
+	"bash", "c", "cmake", "comment", "cpp", "css",
 	"diff", "fish", "gitcommit", "gitignore", "html", "java",
 	"javascript", "jsdoc", "json", "jsonc", "lua",
 	"luadoc", "luap", "markdown", "markdown_inline", "matlab",
@@ -96,6 +96,7 @@ M.lsp_ensure_installed = {
 	"json-lsp",
 	"lemminx",
 	"lua-language-server",
+	"neocmakelsp",
 	"pyright",
 	"taplo",
 	"tectonic",

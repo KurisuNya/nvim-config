@@ -6,7 +6,7 @@ M.config = function()
 
 	local formatters = {
 		formatting.black,
-		formatting.clang_format.with({ filetypes = { "c", "cpp" } }),
+		formatting.clang_format.with({ filetypes = { "c", "cpp", "cuda" } }),
 		formatting.google_java_format,
 		formatting.prettier.with({ disabled_filetypes = { "markdown" } }),
 		formatting.shfmt,

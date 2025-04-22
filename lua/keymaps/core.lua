@@ -92,6 +92,8 @@ keymap.set("x", "g_", "g<C-x>", opts)
 -- better indent
 keymap.set("x", "<", "<gv")
 keymap.set("x", ">", ">gv")
+-- visual command
+keymap.set("x", "<leader>n", ":normal ")
 ----------------------
 --   terminal-mod   --
 ----------------------

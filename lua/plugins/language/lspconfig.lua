@@ -20,8 +20,9 @@ M.config = function()
 
 	local simple_servers = {
 		"bashls",
-		"lemminx",
 		"jsonls",
+		"lemminx",
+		"neocmake",
 		"taplo",
 		"texlab",
 	}
