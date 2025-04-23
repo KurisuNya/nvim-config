@@ -2,7 +2,7 @@
 --  editor  --
 --------------
 -- use system clipboard
-vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
+vim.opt.clipboard:append("unnamedplus")
 -- default tab size
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -69,6 +69,20 @@ vim.opt.modeline = false
 --------------
 --  others  --
 --------------
+-- clipboard for ssh
+if os.getenv("SSH_TTY") then
+	vim.g.clipboard = {
+		name = "OSC 52",
+		copy = {
+			["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+			["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+		},
+		paste = {
+			["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+			["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+		},
+	}
+end
 -- windows powershell
 if KurisuNya.utils.is_windows() then
 	local powershell_options = {
