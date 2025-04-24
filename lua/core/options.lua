@@ -69,8 +69,8 @@ vim.opt.modeline = false
 --------------
 --  others  --
 --------------
--- clipboard for ssh
-if os.getenv("SSH_TTY") then
+-- clipboard for ssh and root
+if os.getenv("SSH_TTY") or os.getenv("USER") == "root" then
 	vim.g.clipboard = {
 		name = "OSC 52",
 		copy = {
