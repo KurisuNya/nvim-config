@@ -1,48 +1,70 @@
-local M = {}
-M.config = function()
-	local null_ls = require("null-ls")
-	local formatting = null_ls.builtins.formatting
-	local diagnostics = null_ls.builtins.diagnostics
+local M = {
+	"nvimtools/none-ls.nvim",
+	dependencies = { "jayp0521/mason-null-ls.nvim" },
+	event = "VeryLazy",
+}
 
-	local formatters = {
-		formatting.black,
-		formatting.clang_format.with({ filetypes = { "c", "cpp", "cuda" } }),
-		formatting.google_java_format,
-		formatting.prettier.with({ disabled_filetypes = { "markdown" } }),
-		formatting.shfmt,
-		formatting.stylua,
-	}
+PluginVars.none_ls_formatters = {}
+PluginVars.other_lsp_formatters = {}
+PluginVars.none_ls_linters = {}
+PluginVars.none_ls_code_actions = {}
 
-	local linters = {
-		diagnostics.fish,
-	}
-	if KurisuNya.utils.is_windows() then
-		table.insert(linters, diagnostics.codespell)
+local get_source = function(type_, source)
+	if type(source) == "string" then
+		return require("null-ls").builtins[type_][source]
+	elseif type(source) == "function" then
+		return source()
+	elseif type(source) == "table" then
+		local name = source[1] or source.name
+		local opts = source[2] or source.opts or {}
+		return require("null-ls").builtins[type_][name].with(opts)
 	else
-		local cspell = require("cspell")
-		local opts = { disabled_filetypes = { "tex" } }
-		table.insert(linters, cspell.code_actions.with(opts))
-		table.insert(linters, cspell.diagnostics.with(opts))
+		error("Invalid source type: " .. type(source))
 	end
+end
 
-	null_ls.setup({
-		sources = vim.list_extend(formatters, linters),
+M.init = function()
+	PluginVars.insert(PluginVars.lualine_hidden_lsp, "null-ls")
+end
+
+M.config = function()
+	local sources = {}
+	sources = vim.list_extend(
+		sources,
+		vim.tbl_map(function(source)
+			return get_source("formatting", source)
+		end, PluginVars.none_ls_formatters)
+	)
+	sources = vim.list_extend(
+		sources,
+		vim.tbl_map(function(source)
+			return get_source("diagnostics", source)
+		end, PluginVars.none_ls_linters)
+	)
+	sources = vim.list_extend(
+		sources,
+		vim.tbl_map(function(source)
+			return get_source("code_actions", source)
+		end, PluginVars.none_ls_code_actions)
+	)
+
+	require("null-ls").setup({
+		sources = sources,
 		fallback_severity = vim.diagnostic.severity.WARN,
 	})
 
-	local format_clients = {
-		"null-ls",
-		"taplo",
-		"lemminx",
-	}
+	local format_clients = { "null-ls" }
+	format_clients = vim.list_extend(format_clients, PluginVars.other_lsp_formatters)
+
 	local filter = function(client, _)
 		local is_format_client = vim.tbl_contains(format_clients, client.name)
 		return is_format_client and client.supports_method("textDocument/formatting")
 	end
-	local format_on_save_augroup = KurisuNya.utils.create_augroup("format_on_save")
-	KurisuNya.utils.lsp_on_attach(filter, function(client, bufnr)
+
+	local format_on_save = Utils.create_augroup("format_on_save")
+	Utils.lsp_on_attach(filter, function(client, bufnr)
 		vim.api.nvim_create_autocmd("BufWritePre", {
-			group = format_on_save_augroup,
+			group = format_on_save,
 			buffer = bufnr,
 			callback = function()
 				vim.lsp.buf.format({ id = client.id, bufnr = bufnr })
@@ -50,4 +72,5 @@ M.config = function()
 		})
 	end)
 end
+
 return M

@@ -1,13 +1,11 @@
-vim.loader.enable()
-vim.g.mapleader = " "
-_G.KurisuNya = { enable_plugin = true }
-KurisuNya.utils = require("utils")
-KurisuNya.config = require("global_cfg")
+_G.Config = require("config")
+_G.Icons = require("utils.icons")
+_G.Utils = require("utils.utils")
 
-if KurisuNya.enable_plugin then
-	_G.PluginVar = {}
+require("native.options")
+require("native.keymaps")
+require("native.autocmd")
+
+if Config.enable_plugins then
 	require("plugins")
 end
-require("core.options")
-require("core.autocmd")
-require("keymaps.core")
