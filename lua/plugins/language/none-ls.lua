@@ -57,17 +57,17 @@ M.config = function()
 	format_clients = vim.list_extend(format_clients, PluginVars.other_lsp_formatters)
 
 	local filter = function(client, _)
-		local is_format_client = vim.tbl_contains(format_clients, client.name)
-		return is_format_client and client.supports_method("textDocument/formatting")
+		return vim.tbl_contains(format_clients, client.name)
 	end
 
 	local format_on_save = Utils.create_augroup("format_on_save")
-	Utils.lsp_on_attach(filter, function(client, bufnr)
+	Utils.lsp_on_attach(filter, function(_, bufnr)
+		vim.api.nvim_clear_autocmds({ group = format_on_save, buffer = bufnr })
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			group = format_on_save,
 			buffer = bufnr,
 			callback = function()
-				vim.lsp.buf.format({ id = client.id, bufnr = bufnr })
+				vim.lsp.buf.format({ bufnr = bufnr })
 			end,
 		})
 	end)
