@@ -10,6 +10,7 @@ M.dependencies = {
 
 M.init = function()
 	PluginVars.insert(PluginVars.q_close_filetypes, "neotest-summary")
+	PluginVars.insert(PluginVars.q_close_filetypes, "neotest-output")
 	PluginVars.insert(PluginVars.projections_close_filetypes, "neotest-summary")
 end
 
@@ -39,12 +40,38 @@ M.keys = {
 	},
 }
 
+local mappings = {
+	attach = "a",
+	clear_marked = "M",
+	clear_target = "T",
+	debug = "d",
+	debug_marked = "D",
+	expand = { "<CR>", "<2-LeftMouse>" },
+	expand_all = "e",
+	help = "?",
+	jumpto = "i",
+	mark = "m",
+	next_failed = "]",
+	output = "o",
+	prev_failed = "[",
+	run = "r",
+	run_marked = "R",
+	short = "O",
+	stop = "u",
+	target = "t",
+	watch = "w",
+}
+
 PluginVars.neotest_adapters = {}
 
 M.opts = function()
 	local opts = {
 		adapters = {},
-		summary = { open = "botright vsplit | vertical resize 40" },
+		floating = { border = Config.border_style },
+		summary = {
+			mappings = mappings,
+			open = "botright vsplit | vertical resize 40",
+		},
 	}
 	for _, adapter in ipairs(PluginVars.neotest_adapters) do
 		if type(adapter) == "function" then

@@ -29,10 +29,9 @@ M.config = function()
 		store_hooks = {
 			pre = function()
 				local buffers = vim.fn.getbufinfo()
-				local close_filetypes = PluginVars.projections_close_filetypes
 				for _, buffer in ipairs(buffers) do
 					local filetype = vim.fn.getbufvar(buffer.bufnr, "&filetype")
-					if vim.tbl_contains(close_filetypes, filetype) then
+					if vim.tbl_contains(PluginVars.projections_close_filetypes, filetype) then
 						vim.fn.bdelete(buffer.bufnr)
 					end
 				end
