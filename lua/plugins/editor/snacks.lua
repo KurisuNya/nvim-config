@@ -20,6 +20,10 @@ M.opts = {
 	},
 }
 
+M.init = function()
+	Utils.lazy_notify()
+end
+
 M.config = function(_, opts)
 	local notify = vim.notify
 	require("snacks").setup(opts)

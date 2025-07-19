@@ -5,6 +5,7 @@ local M = {
 	require("plugins.language.lspsaga"),
 	require("plugins.language.nvim-gtd"),
 	require("plugins.language.inlay-hints"),
+	require("plugins.language.fommater"),
 	require("plugins.language.none-ls"),
 	require("plugins.language.nvim-dap"),
 	require("plugins.language.neotest"),

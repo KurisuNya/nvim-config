@@ -1,6 +1,7 @@
 local M = {}
 M.enable_plugins = true
 M.enable_copilot = true
+M.format_on_save = true
 
 M.default_colorscheme = "tokyonight-storm"
 M.border_style = "rounded" -- "rounded", "single", "none"

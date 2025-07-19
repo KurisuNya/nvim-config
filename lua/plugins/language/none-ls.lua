@@ -5,7 +5,6 @@ local M = {
 }
 
 PluginVars.none_ls_formatters = {}
-PluginVars.other_lsp_formatters = {}
 PluginVars.none_ls_linters = {}
 PluginVars.none_ls_code_actions = {}
 
@@ -28,49 +27,41 @@ M.init = function()
 end
 
 M.config = function()
+	local formatters = vim.tbl_map(function(source)
+		return get_source("formatting", source)
+	end, PluginVars.none_ls_formatters)
+	local linters = vim.tbl_map(function(source)
+		return get_source("diagnostics", source)
+	end, PluginVars.none_ls_linters)
+	local code_actions = vim.tbl_map(function(source)
+		return get_source("code_actions", source)
+	end, PluginVars.none_ls_code_actions)
 	local sources = {}
-	sources = vim.list_extend(
-		sources,
-		vim.tbl_map(function(source)
-			return get_source("formatting", source)
-		end, PluginVars.none_ls_formatters)
-	)
-	sources = vim.list_extend(
-		sources,
-		vim.tbl_map(function(source)
-			return get_source("diagnostics", source)
-		end, PluginVars.none_ls_linters)
-	)
-	sources = vim.list_extend(
-		sources,
-		vim.tbl_map(function(source)
-			return get_source("code_actions", source)
-		end, PluginVars.none_ls_code_actions)
-	)
+	sources = vim.list_extend(sources, formatters)
+	sources = vim.list_extend(sources, linters)
+	sources = vim.list_extend(sources, code_actions)
 
 	require("null-ls").setup({
 		sources = sources,
 		fallback_severity = vim.diagnostic.severity.WARN,
 	})
 
-	local format_clients = { "null-ls" }
-	format_clients = vim.list_extend(format_clients, PluginVars.other_lsp_formatters)
-
-	local filter = function(client, _)
-		return vim.tbl_contains(format_clients, client.name)
+	local support_filetypes = {}
+	local disabled_filetypes = {}
+	for _, source in ipairs(formatters) do
+		for _, ft in ipairs(source.filetypes or {}) do
+			local num = support_filetypes[ft]
+			support_filetypes[ft] = num and num + 1 or 1
+		end
+		for _, ft in ipairs(source.disabled_filetypes or {}) do
+			local num = disabled_filetypes[ft]
+			disabled_filetypes[ft] = num and num + 1 or 1
+		end
 	end
-
-	local format_on_save = Utils.create_augroup("format_on_save")
-	Utils.lsp_on_attach(filter, function(_, bufnr)
-		vim.api.nvim_clear_autocmds({ group = format_on_save, buffer = bufnr })
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			group = format_on_save,
-			buffer = bufnr,
-			callback = function()
-				vim.lsp.buf.format({ bufnr = bufnr })
-			end,
-		})
-	end)
+	local filetypes = vim.tbl_filter(function(ft)
+		return support_filetypes[ft] > (disabled_filetypes[ft] or 0)
+	end, vim.tbl_keys(support_filetypes))
+	PluginVars.insert(PluginVars.formatters, { name = "null-ls", filetypes = filetypes })
 end
 
 return M
