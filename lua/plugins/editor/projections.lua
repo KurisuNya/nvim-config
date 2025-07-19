@@ -4,7 +4,7 @@ local M = {
 	event = "VeryLazy",
 }
 
-PluginVars.projections_close_filetypes = { "help", "qf", "gitcommit", "netrw" }
+PluginVars.projections_close_filetypes = { "help", "qf", "gitcommit", "gitrebase", "netrw" }
 
 M.init = function()
 	vim.opt.sessionoptions:append("globals")
