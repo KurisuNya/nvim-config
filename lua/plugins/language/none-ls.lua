@@ -61,7 +61,7 @@ M.config = function()
 	local filetypes = vim.tbl_filter(function(ft)
 		return support_filetypes[ft] > (disabled_filetypes[ft] or 0)
 	end, vim.tbl_keys(support_filetypes))
-	PluginVars.insert(PluginVars.formatters, { name = "null-ls", filetypes = filetypes })
+	PluginVars.formatter.register({ name = "null-ls", filetypes = filetypes })
 end
 
 return M
