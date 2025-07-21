@@ -38,7 +38,10 @@ M.config = function()
 		vim.cmd.help(word)
 	end
 	local opts = {
-		lsp = { progress = { enabled = false } },
+		lsp = {
+			progress = { enabled = false },
+			signature = { enabled = false },
+		},
 		markdown = {
 			hover = { ["|(%S-)|"] = open_help },
 			open_keys = open_key,

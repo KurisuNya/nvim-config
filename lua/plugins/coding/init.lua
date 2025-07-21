@@ -5,6 +5,7 @@ return {
 	-- completion
 	require("plugins.coding.nvim-cmp"),
 	require("plugins.coding.luasnip"),
+	require("plugins.coding.lsp_signature"),
 	-- comments
 	require("plugins.coding.ts-comments"),
 	-- auto pairs

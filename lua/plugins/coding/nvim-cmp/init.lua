@@ -49,9 +49,9 @@ M.opts = function()
 		},
 		sources = {
 			normal = {
+				{ name = "nvim_lsp" },
 				{ name = "async_path" },
-				{ name = "nvim_lsp", max_item_count = 350 },
-				{ name = "buffer", max_item_count = 5 },
+				{ name = "buffer" },
 			},
 			search = {
 				{ name = "buffer" },
