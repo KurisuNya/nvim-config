@@ -36,9 +36,9 @@ keymap.set({ "n", "x" }, "<leader>j", "J", desc_opts(norm_opts, "Join Lines"))
 
 -- add and sub
 keymap.set({ "n", "x" }, "+", "<C-a>", norm_opts)
-keymap.set({ "n", "x" }, "_", "<C-x>", norm_opts)
+keymap.set({ "n", "x" }, "-", "<C-x>", norm_opts)
 keymap.set({ "n", "x" }, "g+", "g<C-a>", norm_opts)
-keymap.set({ "n", "x" }, "g_", "g<C-x>", norm_opts)
+keymap.set({ "n", "x" }, "g-", "g<C-x>", norm_opts)
 
 -- indent
 keymap.set("x", "<", "<gv", norm_opts)
