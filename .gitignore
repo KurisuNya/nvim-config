@@ -1,1 +1,21 @@
 .luarc.json
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test output
+tests/output/
+*.test.log
+
+# Debug files
+debug.log
+
+# Local configuration overrides
+local_config.lua
