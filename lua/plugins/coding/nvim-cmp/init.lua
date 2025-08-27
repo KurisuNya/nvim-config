@@ -19,7 +19,6 @@ local copilot_plugins = {
 		cmd = "Copilot",
 		build = ":Copilot auth",
 		opts = {
-			copilot_model = "gpt-4o-copilot",
 			suggestion = { enabled = false },
 			panel = { enabled = false },
 			filetypes = { markdown = true, yaml = true, help = true },

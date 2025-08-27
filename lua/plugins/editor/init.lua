@@ -16,14 +16,12 @@ local M = {
 	require("plugins.editor.toggleterm"),
 	-- find and replace
 	require("plugins.editor.grug-far"),
-	-- quickfix
-	require("plugins.editor.trouble"),
-	require("plugins.editor.quicker"),
 	-- git
 	require("plugins.editor.gitsigns"),
 	require("plugins.editor.nvim-tinygit"),
 	require("plugins.editor.diffview"),
 	require("plugins.editor.git-conflict"),
+	require("plugins.editor.quicker"),
 	-- better ui
 	require("plugins.editor.dressing"),
 	require("plugins.editor.noice"),

@@ -76,10 +76,6 @@ local mappings = function()
 			end,
 		},
 	}
-	if Utils.plugin_exists("trouble.nvim") then
-		map.i["<c-t>"] = require("trouble.sources.telescope").open
-		map.n["<c-t>"] = require("trouble.sources.telescope").open
-	end
 	return map
 end
 

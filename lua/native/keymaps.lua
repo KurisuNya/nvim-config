@@ -47,6 +47,9 @@ keymap.set("x", ">", ">gv", norm_opts)
 -- normal mode commands
 keymap.set("x", "<leader>n", ":normal ")
 
+-- diagnostics
+keymap.set("n", "<leader>x", vim.diagnostic.setqflist, desc_opts(norm_opts, "Show Diagnostics"))
+
 -- diff
 keymap.set("n", "<leader>dd", function()
 	if vim.api.nvim_get_option_value("diff", {}) then

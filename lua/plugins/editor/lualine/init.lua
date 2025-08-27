@@ -32,7 +32,7 @@ M.config = function()
 			component_separators = Config.lualine_component_separators,
 			disabled_filetypes = { statusline = PluginVars.lualine_disabled_filetypes },
 		},
-		extensions = { "lazy" },
+		extensions = { "lazy", "quickfix" },
 		sections = {
 			lualine_a = { "mode" },
 			lualine_b = {},
@@ -57,20 +57,6 @@ M.config = function()
 	end
 	if Utils.plugin_exists("nvim-dap-ui") then
 		table.insert(opts.extensions, "nvim-dap-ui")
-	end
-	if Utils.plugin_exists("trouble.nvim") then
-		local trouble_extension = {
-			sections = {
-				lualine_a = { "filetype" },
-				lualine_b = {},
-				lualine_c = {},
-				lualine_x = {},
-				lualine_y = {},
-				lualine_z = {},
-			},
-			filetypes = { "trouble" },
-		}
-		table.insert(opts.extensions, trouble_extension)
 	end
 	if Utils.plugin_exists("toggleterm.nvim") then
 		table.insert(opts.extensions, "toggleterm")
