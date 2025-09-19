@@ -37,6 +37,12 @@ M.config = function()
 				end
 			end,
 		},
+		restore_hooks = {
+			post = function()
+				-- HACK: reset foldexpr
+				vim.opt.foldexpr = vim.opt.foldexpr
+			end,
+		},
 	})
 	if Utils.plugin_exists("telescope.nvim") then
 		require("telescope").load_extension("projections")

@@ -54,7 +54,7 @@ local function lsp_get_client_name()
 			table.insert(client_names, 1, client.name)
 		end
 	end
-	return table.concat(client_names, ",")
+	return table.concat(client_names, ", ")
 end
 
 local function lsp_messages_formatter(messages)

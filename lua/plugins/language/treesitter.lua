@@ -29,13 +29,9 @@ end
 M.config = function()
 	require("nvim-treesitter.configs").setup({
 		ensure_installed = Utils.tbl_filter_same(PluginVars.treesitter_ensure_installed),
-		highlight = { enable = true, disable = { "latex" } },
-		indent = { enable = true, disable = { "python" } },
+		highlight = { enable = true },
+		indent = { enable = true },
 	})
-	vim.opt.foldmethod = "expr"
-	vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-	vim.opt.foldlevel = 99
-	vim.g.matchup_matchparen_offscreen = { method = "popup" }
 end
 
 return M

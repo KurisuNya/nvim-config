@@ -4,7 +4,6 @@ local M = {
 	require("plugins.language.lspconfig"),
 	require("plugins.language.lspsaga"),
 	require("plugins.language.nvim-gtd"),
-	require("plugins.language.inlay-hints"),
 	require("plugins.language.formatter"),
 	require("plugins.language.none-ls"),
 	require("plugins.language.nvim-dap"),

@@ -8,7 +8,6 @@ M.opts = {
 	skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
 	skip_ts = { "string" },
 	skip_unbalanced = true,
-	markdown = true,
 }
 
 M.config = function(_, opts)
@@ -23,10 +22,6 @@ M.config = function(_, opts)
 		local line = vim.api.nvim_get_current_line()
 		local cursor = vim.api.nvim_win_get_cursor(0)
 		local next = line:sub(cursor[2] + 1, cursor[2] + 1)
-		local before = line:sub(1, cursor[2])
-		if opts.markdown and o == "`" and vim.bo.filetype == "markdown" and before:match("^%s*``") then
-			return "`\n```" .. vim.api.nvim_replace_termcodes("<up>", true, true, true)
-		end
 		if opts.skip_next and next ~= "" and next:match(opts.skip_next) then
 			return o
 		end

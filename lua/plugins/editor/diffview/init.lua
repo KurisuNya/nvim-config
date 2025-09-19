@@ -27,7 +27,6 @@ M.config = function()
 			view = keymaps.view_keymap_list(),
 			file_panel = keymaps.file_panel_keymap_list(),
 			file_history_panel = keymaps.file_history_panel_keymap_list(),
-			diff3 = keymaps.diff3_keymap_list(),
 			help_panel = keymaps.help_panel_keymap_list(),
 			option_panel = keymaps.option_panel_keymap_list(),
 		},

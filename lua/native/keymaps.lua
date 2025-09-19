@@ -12,7 +12,7 @@ end
 
 vim.g.mapleader = " " -- Leader key
 vim.g.maplocalleader = "," -- Local leader key
-del_maps({ "q", "Q", "m", "M" })
+del_maps({ "q", "Q", "m", "M", "grr", "gri", "grt", "gra", "grn" })
 
 -- move
 keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", expr_opts)

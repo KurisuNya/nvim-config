@@ -15,7 +15,7 @@ PluginVars.insert(PluginVars.lsp_config, function()
 					command = "pyright.organizeimports",
 					arguments = { vim.uri_from_bufnr(bufnr) },
 				}
-				client.request("workspace/executeCommand", params, nil, 0)
+				client:request("workspace/executeCommand", params, nil, 0)
 			end, { desc = "Organize Imports" })
 		end,
 	})

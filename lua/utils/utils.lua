@@ -64,10 +64,18 @@ M.lsp_on_attach_by_name = function(client_name, fn)
 	end, fn)
 end
 
+---@param method string
+---@param fn fun(client: vim.lsp.Client, bufnr: integer)
+M.lsp_on_attach_by_method = function(method, fn)
+	M.lsp_on_attach(function(client, _)
+		return client:supports_method(method)
+	end, fn)
+end
+
 ---@class Keymap
 ---@field mode string
 ---@field key string
----@field cmd string
+---@field cmd string | function
 ---@field opts? table
 
 ---@param keymap Keymap
@@ -82,7 +90,7 @@ end
 ---@param keymap Keymap
 M.lsp_keymap_set_by_method = function(method, keymap)
 	M.lsp_on_attach(function(client, _)
-		return client.supports_method(method)
+		return client:supports_method(method)
 	end, function(_, bufnr)
 		M.buffer_keymap_set(keymap, bufnr)
 	end)
@@ -141,7 +149,7 @@ M.on_plugin_loaded = function(plugin, fn)
 	end
 end
 
-function M.on_very_lazy(fn)
+M.on_very_lazy = function(fn)
 	vim.api.nvim_create_autocmd("User", {
 		pattern = "VeryLazy",
 		callback = function()

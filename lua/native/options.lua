@@ -64,3 +64,12 @@ if os.getenv("SSH_TTY") or os.getenv("USER") == "root" then
 		},
 	}
 end
+-- fold
+vim.opt.foldlevel = 99
+vim.opt.foldtext = ""
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+Utils.lsp_on_attach_by_method("textDocument/foldingRange", function()
+	local win = vim.api.nvim_get_current_win()
+	vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+end)
