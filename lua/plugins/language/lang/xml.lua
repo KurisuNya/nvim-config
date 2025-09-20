@@ -1,3 +1,4 @@
+PluginVars.insert(PluginVars.treesitter_ensure_installed, "xml")
 PluginVars.insert(PluginVars.mason_ensure_installed, "lemminx")
 
 PluginVars.formatter.register({ name = "lemminx", filetypes = { "xml" } })
