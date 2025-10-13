@@ -4,6 +4,5 @@ PluginVars.insert(PluginVars.treesitter_ensure_installed, "markdown_inline")
 
 return {
 	require("plugins.language.lang.markdown.markdown-preview"),
-	require("plugins.language.lang.markdown.vim-table-mode"),
 	require("plugins.language.lang.markdown.clipboard-image"),
 }

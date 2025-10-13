@@ -21,11 +21,11 @@ local M = {
 	require("plugins.editor.nvim-tinygit"),
 	require("plugins.editor.diffview"),
 	require("plugins.editor.git-conflict"),
-	require("plugins.editor.quicker"),
 	-- better ui
 	require("plugins.editor.dressing"),
 	require("plugins.editor.noice"),
 	require("plugins.editor.virt-column"),
+	require("plugins.editor.quicker"),
 	-- misc
 	require("plugins.editor.sniprun"),
 	require("plugins.editor.icon-picker"),
