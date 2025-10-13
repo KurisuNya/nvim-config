@@ -2,7 +2,7 @@ PluginVars.insert(PluginVars.treesitter_ensure_installed, "lua")
 PluginVars.insert(PluginVars.mason_ensure_installed, "lua-language-server")
 PluginVars.insert(PluginVars.mason_ensure_installed, "stylua")
 
-PluginVars.insert(PluginVars.none_ls_formatters, "stylua")
+PluginVars.insert(PluginVars.conform_formatters, { name = "stylua", filetypes = { "lua" } })
 PluginVars.insert(PluginVars.lsp_config, function()
 	vim.lsp.enable("lua_ls")
 	vim.lsp.config("lua_ls", {

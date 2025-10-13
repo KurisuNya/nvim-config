@@ -11,7 +11,6 @@ return {
 	-- auto pairs
 	require("plugins.coding.mini-pairs"),
 	require("plugins.coding.nvim-ts-autotag"),
-	require("plugins.coding.vim-matchup"),
 	-- misc
 	require("plugins.coding.leap"),
 	require("plugins.coding.nvim-surround"),

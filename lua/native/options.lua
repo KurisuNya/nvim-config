@@ -72,7 +72,7 @@ vim.opt.foldtext = "v:lua.highlighted_foldtext()"
 _G.highlighted_foldtext = function()
 	local line = vim.fn.getline(vim.v.foldstart)
 	local len = vim.v.foldend - vim.v.foldstart
-	local suffix = "  " .. len .. (len > 1 and " lines" or " line") .. " folded "
+	local suffix = "  󰁂 " .. len .. (len > 1 and " lines" or " line") .. " folded "
 	local lang = vim.treesitter.language.get_lang(vim.bo.filetype)
 	local parser = vim.treesitter.get_parser(0, lang, { error = false })
 	if not parser then

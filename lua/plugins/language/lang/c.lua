@@ -5,7 +5,7 @@ PluginVars.insert(PluginVars.mason_ensure_installed, "clangd")
 PluginVars.insert(PluginVars.mason_ensure_installed, "clang-format")
 PluginVars.insert(PluginVars.mason_ensure_installed, "codelldb")
 
-PluginVars.insert(PluginVars.none_ls_formatters, "clang_format")
+PluginVars.insert(PluginVars.conform_formatters, { name = "clang_format", filetypes = { "c", "cpp" } })
 PluginVars.insert(PluginVars.lsp_config, function()
 	vim.lsp.enable("clangd")
 	vim.lsp.config("clangd", {
