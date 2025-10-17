@@ -43,6 +43,6 @@ M.dashboard_buttons = {
 }
 M.dashboard_footer_name = "KurisuNya Neovim 󰒲"
 
-M.lualine_section_separators = { left = "", right = "" }
+M.lualine_section_separators = { left = "", right = "" }
 M.lualine_component_separators = { left = "", right = "" }
 return M

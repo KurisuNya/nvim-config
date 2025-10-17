@@ -4,6 +4,7 @@ PluginVars.insert(PluginVars.treesitter_ensure_installed, "cpp")
 PluginVars.insert(PluginVars.mason_ensure_installed, "clangd")
 PluginVars.insert(PluginVars.mason_ensure_installed, "clang-format")
 PluginVars.insert(PluginVars.mason_ensure_installed, "codelldb")
+PluginVars.insert(PluginVars.mason_ensure_installed, "cpptools")
 
 PluginVars.insert(PluginVars.conform_formatters, { name = "clang_format", filetypes = { "c", "cpp" } })
 PluginVars.insert(PluginVars.lsp_config, function()
@@ -42,16 +43,19 @@ PluginVars.insert(PluginVars.lsp_config, function()
 	})
 end)
 
-local adapter = PluginVars.dap_adapters["codelldb"]
-PluginVars.dap_adapters["codelldb"] = adapter
-	or {
-		type = "server",
-		port = "${port}",
-		executable = {
-			command = "codelldb",
-			args = { "--port", "${port}" },
-		},
-	}
+PluginVars.dap_adapters["codelldb"] = {
+	type = "server",
+	port = "${port}",
+	executable = {
+		command = "codelldb",
+		args = { "--port", "${port}" },
+	},
+}
+PluginVars.dap_adapters["cppdbg"] = {
+	id = "cppdbg",
+	type = "executable",
+	command = "OpenDebugAD7",
+}
 
 local dap_config = function()
 	return {
@@ -70,6 +74,17 @@ local dap_config = function()
 			name = "Attach to process",
 			pid = require("dap.utils").pick_process,
 			cwd = "${workspaceFolder}",
+		},
+		{
+			name = "Attach to gdbserver",
+			type = "cppdbg",
+			request = "launch",
+			MIMode = "gdb",
+			miDebuggerServerAddress = "localhost:3333",
+			cwd = "${workspaceFolder}",
+			program = function()
+				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+			end,
 		},
 	}
 end

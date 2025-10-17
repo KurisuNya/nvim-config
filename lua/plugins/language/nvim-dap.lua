@@ -123,8 +123,8 @@ M.config = function()
 		layouts = {
 			{
 				elements = {
-					{ id = "scopes", size = 0.76 },
-					{ id = "breakpoints", size = 0.24 },
+					{ id = "scopes", size = 0.75 },
+					{ id = "watches", size = 0.25 },
 				},
 				size = 0.25,
 				position = "right",
@@ -132,27 +132,27 @@ M.config = function()
 			{
 				elements = {
 					{ id = "console", size = 0.4 },
-					{ id = "repl", size = 0.3 },
+					{ id = "breakpoints", size = 0.3 },
 					{ id = "stacks", size = 0.3 },
 				},
 				position = "bottom",
 				size = 0.25,
 			},
 		},
-		controls = {
-			enabled = true,
-			element = "repl",
-			icons = {
-				pause = Icons.dap.Pause,
-				play = Icons.dap.Play,
-				step_into = Icons.dap.StepInto,
-				step_over = Icons.dap.StepOver,
-				step_out = Icons.dap.StepOut,
-				step_back = Icons.dap.StepBack,
-				run_last = Icons.dap.RunLast,
-				terminate = Icons.dap.Terminate,
-			},
-		},
+		-- controls = {
+		-- 	enabled = true,
+		-- 	element = "repl",
+		-- 	icons = {
+		-- 		pause = Icons.dap.Pause,
+		-- 		play = Icons.dap.Play,
+		-- 		step_into = Icons.dap.StepInto,
+		-- 		step_over = Icons.dap.StepOver,
+		-- 		step_out = Icons.dap.StepOut,
+		-- 		step_back = Icons.dap.StepBack,
+		-- 		run_last = Icons.dap.RunLast,
+		-- 		terminate = Icons.dap.Terminate,
+		-- 	},
+		-- },
 		floating = {
 			max_height = 0.5,
 			max_width = 0.5,

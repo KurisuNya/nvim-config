@@ -26,6 +26,8 @@ vim.diagnostic.config({
 --------------------
 -- editor options --
 --------------------
+-- modeline
+vim.opt.modeline = false
 -- scroll
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
