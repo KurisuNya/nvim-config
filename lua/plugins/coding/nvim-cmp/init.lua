@@ -13,24 +13,10 @@ M.dependencies = {
 	{ "kawre/neotab.nvim", opts = { tabkey = "", behavior = "closing" }, event = "VeryLazy" },
 }
 
-local copilot_plugins = {
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		build = ":Copilot auth",
-		opts = {
-			suggestion = { enabled = false },
-			panel = { enabled = false },
-			filetypes = { markdown = true, yaml = true, help = true },
-		},
-		init = function()
-			PluginVars.insert(PluginVars.lualine_hidden_lsp, "copilot")
-		end,
-	},
-	{ "KurisuNya/copilot-cmp", opts = {} },
-}
 if Config.enable_copilot then
-	M.dependencies = vim.list_extend(M.dependencies, copilot_plugins)
+	M.dependencies = vim.list_extend(M.dependencies, {
+		{ "KurisuNya/copilot-cmp", opts = {} },
+	})
 end
 
 M.opts = function()

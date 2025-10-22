@@ -47,7 +47,7 @@ local activate = function(name)
 		},
 		on_highlights = function(hl, c)
 			hl.CursorLineNr = { fg = c.dark5 }
-			hl.Folded = { fg = c.fg_dark, bg = c.bg_visual, italic = true }
+			hl.Folded = { fg = c.fg, bg = c.bg_dark1, bold = true, italic = true }
 			for plugin, func in pairs(plugin_specific) do
 				if Utils.plugin_exists(plugin) then
 					func(hl, c)

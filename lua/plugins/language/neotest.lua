@@ -32,7 +32,7 @@ M.keys = {
 		desc = "Test Stop",
 	},
 	{
-		"<leader>s",
+		"<leader>x",
 		function()
 			require("neotest").summary.toggle()
 		end,
