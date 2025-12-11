@@ -11,6 +11,7 @@ local M = {
 	-- lang
 	require("plugins.language.lang.misc"),
 	require("plugins.language.lang.c"),
+	require("plugins.language.lang.haskell"),
 	require("plugins.language.lang.lua"),
 	require("plugins.language.lang.markdown"),
 	require("plugins.language.lang.python"),

@@ -28,7 +28,6 @@ local M = {
 	require("plugins.editor.quicker"),
 	-- misc
 	require("plugins.editor.sniprun"),
-	require("plugins.editor.icon-picker"),
 	require("plugins.editor.snacks"),
 	require("plugins.editor.numb"),
 	require("plugins.editor.hlsearch"),

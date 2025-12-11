@@ -5,9 +5,9 @@ local M = {
 }
 
 M.dependencies = {
-	{ "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
-	{ "iguanacucumber/mag-buffer", name = "cmp-buffer" },
-	{ "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
+	{ "hrsh7th/cmp-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
+	{ "hrsh7th/cmp-buffer", name = "cmp-buffer" },
+	{ "hrsh7th/cmp-cmdline", name = "cmp-cmdline" },
 	{ url = "https://codeberg.org/FelipeLema/cmp-async-path.git" },
 	"saadparwaiz1/cmp_luasnip",
 	{ "kawre/neotab.nvim", opts = { tabkey = "", behavior = "closing" }, event = "VeryLazy" },
@@ -107,8 +107,8 @@ local get_normal_keymaps = function()
 			},
 			mode = { "i" },
 		},
-		scroll_docs_up = { key = "<C-u>" },
-		scroll_docs_down = { key = "<C-d>" },
+		scroll_docs_up = { key = "<C-k>" },
+		scroll_docs_down = { key = "<C-j>" },
 	}
 
 	if Utils.plugin_exists("LuaSnip") then

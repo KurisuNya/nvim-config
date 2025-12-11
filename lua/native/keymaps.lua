@@ -1,5 +1,5 @@
 local keymap = vim.keymap
-local norm_opts = { noremap = true, silent = true }
+local norm_opts = { noremap = false, silent = true }
 local expr_opts = { noremap = true, silent = true, expr = true }
 local desc_opts = function(opts, desc)
 	return vim.tbl_extend("force", opts, { desc = desc })
@@ -29,7 +29,7 @@ keymap.set("n", "<leader>w", "<CMD>w<CR>", desc_opts(norm_opts, "Save"))
 keymap.set("n", "<leader>q", "<CMD>q<CR>", desc_opts(norm_opts, "Quit"))
 
 -- macro
-keymap.set("n", "M", "q", desc_opts(norm_opts, "Record macro"))
+keymap.set("n", "<leader>M", "q", desc_opts(norm_opts, "Record macro"))
 
 -- join lines
 keymap.set({ "n", "x" }, "<leader>j", "J", desc_opts(norm_opts, "Join Lines"))
