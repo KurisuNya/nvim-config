@@ -28,6 +28,9 @@ keymap.set({ "n", "x" }, "<S-Up>", "5gk", norm_opts)
 keymap.set("n", "<leader>w", "<CMD>w<CR>", desc_opts(norm_opts, "Save"))
 keymap.set("n", "<leader>q", "<CMD>q<CR>", desc_opts(norm_opts, "Quit"))
 
+-- toggle hlsearch
+keymap.set("n", "<C-l>", [[( &hls && v:hlsearch ? ':nohls' : ':set hls')."\n" <BAR> redraw<CR>]], expr_opts)
+
 -- macro
 keymap.set("n", "<leader>M", "q", desc_opts(norm_opts, "Record macro"))
 

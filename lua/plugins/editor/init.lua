@@ -30,7 +30,6 @@ local M = {
 	require("plugins.editor.sniprun"),
 	require("plugins.editor.snacks"),
 	require("plugins.editor.numb"),
-	require("plugins.editor.hlsearch"),
 	require("plugins.editor.stickybuf"),
 }
 
