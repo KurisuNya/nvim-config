@@ -1,30 +1,13 @@
-local copilot = {
-	"zbirenbaum/copilot.lua",
-	cmd = "Copilot",
-	build = ":Copilot auth",
-	event = "VeryLazy",
-}
-
-copilot.init = function()
-	PluginVars.insert(PluginVars.lualine_hidden_lsp, "copilot")
-end
-
-copilot.opts = {
-	suggestion = { enabled = false },
-	panel = { enabled = false },
-	filetypes = { markdown = true, yaml = true, help = true },
-}
-
-local sidekick = {
+local M = {
 	"folke/sidekick.nvim",
 	event = "VeryLazy",
 }
 
-sidekick.init = function()
+M.init = function()
 	PluginVars.insert(PluginVars.projections_close_filetypes, "sidekick_terminal")
 end
 
-sidekick.opts = {
+M.opts = {
 	nes = { enabled = false },
 	cli = {
 		mux = { backend = "tmux", enabled = true },
@@ -48,7 +31,7 @@ sidekick.opts = {
 	},
 }
 
-sidekick.keys = {
+M.keys = {
 	{
 		"<C-/>",
 		function()
@@ -90,5 +73,4 @@ sidekick.keys = {
 	},
 }
 
-local M = { copilot, sidekick }
 return Config.enable_copilot and M or {}

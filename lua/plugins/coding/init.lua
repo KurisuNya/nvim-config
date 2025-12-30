@@ -3,16 +3,14 @@ return {
 	require("plugins.coding.indent-o-matic"),
 	require("plugins.coding.indent-blankline"),
 	-- completion
-	require("plugins.coding.nvim-cmp"),
-	require("plugins.coding.luasnip"),
-	require("plugins.coding.lsp_signature"),
+	require("plugins.coding.blink-cmp"),
 	-- comments
 	require("plugins.coding.ts-comments"),
 	-- auto pairs
 	require("plugins.coding.mini-pairs"),
 	require("plugins.coding.nvim-ts-autotag"),
 	-- ai
-	require("plugins.coding.copilot"),
+	require("plugins.coding.sidekick"),
 	-- misc
 	require("plugins.coding.leap"),
 	require("plugins.coding.nvim-surround"),
