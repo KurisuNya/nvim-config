@@ -6,6 +6,7 @@ M.format_on_save = true
 M.default_colorscheme = "tokyonight-storm"
 M.border_style = "rounded" -- "rounded", "single", "none"
 M.border_style_fallback = "rounded" -- "rounded", "single"
+M.cmp_border_style = "rounded" -- "rounded", "single", "none"
 
 M.workspaces = {
 }

@@ -60,12 +60,6 @@ M.keys = {
 
 local mappings = function()
 	local map = {
-		i = {
-			["<C-j>"] = "preview_scrolling_down",
-			["<C-k>"] = "preview_scrolling_up",
-			["<C-h>"] = "preview_scrolling_left",
-			["<C-l>"] = "preview_scrolling_right",
-		},
 		n = {
 			["<ESC>"] = "close",
 			["q"] = "close",
@@ -79,10 +73,6 @@ local mappings = function()
 					require("telescope.actions").move_selection_previous(bufnr)
 				end
 			end,
-			["<C-j>"] = "preview_scrolling_down",
-			["<C-k>"] = "preview_scrolling_up",
-			["<C-h>"] = "preview_scrolling_left",
-			["<C-l>"] = "preview_scrolling_right",
 		},
 	}
 	return map

@@ -4,18 +4,6 @@ local M = {
 	dependencies = { "MunifTanjim/nui.nvim" },
 }
 M.keys = function()
-	if Utils.plugin_exists("nvim-lspcofig") then
-		vim.keymap.set({ "n", "i", "s" }, "<c-d>", function()
-			if not require("noice.lsp").scroll(4) then
-				return "<c-d>"
-			end
-		end, { silent = true, expr = true })
-		vim.keymap.set({ "n", "i", "s" }, "<c-u>", function()
-			if not require("noice.lsp").scroll(-4) then
-				return "<c-u>"
-			end
-		end, { silent = true, expr = true })
-	end
 	if Utils.plugin_exists("telescope.nvim") then
 		vim.keymap.set("n", "<leader>fm", "<Cmd>Noice telescope<CR>", {
 			silent = true,
@@ -41,11 +29,6 @@ M.config = function()
 		lsp = {
 			progress = { enabled = false },
 			signature = { enabled = false },
-			override = {
-				["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-				["vim.lsp.util.stylize_markdown"] = true,
-				["cmp.entry.get_documentation"] = true,
-			},
 		},
 		markdown = {
 			hover = { ["|(%S-)|"] = open_help },
@@ -55,7 +38,7 @@ M.config = function()
 		views = {
 			hover = {
 				size = { width = "auto", height = "auto", max_height = 20, max_width = 75 },
-				border = { style = Config.border_style },
+				border = { style = Config.cmp_border_style },
 			},
 			popup = { border = { style = border_style } },
 			cmdline_popup = { border = { style = border_style } },

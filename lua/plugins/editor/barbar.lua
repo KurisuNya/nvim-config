@@ -21,14 +21,8 @@ local del_key = function(key)
 end
 
 local keys = {
-	gen_key({ "<A-l>", "<Cmd>BufferNext<CR>", desc = "Buffer Next" }),
-	gen_key({ "<A-h>", "<Cmd>BufferPrevious<CR>", desc = "Buffer Previous" }),
-	gen_key({ "<A-j>", "<Cmd>BufferNext<CR>", desc = "Buffer Next" }),
-	gen_key({ "<A-k>", "<Cmd>BufferPrevious<CR>", desc = "Buffer Previous" }),
 	gen_key({ "<A-Right>", "<Cmd>BufferNext<CR>", desc = "Buffer Next" }),
 	gen_key({ "<A-Left>", "<Cmd>BufferPrevious<CR>", desc = "Buffer Previous" }),
-	gen_key({ "<A-Down>", "<Cmd>BufferNext<CR>", desc = "Buffer Next" }),
-	gen_key({ "<A-Up>", "<Cmd>BufferPrevious<CR>", desc = "Buffer Previous" }),
 
 	gen_key({ "<A-,>", "<Cmd>BufferMovePrevious<CR>", desc = "Buffer Move to Previous" }),
 	gen_key({ "<A-.>", "<Cmd>BufferMoveNext<CR>", desc = "Buffer Move to Next" }),
