@@ -13,7 +13,7 @@ copilot.opts = {
 	suggestion = {
 		enabled = true,
 		auto_trigger = true,
-		keymap = { accept = "<S-CR>", accept_line = "<C-CR>" },
+		keymap = { accept = "<C-CR>", accept_line = "<S-CR>" },
 	},
 	panel = { enabled = false },
 	filetypes = { markdown = true, yaml = true, help = true },

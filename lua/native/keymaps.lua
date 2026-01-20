@@ -21,15 +21,10 @@ keymap.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", expr_opts)
 keymap.set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", expr_opts)
 keymap.set({ "n", "x" }, "J", "5gj", norm_opts)
 keymap.set({ "n", "x" }, "K", "5gk", norm_opts)
-keymap.set({ "n", "x" }, "<S-Down>", "5gj", norm_opts)
-keymap.set({ "n", "x" }, "<S-Up>", "5gk", norm_opts)
 
 -- save and quit
 keymap.set("n", "<leader>w", "<CMD>w<CR>", desc_opts(norm_opts, "Save"))
 keymap.set("n", "<leader>q", "<CMD>q<CR>", desc_opts(norm_opts, "Quit"))
-
--- toggle hlsearch
-keymap.set("n", "<C-l>", [[( &hls && v:hlsearch ? ':nohls' : ':set hls')."\n" <BAR> redraw<CR>]], expr_opts)
 
 -- macro
 keymap.set("n", "<leader>M", "q", desc_opts(norm_opts, "Record macro"))

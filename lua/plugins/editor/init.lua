@@ -27,6 +27,7 @@ local M = {
 	require("plugins.editor.virt-column"),
 	require("plugins.editor.quicker"),
 	-- misc
+	require("plugins.editor.hlsearch"),
 	require("plugins.editor.sniprun"),
 	require("plugins.editor.snacks"),
 	require("plugins.editor.numb"),

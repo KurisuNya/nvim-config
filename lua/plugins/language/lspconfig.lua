@@ -18,6 +18,7 @@ local keymaps = {
 return {
 	"neovim/nvim-lspconfig",
 	config = function()
+		vim.lsp.set_log_level("off")
 		Utils.lsp_keymap_set_by_method("textDocument/hover", keymaps.hover_doc)
 		for _, func in pairs(PluginVars.lsp_config) do
 			func()
