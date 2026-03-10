@@ -26,6 +26,8 @@ vim.diagnostic.config({
 --------------------
 -- editor options --
 --------------------
+-- encoding
+vim.opt.fileencodings = { "utf-8", "ucs-bom", "gb18030", "gbk", "gb2312", "cp936" }
 -- modeline
 vim.opt.modeline = false
 -- scroll

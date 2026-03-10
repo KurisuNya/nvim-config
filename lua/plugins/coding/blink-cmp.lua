@@ -1,12 +1,26 @@
 local M = {
 	"saghen/blink.cmp",
-	build = "cargo build --release",
+	version = "*",
 	event = "VeryLazy",
 }
 
 M.dependencies = {
 	{ "kawre/neotab.nvim", opts = {} },
-	{ "rafamadriz/friendly-snippets" },
+	{
+		"L3MON4D3/LuaSnip",
+		version = "v2.*",
+		dependencies = {
+			"rafamadriz/friendly-snippets",
+			config = function()
+				require("luasnip.loaders.from_vscode").lazy_load()
+				require("luasnip.loaders.from_vscode").lazy_load({
+					paths = { vim.fn.stdpath("config") .. "/snippets" },
+				})
+			end,
+		},
+		opts = { history = true, delete_check_events = "TextChanged" },
+		build = "make install_jsregexp",
+	},
 }
 
 M.opts = {
@@ -29,6 +43,7 @@ M.opts = {
 		["<C-d>"] = { "scroll_documentation_down", "fallback" },
 	},
 
+	snippets = { preset = "luasnip" },
 	signature = {
 		enabled = true,
 		window = { border = Config.cmp_border_style },

@@ -2,7 +2,11 @@ local M = {
 	"nvim-lualine/lualine.nvim",
 	dependencies = {
 		{ "nvim-tree/nvim-web-devicons" },
-		{ "linrongbin16/lsp-progress.nvim", opts = {} },
+		{
+			"linrongbin16/lsp-progress.nvim",
+			commit = "ae52979",
+			opts = {},
+		},
 	},
 	event = { "VeryLazy" },
 }
