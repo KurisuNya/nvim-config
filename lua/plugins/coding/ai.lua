@@ -36,16 +36,16 @@ sidekick.opts = {
 			keys = {
 				buffers = { "<c-b>", "buffers", mode = "nt", desc = "open buffer picker" },
 				files = { "<c-f>", "files", mode = "nt", desc = "open file picker" },
-				stopinsert = { "<esc>", "stopinsert", mode = "t", desc = "enter normal mode" },
-				hide_n = false,
+				prompt = false,
+				stopinsert = { "<c-q>", "stopinsert", mode = "t", desc = "enter normal mode" },
+				hide_n = { "q", "hide", mode = "n", desc = "hide the terminal window" },
 				hide_ctrl_q = false,
 				hide_ctrl_dot = false,
 				hide_ctrl_z = false,
-				prompt = false,
-				nav_left = false,
-				nav_down = false,
-				nav_up = false,
-				nav_right = false,
+				nav_left = { "<c-left>", "nav_left", expr = true, desc = "navigate to the left window" },
+				nav_down = { "<c-down>", "nav_down", expr = true, desc = "navigate to the below window" },
+				nav_up = { "<c-up>", "nav_up", expr = true, desc = "navigate to the above window" },
+				nav_right = { "<c-right>", "nav_right", expr = true, desc = "navigate to the right window" },
 			},
 		},
 		picker = "telescope",
@@ -56,9 +56,9 @@ sidekick.keys = {
 	{
 		"<C-/>",
 		function()
-			require("sidekick.cli").toggle({ name = "copilot", focus = true })
+			require("sidekick.cli").toggle({ name = Config.ai_cli, focus = true })
 		end,
-		desc = "Sidekick Toggle Copilot",
+		desc = "Sidekick Toggle CLI",
 		mode = { "n", "t", "i", "x" },
 	},
 	{
@@ -67,14 +67,14 @@ sidekick.keys = {
 			require("sidekick.cli").send({ msg = "{this}" })
 		end,
 		mode = { "x", "n" },
-		desc = "Send This",
+		desc = "Sidekick Send This",
 	},
 	{
 		"<leader>sf",
 		function()
 			require("sidekick.cli").send({ msg = "{file}" })
 		end,
-		desc = "Send File",
+		desc = "Sidekick Send File",
 	},
 	{
 		"<leader>sv",
@@ -82,7 +82,7 @@ sidekick.keys = {
 			require("sidekick.cli").send({ msg = "{selection}" })
 		end,
 		mode = { "x" },
-		desc = "Send Visual Selection",
+		desc = "Sidekick Send Visual Selection",
 	},
 	{
 		"<leader>sp",
@@ -95,4 +95,4 @@ sidekick.keys = {
 }
 
 local M = { copilot, sidekick }
-return Config.enable_copilot and M or {}
+return Config.enable_ai and M or {}

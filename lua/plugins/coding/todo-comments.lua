@@ -8,7 +8,7 @@ M.keys = {
 	{
 		"<leader>td",
 		"<CMD>TodoQuickFix<CR>",
-		desc = "List TODO",
+		desc = "TODO List",
 		mode = "n",
 		noremap = true,
 		silent = true,

@@ -5,22 +5,6 @@ local M = {
 
 M.keys = {
 	{
-		"<leader>vt",
-		"<CMD>ToggleTerm direction=vertical<CR>",
-		mode = "n",
-		noremap = true,
-		silent = true,
-		desc = "Vertical Terminal",
-	},
-	{
-		"<leader>ht",
-		"<CMD>ToggleTerm direction=horizontal<CR>",
-		mode = "n",
-		noremap = true,
-		silent = true,
-		desc = "Horizontal Terminal",
-	},
-	{
 		"<leader>1",
 		"<CMD>ToggleTerm 1<CR>",
 		mode = "n",

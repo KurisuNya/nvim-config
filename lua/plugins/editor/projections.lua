@@ -16,7 +16,7 @@ M.keys = function()
 			"n",
 			"<leader>fp",
 			"<CMD>Telescope projections<CR>",
-			{ desc = "find project", noremap = true, silent = true }
+			{ desc = "Find Project", noremap = true, silent = true }
 		)
 	end
 end
@@ -35,12 +35,6 @@ M.config = function()
 						vim.fn.bdelete(buffer.bufnr)
 					end
 				end
-			end,
-		},
-		restore_hooks = {
-			post = function()
-				-- HACK: reset foldexpr
-				vim.opt.foldexpr = vim.opt.foldexpr
 			end,
 		},
 	})

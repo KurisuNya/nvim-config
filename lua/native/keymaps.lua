@@ -27,7 +27,7 @@ keymap.set("n", "<leader>w", "<CMD>w<CR>", desc_opts(norm_opts, "Save"))
 keymap.set("n", "<leader>q", "<CMD>q<CR>", desc_opts(norm_opts, "Quit"))
 
 -- macro
-keymap.set("n", "<leader>M", "q", desc_opts(norm_opts, "Record macro"))
+keymap.set("n", "<leader>M", "q", desc_opts(norm_opts, "Macro Record"))
 
 -- join lines
 keymap.set({ "n", "x" }, "<leader>j", "J", desc_opts(norm_opts, "Join Lines"))

@@ -1,6 +1,7 @@
 local M = {}
 M.enable_plugins = true
-M.enable_copilot = true
+M.enable_ai = true
+M.ai_cli = "opencode"
 M.format_on_save = true
 
 M.default_colorscheme = "tokyonight-storm"

@@ -89,7 +89,7 @@ end
 
 M.keys = {
 	{
-		"<leader>z",
+		"<leader>v",
 		"<Cmd>Lspsaga outline<CR>",
 		desc = "Outline Toggle",
 	},

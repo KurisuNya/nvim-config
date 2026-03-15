@@ -10,7 +10,7 @@ return {
 	require("plugins.coding.mini-pairs"),
 	require("plugins.coding.nvim-ts-autotag"),
 	-- ai
-	require("plugins.coding.copilot"),
+	require("plugins.coding.ai"),
 	-- misc
 	require("plugins.coding.leap"),
 	require("plugins.coding.nvim-surround"),

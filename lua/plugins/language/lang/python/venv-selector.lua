@@ -8,7 +8,7 @@ M.keys = {
 	{
 		"<leader>cv",
 		"<Cmd>VenvSelect<CR>",
-		desc = "Choose Python Venv",
+		desc = "Python Venv Choose",
 		mode = "n",
 		noremap = true,
 		silent = true,
@@ -19,7 +19,7 @@ M.keys = {
 			require("venv-selector").deactivate()
 			vim.notify("Deactivated Python Venv")
 		end,
-		desc = "Deactivate Python Venv",
+		desc = "Python Venv Deactivate",
 		mode = "n",
 		noremap = true,
 		silent = true,
