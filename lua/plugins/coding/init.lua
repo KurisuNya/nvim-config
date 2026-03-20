@@ -11,6 +11,8 @@ return {
 	require("plugins.coding.nvim-ts-autotag"),
 	-- ai
 	require("plugins.coding.ai"),
+	-- code runner
+	require("plugins.coding.sniprun"),
 	-- misc
 	require("plugins.coding.leap"),
 	require("plugins.coding.nvim-surround"),

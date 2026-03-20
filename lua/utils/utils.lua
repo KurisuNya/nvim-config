@@ -35,8 +35,10 @@ end
 
 ---@param name string
 ---@return integer
-M.create_augroup = function(name)
-	return vim.api.nvim_create_augroup("KurisuNya_" .. name, { clear = true })
+---@param clear? boolean defaults to true
+M.create_augroup = function(name, clear)
+	clear = clear == nil and true or clear
+	return vim.api.nvim_create_augroup("KurisuNya_" .. name, { clear = clear })
 end
 
 local lsp_attach_augroup = M.create_augroup("lsp_attach")

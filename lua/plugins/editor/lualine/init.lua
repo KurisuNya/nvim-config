@@ -1,13 +1,6 @@
 local M = {
 	"nvim-lualine/lualine.nvim",
-	dependencies = {
-		{ "nvim-tree/nvim-web-devicons" },
-		{
-			"linrongbin16/lsp-progress.nvim",
-			commit = "ae52979",
-			opts = {},
-		},
-	},
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	event = { "VeryLazy" },
 }
 
@@ -42,9 +35,14 @@ M.config = function()
 			lualine_b = {},
 			lualine_c = {},
 			lualine_x = {
+				{
+					custom.source.lsp_info.provider,
+					color = custom.source.lsp_info.color,
+					icon = custom.source.lsp_info.icon,
+				},
 				"encoding",
 				{ "fileformat", symbols = { unix = "LF ", dos = "CRLF ", mac = "CR " } },
-				{ "filetype", cond = custom.space_enough },
+				"filetype",
 			},
 			lualine_y = { "progress" },
 			lualine_z = {
@@ -169,16 +167,6 @@ M.config = function()
 			color = custom.source.dap_info.color,
 		}
 		table.insert(opts.sections.lualine_x, 1, dap_info)
-	end
-	if Utils.plugin_exists("lsp-progress.nvim") then
-		local lsp_info = {
-			custom.source.lsp_info.provider,
-			cond = custom.source.lsp_info.cond,
-			color = custom.source.lsp_info.color,
-			icon = custom.source.lsp_info.icon,
-		}
-		table.insert(opts.sections.lualine_x, 1, lsp_info)
-		custom.source.lsp_info.create_autocmd()
 	end
 	vim.o.laststatus = vim.g.lualine_laststatus
 	require("lualine").setup(opts)

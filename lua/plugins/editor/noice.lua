@@ -27,14 +27,28 @@ M.config = function()
 	end
 	local opts = {
 		lsp = {
-			progress = { enabled = false },
 			signature = { enabled = false },
 		},
 		markdown = {
 			hover = { ["|(%S-)|"] = open_help },
 			open_keys = open_key,
 		},
-		presets = { bottom_search = true },
+		routes = {
+			{
+				filter = {
+					event = "msg_show",
+					any = {
+						{ find = "; after #%d+" },
+						{ find = "; before #%d+" },
+					},
+				},
+				view = "mini",
+			},
+		},
+		presets = {
+			bottom_search = true,
+			long_message_to_split = true,
+		},
 		views = {
 			hover = {
 				size = { width = "auto", height = "auto", max_height = 20, max_width = 75 },
@@ -46,6 +60,10 @@ M.config = function()
 			confirm = { border = { style = border_style } },
 		},
 	}
+
+	if vim.o.filetype == "lazy" then
+		vim.cmd([[messages clear]])
+	end
 	require("noice").setup(opts)
 end
 
