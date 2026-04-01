@@ -7,7 +7,7 @@ return {
 	-- comments
 	require("plugins.coding.ts-comments"),
 	-- auto pairs
-	require("plugins.coding.mini-pairs"),
+	require("plugins.coding.blink-pairs"),
 	require("plugins.coding.nvim-ts-autotag"),
 	-- ai
 	require("plugins.coding.ai"),
