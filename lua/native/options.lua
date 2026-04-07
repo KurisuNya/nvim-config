@@ -51,8 +51,6 @@ vim.opt.splitright = true
 vim.opt.undofile = true
 vim.opt.undolevels = 10000
 vim.opt.updatetime = 200
--- diff
-vim.opt.diffopt = { "internal", "filler", "closeoff", "linematch:60", "foldcolumn:0" }
 -- clipboard
 vim.opt.clipboard:append("unnamedplus")
 if os.getenv("SSH_TTY") or os.getenv("USER") == "root" then

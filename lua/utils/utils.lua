@@ -74,8 +74,37 @@ M.lsp_on_attach_by_method = function(method, fn)
 	end, fn)
 end
 
+---@param mode string | string[]
+---@param key string
+M.unset_default_key = function(mode, key)
+	vim.keymap.set(mode, key, "<nop>", { noremap = false, silent = true })
+end
+
+---@param mode string | string[]
+---@param keys string[]
+M.unset_default_keys = function(mode, keys)
+	for _, key in ipairs(keys) do
+		M.unset_default_key(mode, key)
+	end
+end
+
+---@param mode string | string[]
+---@param key string
+M.del_default_key = function(mode, key)
+	M.unset_default_key(mode, key)
+	vim.keymap.del(mode, key)
+end
+
+---@param mode string | string[]
+---@param keys string[]
+M.del_default_keys = function(mode, keys)
+	for _, key in ipairs(keys) do
+		M.del_default_key(mode, key)
+	end
+end
+
 ---@class Keymap
----@field mode string
+---@field mode string | string[]
 ---@field key string
 ---@field cmd string | function
 ---@field opts? table
@@ -151,6 +180,7 @@ M.on_plugin_loaded = function(plugin, fn)
 	end
 end
 
+---@param fn function
 M.on_very_lazy = function(fn)
 	vim.api.nvim_create_autocmd("User", {
 		pattern = "VeryLazy",

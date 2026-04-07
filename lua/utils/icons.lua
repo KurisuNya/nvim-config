@@ -5,6 +5,7 @@ M.fillchars = {
 	foldclose = "",
 	fold = " ",
 	foldsep = " ",
+	foldinner = " ",
 	diff = "╱",
 	eob = " ",
 }

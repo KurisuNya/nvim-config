@@ -23,6 +23,10 @@ M.dependencies = {
 	},
 }
 
+M.init = function()
+	Utils.del_default_key("i", "<C-S>") -- default keymap for signature help
+end
+
 M.opts = {
 	keymap = {
 		preset = "none",

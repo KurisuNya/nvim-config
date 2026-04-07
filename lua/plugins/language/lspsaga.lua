@@ -85,6 +85,7 @@ local outline_keymap = { toggle_or_jump = "<Tab>", quit = "q", jump = "<CR>" }
 
 M.init = function()
 	PluginVars.insert(PluginVars.projections_close_filetypes, "sagaoutline")
+	Utils.del_default_keys({ "n", "x" }, { "grr", "gri", "grt", "gra", "grn", "grx", "gO" })
 end
 
 M.keys = {

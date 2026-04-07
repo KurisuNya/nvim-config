@@ -4,15 +4,10 @@ local expr_opts = { noremap = true, silent = true, expr = true }
 local desc_opts = function(opts, desc)
 	return vim.tbl_extend("force", opts, { desc = desc })
 end
-local del_maps = function(keys)
-	for _, key in ipairs(keys) do
-		keymap.set({ "n", "x" }, key, "", norm_opts)
-	end
-end
 
 vim.g.mapleader = " " -- Leader key
 vim.g.maplocalleader = "," -- Local leader key
-del_maps({ "q", "Q", "m", "M", "grr", "gri", "grt", "gra", "grn" })
+Utils.unset_default_keys({ "n", "x" }, { "q", "Q", "m", "M" })
 
 -- move
 keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", expr_opts)
@@ -33,10 +28,10 @@ keymap.set("n", "<leader>M", "q", desc_opts(norm_opts, "Macro Record"))
 keymap.set({ "n", "x" }, "<leader>j", "J", desc_opts(norm_opts, "Join Lines"))
 
 -- add and sub
-keymap.set({ "n", "x" }, "+", "<C-a>", norm_opts)
-keymap.set({ "n", "x" }, "-", "<C-x>", norm_opts)
-keymap.set({ "n", "x" }, "g+", "g<C-a>", norm_opts)
-keymap.set({ "n", "x" }, "g-", "g<C-x>", norm_opts)
+keymap.set({ "n", "x" }, "+", "<C-a>", desc_opts(norm_opts, "Add"))
+keymap.set({ "n", "x" }, "-", "<C-x>", desc_opts(norm_opts, "Subtract"))
+keymap.set({ "n", "x" }, "g+", "g<C-a>", desc_opts(norm_opts, "Add (multiple)"))
+keymap.set({ "n", "x" }, "g-", "g<C-x>", desc_opts(norm_opts, "Subtract (multiple)"))
 
 -- indent
 keymap.set("x", "<", "<gv", norm_opts)

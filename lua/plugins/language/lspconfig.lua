@@ -23,7 +23,7 @@ return {
 	},
 
 	config = function(_, opts)
-		vim.lsp.set_log_level("off")
+		vim.lsp.log.set_level("off")
 
 		-- hover doc
 		Utils.lsp_keymap_set_by_method("textDocument/hover", keymaps.hover_doc)

@@ -1,7 +1,6 @@
 M = {
 	"chrisgrieser/nvim-tinygit",
 	ft = { "gitrebase", "gitcommit" },
-	commit = "d108d5c",
 }
 
 M.keys = function()
