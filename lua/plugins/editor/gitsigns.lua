@@ -3,25 +3,6 @@ local M = {
 	event = "VeryLazy",
 }
 
-M.keys = {
-	{
-		"]h",
-		"<CMD>Gitsigns next_hunk<CR>",
-		desc = "Next Git Hunk",
-		mode = "n",
-		noremap = true,
-		silent = true,
-	},
-	{
-		"[h",
-		"<CMD>Gitsigns prev_hunk<CR>",
-		desc = "Previous Git Hunk",
-		mode = "n",
-		noremap = true,
-		silent = true,
-	},
-}
-
 M.opts = {
 	signs = {
 		add = { text = "▎" },
@@ -38,6 +19,17 @@ M.opts = {
 		row = 0,
 		col = 1,
 	},
+
+	on_attach = function(bufnr)
+		local gs = package.loaded.gitsigns
+
+		local function map(mode, l, r, desc)
+			vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
+		end
+
+		map("n", "]h", gs.next_hunk, "Next Git Hunk")
+		map("n", "[h", gs.prev_hunk, "Previous Git Hunk")
+	end,
 }
 
 return M

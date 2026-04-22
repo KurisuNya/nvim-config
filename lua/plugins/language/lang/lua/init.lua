@@ -4,7 +4,6 @@ PluginVars.insert(PluginVars.mason_ensure_installed, "stylua")
 
 PluginVars.insert(PluginVars.conform_formatters, { name = "stylua", filetypes = { "lua" } })
 PluginVars.insert(PluginVars.lsp_config, function()
-	vim.lsp.enable("lua_ls")
 	vim.lsp.config("lua_ls", {
 		settings = {
 			Lua = {
@@ -23,6 +22,7 @@ PluginVars.insert(PluginVars.lsp_config, function()
 			},
 		},
 	})
+	vim.lsp.enable("lua_ls")
 end)
 
 return {

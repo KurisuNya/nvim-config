@@ -9,7 +9,6 @@ PluginVars.insert(PluginVars.conform_formatters, { name = "ruff_format", filetyp
 PluginVars.insert(PluginVars.conform_formatters, { name = "ruff_organize_imports", filetypes = { "python" } })
 
 PluginVars.insert(PluginVars.lsp_config, function()
-	vim.lsp.enable("basedpyright")
 	vim.lsp.config("basedpyright", {
 		settings = {
 			basedpyright = {
@@ -20,8 +19,8 @@ PluginVars.insert(PluginVars.lsp_config, function()
 			},
 		},
 	})
+	vim.lsp.enable("basedpyright")
 
-	vim.lsp.enable("ruff")
 	vim.lsp.config("ruff", {
 		init_options = {
 			settings = {
@@ -31,6 +30,7 @@ PluginVars.insert(PluginVars.lsp_config, function()
 			},
 		},
 	})
+	vim.lsp.enable("ruff")
 	Utils.lsp_on_attach_by_name("ruff", function(client, _)
 		client.server_capabilities.hoverProvider = false
 	end)

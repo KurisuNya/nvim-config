@@ -2,8 +2,7 @@ local custom = require("plugins.editor.diffview.custom")
 local keymaps = require("plugins.editor.diffview.keymaps")
 
 local M = {
-	"sindrets/diffview.nvim",
-	dependencies = { "lewis6991/gitsigns.nvim" },
+	"dlyongemallo/diffview.nvim",
 	event = "VeryLazy",
 }
 
@@ -31,7 +30,6 @@ M.config = function()
 			option_panel = keymaps.option_panel_keymap_list(),
 		},
 		hooks = {
-			diff_buf_read = custom.diffview_buffer_read_hook,
 			view_opened = custom.diffview_view_opened_hook,
 			view_closed = custom.diffview_view_close_hook,
 		},

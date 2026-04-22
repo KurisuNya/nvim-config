@@ -8,7 +8,6 @@ PluginVars.insert(PluginVars.mason_ensure_installed, "cpptools")
 
 PluginVars.insert(PluginVars.conform_formatters, { name = "clang_format", filetypes = { "c", "cpp" } })
 PluginVars.insert(PluginVars.lsp_config, function()
-	vim.lsp.enable("clangd")
 	vim.lsp.config("clangd", {
 		cmd = {
 			"clangd",
@@ -41,6 +40,7 @@ PluginVars.insert(PluginVars.lsp_config, function()
 			clangdFileStatus = true,
 		},
 	})
+	vim.lsp.enable("clangd")
 end)
 
 PluginVars.dap_adapters["codelldb"] = {
