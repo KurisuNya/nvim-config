@@ -1,3 +1,4 @@
+PluginVars.filetype_colorcolumn.python = "88"
 PluginVars.insert(PluginVars.neotree_hide_by_name, "__pycache__")
 
 PluginVars.insert(PluginVars.treesitter_ensure_installed, "python")

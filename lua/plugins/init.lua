@@ -52,6 +52,21 @@ Utils.on_very_lazy(function()
 	})
 end)
 
+-- colorcolumn
+PluginVars.filetype_colorcolumn = {}
+Utils.on_very_lazy(function()
+	vim.api.nvim_create_autocmd("FileType", {
+		group = Utils.create_augroup("filetype_colorcolumn"),
+		pattern = vim.tbl_keys(PluginVars.filetype_colorcolumn),
+		callback = function(event)
+			local colorcolumn = PluginVars.filetype_colorcolumn[event.match]
+			if colorcolumn then
+				vim.opt_local.colorcolumn = colorcolumn
+			end
+		end,
+	})
+end)
+
 require("lazy").setup({
 	require("plugins.colorscheme"),
 	require("plugins.editor"),
@@ -65,14 +80,5 @@ require("lazy").setup({
 			keys = { hover = "H" },
 			commands = { home = { key = "Z" } },
 		},
-	},
-	performance = {
-		rtp = { disabled_plugins = {
-			"gzip",
-			"tarPlugin",
-			"tohtml",
-			"tutor",
-			"zipPlugin",
-		} },
 	},
 })

@@ -6,7 +6,7 @@ vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.wrap = false
 vim.opt.signcolumn = "yes"
-vim.opt.colorcolumn = "88,100"
+vim.opt.colorcolumn = "80,100"
 vim.opt.fillchars = Icons.fillchars
 vim.diagnostic.config({
 	virtual_text = { spacing = 2, source = "if_many", prefix = "●" },

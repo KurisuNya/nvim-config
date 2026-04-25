@@ -29,9 +29,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.api.nvim_create_autocmd("BufReadPost", {
 	group = Utils.create_augroup("restore_cursor"),
 	callback = function(event)
-		local exclude = { "gitcommit" }
 		local buf = event.buf
-		if vim.tbl_contains(exclude, vim.bo[buf].filetype) or vim.b[buf].last_loc then
+		if vim.b[buf].last_loc then
 			return
 		end
 		vim.b[buf].last_loc = true
