@@ -11,4 +11,5 @@ require("native.autocmd")
 
 if Config.enable_plugins then
 	require("plugins")
+	PluginVars.create_autocmds()
 end

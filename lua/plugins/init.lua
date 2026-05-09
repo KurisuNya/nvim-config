@@ -24,7 +24,13 @@ end
 
 -- q to close
 PluginVars.q_close_filetypes = { "help", "qf", "checkhealth" }
-Utils.on_very_lazy(function()
+-- auto wrap
+PluginVars.wrap_spell_filetypes = { "gitcommit", "txt" }
+-- colorcolumn
+PluginVars.filetype_colorcolumn = {}
+
+-- autocmds for the above variables
+PluginVars.create_autocmds = function()
 	vim.api.nvim_create_autocmd("FileType", {
 		group = Utils.create_augroup("close_with_q"),
 		pattern = PluginVars.q_close_filetypes,
@@ -38,11 +44,7 @@ Utils.on_very_lazy(function()
 			end)
 		end,
 	})
-end)
 
--- auto wrap
-PluginVars.wrap_spell_filetypes = { "gitcommit", "txt" }
-Utils.on_very_lazy(function()
 	vim.api.nvim_create_autocmd("FileType", {
 		group = Utils.create_augroup("wrap_spell"),
 		pattern = PluginVars.wrap_spell_filetypes,
@@ -50,11 +52,7 @@ Utils.on_very_lazy(function()
 			vim.opt_local.wrap = true
 		end,
 	})
-end)
 
--- colorcolumn
-PluginVars.filetype_colorcolumn = {}
-Utils.on_very_lazy(function()
 	vim.api.nvim_create_autocmd("FileType", {
 		group = Utils.create_augroup("filetype_colorcolumn"),
 		pattern = vim.tbl_keys(PluginVars.filetype_colorcolumn),
@@ -65,7 +63,7 @@ Utils.on_very_lazy(function()
 			end
 		end,
 	})
-end)
+end
 
 require("lazy").setup({
 	require("plugins.colorscheme"),

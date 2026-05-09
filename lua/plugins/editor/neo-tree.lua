@@ -92,16 +92,6 @@ M.config = function()
 		require("neo-tree.command").execute({ action = "close" })
 	end
 	opts.event_handlers = { { event = events.FILE_OPENED, handler = close_tree } }
-
-	if Utils.plugin_exists("snacks.nvim") then
-		local function on_move(data)
-			Snacks.rename.on_rename_file(data.source, data.destination)
-		end
-		vim.list_extend(opts.event_handlers, {
-			{ event = events.FILE_MOVED, handler = on_move },
-			{ event = events.FILE_RENAMED, handler = on_move },
-		})
-	end
 	require("neo-tree").setup(opts)
 end
 
