@@ -2,6 +2,7 @@ PluginVars.filetype_colorcolumn.python = "88"
 PluginVars.insert(PluginVars.neotree_hide_by_name, "__pycache__")
 
 PluginVars.insert(PluginVars.treesitter_ensure_installed, "python")
+PluginVars.insert(PluginVars.mason_ensure_installed, "ty")
 PluginVars.insert(PluginVars.mason_ensure_installed, "basedpyright")
 PluginVars.insert(PluginVars.mason_ensure_installed, "ruff")
 PluginVars.insert(PluginVars.lualine_hidden_lsp, "ruff")
@@ -21,6 +22,7 @@ PluginVars.insert(PluginVars.lsp_config, function()
 		},
 	})
 	vim.lsp.enable("basedpyright")
+	-- vim.lsp.enable("ty")
 
 	vim.lsp.config("ruff", {
 		init_options = {

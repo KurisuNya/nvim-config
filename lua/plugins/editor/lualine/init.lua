@@ -45,11 +45,7 @@ M.config = function()
 				"filetype",
 			},
 			lualine_y = { "progress" },
-			lualine_z = {
-				function()
-					return "" .. os.date("%R")
-				end,
-			},
+			lualine_z = { "location" },
 		},
 	}
 
