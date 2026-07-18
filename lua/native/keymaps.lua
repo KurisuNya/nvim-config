@@ -17,6 +17,45 @@ keymap.set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", expr_opts)
 keymap.set({ "n", "x" }, "J", "5gj", norm_opts)
 keymap.set({ "n", "x" }, "K", "5gk", norm_opts)
 
+-- search
+
+---@param direction string
+---| "forward"
+---| "backward"
+local in_place_search = function(direction)
+	local pattern
+	local mode = vim.fn.mode()
+	if mode:match("[vV\22]") then
+		local start_pos = vim.fn.getpos("v")
+		local end_pos = vim.fn.getpos(".")
+		local region = vim.fn.getregion(start_pos, end_pos, { type = mode })
+		local escaped = vim.tbl_map(function(line)
+			return vim.fn.escape(line, "/\\")
+		end, region)
+		pattern = "\\V" .. table.concat(escaped, "\\n")
+		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+	else
+		local word = vim.fn.expand("<cword>")
+		if word == "" then
+			return
+		end
+		pattern = "\\<" .. vim.fn.escape(word, "/\\") .. "\\>"
+	end
+
+	vim.fn.setreg("/", pattern)
+	vim.v.hlsearch = true
+	vim.v.searchforward = direction == "forward" and 1 or 0
+	vim.fn.search(pattern, "ce")
+	vim.fn.search(pattern, "cb")
+end
+
+vim.keymap.set({ "n", "x" }, "#", function()
+	in_place_search("backward")
+end, norm_opts)
+vim.keymap.set({ "n", "x" }, "*", function()
+	in_place_search("forward")
+end, norm_opts)
+
 -- save and quit
 keymap.set("n", "<leader>w", "<CMD>w<CR>", desc_opts(norm_opts, "Save"))
 keymap.set("n", "<leader>q", "<CMD>q<CR>", desc_opts(norm_opts, "Quit"))

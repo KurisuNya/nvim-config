@@ -14,9 +14,11 @@ local M = {
 	require("plugins.language.lang.haskell"),
 	require("plugins.language.lang.lua"),
 	require("plugins.language.lang.markdown"),
+	require("plugins.language.lang.odin"),
 	require("plugins.language.lang.python"),
 	require("plugins.language.lang.toml"),
 	require("plugins.language.lang.xml"),
+	require("plugins.language.lang.zig"),
 }
 
 return M
