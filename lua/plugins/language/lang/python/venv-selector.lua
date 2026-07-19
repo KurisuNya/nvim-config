@@ -4,26 +4,30 @@ local M = {
 	ft = "python",
 }
 
-M.keys = {
-	{
-		"<leader>cv",
-		"<Cmd>VenvSelect<CR>",
-		desc = "Python Venv Choose",
+M.keys = function()
+	Utils.filetype_keymap_set("python", {
 		mode = "n",
-		noremap = true,
-		silent = true,
-	},
-	{
-		"<leader>cV",
-		function()
+		key = "<leader>cv",
+		cmd = "<Cmd>VenvSelect<CR>",
+		opts = {
+			desc = "Python Venv Choose",
+			noremap = true,
+			silent = true,
+		},
+	})
+	Utils.filetype_keymap_set("python", {
+		mode = "n",
+		key = "<leader>cV",
+		cmd = function()
 			require("venv-selector").deactivate()
 			vim.notify("Deactivated Python Venv")
 		end,
-		desc = "Python Venv Deactivate",
-		mode = "n",
-		noremap = true,
-		silent = true,
-	},
-}
+		opts = {
+			desc = "Python Venv Deactivate",
+			noremap = true,
+			silent = true,
+		},
+	})
+end
 
 return M

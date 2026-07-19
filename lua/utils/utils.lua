@@ -117,6 +117,17 @@ M.buffer_keymap_set = function(keymap, bufnr)
 	vim.keymap.set(keymap.mode, keymap.key, keymap.cmd, opts)
 end
 
+---@param filetype string
+---@param keymap Keymap
+M.filetype_keymap_set = function(filetype, keymap)
+	vim.api.nvim_create_autocmd("FileType", {
+		pattern = filetype,
+		callback = function(args)
+			M.buffer_keymap_set(keymap, args.buf)
+		end,
+	})
+end
+
 ---@param method string
 ---@param keymap Keymap
 M.lsp_keymap_set_by_method = function(method, keymap)

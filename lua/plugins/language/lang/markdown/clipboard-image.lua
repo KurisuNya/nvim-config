@@ -9,10 +9,15 @@ local M = {
 }
 
 M.keys = function()
-	vim.keymap.set("n", "<leader>mP", "<CMD>PasteImg<CR>", {
-		desc = "Markdown Image Paste (To '" .. img_paste_dir .. "')",
-		noremap = true,
-		silent = true,
+	Utils.filetype_keymap_set("markdown", {
+		mode = "n",
+		key = "<leader>mP",
+		cmd = "<CMD>PasteImg<CR>",
+		opts = {
+			desc = "Markdown Image Paste (To '" .. img_paste_dir .. "')",
+			noremap = true,
+			silent = true,
+		},
 	})
 end
 

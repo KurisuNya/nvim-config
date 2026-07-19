@@ -9,10 +9,15 @@ local M = {
 }
 
 M.keys = function()
-	vim.keymap.set("n", "<leader>mp", "<CMD>MarkdownPreviewToggle<CR>", {
-		desc = "Markdown Preview Toggle",
-		noremap = true,
-		silent = true,
+	Utils.filetype_keymap_set("markdown", {
+		mode = "n",
+		key = "<leader>mp",
+		cmd = "<CMD>MarkdownPreviewToggle<CR>",
+		opts = {
+			desc = "Markdown Preview Toggle",
+			noremap = true,
+			silent = true,
+		},
 	})
 end
 return M
