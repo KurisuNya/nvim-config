@@ -64,7 +64,7 @@ sidekick.keys = {
 	{
 		"<leader>st",
 		function()
-			require("sidekick.cli").send({ msg = "{this}" })
+			require("sidekick.cli").send({ name = Config.ai_cli, msg = "{this}" })
 		end,
 		mode = { "x", "n" },
 		desc = "Sidekick Send This",
@@ -72,14 +72,14 @@ sidekick.keys = {
 	{
 		"<leader>sf",
 		function()
-			require("sidekick.cli").send({ msg = "{file}" })
+			require("sidekick.cli").send({ name = Config.ai_cli, msg = "{file}" })
 		end,
 		desc = "Sidekick Send File",
 	},
 	{
 		"<leader>sv",
 		function()
-			require("sidekick.cli").send({ msg = "{selection}" })
+			require("sidekick.cli").send({ name = Config.ai_cli, msg = "{selection}" })
 		end,
 		mode = { "x" },
 		desc = "Sidekick Send Visual Selection",
@@ -87,7 +87,7 @@ sidekick.keys = {
 	{
 		"<leader>sp",
 		function()
-			require("sidekick.cli").prompt()
+			require("sidekick.cli").prompt({ name = Config.ai_cli })
 		end,
 		mode = { "n", "x" },
 		desc = "Sidekick Select Prompt",

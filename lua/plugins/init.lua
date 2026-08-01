@@ -80,3 +80,5 @@ require("lazy").setup({
 		},
 	},
 })
+
+PluginVars.create_autocmds()

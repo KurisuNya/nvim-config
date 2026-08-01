@@ -18,6 +18,7 @@ PluginVars.insert(PluginVars.lsp_config, function()
 					typeCheckingMode = "standard",
 					inlayHints = { variableTypes = false },
 				},
+				disableTaggedHints = false,
 			},
 		},
 	})

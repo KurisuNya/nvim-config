@@ -25,6 +25,4 @@ PluginVars.insert(PluginVars.lsp_config, function()
 	vim.lsp.enable("lua_ls")
 end)
 
-return {
-	require("plugins.language.lang.lua.lazydev"),
-}
+return {}
