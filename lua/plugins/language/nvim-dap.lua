@@ -51,47 +51,69 @@ M.dependencies = {
 	},
 	{
 		"Weissle/persistent-breakpoints.nvim",
-		keys = function()
-			local breakpoints = require("persistent-breakpoints.api")
-			vim.keymap.set("n", "<Leader>b", breakpoints.toggle_breakpoint, {
-				silent = true,
+		keys = {
+			{
+				"<Leader>b",
+				function()
+					require("persistent-breakpoints.api").toggle_breakpoint()
+				end,
 				desc = "Breakpoints Toggle",
-			})
-			vim.keymap.set("n", "<Leader>B", breakpoints.clear_all_breakpoints, {
 				silent = true,
+			},
+			{
+				"<Leader>B",
+				function()
+					require("persistent-breakpoints.api").clear_all_breakpoints()
+				end,
 				desc = "Breakpoints Clear All",
-			})
-		end,
+				silent = true,
+			},
+		},
 		opts = { load_breakpoints_event = { "BufReadPost" } },
 	},
 	{
 		"ofirgall/goto-breakpoints.nvim",
-		keys = function()
-			local goto_breakpoints = require("goto-breakpoints")
-			vim.keymap.set("n", "]b", goto_breakpoints.next, {
-				silent = true,
+		keys = {
+			{
+				"]b",
+				function()
+					require("goto-breakpoints").next()
+				end,
 				desc = "Breakpoints Next",
-			})
-			vim.keymap.set("n", "[b", goto_breakpoints.prev, {
 				silent = true,
+			},
+			{
+				"[b",
+				function()
+					require("goto-breakpoints").prev()
+				end,
 				desc = "Breakpoints Previous",
-			})
-		end,
+				silent = true,
+			},
+		},
 	},
 	{ "theHamsta/nvim-dap-virtual-text", opts = {} },
 }
 
-M.keys = function()
-	local nvim_dap_ui = require("dapui")
-	vim.keymap.set("n", "<leader>du", function()
-		nvim_dap_ui.toggle({ reset = true })
-		PluginVars.dapui_opened = not PluginVars.dapui_opened
-	end, { silent = true, desc = "Dap UI Toggle" })
-
-	vim.keymap.set("n", "<leader>de", function()
-		nvim_dap_ui.eval()
-	end, { silent = true, desc = "Dap UI Eval" })
-end
+M.keys = {
+	{
+		"<leader>du",
+		function()
+			require("dapui").toggle({ reset = true })
+			PluginVars.dapui_opened = not PluginVars.dapui_opened
+		end,
+		silent = true,
+		desc = "Dap UI Toggle",
+	},
+	{
+		"<leader>de",
+		function()
+			require("dapui").eval()
+		end,
+		silent = true,
+		desc = "Dap UI Eval",
+	},
+}
 
 local normal_mappings = {
 	edit = "e",

@@ -1,8 +1,6 @@
 local M = {
 	-- key mappings
 	require("plugins.editor.which-key"),
-	-- dashboard
-	require("plugins.editor.alpha"),
 	-- bars and lines
 	require("plugins.editor.barbar"),
 	require("plugins.editor.lualine"),
@@ -22,7 +20,6 @@ local M = {
 	require("plugins.editor.diffview"),
 	require("plugins.editor.git-conflict"),
 	-- better ui
-	require("plugins.editor.dressing"),
 	require("plugins.editor.noice"),
 	require("plugins.editor.virt-column"),
 	require("plugins.editor.quicker"),

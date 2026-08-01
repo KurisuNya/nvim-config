@@ -4,23 +4,64 @@ local M = {
 	priority = 9000,
 }
 
-M.opts = {
-	quickfile = { enabled = true },
-	bigfile = { enabled = true },
-	notifier = {
-		enabled = true,
-		icons = Icons.log_levels,
-		width = { min = 30, max = 0.4 },
-	},
-	styles = {
-		notification = {
-			border = Config.border_style,
-			wo = { wrap = true },
+M.opts = function()
+	local opts = {
+		dashboard = {
+			enabled = true,
+			preset = { header = Config.dashboard_header },
 		},
-	},
-}
+		quickfile = { enabled = true },
+		bigfile = { enabled = true },
+		notifier = {
+			enabled = true,
+			icons = Icons.log_levels,
+			width = { min = 30, max = 0.4 },
+		},
+		styles = {
+			notification = {
+				border = Config.border_style,
+				wo = { wrap = true },
+			},
+		},
+	}
+
+	local dashboard_keys = {}
+	for _, cfg in ipairs(Config.dashboard_buttons) do
+		table.insert(dashboard_keys, {
+			text = {
+				{ cfg.name, hl = "special", width = 45 },
+				{ cfg.key, hl = "comment" },
+			},
+			action = cfg.cmd,
+			key = cfg.key,
+			align = "center",
+		})
+	end
+	opts.dashboard.preset.keys = dashboard_keys
+
+	opts.dashboard.sections = {
+		{ section = "header", padding = 4 },
+		{ section = "keys", gap = 1, padding = 2 },
+		function()
+			M.lazy_stats = M.lazy_stats and M.lazy_stats.startuptime > 0 and M.lazy_stats
+				or require("lazy.stats").stats()
+			local ms = (math.floor(M.lazy_stats.startuptime * 100 + 0.5) / 100)
+			return {
+				align = "center",
+				text = {
+					{ Config.dashboard_footer_name .. " | ", hl = "comment" },
+					{ M.lazy_stats.loaded .. "/" .. M.lazy_stats.count .. " plugins ", hl = "comment" },
+					{ "in " .. ms .. "ms", hl = "comment" },
+				},
+			}
+		end,
+	}
+	return opts
+end
 
 M.init = function()
+	PluginVars.insert(PluginVars.lualine_disabled_filetypes, "snacks_dashboard")
+
 	local notifs = {}
 	local function temp(...)
 		table.insert(notifs, vim.F.pack_len(...))

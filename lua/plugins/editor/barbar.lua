@@ -44,7 +44,7 @@ local del_barbar_keys = function()
 	end
 end
 
-M.keys = map_barbar_keys
+M.keys = keys
 
 M.init = function()
 	vim.g.barbar_auto_setup = false

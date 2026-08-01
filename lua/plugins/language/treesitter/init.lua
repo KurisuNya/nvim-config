@@ -70,8 +70,13 @@ M.config = function(_, opts)
 				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 			end
 			if enabled("fold", "folds") then
-				vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
-				vim.wo[0][0].foldmethod = "expr"
+				local lsp_takes = vim.iter(vim.lsp.get_clients({ bufnr = ev.buf })):any(function(cl)
+					return cl:supports_method("textDocument/foldingRange")
+				end)
+				if not lsp_takes then
+					vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+					vim.wo[0][0].foldmethod = "expr"
+				end
 			end
 		end,
 	})

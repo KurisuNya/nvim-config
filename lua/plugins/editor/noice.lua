@@ -5,11 +5,16 @@ local M = {
 }
 M.keys = function()
 	if Utils.plugin_exists("telescope.nvim") then
-		vim.keymap.set("n", "<leader>fm", "<Cmd>Noice telescope<CR>", {
-			silent = true,
-			desc = "Find Message",
-		})
+		return {
+			{
+				"<leader>fm",
+				"<Cmd>Noice telescope<CR>",
+				silent = true,
+				desc = "Find Message",
+			},
+		}
 	end
+	return {}
 end
 local open_key = "H"
 

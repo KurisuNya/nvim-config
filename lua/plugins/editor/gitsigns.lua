@@ -22,13 +22,8 @@ M.opts = {
 
 	on_attach = function(bufnr)
 		local gs = package.loaded.gitsigns
-
-		local function map(mode, l, r, desc)
-			vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
-		end
-
-		map("n", "]h", gs.next_hunk, "Next Git Hunk")
-		map("n", "[h", gs.prev_hunk, "Previous Git Hunk")
+		vim.keymap.set("n", "]h", gs.next_hunk, { buffer = bufnr, desc = "Next Git Hunk" })
+		vim.keymap.set("n", "[h", gs.prev_hunk, { buffer = bufnr, desc = "Previous Git Hunk" })
 	end,
 }
 

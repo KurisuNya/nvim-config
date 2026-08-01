@@ -21,6 +21,7 @@ M.dependencies = {
 				.. "cmake --build build --config Release && "
 				.. "cmake --install build --prefix build",
 	},
+	{ "nvim-telescope/telescope-ui-select.nvim" },
 }
 
 M.keys = {
@@ -92,12 +93,6 @@ end
 -- stylua: ignore end
 PluginVars.telescope_hide_pattern = { "**/.git/*" }
 
-local borderchars = {
-	rounded = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-	single = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
-	none = { " ", " ", " ", " ", " ", " ", " ", " " },
-}
-
 M.config = function()
 	for _, pattern in pairs(PluginVars.telescope_hide_pattern) do
 		livegrep_cmd = vim.list_extend(livegrep_cmd, livegrep_hidden(pattern))
@@ -108,7 +103,7 @@ M.config = function()
 	telescope.setup({
 		defaults = {
 			mappings = mappings(),
-			borderchars = borderchars[Config.border_style],
+			borderchars = Icons.borderchars[Config.border_style],
 			vimgrep_arguments = livegrep_cmd,
 		},
 		pickers = { find_files = { find_command = find_files_cmd } },
@@ -118,6 +113,11 @@ M.config = function()
 				override_generic_sorter = true,
 				override_file_sorter = true,
 				case_mode = "smart_case",
+			},
+			["ui-select"] = {
+				require("telescope.themes").get_dropdown({
+					borderchars = Icons.borderchars[Config.border_style],
+				}),
 			},
 		},
 	})
@@ -129,5 +129,6 @@ M.config = function()
 			vim.log.levels.ERROR
 		)
 	end
+	require("telescope").load_extension("ui-select")
 end
 return M

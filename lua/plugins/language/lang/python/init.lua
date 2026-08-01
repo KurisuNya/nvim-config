@@ -24,20 +24,6 @@ PluginVars.insert(PluginVars.lsp_config, function()
 	})
 	vim.lsp.enable("basedpyright")
 	-- vim.lsp.enable("ty")
-
-	vim.lsp.config("ruff", {
-		init_options = {
-			settings = {
-				fixAll = false,
-				organizeImports = false,
-				lint = { enable = false },
-			},
-		},
-	})
-	vim.lsp.enable("ruff")
-	Utils.lsp_on_attach_by_name("ruff", function(client, _)
-		client.server_capabilities.hoverProvider = false
-	end)
 end)
 
 return {

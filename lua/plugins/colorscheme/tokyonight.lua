@@ -15,6 +15,9 @@ local plugin_specific = {
 	end,
 	["noice.nvim"] = function(hl, _)
 		hl.LspSignatureActiveParameter = hl.Visual
+		hl.NoiceCmdlinePopupBorderInput = hl.NoiceCmdlinePopupBorderLua
+		hl.NoiceCmdlinePopupTitleInput = hl.NoiceCmdlinePopupTitleLua
+		hl.NoiceCmdlineIconInput = hl.NoiceCmdlineIconLua
 	end,
 	["nvim-dap-ui"] = function(hl, _)
 		hl.DapBreakpoint = hl.DiagnosticVirtualTextError

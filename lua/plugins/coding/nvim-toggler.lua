@@ -3,12 +3,16 @@ local M = {
 	event = "VeryLazy",
 }
 
-M.keys = function()
-	vim.keymap.set("n", "<leader>a", require("nvim-toggler").toggle, {
+M.keys = {
+	{
+		"<leader>a",
+		function()
+			require("nvim-toggler").toggle()
+		end,
 		silent = true,
 		desc = "Word Meaning Toggle",
-	})
-end
+	},
+}
 
 M.config = function()
 	require("nvim-toggler").setup({

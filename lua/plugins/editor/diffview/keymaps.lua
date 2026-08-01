@@ -1,16 +1,19 @@
 local M = {}
 
-M.keys = function()
-	vim.keymap.set("n", "<leader>gD", "<Cmd>DiffviewOpen<CR>", {
+M.keys = {
+	{
+		"<leader>gD",
+		"<Cmd>DiffviewOpen<CR>",
 		silent = true,
 		desc = "Git Diff Project",
-	})
-
-	vim.keymap.set("n", "<leader>gH", "<Cmd>DiffviewFileHistory<CR>", {
+	},
+	{
+		"<leader>gH",
+		"<Cmd>DiffviewFileHistory<CR>",
 		silent = true,
 		desc = "Git History Project",
-	})
-end
+	},
+}
 
 M.view_keymap_list = function()
 	local actions = require("diffview.actions")

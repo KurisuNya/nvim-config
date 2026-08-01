@@ -3,20 +3,32 @@ local M = {
 	ft = { "gitrebase", "gitcommit" },
 }
 
-M.keys = function()
-	vim.keymap.set("n", "<leader>gc", require("tinygit").smartCommit, {
+M.keys = {
+	{
+		"<leader>gc",
+		function()
+			require("tinygit").smartCommit()
+		end,
 		silent = true,
 		desc = "Git Commit (Auto Add)",
-	})
-	vim.keymap.set("n", "<leader>gp", require("tinygit").push, {
+	},
+	{
+		"<leader>gp",
+		function()
+			require("tinygit").push()
+		end,
 		silent = true,
 		desc = "Git Push",
-	})
-	vim.keymap.set("n", "<leader>gh", require("tinygit").fileHistory, {
+	},
+	{
+		"<leader>gh",
+		function()
+			require("tinygit").fileHistory()
+		end,
 		silent = true,
 		desc = "Git History File",
-	})
-end
+	},
+}
 
 local border_style = Config.border_style
 local fallback = Config.border_style_fallback
