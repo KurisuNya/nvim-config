@@ -23,7 +23,7 @@ M.dependencies = {
 			{ "<leader>dc", "<Cmd>DapContinue<CR>", desc = "Dap Continue", mode = "n", silent = true },
 			{ "<leader>dt", "<Cmd>DapTerminate<CR>", desc = "Dap Terminate", mode = "n", silent = true },
 			{ "<leader>]", "<Cmd>DapStepOver<CR>", desc = "Dap StepOver", mode = "n", silent = true },
-			{ "<leader>}", "<Cmd>DapStepIn<CR>", desc = "Dap StepIn", mode = "n", silent = true },
+			{ "<leader>}", "<Cmd>DapStepInto<CR>", desc = "Dap StepIn", mode = "n", silent = true },
 			{ "<leader>{", "<Cmd>DapStepOut<CR>", desc = "Dap StepOut", mode = "n", silent = true },
 		},
 		dependencies = { "jay-babu/mason-nvim-dap.nvim", opts = { handlers = {} } },
@@ -54,12 +54,10 @@ M.dependencies = {
 		keys = function()
 			local breakpoints = require("persistent-breakpoints.api")
 			vim.keymap.set("n", "<Leader>b", breakpoints.toggle_breakpoint, {
-				noremap = true,
 				silent = true,
 				desc = "Breakpoints Toggle",
 			})
 			vim.keymap.set("n", "<Leader>B", breakpoints.clear_all_breakpoints, {
-				noremap = true,
 				silent = true,
 				desc = "Breakpoints Clear All",
 			})
@@ -71,12 +69,10 @@ M.dependencies = {
 		keys = function()
 			local goto_breakpoints = require("goto-breakpoints")
 			vim.keymap.set("n", "]b", goto_breakpoints.next, {
-				noremap = true,
 				silent = true,
 				desc = "Breakpoints Next",
 			})
 			vim.keymap.set("n", "[b", goto_breakpoints.prev, {
-				noremap = true,
 				silent = true,
 				desc = "Breakpoints Previous",
 			})
@@ -90,11 +86,11 @@ M.keys = function()
 	vim.keymap.set("n", "<leader>du", function()
 		nvim_dap_ui.toggle({ reset = true })
 		PluginVars.dapui_opened = not PluginVars.dapui_opened
-	end, { noremap = true, silent = true, desc = "Dap UI Toggle" })
+	end, { silent = true, desc = "Dap UI Toggle" })
 
 	vim.keymap.set("n", "<leader>de", function()
 		nvim_dap_ui.eval()
-	end, { noremap = true, silent = true, desc = "Dap UI Eval" })
+	end, { silent = true, desc = "Dap UI Eval" })
 end
 
 local normal_mappings = {
@@ -139,20 +135,6 @@ M.config = function()
 				size = 0.25,
 			},
 		},
-		-- controls = {
-		-- 	enabled = true,
-		-- 	element = "repl",
-		-- 	icons = {
-		-- 		pause = Icons.dap.Pause,
-		-- 		play = Icons.dap.Play,
-		-- 		step_into = Icons.dap.StepInto,
-		-- 		step_over = Icons.dap.StepOver,
-		-- 		step_out = Icons.dap.StepOut,
-		-- 		step_back = Icons.dap.StepBack,
-		-- 		run_last = Icons.dap.RunLast,
-		-- 		terminate = Icons.dap.Terminate,
-		-- 	},
-		-- },
 		floating = {
 			max_height = 0.5,
 			max_width = 0.5,

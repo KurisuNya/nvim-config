@@ -1,6 +1,6 @@
 local keymap = vim.keymap
-local norm_opts = { noremap = false, silent = true }
-local expr_opts = { noremap = true, silent = true, expr = true }
+local norm_opts = { silent = true }
+local expr_opts = { silent = true, expr = true }
 local desc_opts = function(opts, desc)
 	return vim.tbl_extend("force", opts, { desc = desc })
 end

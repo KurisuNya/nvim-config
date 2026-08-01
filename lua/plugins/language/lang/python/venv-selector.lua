@@ -11,7 +11,6 @@ M.keys = function()
 		cmd = "<Cmd>VenvSelect<CR>",
 		opts = {
 			desc = "Python Venv Choose",
-			noremap = true,
 			silent = true,
 		},
 	})
@@ -24,7 +23,6 @@ M.keys = function()
 		end,
 		opts = {
 			desc = "Python Venv Deactivate",
-			noremap = true,
 			silent = true,
 		},
 	})

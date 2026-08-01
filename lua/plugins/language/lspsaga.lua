@@ -4,9 +4,8 @@ local M = {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 }
 
-local opts = { noremap = true, silent = true }
 local function add_desc(desc)
-	return vim.tbl_extend("force", { desc = desc }, opts)
+	return vim.tbl_extend("force", { desc = desc }, { silent = true })
 end
 local keymaps = {
 	finder = {
@@ -116,13 +115,13 @@ M.config = function()
 	Utils.lsp_keymap_set_by_method("textDocument/codeAction", keymaps.code_action)
 	Utils.lsp_keymap_set_by_method("textDocument/reference", keymaps.finder)
 	Utils.lsp_keymap_set_by_method("textDocument/rename", keymaps.rename)
-	Utils.lsp_keymap_set_by_method("textDocument/diagnostics", keymaps.diagnostics)
-	Utils.lsp_keymap_set_by_method("textDocument/diagnostics", keymaps.diagnostic_jump_prev)
-	Utils.lsp_keymap_set_by_method("textDocument/diagnostics", keymaps.diagnostic_jump_next)
-	Utils.lsp_keymap_set_by_method("textDocument/diagnostics", keymaps.diagnostic_prev_warn)
-	Utils.lsp_keymap_set_by_method("textDocument/diagnostics", keymaps.diagnostic_next_warn)
-	Utils.lsp_keymap_set_by_method("textDocument/diagnostics", keymaps.diagnostic_prev_error)
-	Utils.lsp_keymap_set_by_method("textDocument/diagnostics", keymaps.diagnostic_next_error)
+	Utils.lsp_keymap_set_by_method("textDocument/diagnostic", keymaps.diagnostics)
+	Utils.lsp_keymap_set_by_method("textDocument/diagnostic", keymaps.diagnostic_jump_prev)
+	Utils.lsp_keymap_set_by_method("textDocument/diagnostic", keymaps.diagnostic_jump_next)
+	Utils.lsp_keymap_set_by_method("textDocument/diagnostic", keymaps.diagnostic_prev_warn)
+	Utils.lsp_keymap_set_by_method("textDocument/diagnostic", keymaps.diagnostic_next_warn)
+	Utils.lsp_keymap_set_by_method("textDocument/diagnostic", keymaps.diagnostic_prev_error)
+	Utils.lsp_keymap_set_by_method("textDocument/diagnostic", keymaps.diagnostic_next_error)
 end
 
 return M

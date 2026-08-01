@@ -11,7 +11,6 @@ M.keys = {
 		end,
 		desc = "Toggle Join/Split",
 		mode = "n",
-		noremap = true,
 		silent = true,
 	},
 }

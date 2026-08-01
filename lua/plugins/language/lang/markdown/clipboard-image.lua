@@ -15,7 +15,6 @@ M.keys = function()
 		cmd = "<CMD>PasteImg<CR>",
 		opts = {
 			desc = "Markdown Image Paste (To '" .. img_paste_dir .. "')",
-			noremap = true,
 			silent = true,
 		},
 	})

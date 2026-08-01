@@ -77,7 +77,7 @@ end
 ---@param mode string | string[]
 ---@param key string
 M.unset_default_key = function(mode, key)
-	vim.keymap.set(mode, key, "<nop>", { noremap = false, silent = true })
+	vim.keymap.set(mode, key, "<nop>", { silent = true })
 end
 
 ---@param mode string | string[]

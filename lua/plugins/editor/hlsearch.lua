@@ -12,6 +12,6 @@ return {
 				vim.log.levels.INFO,
 				{ title = "hlsearch.nvim" }
 			)
-		end, { noremap = true, silent = true, desc = "Toggle hlsearch" })
+		end, { silent = true, desc = "Toggle hlsearch" })
 	end,
 }

@@ -1,6 +1,3 @@
--- HACK: Override deprecated warning
-vim.deprecate = function() end
-
 _G.Config = require("config")
 _G.Icons = require("utils.icons")
 _G.Utils = require("utils.utils")

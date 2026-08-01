@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	group = Utils.create_augroup("disable_auto_comment"),
 	pattern = "*",
 	callback = function()
-		vim.opt.formatoptions = vim.opt.formatoptions - { "c", "r", "o" }
+		vim.opt_local.formatoptions:remove({ "c", "r", "o" })
 	end,
 })
 

@@ -1,4 +1,4 @@
-M = {
+local M = {
 	"nvim-neo-tree/neo-tree.nvim",
 	branch = "v3.x",
 	event = "VeryLazy",
@@ -26,7 +26,6 @@ M.keys = {
 		"<CMD>Neotree toggle dir=./<CR>",
 		desc = "Neotree Toggle",
 		mode = "n",
-		noremap = true,
 		silent = true,
 	},
 }

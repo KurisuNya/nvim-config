@@ -21,7 +21,7 @@ M.git = {
 	Ignored = "",
 }
 
-M.diagnostics = {
+M.diagnostic = {
 	Hint = "",
 	Info = "",
 	Warning = "",

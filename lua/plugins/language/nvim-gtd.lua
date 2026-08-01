@@ -6,7 +6,6 @@ local goto_definition = {
 	mode = "n",
 	opts = {
 		desc = "Lsp Goto Definition",
-		noremap = true,
 		silent = true,
 	},
 }

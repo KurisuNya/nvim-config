@@ -7,7 +7,6 @@ M.keys = function()
 	if Utils.plugin_exists("telescope.nvim") then
 		vim.keymap.set("n", "<leader>fm", "<Cmd>Noice telescope<CR>", {
 			silent = true,
-			noremap = true,
 			desc = "Find Message",
 		})
 	end

@@ -3,13 +3,11 @@ local M = {}
 M.keys = function()
 	vim.keymap.set("n", "<leader>gD", "<Cmd>DiffviewOpen<CR>", {
 		silent = true,
-		noremap = true,
 		desc = "Git Diff Project",
 	})
 
 	vim.keymap.set("n", "<leader>gH", "<Cmd>DiffviewFileHistory<CR>", {
 		silent = true,
-		noremap = true,
 		desc = "Git History Project",
 	})
 end

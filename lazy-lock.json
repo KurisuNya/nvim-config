@@ -20,6 +20,7 @@
   "indent-blankline.nvim": { "branch": "master", "commit": "d28a3f70721c79e3c5f6693057ae929f3d9c0a03" },
   "indent-o-matic": { "branch": "master", "commit": "81fa0e03bd2615a23b23312512371a2fc47fc0a4" },
   "lazy.nvim": { "branch": "main", "commit": "82497d06b2cbfca6817c088e45da1b7be8cd8631" },
+  "lazydev.nvim": { "branch": "main", "commit": "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d" },
   "leap.nvim": { "branch": "main", "commit": "52bc56ba61b1f54f123e29d6df7d1b7a0393eeac" },
   "lspsaga.nvim": { "branch": "main", "commit": "cf6fc9473bba1d332eda9887855ea29ed9b37701" },
   "lualine.nvim": { "branch": "master", "commit": "221ce6b2d999187044529f49da6554a92f740a96" },

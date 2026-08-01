@@ -10,7 +10,6 @@ M.keys = {
 		"<CMD>TodoQuickFix<CR>",
 		desc = "TODO List",
 		mode = "n",
-		noremap = true,
 		silent = true,
 	},
 }

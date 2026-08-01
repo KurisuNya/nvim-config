@@ -1,17 +1,16 @@
-M = {
+local M = {
 	"romgrk/barbar.nvim",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 }
 
 local gen_key = function(key)
-	return { key[1], key[2], desc = key.desc, mode = "n", noremap = true, silent = true }
+	return { key[1], key[2], desc = key.desc, mode = "n", silent = true }
 end
 
 local map_key = function(key)
 	vim.api.nvim_set_keymap(key.mode, key[1], key[2], {
 		silent = key.silent,
-		noremap = key.noremap,
 		desc = key.desc,
 	})
 end
@@ -63,10 +62,10 @@ M.config = function()
 		focus_on_close = "left",
 		icons = {
 			diagnostics = {
-				[vim.diagnostic.severity.ERROR] = { enabled = true, icon = Icons.diagnostics.Error },
-				[vim.diagnostic.severity.WARN] = { enabled = true, icon = Icons.diagnostics.Warning },
-				[vim.diagnostic.severity.INFO] = { enabled = true, icon = Icons.diagnostics.Info },
-				[vim.diagnostic.severity.HINT] = { enabled = true, icon = Icons.diagnostics.Hint },
+				[vim.diagnostic.severity.ERROR] = { enabled = true, icon = Icons.diagnostic.Error },
+				[vim.diagnostic.severity.WARN] = { enabled = true, icon = Icons.diagnostic.Warning },
+				[vim.diagnostic.severity.INFO] = { enabled = true, icon = Icons.diagnostic.Info },
+				[vim.diagnostic.severity.HINT] = { enabled = true, icon = Icons.diagnostic.Hint },
 			},
 			separator_at_end = false,
 			separator = { left = "▎", right = "" },

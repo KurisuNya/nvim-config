@@ -12,12 +12,10 @@ end
 
 M.keys = function()
 	if Utils.plugin_exists("telescope.nvim") then
-		vim.keymap.set(
-			"n",
-			"<leader>fp",
-			"<CMD>Telescope projections<CR>",
-			{ desc = "Find Project", noremap = true, silent = true }
-		)
+		vim.keymap.set("n", "<leader>fp", "<CMD>Telescope projections<CR>", {
+			desc = "Find Project",
+			silent = true,
+		})
 	end
 end
 

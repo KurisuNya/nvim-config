@@ -15,7 +15,6 @@ M.keys = function()
 		cmd = "<CMD>MarkdownPreviewToggle<CR>",
 		opts = {
 			desc = "Markdown Preview Toggle",
-			noremap = true,
 			silent = true,
 		},
 	})

@@ -1,9 +1,5 @@
 PluginVars.lsp_config = {}
 
-local opts = { noremap = true, silent = true }
-local function add_desc(desc)
-	return vim.tbl_extend("force", { desc = desc }, opts)
-end
 local keymaps = {
 	hover_doc = {
 		key = "H",
@@ -11,7 +7,10 @@ local keymaps = {
 			return vim.lsp.buf.hover()
 		end,
 		mode = "n",
-		opts = add_desc("Lsp Hover Doc"),
+		opts = {
+			desc = "Lsp Hover Doc",
+			silent = true,
+		},
 	},
 }
 

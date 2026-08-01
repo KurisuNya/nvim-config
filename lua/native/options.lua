@@ -12,10 +12,10 @@ vim.diagnostic.config({
 	virtual_text = { spacing = 2, source = "if_many", prefix = "●" },
 	signs = {
 		text = {
-			[1] = Icons.diagnostics.Error,
-			[2] = Icons.diagnostics.Warning,
-			[3] = Icons.diagnostics.Info,
-			[4] = Icons.diagnostics.Hint,
+			[1] = Icons.diagnostic.Error,
+			[2] = Icons.diagnostic.Warning,
+			[3] = Icons.diagnostic.Info,
+			[4] = Icons.diagnostic.Hint,
 		},
 	},
 	underline = true,
