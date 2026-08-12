@@ -1,6 +1,6 @@
 local M = {
 	"chrisgrieser/nvim-tinygit",
-	ft = { "gitrebase", "gitcommit" },
+	event = "VeryLazy",
 }
 
 M.keys = {

@@ -44,14 +44,14 @@ local del_barbar_keys = function()
 	end
 end
 
-M.keys = keys
-
 M.init = function()
 	vim.g.barbar_auto_setup = false
 	vim.opt.showtabline = 0
 	PluginVars.insert(PluginVars.diffview_open_hooks, del_barbar_keys)
 	PluginVars.insert(PluginVars.diffview_close_hooks, map_barbar_keys)
 end
+
+M.keys = keys
 
 M.config = function()
 	local opts = {

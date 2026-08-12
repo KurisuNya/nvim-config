@@ -45,9 +45,9 @@ M.dashboard_header = [[
 M.dashboard_buttons = {
 	{ key = "p", name = "  Open Project", cmd = "<CMD>Telescope projections<CR>" },
 	{ key = "s", name = "  Last Session", cmd = "<CMD>ProjectionsLastSession<CR>" },
-	{ key = "h", name = "  File History", cmd = "<CMD>Telescope oldfiles<CR>" },
 	{ key = "l", name = "󰒲  Lazy Manager", cmd = "<CMD>Lazy<CR>" },
 	{ key = "m", name = "  Mason Manager", cmd = "<CMD>Mason<CR>" },
+	{ key = "q", name = "  Quit Neovim", cmd = "<CMD>qa<CR>" },
 }
 M.dashboard_footer_name = "KurisuNya Neovim 󰒲"
 
