@@ -11,23 +11,23 @@ PluginVars.insert(PluginVars.conform_formatters, { name = "ruff_format", filetyp
 PluginVars.insert(PluginVars.conform_formatters, { name = "ruff_organize_imports", filetypes = { "python" } })
 
 PluginVars.insert(PluginVars.lsp_config, function()
-	vim.lsp.config("basedpyright", {
-		settings = {
-			basedpyright = {
-				analysis = {
-					typeCheckingMode = "standard",
-					inlayHints = { variableTypes = false },
-				},
-				disableTaggedHints = false,
-			},
-		},
-	})
-	vim.lsp.enable("basedpyright")
-	-- vim.lsp.enable("ty")
+  vim.lsp.config("basedpyright", {
+    settings = {
+      basedpyright = {
+        analysis = {
+          typeCheckingMode = "standard",
+          inlayHints = { variableTypes = false },
+        },
+        disableTaggedHints = false,
+      },
+    },
+  })
+  vim.lsp.enable("basedpyright")
+  -- vim.lsp.enable("ty")
 end)
 
 return {
-	require("plugins.language.lang.python.venv-selector"),
-	require("plugins.language.lang.python.nvim-dap-python"),
-	require("plugins.language.lang.python.neotest-python"),
+  require("plugins.language.lang.python.venv-selector"),
+  require("plugins.language.lang.python.nvim-dap-python"),
+  require("plugins.language.lang.python.neotest-python"),
 }

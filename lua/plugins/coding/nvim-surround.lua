@@ -1,5 +1,5 @@
 return {
-	"kylechui/nvim-surround",
-	opts = {},
-	event = "VeryLazy",
+  "kylechui/nvim-surround",
+  opts = {},
+  event = "VeryLazy",
 }

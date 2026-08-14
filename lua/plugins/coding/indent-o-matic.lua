@@ -1,5 +1,5 @@
 return {
-	"Darazaki/indent-o-matic",
-	opts = { skip_multiline = true },
-	event = "VeryLazy",
+  "Darazaki/indent-o-matic",
+  opts = { skip_multiline = true },
+  event = "VeryLazy",
 }

@@ -1,5 +1,5 @@
 return {
-	"lukas-reineke/virt-column.nvim",
-	opts = { char = "▕", highlight = "VirtColumn" },
-	event = "VeryLazy",
+  "lukas-reineke/virt-column.nvim",
+  opts = { char = "▕", highlight = "VirtColumn" },
+  event = "VeryLazy",
 }

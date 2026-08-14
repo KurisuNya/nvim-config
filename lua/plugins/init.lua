@@ -1,25 +1,25 @@
 local lazy_path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 local repo_url = "https://github.com/KurisuNya/lazy.nvim.git"
 if not (vim.uv or vim.loop).fs_stat(lazy_path) then
-	local out = vim.fn.system({ "git", "clone", repo_url, lazy_path })
-	if vim.v.shell_error ~= 0 then
-		vim.api.nvim_echo({
-			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out, "WarningMsg" },
-			{ "\nPress any key to exit..." },
-		}, true, {})
-		vim.fn.getchar()
-		os.exit(1)
-	end
+  local out = vim.fn.system({ "git", "clone", repo_url, lazy_path })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
 vim.opt.rtp:prepend(lazy_path)
 
 _G.PluginVars = {}
 
 PluginVars.insert = function(tbl, item)
-	if type(tbl) == "table" and not vim.tbl_contains(tbl, item) then
-		table.insert(tbl, item)
-	end
+  if type(tbl) == "table" and not vim.tbl_contains(tbl, item) then
+    table.insert(tbl, item)
+  end
 end
 
 -- q to close
@@ -31,54 +31,54 @@ PluginVars.filetype_colorcolumn = {}
 
 -- autocmds for the above variables
 PluginVars.create_autocmds = function()
-	vim.api.nvim_create_autocmd("FileType", {
-		group = Utils.create_augroup("close_with_q"),
-		pattern = PluginVars.q_close_filetypes,
-		callback = function(event)
-			vim.bo[event.buf].buflisted = false
-			vim.schedule(function()
-				vim.keymap.set("n", "q", function()
-					vim.cmd("close")
-					pcall(vim.api.nvim_buf_delete, event.buf, { force = true })
-				end, { buffer = event.buf, silent = true, desc = "Quit buffer" })
-			end)
-		end,
-	})
+  vim.api.nvim_create_autocmd("FileType", {
+    group = Utils.create_augroup("close_with_q"),
+    pattern = PluginVars.q_close_filetypes,
+    callback = function(event)
+      vim.bo[event.buf].buflisted = false
+      vim.schedule(function()
+        vim.keymap.set("n", "q", function()
+          vim.cmd("close")
+          pcall(vim.api.nvim_buf_delete, event.buf, { force = true })
+        end, { buffer = event.buf, silent = true, desc = "Quit buffer" })
+      end)
+    end,
+  })
 
-	vim.api.nvim_create_autocmd("FileType", {
-		group = Utils.create_augroup("wrap_spell"),
-		pattern = PluginVars.wrap_spell_filetypes,
-		callback = function()
-			vim.opt_local.wrap = true
-		end,
-	})
+  vim.api.nvim_create_autocmd("FileType", {
+    group = Utils.create_augroup("wrap_spell"),
+    pattern = PluginVars.wrap_spell_filetypes,
+    callback = function()
+      vim.wo[0][0].wrap = true
+    end,
+  })
 
-	vim.api.nvim_create_autocmd("FileType", {
-		group = Utils.create_augroup("filetype_colorcolumn"),
-		pattern = vim.tbl_keys(PluginVars.filetype_colorcolumn),
-		callback = function(event)
-			local colorcolumn = PluginVars.filetype_colorcolumn[event.match]
-			if colorcolumn then
-				vim.opt_local.colorcolumn = colorcolumn
-			end
-		end,
-	})
+  vim.api.nvim_create_autocmd("FileType", {
+    group = Utils.create_augroup("filetype_colorcolumn"),
+    pattern = vim.tbl_keys(PluginVars.filetype_colorcolumn),
+    callback = function(event)
+      local colorcolumn = PluginVars.filetype_colorcolumn[event.match]
+      if colorcolumn then
+        vim.wo[0][0].colorcolumn = colorcolumn
+      end
+    end,
+  })
 end
 
 require("lazy").setup({
-	require("plugins.colorscheme"),
-	require("plugins.editor"),
-	require("plugins.coding"),
-	require("plugins.language"),
+  require("plugins.colorscheme"),
+  require("plugins.editor"),
+  require("plugins.coding"),
+  require("plugins.language"),
 }, {
-	defaults = { lazy = true },
-	ui = {
-		border = Config.border_style,
-		view = {
-			keys = { hover = "H" },
-			commands = { home = { key = "Z" } },
-		},
-	},
+  defaults = { lazy = true },
+  ui = {
+    border = Config.border_style,
+    view = {
+      keys = { hover = "H" },
+      commands = { home = { key = "Z" } },
+    },
+  },
 })
 
 PluginVars.create_autocmds()

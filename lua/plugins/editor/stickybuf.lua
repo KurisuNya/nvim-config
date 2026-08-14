@@ -1,5 +1,5 @@
 return {
-	"stevearc/stickybuf.nvim",
-	opts = {},
-	event = "VeryLazy",
+  "stevearc/stickybuf.nvim",
+  opts = {},
+  event = "VeryLazy",
 }
