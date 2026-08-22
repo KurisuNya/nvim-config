@@ -326,7 +326,7 @@ M.open = function(opts)
   state.autocmd = api.nvim_create_autocmd("WinClosed", {
     once = true,
     callback = function(ev)
-      if vim._tointeger(ev.match) == captured_win then
+      if vim.fn.str2nr(ev.match) == captured_win then
         state.autocmd = nil
         state.winid = nil
         state.bufnr = nil

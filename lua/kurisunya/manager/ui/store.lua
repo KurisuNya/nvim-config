@@ -73,9 +73,7 @@ end
 
 ---@param plugin Ui.Plugin
 ---@return boolean
-M.is_pending = function(plugin)
-  return plugin.rev_to ~= nil and plugin.rev ~= plugin.rev_to
-end
+M.is_pending = function(plugin) return plugin.rev_to ~= nil and plugin.rev ~= plugin.rev_to end
 
 ---@param list Ui.Plugin[]
 ---@return Ui.Plugin[]
@@ -203,8 +201,6 @@ M.begin_refresh = function(state)
 end
 
 ---@param state Ui.State
-M.end_refresh = function(state)
-  state.checking = false
-end
+M.end_refresh = function(state) state.checking = false end
 
 return M

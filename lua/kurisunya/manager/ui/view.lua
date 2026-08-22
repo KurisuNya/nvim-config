@@ -12,9 +12,7 @@ local ns = vim.api.nvim_create_namespace("pack_float_ui")
 local PLUGIN_INDENT = "   "
 local DETAIL_INDENT = "     "
 
-local function short_rev(rev)
-  return rev and rev:sub(1, 8) or "unknown"
-end
+local function short_rev(rev) return rev and rev:sub(1, 8) or "unknown" end
 
 ---@param vm Ui.ViewModel
 ---@return Ui.ViewData
@@ -31,9 +29,7 @@ M.static_view = function(vm)
     return row
   end
 
-  local function add_hl(row, start_col, end_col, hl)
-    hls[#hls + 1] = { row, start_col, end_col, hl }
-  end
+  local function add_hl(row, start_col, end_col, hl) hls[#hls + 1] = { row, start_col, end_col, hl } end
 
   local function mark_plugin(row, name, name_col)
     line_to_name[row + 1] = name
@@ -45,7 +41,8 @@ M.static_view = function(vm)
 
   add("")
 
-  local help = " [R] Refresh  [u] Update  [U] Update all  [x] Uninstall  [X] Clean  [Enter] Details  [Esc] Close"
+  local help =
+    " [R] Refresh  [u] Update  [U] Update all  [x] Uninstall  [X] Clean  [Enter] Details  [Esc] Close"
   local help_row = add(help)
   for start_pos, end_pos in help:gmatch("()%b[]()") do
     add_hl(help_row, start_pos - 1, end_pos - 1, "@punctuation.special")
@@ -143,7 +140,12 @@ M.static_view = function(vm)
           if time_range then
             local range_start, range_end = message:find("%([^()]+%)$")
             if range_start then
-              add_hl(commit_row, message_start + range_start - 1, message_start + range_end, "Comment")
+              add_hl(
+                commit_row,
+                message_start + range_start - 1,
+                message_start + range_end,
+                "Comment"
+              )
             end
           end
         end
@@ -210,8 +212,6 @@ end
 ---@param data Ui.ViewData
 ---@param row integer
 ---@return string?
-M.plugin_at = function(data, row)
-  return data.line_to_name[row]
-end
+M.plugin_at = function(data, row) return data.line_to_name[row] end
 
 return M

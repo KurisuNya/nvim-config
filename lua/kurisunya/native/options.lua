@@ -71,7 +71,7 @@ vim.o.undolevels = 10000
 vim.o.updatetime = 200
 -- clipboard
 vim.opt.clipboard:append("unnamedplus")
-if os.getenv("SSH_TTY") or os.getenv("USER") == "root" then
+if vim.env.SSH_TTY or vim.env.USER == "root" then
   vim.g.clipboard = {
     name = "OSC 52",
     copy = {

@@ -67,7 +67,7 @@ vim.keymap.set("n", "<C-Right>", "<C-w>l")
 
 -- diff
 vim.keymap.set("n", "<leader>dd", function()
-  if vim.api.nvim_get_option_value("diff", {}) then
+  if vim.wo[0][0].diff then
     vim.cmd("windo diffoff")
   else
     vim.cmd("windo diffthis")
@@ -97,7 +97,7 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo[event.buf].buflisted = false
     vim.schedule(function()
       vim.keymap.set("n", "q", function()
-        vim.cmd("close")
+        vim.cmd.close()
         pcall(vim.api.nvim_buf_delete, event.buf, { force = true })
       end, { buffer = event.buf })
     end)

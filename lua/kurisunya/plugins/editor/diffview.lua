@@ -111,7 +111,7 @@ local original_buffers = {}
 local function get_buffers()
   local buffers = {}
   for _, buffer in ipairs(vim.api.nvim_list_bufs()) do
-    if vim.fn.buflisted(buffer) == 1 then
+    if vim.api.nvim_buf_is_valid(buffer) and vim.bo[buffer].buflisted then
       table.insert(buffers, buffer)
     end
   end
@@ -124,7 +124,7 @@ local view_opened_hook = function()
     func()
   end
   for _, buffer in ipairs(get_buffers()) do
-    vim.api.nvim_set_option_value("buflisted", false, { buf = buffer })
+    vim.bo[buffer].buflisted = false
     original_buffers[buffer] = true
   end
 end
@@ -140,8 +140,11 @@ local view_close_hook = function()
     end
   end
   for _, buffer in ipairs(vim.tbl_keys(original_buffers)) do
-    vim.api.nvim_set_option_value("buflisted", true, { buf = buffer })
+    if vim.api.nvim_buf_is_valid(buffer) then
+      vim.bo[buffer].buflisted = true
+    end
   end
+  original_buffers = {}
 end
 
 spec.opts = function()

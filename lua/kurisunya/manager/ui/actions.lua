@@ -15,9 +15,7 @@ end
 --- 异步回调统一入口: safecall.now 兜底意外错误 → notify, 不崩会话
 ---@param fn fun()
 local function async_call(fn)
-  vim.schedule(function()
-    Utils.safecall.now(fn)
-  end)
+  vim.schedule(function() Utils.safecall.now(fn) end)
 end
 
 ---@param state Ui.State
@@ -35,9 +33,7 @@ end
 ---@param check_id integer
 ---@param fn fun()
 local function guarded_async(state, check_id, fn)
-  async_call(function()
-    if_current(state, check_id, fn)
-  end)
+  async_call(function() if_current(state, check_id, fn) end)
 end
 
 ---@param raw table[]?
@@ -79,8 +75,15 @@ M.fetch_check = function(state, check_id)
   local _ = check_id -- 闭包捕获, 供回调比对
   for _, plugin in ipairs(state.plugins) do
     vim.system({
-      "git", "-C", plugin.path,
-      "fetch", "--quiet", "--tags", "--force", "--recurse-submodules=yes", "origin",
+      "git",
+      "-C",
+      plugin.path,
+      "fetch",
+      "--quiet",
+      "--tags",
+      "--force",
+      "--recurse-submodules=yes",
+      "origin",
     }, {}, function(fetch_result)
       guarded_async(state, check_id, function()
         if fetch_result.code ~= 0 then
@@ -148,13 +151,17 @@ M.finish_refresh = function(state, check_id, failures)
         end)
       end, 0)
     else
-      vim.system({ "git", "-C", plugin.path, "rev-parse", "origin/HEAD" }, { text = true }, function(result)
-        guarded_async(state, check_id, function()
-          local rev_to = result.code == 0 and result.stdout:gsub("%s+$", "") or nil
-          replace_plugin(state.plugins, name, store.with_rev_to(plugin, rev_to))
-          maybe_finish()
-        end)
-      end)
+      vim.system(
+        { "git", "-C", plugin.path, "rev-parse", "origin/HEAD" },
+        { text = true },
+        function(result)
+          guarded_async(state, check_id, function()
+            local rev_to = result.code == 0 and result.stdout:gsub("%s+$", "") or nil
+            replace_plugin(state.plugins, name, store.with_rev_to(plugin, rev_to))
+            maybe_finish()
+          end)
+        end
+      )
     end
   end
 end
@@ -286,13 +293,21 @@ M.load_commits = function(state, plugin)
   M.emit_view(state)
 
   vim.system({
-    "git", "-C", plugin.path,
-    "log", "--pretty=format:%h %s (%cr)", "--abbrev-commit", "--date=short",
-    "--color=never", "--no-show-signature",
+    "git",
+    "-C",
+    plugin.path,
+    "log",
+    "--pretty=format:%h %s (%cr)",
+    "--abbrev-commit",
+    "--date=short",
+    "--color=never",
+    "--no-show-signature",
     plugin.rev .. ".." .. plugin.rev_to,
   }, { text = true }, function(result)
     guarded_async(state, check_id, function()
-      state.commits[plugin.name] = (result.code == 0 and store.parse_commits(split_lines(result.stdout)) or {})
+      state.commits[plugin.name] = (
+        result.code == 0 and store.parse_commits(split_lines(result.stdout)) or {}
+      )
       M.emit_view(state)
     end)
   end)

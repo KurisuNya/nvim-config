@@ -1,6 +1,6 @@
 local M = {}
 
-local sysname = (vim.uv or vim.loop).os_uname().sysname
+local sysname = vim.uv.os_uname().sysname
 
 ---@return string sysname System name
 M.get_sysname = function() return sysname end

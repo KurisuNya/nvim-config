@@ -1,4 +1,4 @@
-Autocmd = require("kurisunya.utils.autocmd")
+local Autocmd = require("kurisunya.utils.autocmd")
 
 local M = {}
 

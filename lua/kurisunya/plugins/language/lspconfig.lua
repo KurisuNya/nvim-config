@@ -21,6 +21,9 @@ spec.config = function(opts)
   -- folding
   if opts.folding_range then
     Utils.lsp.on_attach_by_method("textDocument/foldingRange", function()
+      if vim.wo[0][0].foldmethod == "diff" then
+        return
+      end
       vim.wo[0][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
       vim.wo[0][0].foldmethod = "expr"
     end)

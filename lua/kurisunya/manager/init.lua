@@ -313,7 +313,7 @@ Manager.load_all = function()
 
   -- install missing plugins and restart
   if H.install_missing() then
-    Utils.safecall.now(function() vim.api.nvim_command("restart! +qall!") end)
+    Utils.safecall.now(function() vim.cmd("restart! +qall!") end)
   end
 
   local specs = vim.tbl_values(H.plugin_specs)

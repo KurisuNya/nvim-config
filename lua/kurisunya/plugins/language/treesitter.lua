@@ -102,6 +102,9 @@ spec.config = function(opts)
         vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
       end
       if enabled("fold", "folds") then
+        if vim.wo[0][0].foldmethod == "diff" then
+          return
+        end
         local support_fold = function(c) return c:supports_method("textDocument/foldingRange") end
         local lsp_takes = vim.iter(vim.lsp.get_clients({ bufnr = ev.buf })):any(support_fold)
         if not lsp_takes then

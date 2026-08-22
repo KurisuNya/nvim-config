@@ -48,7 +48,7 @@ end
 H.later_cache = {}
 
 H.execute_later = function()
-  local timer = assert(vim.loop.new_timer())
+  local timer = assert(vim.uv.new_timer())
   local f
   f = vim.schedule_wrap(function()
     local cb = H.later_cache[1]

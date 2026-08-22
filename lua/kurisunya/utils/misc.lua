@@ -1,6 +1,6 @@
 local M = {}
 
----@param tbl table tanle to set value in
+---@param tbl table table to set value in
 ---@param value any value to set
 ---@param ... any Optional keys (0 or more, variadic) via which to index the table
 M.tbl_set = function(tbl, value, ...)

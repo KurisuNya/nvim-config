@@ -50,7 +50,7 @@ spec.opts = function()
       section_separators = Config.statusline.section_separators,
       component_separators = Config.statusline.component_separators,
     },
-    extensions = { "lazy", "quickfix" },
+    extensions = { "quickfix" },
     sections = {
       lualine_a = { "mode" },
       lualine_b = {},

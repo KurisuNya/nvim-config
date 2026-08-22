@@ -36,7 +36,7 @@ local filetype_maps = {
     { "n", "q", function() require("neotest").summary.close() end, { desc = "Close Summary" } },
   },
   ["neotest-output"] = {
-    { "n", "q", function() vim.cmd("close") end, { desc = "Close Output" } },
+    { "n", "q", function() vim.cmd.close() end, { desc = "Close Output" } },
   },
 }
 

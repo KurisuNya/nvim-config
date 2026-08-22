@@ -25,10 +25,10 @@ spec.opts = {
 local sessions_ignore_filetypes = {}
 
 local close_ignore_buffers = function()
-  for _, buffer in ipairs(vim.fn.getbufinfo()) do
-    local filetype = vim.fn.getbufvar(buffer.bufnr, "&filetype")
+  for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+    local filetype = vim.bo[bufnr].filetype
     if sessions_ignore_filetypes[filetype] then
-      vim.fn.bdelete(buffer.bufnr)
+      vim.api.nvim_buf_delete(bufnr, { force = true })
     end
   end
 end
@@ -53,10 +53,9 @@ spec.config = function(opts)
     function() Session.restore_latest() end,
     {}
   )
-  local loop = (vim.uv or vim.loop)
   vim.api.nvim_create_autocmd({ "VimLeavePre" }, {
     group = Utils.autocmd.new_group("store_session"),
-    callback = function() Session.store(loop.cwd()) end,
+    callback = function() Session.store(vim.uv.cwd()) end,
   })
 
   Utils.keymap.set_maps(maps())
