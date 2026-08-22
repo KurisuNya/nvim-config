@@ -1,13 +1,15 @@
 vim.loader.enable()
 
-_G.Config = require("config")
-_G.Icons = require("utils.icons")
-_G.Utils = require("utils.utils")
+require("kurisunya.utils")
+require("kurisunya.config")
+require("kurisunya.icons")
 
-require("native.options")
-require("native.keymaps")
-require("native.autocmd")
+require("kurisunya.native.options")
+require("kurisunya.native.keymaps")
+require("kurisunya.native.autocmd")
 
-if Config.enable_plugins then
-  require("plugins")
+if Config.use_plugins then
+  require("kurisunya.manager")
+  require("kurisunya.manager.ui") -- TODO: refactor ai generated ui code
+  require("kurisunya.plugins")
 end
