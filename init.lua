@@ -12,6 +12,11 @@ if Config.use_plugins then
   require("kurisunya.manager")
   require("kurisunya.plugins")
   if Config.clean_unmanaged_plugins then
-    Utils.safecall.later(function() vim.pack.del(Manager.unmanaged()) end)
+    Utils.safecall.later(function()
+      local unmanaged = Manager.unmanaged()
+      if #unmanaged > 0 then
+        vim.pack.del(unmanaged)
+      end
+    end)
   end
 end

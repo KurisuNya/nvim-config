@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = Utils.autocmd.default_group,
-  callback = function() vim.hl.hl_op({ hl_group = "Visual", timeout = 400 }) end,
+  callback = function() vim.hl.on_yank({ higroup = "Visual", timeout = 400 }) end,
 })
 
 -- restore cursor position
