@@ -10,6 +10,8 @@ require("kurisunya.native.autocmd")
 
 if Config.use_plugins then
   require("kurisunya.manager")
-  require("kurisunya.manager.ui") -- TODO: refactor ai generated ui code
   require("kurisunya.plugins")
+  if Config.clean_unmanaged_plugins then
+    Utils.safecall.later(function() vim.pack.del(Manager.unmanaged()) end)
+  end
 end

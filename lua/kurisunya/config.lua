@@ -5,6 +5,7 @@ local in_tty = Utils.os.is_linux() and Utils.os.linux.is_in_tty()
 Config.use_nerd_font = Config.use_nerd_font and not in_tty
 
 Config.use_plugins = true
+Config.clean_unmanaged_plugins = true
 
 Config.use_ai = true
 Config.ai_cli = "opencode"
@@ -49,7 +50,14 @@ Config.dashboard = {
   buttons = {
     { key = "p", name = "  Open Project", cmd = "<CMD>Telescope projections<CR>" },
     { key = "s", name = "  Last Session", cmd = "<CMD>ProjectionsLastSession<CR>" },
-    { key = "l", name = "󰒲  Pack Manager", cmd = "<CMD>Pack<CR>" },
+    {
+      key = "l",
+      name = "󰒲  Pack Update",
+      cmd = function()
+        vim.notify("vim.pack: Checking for updates...", vim.log.levels.INFO)
+        vim.pack.update()
+      end,
+    },
     { key = "m", name = "  Mason Manager", cmd = "<CMD>Mason<CR>" },
     { key = "q", name = "  Quit Neovim", cmd = "<CMD>qa<CR>" },
   },

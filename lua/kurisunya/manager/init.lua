@@ -19,7 +19,7 @@ H.load_all_init_done = false ---@type boolean
 
 ---@param msg string
 ---@param level string
-H.notify = function(msg, level) vim.notify(msg, vim.log.levels[level], { title = "Manager" }) end
+H.notify = function(msg, level) vim.notify("vim.pack manager: " .. msg, vim.log.levels[level]) end
 
 ---@param cmd string
 ---@param cwd string
@@ -285,7 +285,7 @@ Manager.stats = function()
 end
 
 ---@return string[]
-Manager.not_managed = function()
+Manager.unmanaged = function()
   local managed = {}
   for _, spec in ipairs(H.pack_specs) do
     managed[spec.name] = true

@@ -20,7 +20,7 @@ local next_diagnostic = function(severity)
 end
 
 local maps = {
-  { "n", "<leader>v", "<CMD>Lspsaga outline<CR>", { desc = "Outline Toggle" } },
+  { "n", "<leader>v", "<CMD>Lspsaga outline<CR>", { desc = "Lsp Outline Toggle" } },
 }
 local method_maps = {
   ["textDocument/codeAction"] = {

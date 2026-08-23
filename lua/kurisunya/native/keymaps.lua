@@ -49,8 +49,8 @@ vim.keymap.set({ "n", "x" }, "g+", "g<C-a>", { desc = "Number Add (multiple)" })
 vim.keymap.set({ "n", "x" }, "g-", "g<C-x>", { desc = "Number Subtract (multiple)" })
 
 -- indent
-vim.keymap.set("x", "<", "<gv")
-vim.keymap.set("x", ">", ">gv")
+vim.keymap.set("x", "<", "<gv", { desc = "Unindent" })
+vim.keymap.set("x", ">", ">gv", { desc = "Indent" })
 
 -- split
 local split_win = function(split)
@@ -73,6 +73,10 @@ vim.keymap.set("n", "<leader>dd", function()
     vim.cmd("windo diffthis")
   end
 end, { desc = "Diff Toggle" })
+
+-- quickfix
+vim.keymap.set("n", "<Tab>", "<CMD>cnext<CR>", { desc = "Quickfix Next" })
+vim.keymap.set("n", "<S-Tab>", "<CMD>cprev<CR>", { desc = "Quickfix Previous" })
 
 -- macro
 vim.keymap.set("n", "<leader>M", "q", { desc = "Macro Record" })
