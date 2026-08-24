@@ -142,7 +142,7 @@ end
 M.when_filetypes = function(filetypes, fn)
   vim.validate("filetype", filetypes, vim.islist, false, "list")
   if #filetypes == 0 then
-    error("filetypes list cannot be empty")
+    return
   end
   local is_nonempty_string = function(x) return type(x) == "string" and x ~= "" end
   for i, ft in ipairs(filetypes) do

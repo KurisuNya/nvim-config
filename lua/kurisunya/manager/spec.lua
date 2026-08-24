@@ -102,7 +102,6 @@ M.normalize_spec = function(spec)
 
   return {
     spec[1],
-    name = spec[1].name,
     dependencies = spec.dependencies,
     build = spec.build,
     init = spec.init,
