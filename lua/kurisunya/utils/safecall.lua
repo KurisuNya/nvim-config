@@ -111,9 +111,10 @@ end
 local M = {}
 
 ---@param fn fun() Function to execute (without arguments).
+---@return boolean success Whether the function executed successfully
 M.now = function(fn)
   vim.validate("f", fn, "function")
-  H.execute_now(fn)
+  return H.execute_now(fn)
 end
 
 ---@param fn fun() Function to execute (without arguments).

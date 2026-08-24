@@ -5,10 +5,19 @@ local spec = {
 }
 
 local maps = function()
-  local gs = package.loaded.gitsigns
   return {
-    { "n", "]h", gs.next_hunk, { desc = "Next Git Hunk" } },
-    { "n", "[h", gs.prev_hunk, { desc = "Previous Git Hunk" } },
+    {
+      "n",
+      "]h",
+      function() require("gitsigns").nav_hunk("next", { target = "all" }) end,
+      { desc = "Next Git Hunk" },
+    },
+    {
+      "n",
+      "[h",
+      function() require("gitsigns").nav_hunk("prev", { target = "all" }) end,
+      { desc = "Previous Git Hunk" },
+    },
   }
 end
 

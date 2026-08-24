@@ -41,11 +41,10 @@ spec.config = function(opts)
       end
       inlay_hint_handler(err, result, ctx, config)
     end
-    local inlay_hints_group = Utils.autocmd.new_group("lsp_inlay_hints")
     Utils.lsp.on_attach_by_method("textDocument/inlayHint", function(_, bufnr)
       if vim.api.nvim_buf_is_valid(bufnr) and vim.bo[bufnr].buftype == "" then
         vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-          group = inlay_hints_group,
+          group = Utils.autocmd.new_group("lsp_inlay_hints"),
           buffer = bufnr,
           callback = function() vim.lsp.inlay_hint.enable(true, { bufnr = bufnr }) end,
         })

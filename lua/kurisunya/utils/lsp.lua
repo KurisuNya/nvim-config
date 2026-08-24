@@ -2,7 +2,7 @@ local Autocmd = require("kurisunya.utils.autocmd")
 
 local M = {}
 
-local on_attach_augroup = Autocmd.new_group("lsp_on_attach", true)
+local on_attach_augroup = Autocmd.new_group("lsp_on_attach")
 
 ---@param filter fun(client: vim.lsp.Client, bufnr: integer): boolean
 ---@param fn fun(client: vim.lsp.Client, bufnr: integer)

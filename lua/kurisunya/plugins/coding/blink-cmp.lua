@@ -1,9 +1,12 @@
 ---@type Manager.Spec
 local spec = {
-  {
-    src = Manager.url.gh("saghen/blink.cmp"),
-    version = vim.version.range("*"),
+  Manager.url.gh("saghen/blink.cmp"),
+  dependencies = {
+    Manager.url.gh("saghen/blink.lib"),
+    Manager.url.gh("kawre/neotab.nvim"),
+    Manager.url.gh("L3MON4D3/LuaSnip"),
   },
+  build = function() require("blink.cmp").build():pwait() end,
   event = Manager.event.VeryLazy,
 }
 
@@ -16,10 +19,7 @@ local neotab_spec = {
 
 ---@type Manager.Spec
 local luasnip_spec = {
-  {
-    src = Manager.url.gh("L3MON4D3/LuaSnip"),
-    version = vim.version.range("2"),
-  },
+  Manager.url.gh("L3MON4D3/LuaSnip"),
   build = "make install_jsregexp",
   dependencies = { Manager.url.gh("rafamadriz/friendly-snippets") },
   opts = { history = true, delete_check_events = "TextChanged" },
@@ -27,14 +27,6 @@ local luasnip_spec = {
     require("luasnip.loaders.from_vscode").lazy_load()
     require("luasnip").setup(opts)
   end,
-}
-
-spec.dependencies = {
-  Manager.url.gh("kawre/neotab.nvim"),
-  {
-    src = Manager.url.gh("L3MON4D3/LuaSnip"),
-    version = vim.version.range("2"),
-  },
 }
 
 spec.init = function()

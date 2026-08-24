@@ -21,6 +21,17 @@ H.load_all_init_done = false ---@type boolean
 ---@param level string
 H.notify = function(msg, level) vim.notify("vim.pack manager: " .. msg, vim.log.levels[level]) end
 
+H.clean_loaded_modules = function(path)
+  for k, _ in pairs(package.loaded) do
+    if type(k) == "string" then
+      local f = path .. "/lua/" .. k:gsub("%.", "/")
+      if vim.fn.filereadable(f .. ".lua") == 1 or vim.fn.filereadable(f .. "/init.lua") == 1 then
+        package.loaded[k] = nil
+      end
+    end
+  end
+end
+
 ---@param cmd string
 ---@param cwd string
 H.run_build_cmd = function(cmd, cwd)
@@ -36,7 +47,7 @@ H.run_build_cmd = function(cmd, cwd)
 end
 
 vim.api.nvim_create_autocmd("PackChanged", {
-  group = Utils.autocmd.new_group("plugin_builds"),
+  group = Utils.autocmd.new_group("manager_pack_build"),
   callback = function(ev)
     local name = ev.data.spec.name
     local kind = ev.data.kind
@@ -50,7 +61,8 @@ vim.api.nvim_create_autocmd("PackChanged", {
       return
     end
     H.notify(string.format("Running build for plugin %s", name), "INFO")
-    Utils.safecall.now(function()
+    local success = Utils.safecall.now(function()
+      H.clean_loaded_modules(path)
       if type(build) == "string" then
         H.run_build_cmd(build, path)
       else
@@ -60,7 +72,11 @@ vim.api.nvim_create_autocmd("PackChanged", {
         build(path)
       end
     end)
-    H.notify(string.format("Build for plugin %s completed", name), "INFO")
+    if success then
+      H.notify(string.format("Build for plugin %s completed", name), "INFO")
+    else
+      H.notify(string.format("Build for plugin %s failed", name), "ERROR")
+    end
   end,
 })
 
@@ -313,7 +329,7 @@ Manager.load_all = function()
 
   -- install missing plugins and restart
   if H.install_missing() then
-    Utils.safecall.now(function() vim.cmd("restart +qall!") end)
+    Utils.safecall.now(function() vim.cmd("restart! +qall!") end)
   end
 
   local specs = vim.tbl_values(H.plugin_specs)
@@ -365,4 +381,64 @@ Manager.load_all = function()
 
   -- compute stats
   H.stats = H.compute_stats()
+end
+
+---@param confirm? boolean
+Manager.update_all = function(confirm)
+  if confirm == nil then
+    confirm = true
+  end
+
+  local group = Utils.autocmd.new_group("manager_update_all")
+  local cleanup = function() vim.api.nvim_del_augroup_by_id(group) end
+
+  local changed = false
+  vim.api.nvim_create_autocmd("PackChanged", {
+    group = group,
+    once = true,
+    callback = function() changed = true end,
+  })
+  local restart = function()
+    if not changed then
+      return
+    end
+    local success = Utils.safecall.now(function() vim.cmd("restart!") end)
+    if not success then
+      H.notify("Failed to restart Neovim after updating plugins, please restart manually", "ERROR")
+    end
+  end
+
+  if confirm then
+    local confirm_bufnr
+    vim.api.nvim_create_autocmd("FileType", {
+      group = group,
+      pattern = "nvim-pack",
+      once = true,
+      callback = function(ev) confirm_bufnr = ev.buf end,
+    })
+    if not Utils.safecall.now(function() vim.pack.update(nil, { force = false }) end) then
+      cleanup()
+      return
+    end
+    if not confirm_bufnr then
+      cleanup()
+      return
+    end
+    vim.api.nvim_create_autocmd("BufDelete", {
+      group = group,
+      buffer = confirm_bufnr,
+      once = true,
+      callback = function()
+        cleanup()
+        restart()
+      end,
+    })
+  else
+    if not Utils.safecall.now(function() vim.pack.update(nil, { force = true }) end) then
+      cleanup()
+      return
+    end
+    cleanup()
+    restart()
+  end
 end

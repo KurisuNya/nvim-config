@@ -1,18 +1,20 @@
 {
   "plugins": {
     "LuaSnip": {
-      "rev": "642b0c595e11608b4c18219e93b88d7637af27bc",
-      "src": "https://github.com/L3MON4D3/LuaSnip",
-      "version": "2.0.0 - 3.0.0"
+      "rev": "0abc8f390b278c3b4aabc4c004ac8a088b65cf24",
+      "src": "https://github.com/L3MON4D3/LuaSnip"
     },
     "barbar.nvim": {
       "rev": "337ecfadb8bf005050990bf2f624dc4fc828dabd",
       "src": "https://github.com/romgrk/barbar.nvim"
     },
     "blink.cmp": {
-      "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
-      "src": "https://github.com/saghen/blink.cmp",
-      "version": ">=0.0.0"
+      "rev": "d50cfb205c677143d1f036a4749e21c1c8c6bc85",
+      "src": "https://github.com/saghen/blink.cmp"
+    },
+    "blink.lib": {
+      "rev": "c8fdc12c8a2fab6cf786dd7141a283f8079f902b",
+      "src": "https://github.com/saghen/blink.lib"
     },
     "clipboard-image.nvim": {
       "rev": "5ccecdf27a02b1bf0a2602cf143bcf69f1ca4465",
@@ -31,7 +33,7 @@
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
     "diffview.nvim": {
-      "rev": "460b96c8285fbf0cd411bddfd9322408f37f81a5",
+      "rev": "30afab604a0abe02dfd19e6fbb9153fd26fd2eb3",
       "src": "https://github.com/dlyongemallo/diffview.nvim"
     },
     "fcitx.nvim": {
@@ -76,7 +78,7 @@
       "src": "https://github.com/folke/lazydev.nvim"
     },
     "leap.nvim": {
-      "rev": "7884f9455e5bf07bd11a3dcd9f961095a966a5d7",
+      "rev": "c1be35db274f5976cce683b93fcab99937420b63",
       "src": "https://codeberg.org/andyg/leap.nvim"
     },
     "lspsaga.nvim": {
@@ -161,7 +163,7 @@
       "src": "https://github.com/KurisuNya/nvim-gtd"
     },
     "nvim-lspconfig": {
-      "rev": "221c43884319e791519f0d6c94a7f2fbcd653278",
+      "rev": "10e9995a8638ad8f72898de3003ef8c686fe6a52",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
