@@ -21,17 +21,6 @@ H.load_all_init_done = false ---@type boolean
 ---@param level string
 H.notify = function(msg, level) vim.notify("vim.pack manager: " .. msg, vim.log.levels[level]) end
 
-H.clean_loaded_modules = function(path)
-  for k, _ in pairs(package.loaded) do
-    if type(k) == "string" then
-      local f = path .. "/lua/" .. k:gsub("%.", "/")
-      if vim.fn.filereadable(f .. ".lua") == 1 or vim.fn.filereadable(f .. "/init.lua") == 1 then
-        package.loaded[k] = nil
-      end
-    end
-  end
-end
-
 ---@param cmd string
 ---@param cwd string
 H.run_build_cmd = function(cmd, cwd)
@@ -44,6 +33,21 @@ H.run_build_cmd = function(cmd, cwd)
     local output = stderr ~= "" and stderr or stdout
     error(output ~= "" and output or "No output from build command.")
   end
+end
+
+---@param name string
+---@param path string
+---@param build string|fun(path: string)
+---@return boolean success
+H.build_plugin = function(name, path, build)
+  H.notify(string.format("Running build for plugin %s", name), "INFO")
+  return Utils.safecall.now(function()
+    if type(build) == "string" then
+      H.run_build_cmd(build, path)
+    else
+      build(path)
+    end
+  end)
 end
 
 vim.api.nvim_create_autocmd("PackChanged", {
@@ -60,25 +64,40 @@ vim.api.nvim_create_autocmd("PackChanged", {
     if not build then
       return
     end
-    H.notify(string.format("Running build for plugin %s", name), "INFO")
-    local success = Utils.safecall.now(function()
-      H.clean_loaded_modules(path)
-      if type(build) == "string" then
-        H.run_build_cmd(build, path)
-      else
-        if not ev.data.active then
-          vim.cmd.packadd(name)
-        end
-        build(path)
-      end
-    end)
-    if success then
+    if H.build_plugin(name, path, build) then
       H.notify(string.format("Build for plugin %s completed", name), "INFO")
     else
-      H.notify(string.format("Build for plugin %s failed", name), "ERROR")
+      local msg = "Build for plugin "
+        .. name
+        .. " failed. run `:lua Manager.build('"
+        .. name
+        .. "')` to retry."
+      H.notify(msg, "ERROR")
     end
   end,
 })
+
+---@param name string
+Manager.build = function(name)
+  vim.validate("name", name, "string", false)
+  local spec = H.plugin_specs[name]
+  if not spec then
+    error("Plugin spec with name " .. name .. " does not exist")
+  end
+  local path = vim.tbl_get(vim.pack.get({ name }, { info = false }), 1, "path")
+  if not path then
+    error("Plugin " .. name .. " is not installed")
+  end
+  local build = spec.build
+  if not build then
+    error("Plugin " .. name .. " does not have a build command")
+  end
+  if H.build_plugin(name, path, build) then
+    H.notify(string.format("Build for plugin %s completed", name), "INFO")
+  else
+    H.notify(string.format("Build for plugin %s failed", name), "ERROR")
+  end
+end
 
 Manager.url = {
   ---@param repo string
@@ -97,6 +116,18 @@ Manager.have = function(name) return H.plugin_specs[name] ~= nil end
 
 ---@param name string
 Manager.loaded = function(name) return H.plugin_loaded[name] == true end
+
+---@return string[]
+Manager.unmanaged = function()
+  local managed = {}
+  for _, spec in ipairs(H.pack_specs) do
+    managed[spec.name] = true
+  end
+
+  local installed = vim.pack.get(nil, { info = false })
+  local names = vim.tbl_map(function(p) return p.spec.name end, installed)
+  return vim.tbl_filter(function(n) return not managed[n] end, names)
+end
 
 ---@param spec Manager.Spec
 Manager.add = function(spec)
@@ -298,18 +329,6 @@ Manager.stats = function()
     error("Manager.stats() can only be called after Manager.load_all()")
   end
   return H.stats
-end
-
----@return string[]
-Manager.unmanaged = function()
-  local managed = {}
-  for _, spec in ipairs(H.pack_specs) do
-    managed[spec.name] = true
-  end
-
-  local installed = vim.pack.get(nil, { info = false })
-  local names = vim.tbl_map(function(p) return p.spec.name end, installed)
-  return vim.tbl_filter(function(n) return not managed[n] end, names)
 end
 
 ---@param name string

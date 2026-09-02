@@ -41,10 +41,14 @@ end
 
 Manager.add(image_spec)
 
+Manager.opts_extend("mason.nvim", {
+  ensure_installed = { "deno" },
+}, { extend = "ensure_installed" })
+
 ---@type Manager.Spec
 local preview_spec = {
-  Manager.url.gh("iamcco/markdown-preview.nvim"),
-  build = "cd app && yarn install",
+  Manager.url.gh("toppair/peek.nvim"),
+  build = "deno task --quiet build:fast",
   filetype = "markdown",
 }
 
@@ -52,17 +56,13 @@ local preview_maps = {
   {
     "n",
     "<leader>mp",
-    "<CMD>MarkdownPreviewToggle<CR>",
-    { desc = "Markdown Preview Toggle" },
+    function() require("peek").open() end,
+    { desc = "Markdown Preview" },
   },
 }
 
-preview_spec.init = function()
-  vim.g.mkdp_auto_close = 0
-  vim.g.mkdp_filetypes = { "markdown" }
-end
-
 preview_spec.config = function()
+  require("peek").setup({ app = "browser", theme = "light" })
   vim.api.nvim_create_autocmd("FileType", {
     pattern = "markdown",
     callback = function(ev) Utils.keymap.set_maps(preview_maps, { buffer = ev.buf }) end,
@@ -70,3 +70,12 @@ preview_spec.config = function()
 end
 
 Manager.add(preview_spec)
+
+---@type Manager.Spec
+local table_spec = {
+  Manager.url.gh("Kicamon/markdown-table-mode.nvim"),
+  filetype = "markdown",
+  config = function() require("markdown-table-mode").setup() end,
+}
+
+Manager.add(table_spec)

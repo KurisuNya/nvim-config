@@ -9,7 +9,6 @@ vim.o.relativenumber = true
 vim.o.wrap = false
 vim.o.breakindent = true
 vim.o.breakindentopt = "list:-1"
-vim.o.linebreak = true
 -- scroll
 vim.o.scrolloff = 8
 vim.o.sidescrolloff = 8

@@ -173,7 +173,11 @@ end
 spec.config = function(opts)
   open_hooks = opts.custom.view_opened_hooks
   close_hooks = opts.custom.view_close_hooks
-  opts.hooks = { view_opened = view_opened_hook, view_closed = view_close_hook }
+  opts.hooks = {
+    view_opened = view_opened_hook,
+    view_closed = view_close_hook,
+    diff_buf_win_enter = function() vim.wo[0][0].wrap = false end,
+  }
   require("diffview").setup(opts)
   Utils.keymap.set_maps(maps)
 end
