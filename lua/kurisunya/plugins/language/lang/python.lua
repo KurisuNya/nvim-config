@@ -18,8 +18,8 @@ Manager.opts_extend("mason.nvim", {
 Manager.opts_extend("conform.nvim", {
   custom = {
     formatters = {
-      { "ruff_format", filetypes = { "python" } },
       { "ruff_organize_imports", filetypes = { "python" } },
+      { "ruff_format", filetypes = { "python" } },
     },
   },
 }, { extend = "custom.formatters" })

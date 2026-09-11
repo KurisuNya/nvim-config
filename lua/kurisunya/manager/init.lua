@@ -38,16 +38,29 @@ end
 ---@param name string
 ---@param path string
 ---@param build string|fun(path: string)
----@return boolean success
-H.build_plugin = function(name, path, build)
+---@param active boolean
+H.build_pack = function(name, path, build, active)
   H.notify(string.format("Running build for plugin %s", name), "INFO")
-  return Utils.safecall.now(function()
+  local success = Utils.safecall.now(function()
     if type(build) == "string" then
       H.run_build_cmd(build, path)
     else
+      if not active then
+        vim.cmd.packadd(name)
+      end
       build(path)
     end
   end)
+  if success then
+    H.notify(string.format("Build for plugin %s completed", name), "INFO")
+  else
+    local msg = "Build for plugin "
+      .. name
+      .. " failed. run `:lua Manager.build('"
+      .. name
+      .. "')` to retry."
+    H.notify(msg, "ERROR")
+  end
 end
 
 vim.api.nvim_create_autocmd("PackChanged", {
@@ -58,22 +71,11 @@ vim.api.nvim_create_autocmd("PackChanged", {
     if kind ~= "install" and kind ~= "update" then
       return
     end
-    local path = ev.data.path
-
     local build = vim.tbl_get(H.plugin_specs, name, "build")
     if not build then
       return
     end
-    if H.build_plugin(name, path, build) then
-      H.notify(string.format("Build for plugin %s completed", name), "INFO")
-    else
-      local msg = "Build for plugin "
-        .. name
-        .. " failed. run `:lua Manager.build('"
-        .. name
-        .. "')` to retry."
-      H.notify(msg, "ERROR")
-    end
+    H.build_pack(name, ev.data.path, build, ev.data.active)
   end,
 })
 
@@ -92,11 +94,7 @@ Manager.build = function(name)
   if not build then
     error("Plugin " .. name .. " does not have a build command")
   end
-  if H.build_plugin(name, path, build) then
-    H.notify(string.format("Build for plugin %s completed", name), "INFO")
-  else
-    H.notify(string.format("Build for plugin %s failed", name), "ERROR")
-  end
+  H.build_pack(name, path, build, H.plugin_loaded[name])
 end
 
 Manager.url = {
@@ -249,7 +247,7 @@ H.do_load_spec = function(spec)
   end
 
   table.insert(specs, spec[1])
-  vim.pack.add(specs, { load = true, confirm = false })
+  vim.pack.add(specs, { confirm = false })
 
   local opts = spec.opts
   if type(opts) == "function" then
@@ -309,8 +307,10 @@ H.install_missing = function()
   end
 
   local missing = vim.tbl_filter(function(s) return not installed[s.name] end, H.pack_specs)
-  vim.pack.add(missing, { load = false, confirm = false })
-  return #missing > 0
+  local success = Utils.safecall.now(
+    function() vim.pack.add(missing, { load = false, confirm = false }) end
+  )
+  return #missing > 0 and success
 end
 
 H.compute_stats = function()

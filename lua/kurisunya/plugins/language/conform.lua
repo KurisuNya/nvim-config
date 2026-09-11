@@ -22,7 +22,7 @@ spec.opts = {
 
 spec.config = function(opts)
   local formatters = opts.custom.formatters or {}
-  table.sort(formatters, function(a, b) return (a.priority or 0) > (b.priority or 0) end)
+  Utils.misc.list_sort_stable(formatters, function(f) return -(f.priority or 0) end)
 
   local filetype_formatters = {}
   for _, formatter in ipairs(formatters) do

@@ -41,10 +41,6 @@ end
 
 Manager.add(image_spec)
 
-Manager.opts_extend("mason.nvim", {
-  ensure_installed = { "deno" },
-}, { extend = "ensure_installed" })
-
 ---@type Manager.Spec
 local preview_spec = {
   Manager.url.gh("toppair/peek.nvim"),

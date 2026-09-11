@@ -25,10 +25,10 @@ M.on_attach_by_name = function(name, fn)
   M.on_attach(function(client, _) return client.name == name end, fn)
 end
 
----@param method string
+---@param method string "*" for all methods
 ---@param fn fun(client: vim.lsp.Client, bufnr: integer)
 M.on_attach_by_method = function(method, fn)
-  M.on_attach(function(client, _) return client:supports_method(method) end, fn)
+  M.on_attach(function(c, _) return method == "*" or c:supports_method(method) end, fn)
 end
 
 return M

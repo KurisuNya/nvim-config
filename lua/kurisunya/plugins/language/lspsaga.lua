@@ -26,13 +26,13 @@ local method_maps = {
   ["textDocument/codeAction"] = {
     { "n", "<leader>ca", "<CMD>Lspsaga code_action<CR>", { desc = "Lsp Code Action" } },
   },
-  ["textDocument/reference"] = {
+  ["textDocument/references"] = {
     { "n", "gr", "<CMD>Lspsaga finder<CR>", { desc = "Lsp Find Reference" } },
   },
   ["textDocument/rename"] = {
     { "n", "<leader>rn", "<CMD>Lspsaga rename<CR>", { desc = "Lsp Rename" } },
   },
-  ["textDocument/diagnostics"] = {
+  ["*"] = {
     { "n", "<leader>D", "<CMD>Lspsaga show_buf_diagnostics<CR>", { desc = "Lsp Line Diagnostic" } },
     { "n", "[d", "<CMD>Lspsaga diagnostic_jump_prev<CR>", { desc = "Previous Lsp Diagnostic" } },
     { "n", "]d", "<CMD>Lspsaga diagnostic_jump_next<CR>", { desc = "Next Lsp Diagnostic" } },

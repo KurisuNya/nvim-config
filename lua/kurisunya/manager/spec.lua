@@ -27,6 +27,7 @@
 
 local SPEC_KEYS =
   { 1, "dependencies", "build", "init", "opts", "config", "event", "filetype", "priority", "lazy" }
+local PACK_SPEC_KEYS = { "src", "name", "version", "data" }
 local DEFAULT_PRIORITY = 50
 
 ---@param spec string|vim.pack.Spec
@@ -38,11 +39,17 @@ local function normalize_vim_pack_spec(spec)
   end
   spec = type(spec) == "string" and { src = spec } or spec
   vim.validate("spec", spec, "table")
+  ---@cast spec table
   vim.validate("spec.src", spec.src, is_nonempty_string, false, "non-empty string")
   local name = spec.name or spec.src:gsub("%.git$", "")
   name = (type(name) == "string" and name or ""):match("[^/]+$") or ""
   vim.validate("spec.name", name, is_nonempty_string, true, "non-empty string")
   vim.validate("spec.version", spec.version, is_version, true, "string or vim.VersionRange")
+  for k, _ in pairs(spec) do
+    if not vim.tbl_contains(PACK_SPEC_KEYS, k) then
+      error(string.format("spec.%s is not a valid key", k))
+    end
+  end
   return { src = spec.src, name = name, version = spec.version, data = spec.data }
 end
 
