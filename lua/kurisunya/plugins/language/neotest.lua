@@ -84,8 +84,10 @@ spec.config = function(opts)
   require("neotest").setup(opts)
 
   Utils.keymap.set_maps(maps)
+  local group = Utils.autocmd.new_group("neotest")
   for filetype, map_list in pairs(filetype_maps) do
     vim.api.nvim_create_autocmd("FileType", {
+      group = group,
       pattern = filetype,
       callback = function(ev) Utils.keymap.set_maps(map_list, { buffer = ev.buf }) end,
     })

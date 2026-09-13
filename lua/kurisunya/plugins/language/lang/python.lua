@@ -1,4 +1,5 @@
 vim.api.nvim_create_autocmd("FileType", {
+  group = Utils.autocmd.new_group("python_options"),
   pattern = "python",
   callback = function() vim.wo[0][0].colorcolumn = "88" end,
 })
@@ -109,6 +110,7 @@ venv_spec.opts = {}
 venv_spec.config = function(opts)
   require("venv-selector").setup(opts)
   vim.api.nvim_create_autocmd("FileType", {
+    group = Utils.autocmd.new_group("python_venv"),
     pattern = "python",
     callback = function(ev) Utils.keymap.set_maps(venv_maps, { buffer = ev.buf }) end,
   })

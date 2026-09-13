@@ -3,6 +3,7 @@ Manager.opts_extend("nvim-treesitter", {
 }, { extend = "ensure_installed" })
 
 vim.api.nvim_create_autocmd("FileType", {
+  group = Utils.autocmd.new_group("markdown_options"),
   pattern = "markdown",
   callback = function() vim.wo[0][0].wrap = true end,
 })
@@ -34,6 +35,7 @@ image_spec.opts = {
 image_spec.config = function(opts)
   require("clipboard-image").setup(opts)
   vim.api.nvim_create_autocmd("FileType", {
+    group = Utils.autocmd.new_group("markdown_image"),
     pattern = "markdown",
     callback = function(ev) Utils.keymap.set_maps(image_maps, { buffer = ev.buf }) end,
   })
@@ -60,6 +62,7 @@ local preview_maps = {
 preview_spec.config = function()
   require("peek").setup({ app = "browser", theme = "light" })
   vim.api.nvim_create_autocmd("FileType", {
+    group = Utils.autocmd.new_group("markdown_preview"),
     pattern = "markdown",
     callback = function(ev) Utils.keymap.set_maps(preview_maps, { buffer = ev.buf }) end,
   })
