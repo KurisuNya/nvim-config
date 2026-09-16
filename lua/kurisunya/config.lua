@@ -8,7 +8,7 @@ Config.use_plugins = true
 Config.clean_unmanaged_plugins = true
 
 Config.use_ai = true
-Config.ai_cli = "opencode"
+Config.ai_cli = "omp"
 
 Config.default_colorscheme = "tokyonight-storm"
 
@@ -50,7 +50,7 @@ Config.dashboard = {
   buttons = {
     { key = "p", name = "  Open Project", cmd = "<CMD>Telescope projections<CR>" },
     { key = "s", name = "  Last Session", cmd = "<CMD>ProjectionsLastSession<CR>" },
-    { key = "u", name = "󰒲  Pack Update", cmd = function() Manager.update_all() end},
+    { key = "u", name = "󰒲  Pack Update", cmd = function() Manager.update_all() end },
     { key = "m", name = "  Mason Manager", cmd = "<CMD>Mason<CR>" },
     { key = "q", name = "  Quit Neovim", cmd = "<CMD>qa<CR>" },
   },

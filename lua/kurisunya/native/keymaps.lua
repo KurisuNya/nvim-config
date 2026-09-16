@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
-Utils.keymap.unset({ "n", "x" }, { "q", "Q", "m", "H", "M", "L" })
+Utils.keymap.unset({ "n", "x" }, { "q", "H", "M", "L" })
 
 -- move
 vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
@@ -77,6 +77,38 @@ end, { desc = "Diff Toggle" })
 -- quickfix
 vim.keymap.set("n", "<Tab>", "<CMD>cnext<CR>", { desc = "Quickfix Next" })
 vim.keymap.set("n", "<S-Tab>", "<CMD>cprev<CR>", { desc = "Quickfix Previous" })
+
+-- mark
+local delete_mark_under_cursor = function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local cur_line = vim.fn.line(".")
+  ---@type { mark: string, pos: number[] }[]
+  local all_marks_local = vim.fn.getmarklist(bufnr)
+  for _, mark in ipairs(all_marks_local) do
+    if mark.pos[2] == cur_line and string.match(mark.mark, "'[a-z]") then
+      vim.api.nvim_buf_del_mark(bufnr, string.sub(mark.mark, 2, 2))
+    end
+  end
+  local bufname = vim.api.nvim_buf_get_name(bufnr)
+  ---@type { file: string, mark: string, pos: number[] }[]
+  local all_marks_global = vim.fn.getmarklist()
+  for _, mark in ipairs(all_marks_global) do
+    local expanded_file_name = vim.fn.fnamemodify(mark.file, ":p")
+    if
+      bufname == expanded_file_name
+      and mark.pos[2] == cur_line
+      and string.match(mark.mark, "'[A-Z]")
+    then
+      vim.notify("Deleting mark: " .. string.sub(mark.mark, 2, 2))
+      vim.api.nvim_del_mark(string.sub(mark.mark, 2, 2))
+    end
+  end
+end
+vim.keymap.set("n", "dm", delete_mark_under_cursor, { desc = "Mark Delete Current Line" })
+vim.keymap.set("n", "dM", "<CMD>delmarks!<CR>", { desc = "Mark Delete Current Buffer" })
+
+-- multiple cursors
+vim.keymap.set({ "n", "x" }, "q=", "q=")
 
 -- macro
 vim.keymap.set("n", "<leader>M", "q", { desc = "Macro Record" })

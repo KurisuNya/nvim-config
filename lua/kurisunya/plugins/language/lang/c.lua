@@ -8,7 +8,7 @@ Manager.opts_extend("mason.nvim", {
 
 Manager.opts_extend("conform.nvim", {
   custom = { formatters = {
-    { "clang_format", filetypes = { "c", "cpp" } },
+    { "clang-format", filetypes = { "c", "cpp" } },
   } },
 }, { extend = "custom.formatters" })
 

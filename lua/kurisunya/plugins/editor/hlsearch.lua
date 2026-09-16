@@ -7,7 +7,7 @@ local spec = {
 local maps = {
   {
     "n",
-    "<C-l>",
+    "<C-h>",
     function()
       local hlsearch = require("hlsearch")
       local enabled = hlsearch.is_enabled()

@@ -8,7 +8,8 @@ local H = {}
 ---@alias Manager.Stats { loaded: number, total: number, startuptime: number }
 
 H.pack_specs = {} ---@type vim.pack.SpecResolved[]
-H.plugin_specs = {} ---@type table<string, Manager.SpecResolved>
+H.plugin_specs = {} ---@type Manager.SpecResolved[]
+H.plugin_name_specs = {} ---@type table<string, Manager.SpecResolved>
 H.plugin_loaded = {} ---@type table<string, boolean>
 H.before_load_hooks = {} ---@type table<string, fun()[]>
 H.after_load_hooks = {} ---@type table<string, fun()[]>
@@ -16,6 +17,7 @@ H.opts_modifier_cfgs = {} ---@type table<string, Manager.OptsModifierCfg[]>
 H.stats = nil ---@type Manager.Stats|nil
 H.load_all_called = false ---@type boolean
 H.load_all_init_done = false ---@type boolean
+H.lazy_build_funcs = {} ---@type fun()[]
 
 ---@param msg string
 ---@param level string
@@ -35,68 +37,6 @@ H.run_build_cmd = function(cmd, cwd)
   end
 end
 
----@param name string
----@param path string
----@param build string|fun(path: string)
----@param active boolean
-H.build_pack = function(name, path, build, active)
-  H.notify(string.format("Running build for plugin %s", name), "INFO")
-  local success = Utils.safecall.now(function()
-    if type(build) == "string" then
-      H.run_build_cmd(build, path)
-    else
-      if not active then
-        vim.cmd.packadd(name)
-      end
-      build(path)
-    end
-  end)
-  if success then
-    H.notify(string.format("Build for plugin %s completed", name), "INFO")
-  else
-    local msg = "Build for plugin "
-      .. name
-      .. " failed. run `:lua Manager.build('"
-      .. name
-      .. "')` to retry."
-    H.notify(msg, "ERROR")
-  end
-end
-
-vim.api.nvim_create_autocmd("PackChanged", {
-  group = Utils.autocmd.new_group("manager_pack_build"),
-  callback = function(ev)
-    local name = ev.data.spec.name
-    local kind = ev.data.kind
-    if kind ~= "install" and kind ~= "update" then
-      return
-    end
-    local build = vim.tbl_get(H.plugin_specs, name, "build")
-    if not build then
-      return
-    end
-    H.build_pack(name, ev.data.path, build, ev.data.active)
-  end,
-})
-
----@param name string
-Manager.build = function(name)
-  vim.validate("name", name, "string", false)
-  local spec = H.plugin_specs[name]
-  if not spec then
-    error("Plugin spec with name " .. name .. " does not exist")
-  end
-  local path = vim.tbl_get(vim.pack.get({ name }, { info = false }), 1, "path")
-  if not path then
-    error("Plugin " .. name .. " is not installed")
-  end
-  local build = spec.build
-  if not build then
-    error("Plugin " .. name .. " does not have a build command")
-  end
-  H.build_pack(name, path, build, H.plugin_loaded[name])
-end
-
 Manager.url = {
   ---@param repo string
   gh = function(repo) return "https://github.com/" .. repo end,
@@ -110,7 +50,18 @@ Manager.event = {
 }
 
 ---@param name string
-Manager.have = function(name) return H.plugin_specs[name] ~= nil end
+---@param opts? {include_dependencies?: boolean}
+Manager.have = function(name, opts)
+  opts = opts or {}
+  if not opts.include_dependencies then
+    return H.plugin_name_specs[name] ~= nil
+  end
+  local managed = {}
+  for _, spec in ipairs(H.pack_specs) do
+    managed[spec.name] = true
+  end
+  return managed[name] == true
+end
 
 ---@param name string
 Manager.loaded = function(name) return H.plugin_loaded[name] == true end
@@ -131,10 +82,11 @@ end
 Manager.add = function(spec)
   local resolved = Spec.normalize_spec(spec)
   local name = resolved[1].name
-  if H.plugin_specs[name] then
+  if H.plugin_name_specs[name] then
     error("Plugin spec with name " .. name .. " already exists")
   end
-  H.plugin_specs[name] = resolved
+  H.plugin_name_specs[name] = resolved
+  table.insert(H.plugin_specs, resolved)
   for _, dep in ipairs(resolved.dependencies or {}) do
     table.insert(H.pack_specs, dep)
   end
@@ -247,7 +199,8 @@ H.do_load_spec = function(spec)
   end
 
   table.insert(specs, spec[1])
-  vim.pack.add(specs, { confirm = false })
+  local pack_opts = { confirm = false }
+  vim.pack.add(specs, pack_opts)
 
   local opts = spec.opts
   if type(opts) == "function" then
@@ -292,25 +245,48 @@ end
 
 ---@param name string
 H.load_spec_by_name = function(name)
-  local spec = H.plugin_specs[name]
+  local spec = H.plugin_name_specs[name]
   if not spec then
     error("Plugin spec with name " .. name .. " does not exist")
   end
   H.load_spec(spec)
 end
 
+---@param name string
+Manager.load = function(name)
+  vim.validate("name", name, "string", false)
+  if not H.load_all_init_done then
+    error("Manager.load() can only be called after Manager.load_all() init phase is done")
+  end
+  H.load_spec_by_name(name)
+end
+
 ---@return boolean missing
 H.install_missing = function()
-  local installed = {}
-  for _, p in ipairs(vim.pack.get(nil, { info = false })) do
-    installed[p.spec.name] = true
-  end
+  local group = Utils.autocmd.new_group("manager_pack_install")
+  local missing = {}
+  vim.api.nvim_create_autocmd("PackChanged", {
+    group = group,
+    callback = function(ev)
+      local name = ev.data.spec.name
+      local kind = ev.data.kind
+      if kind == "install" then
+        table.insert(missing, name)
+      end
+    end,
+  })
 
-  local missing = vim.tbl_filter(function(s) return not installed[s.name] end, H.pack_specs)
-  local success = Utils.safecall.now(
-    function() vim.pack.add(missing, { load = false, confirm = false }) end
-  )
-  return #missing > 0 and success
+  local installed = {}
+  Utils.safecall.now(function()
+    for _, p in ipairs(vim.pack.get(nil, { info = false })) do
+      installed[p.spec.name] = true
+    end
+    local new = vim.tbl_filter(function(s) return not installed[s.name] end, H.pack_specs)
+    vim.pack.add(new, { load = false, confirm = false })
+  end)
+
+  vim.api.nvim_del_augroup_by_id(group)
+  return #missing > 0
 end
 
 H.compute_stats = function()
@@ -332,13 +308,70 @@ Manager.stats = function()
 end
 
 ---@param name string
-Manager.load = function(name)
-  vim.validate("name", name, "string", false)
-  if not H.load_all_init_done then
-    error("Manager.load() can only be called after Manager.load_all() init phase is done")
+---@param path string
+---@param build string|fun(path: string)
+---@param active boolean
+H.build_pack = function(name, path, build, active)
+  H.notify(string.format("Running build for plugin %s", name), "INFO")
+  local success = Utils.safecall.now(function()
+    if type(build) == "string" then
+      H.run_build_cmd(build, path)
+    else
+      if not active then
+        vim.cmd.packadd(name)
+      end
+      build(path)
+    end
+  end)
+  if success then
+    H.notify(string.format("Build for plugin %s completed", name), "INFO")
+  else
+    local msg = "Build for plugin "
+      .. name
+      .. " failed. run `:lua Manager.build('"
+      .. name
+      .. "')` to retry."
+    H.notify(msg, "ERROR")
   end
-  H.load_spec_by_name(name)
 end
+
+---@param name string
+Manager.build = function(name)
+  vim.validate("name", name, "string", false)
+  local spec = H.plugin_name_specs[name]
+  if not spec then
+    error("Plugin spec with name " .. name .. " does not exist")
+  end
+  local path = vim.tbl_get(vim.pack.get({ name }, { info = false }), 1, "path")
+  if not path then
+    error("Plugin " .. name .. " is not installed")
+  end
+  local build = spec.build
+  if not build then
+    error("Plugin " .. name .. " does not have a build command")
+  end
+  H.build_pack(name, path, build, H.plugin_loaded[name] == true)
+end
+
+vim.api.nvim_create_autocmd("PackChanged", {
+  group = Utils.autocmd.new_group("manager_pack_build"),
+  callback = function(ev)
+    local name = ev.data.spec.name
+    local kind = ev.data.kind
+    local build = vim.tbl_get(H.plugin_name_specs, name, "build")
+    if not build then
+      return
+    end
+    if kind == "install" then
+      table.insert(
+        H.lazy_build_funcs,
+        function() H.build_pack(name, ev.data.path, build, ev.data.active) end
+      )
+    elseif kind == "update" then
+      H.build_pack(name, ev.data.path, build, ev.data.active)
+    end
+  end,
+})
 
 Manager.load_all = function()
   if H.load_all_called then
@@ -346,16 +379,22 @@ Manager.load_all = function()
   end
   H.load_all_called = true
 
+  -- local specs = vim.tbl_values(H.plugin_name_specs)
+  Utils.misc.list_sort_stable(H.plugin_specs, function(x) return -x.priority end)
+
   -- install missing plugins and restart
   if H.install_missing() then
+    Utils.safecall.now(function()
+      vim.pack.add(H.pack_specs, { load = false, confirm = false })
+      for _, build_func in ipairs(H.lazy_build_funcs) do
+        build_func()
+      end
+    end)
     Utils.safecall.now(function() vim.cmd("restart! +qall!") end)
   end
 
-  local specs = vim.tbl_values(H.plugin_specs)
-  Utils.misc.list_sort_stable(specs, function(x) return -x.priority end)
-
   -- run init functions
-  for _, spec in ipairs(specs) do
+  for _, spec in ipairs(H.plugin_specs) do
     local init = spec.init
     if init then
       Utils.safecall.now(init)
@@ -370,7 +409,7 @@ Manager.load_all = function()
   local event_specs = {}
   ---@type Manager.SpecResolved[]
   local filetype_specs = {}
-  for _, spec in ipairs(specs) do
+  for _, spec in ipairs(H.plugin_specs) do
     if not spec.lazy then
       table.insert(startup_specs, spec)
     elseif spec.event then

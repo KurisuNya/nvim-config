@@ -51,6 +51,7 @@ spec.opts = {
   cli = {
     mux = { backend = "tmux", enabled = true },
     win = { keys = mappings },
+    tools = { omp = { cmd = { "omp" } } },
   },
 }
 

@@ -5,8 +5,8 @@ local spec = {
 }
 
 local maps = {
-  { { "n", "x", "o" }, "s", "<Plug>(leap-forward)" },
-  { { "n", "x", "o" }, "S", "<Plug>(leap-backward)" },
+  { "n", "s", "<Plug>(leap-forward)" },
+  { "n", "S", "<Plug>(leap-backward)" },
 }
 
 spec.config = function() Utils.keymap.set_maps(maps) end

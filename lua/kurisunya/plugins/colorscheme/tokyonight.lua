@@ -26,7 +26,7 @@ local plugin_specific = {
   ["telescope.nvim"] = function(hl, _)
     hl.TelescopePromptNormal = hl.TelescopeNormal
     hl.TelescopePromptBorder = hl.TelescopeBorder
-    hl.TelescopePromptTitle = hl.TelescopeTitle
+    hl.TelescopePromptTitle = hl.TelescopePromptBorder
   end,
   ["virt-column.nvim"] = function(hl, _) hl.VirtColumn = { fg = hl.LineNr.fg } end,
 }
@@ -43,7 +43,7 @@ local activate = function(name)
       hl.CursorLineNr = { fg = c.dark5 }
       hl.Folded = { fg = c.fg, bg = c.bg_dark1, bold = true, italic = true }
       for plugin, func in pairs(plugin_specific) do
-        if Manager.have(plugin) then
+        if Manager.have(plugin, { include_dependencies = true }) then
           func(hl, c)
         end
       end
