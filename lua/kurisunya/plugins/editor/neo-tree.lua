@@ -2,7 +2,7 @@
 local spec = {
   {
     src = Manager.url.gh("nvim-neo-tree/neo-tree.nvim"),
-    version = vim.version.range("3"),
+    version = vim.version.range("3.41"),
   },
   dependencies = {
     Manager.url.gh("nvim-mini/mini.icons"),

@@ -2,8 +2,8 @@ Manager.opts_extend("nvim-treesitter", {
   ensure_installed = { "markdown", "markdown_inline" },
 }, { extend = "ensure_installed" })
 
-vim.api.nvim_create_autocmd("FileType", {
-  group = Utils.autocmd.new_group("markdown_options"),
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  group = Utils.autocmd.new_group("markdown_win_options"),
   pattern = "markdown",
   callback = function() vim.wo[0][0].wrap = true end,
 })

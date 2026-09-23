@@ -1,33 +1,44 @@
 local ffi = require("ffi")
-ffi.cdef([[
-  typedef struct timespec {
-    int64_t tv_sec;
-    long tv_nsec;
-  } nanotime;
-  int clock_gettime(int clk_id, struct timespec *tp);
-]])
-local CLOCK_PROCESS_CPUTIME_ID = Utils.os.is_mac() and 12 or 2
-
-local function process_cputime()
-  local pnano = ffi.new("nanotime[1]")
-  ffi.C.clock_gettime(CLOCK_PROCESS_CPUTIME_ID, pnano)
-  return tonumber(pnano[0].tv_sec) * 1e3 + tonumber(pnano[0].tv_nsec) / 1e6
-end
 
 local M = {}
 
-local use_cputime = true
-local hrtime_start = vim.uv.hrtime()
+M._start = vim.uv.hrtime()
 
-M.elapsed_ms = function()
-  if use_cputime then
-    local ok, ret = pcall(process_cputime)
-    if ok then
-      return ret
-    end
-    use_cputime = false -- fallback to hrtime if process_cputime fails
+M.C = nil
+
+function M.elapsed_ms()
+  if M.C == nil then
+    pcall(function()
+      ffi.cdef([[
+        typedef long time_t;
+        typedef int clockid_t;
+        typedef struct timespec {
+          time_t   tv_sec;        /* seconds */
+          long     tv_nsec;       /* nanoseconds */
+        } nanotime;
+        int clock_gettime(clockid_t clk_id, struct timespec *tp);
+      ]])
+      M.C = ffi.C
+    end)
   end
-  return (vim.uv.hrtime() - hrtime_start) / 1e6
+
+  local function real()
+    local pnano = assert(ffi.new("nanotime[?]", 1))
+    local CLOCK_PROCESS_CPUTIME_ID = jit.os == "OSX" and 12 or 2
+    ffi.C.clock_gettime(CLOCK_PROCESS_CPUTIME_ID, pnano)
+    return tonumber(pnano[0].tv_sec) * 1e3 + tonumber(pnano[0].tv_nsec) / 1e6
+  end
+
+  local function fallback() return (vim.uv.hrtime() - M._start) / 1e6 end
+
+  local ok, ret = pcall(real)
+  if ok then
+    M.elapsed_ms = real
+    return ret
+  else
+    M.elapsed_ms = fallback
+    return fallback()
+  end
 end
 
 return M

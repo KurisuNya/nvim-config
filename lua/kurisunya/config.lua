@@ -8,7 +8,7 @@ Config.use_plugins = true
 Config.clean_unmanaged_plugins = true
 
 Config.use_ai = true
-Config.ai_cli = "omp"
+Config.ai_cli = "opencode"
 
 Config.default_colorscheme = "tokyonight-storm"
 

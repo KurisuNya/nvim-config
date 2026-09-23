@@ -1,6 +1,6 @@
-vim.api.nvim_create_autocmd("FileType", {
-  group = Utils.autocmd.new_group("python_options"),
-  pattern = "python",
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  group = Utils.autocmd.new_group("python_win_options"),
+  pattern = "*.py",
   callback = function() vim.wo[0][0].colorcolumn = "88" end,
 })
 

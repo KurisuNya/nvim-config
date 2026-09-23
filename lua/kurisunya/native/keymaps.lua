@@ -108,7 +108,7 @@ vim.keymap.set("n", "dm", delete_mark_under_cursor, { desc = "Mark Delete Curren
 vim.keymap.set("n", "dM", "<CMD>delmarks!<CR>", { desc = "Mark Delete Current Buffer" })
 
 -- multiple cursors
-vim.keymap.set({ "n", "x" }, "q=", "q=")
+vim.keymap.set({ "n", "x" }, "<C-q>", "q=")
 
 -- macro
 vim.keymap.set("n", "<leader>M", "q", { desc = "Macro Record" })
