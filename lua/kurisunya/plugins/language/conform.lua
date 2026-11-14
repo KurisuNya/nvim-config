@@ -8,7 +8,7 @@ local spec = {
 --- @field [1] string
 --- @field filetypes string[]
 --- @field priority? integer
---- @field config? table<string, any>
+--- @field config? table<string, any> | fun(bufnr: integer): table<string, any>
 
 spec.opts = {
   custom = {

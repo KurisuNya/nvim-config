@@ -379,7 +379,6 @@ Manager.load_all = function()
   end
   H.load_all_called = true
 
-  -- local specs = vim.tbl_values(H.plugin_name_specs)
   Utils.misc.list_sort_stable(H.plugin_specs, function(x) return -x.priority end)
 
   -- install missing plugins and restart

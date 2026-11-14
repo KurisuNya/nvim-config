@@ -26,19 +26,35 @@ Manager.opts_extend("conform.nvim", {
 }, { extend = "custom.formatters" })
 
 Manager.on_loaded("nvim-lspconfig", function()
-  vim.lsp.config("basedpyright", {
+  -- vim.lsp.config("basedpyright", {
+  --   settings = {
+  --     basedpyright = {
+  --       analysis = {
+  --         typeCheckingMode = "standard",
+  --         inlayHints = { variableTypes = false },
+  --       },
+  --       disableTaggedHints = false,
+  --     },
+  --   },
+  -- })
+  -- vim.lsp.enable("basedpyright")
+  vim.lsp.config("ty", {
     settings = {
-      basedpyright = {
-        analysis = {
-          typeCheckingMode = "standard",
-          inlayHints = { variableTypes = false },
+      ty = {
+        configuration = {
+          analysis = {
+            ["return-type-inference"] = "always",
+          },
         },
-        disableTaggedHints = false,
       },
     },
   })
-  vim.lsp.enable("basedpyright")
-  -- vim.lsp.enable("ty")
+  vim.lsp.enable("ty")
+
+  vim.lsp.config("ruff", {
+    on_attach = function(client) client.server_capabilities.hoverProvider = false end,
+  })
+  vim.lsp.enable("ruff")
 end)
 
 ---@type Manager.Spec

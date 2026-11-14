@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
-Utils.keymap.unset({ "n", "x" }, { "q", "H", "M", "L" })
+Utils.keymap.unset({ "n", "x" }, { "q", "Q", "H", "M", "L" })
 
 -- move
 vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
@@ -106,9 +106,6 @@ local delete_mark_under_cursor = function()
 end
 vim.keymap.set("n", "dm", delete_mark_under_cursor, { desc = "Mark Delete Current Line" })
 vim.keymap.set("n", "dM", "<CMD>delmarks!<CR>", { desc = "Mark Delete Current Buffer" })
-
--- multiple cursors
-vim.keymap.set({ "n", "x" }, "<C-q>", "q=")
 
 -- macro
 vim.keymap.set("n", "<leader>M", "q", { desc = "Macro Record" })

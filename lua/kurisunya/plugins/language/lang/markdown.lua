@@ -54,7 +54,14 @@ local preview_maps = {
   {
     "n",
     "<leader>mp",
-    function() require("peek").open() end,
+    function()
+      local peek = require("peek")
+      if peek.is_open() then
+        peek.close()
+      else
+        peek.open()
+      end
+    end,
     { desc = "Markdown Preview" },
   },
 }
