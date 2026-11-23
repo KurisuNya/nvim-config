@@ -1,4 +1,4 @@
-Manager.add({
-  Manager.url.gh("h-hg/fcitx.nvim"),
-  event = Manager.event.VeryLazy,
+PicoPack.register({
+  PicoPack.url.gh("h-hg/fcitx.nvim"),
+  event = PicoPack.event.VeryLazy,
 })

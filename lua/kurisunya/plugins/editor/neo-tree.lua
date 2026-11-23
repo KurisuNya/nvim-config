@@ -1,15 +1,15 @@
----@type Manager.Spec
+---@type PicoPack.Spec
 local spec = {
   {
-    src = Manager.url.gh("nvim-neo-tree/neo-tree.nvim"),
+    src = PicoPack.url.gh("nvim-neo-tree/neo-tree.nvim"),
     version = vim.version.range("3.41"),
   },
   dependencies = {
-    Manager.url.gh("nvim-mini/mini.icons"),
-    Manager.url.gh("nvim-lua/plenary.nvim"),
-    Manager.url.gh("MunifTanjim/nui.nvim"),
+    PicoPack.url.gh("nvim-mini/mini.icons"),
+    PicoPack.url.gh("nvim-lua/plenary.nvim"),
+    PicoPack.url.gh("MunifTanjim/nui.nvim"),
   },
-  event = Manager.event.VeryLazy,
+  event = PicoPack.event.VeryLazy,
 }
 
 local maps = {
@@ -85,8 +85,8 @@ spec.config = function(opts)
   Utils.keymap.set_maps(maps)
 end
 
-Manager.opts_extend("projections.nvim", {
+PicoPack.opts_extend("projections.nvim", {
   sessions_ignore_filetypes = { "neo-tree" },
 }, { extend = "sessions_ignore_filetypes" })
 
-Manager.add(spec)
+PicoPack.register(spec)

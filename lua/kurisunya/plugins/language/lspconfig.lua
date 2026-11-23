@@ -1,7 +1,7 @@
----@type Manager.Spec
+---@type PicoPack.Spec
 local spec = {
-  Manager.url.gh("neovim/nvim-lspconfig"),
-  event = Manager.event.VeryLazy,
+  PicoPack.url.gh("neovim/nvim-lspconfig"),
+  event = PicoPack.event.VeryLazy,
 }
 
 local method_maps = {
@@ -61,4 +61,4 @@ spec.config = function(opts)
   end
 end
 
-Manager.add(spec)
+PicoPack.register(spec)

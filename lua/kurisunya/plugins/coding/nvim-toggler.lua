@@ -1,7 +1,7 @@
----@type Manager.Spec
+---@type PicoPack.Spec
 local spec = {
-  Manager.url.gh("nguyenvukhang/nvim-toggler"),
-  event = Manager.event.VeryLazy,
+  PicoPack.url.gh("nguyenvukhang/nvim-toggler"),
+  event = PicoPack.event.VeryLazy,
 }
 
 local maps = {
@@ -36,4 +36,4 @@ spec.config = function(opts)
   Utils.keymap.set_maps(maps)
 end
 
-Manager.add(spec)
+PicoPack.register(spec)

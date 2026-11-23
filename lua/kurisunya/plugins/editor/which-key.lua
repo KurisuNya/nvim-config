@@ -1,5 +1,5 @@
-Manager.add({
-  Manager.url.gh("folke/which-key.nvim"),
+PicoPack.register({
+  PicoPack.url.gh("folke/which-key.nvim"),
   opts = {
     win = {
       width = { min = 30, max = 60 },
@@ -16,5 +16,5 @@ Manager.add({
     icons = { mappings = false },
   },
   config = function(opts) require("which-key").setup(opts) end,
-  event = Manager.event.VeryLazy,
+  event = PicoPack.event.VeryLazy,
 })

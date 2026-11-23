@@ -24,7 +24,7 @@ vim.opt.listchars = Icons.listchars
 -- boarder
 vim.o.winborder = Config.border_style
 -- diagnostics
-Utils.safecall.later(
+vim.schedule(
   function()
     vim.diagnostic.config({
       virtual_text = { spacing = 2, source = "if_many", prefix = "●" },

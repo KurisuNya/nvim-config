@@ -32,7 +32,7 @@ local plugin_specific = {
 }
 
 local activate = function(name)
-  Manager.load("tokyonight.nvim")
+  PicoPack.load("tokyonight.nvim")
   require("tokyonight").setup({
     lualine_bold = true,
     styles = {
@@ -43,7 +43,7 @@ local activate = function(name)
       hl.CursorLineNr = { fg = c.dark5 }
       hl.Folded = { fg = c.fg, bg = c.bg_dark1, bold = true, italic = true }
       for plugin, func in pairs(plugin_specific) do
-        if Manager.have(plugin, { include_dependencies = true }) then
+        if PicoPack.is_registered(plugin) then
           func(hl, c)
         end
       end
@@ -52,7 +52,7 @@ local activate = function(name)
   vim.cmd.colorscheme(name)
 end
 
-Manager.opts_extend("colorschemes.nvim", {
+PicoPack.opts_extend("colorschemes.nvim", {
   specs = {
     {
       colorschemes = {
@@ -66,4 +66,4 @@ Manager.opts_extend("colorschemes.nvim", {
   },
 }, { extend = "specs" })
 
-Manager.add({ Manager.url.gh("folke/tokyonight.nvim") })
+PicoPack.register({ PicoPack.url.gh("folke/tokyonight.nvim") })

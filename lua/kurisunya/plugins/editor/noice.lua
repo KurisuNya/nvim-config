@@ -1,15 +1,15 @@
----@type Manager.Spec
+---@type PicoPack.Spec
 local spec = {
-  Manager.url.gh("KurisuNya/noice.nvim"),
-  dependencies = { Manager.url.gh("MunifTanjim/nui.nvim") },
-  event = Manager.event.VeryLazy,
+  PicoPack.url.gh("KurisuNya/noice.nvim"),
+  dependencies = { PicoPack.url.gh("MunifTanjim/nui.nvim") },
+  event = PicoPack.event.VeryLazy,
 }
 
 local maps = function()
   local m = {
     { "n", "<leader>fm", "<CMD>Noice telescope<CR>", { desc = "Telescope Message" } },
   }
-  return Manager.have("telescope.nvim") and m or {}
+  return PicoPack.is_registered("telescope.nvim") and m or {}
 end
 local open_key = "H"
 
@@ -65,4 +65,4 @@ spec.config = function(opts)
   Utils.keymap.set_maps(maps())
 end
 
-Manager.add(spec)
+PicoPack.register(spec)

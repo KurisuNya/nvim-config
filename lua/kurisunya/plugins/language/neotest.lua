@@ -1,8 +1,8 @@
----@type Manager.Spec
+---@type PicoPack.Spec
 local spec = {
-  Manager.url.gh("nvim-neotest/neotest"),
-  dependencies = { Manager.url.gh("nvim-neotest/nvim-nio") },
-  event = Manager.event.VeryLazy,
+  PicoPack.url.gh("nvim-neotest/neotest"),
+  dependencies = { PicoPack.url.gh("nvim-neotest/nvim-nio") },
+  event = PicoPack.event.VeryLazy,
 }
 
 local maps = {
@@ -94,8 +94,8 @@ spec.config = function(opts)
   end
 end
 
-Manager.opts_extend("projections.nvim", {
+PicoPack.opts_extend("projections.nvim", {
   sessions_ignore_filetypes = { "neotest-summary" },
 }, { extend = "sessions_ignore_filetypes" })
 
-Manager.add(spec)
+PicoPack.register(spec)

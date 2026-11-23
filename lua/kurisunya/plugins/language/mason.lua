@@ -1,5 +1,5 @@
-Manager.add({
-  Manager.url.gh("mason-org/mason.nvim"),
+PicoPack.register({
+  PicoPack.url.gh("mason-org/mason.nvim"),
   opts = {
     ensure_installed = { "ty" },
     ui = { border = Config.border_style },
@@ -18,5 +18,5 @@ Manager.add({
       end
     end)
   end,
-  event = Manager.event.VeryLazy,
+  event = PicoPack.event.VeryLazy,
 })

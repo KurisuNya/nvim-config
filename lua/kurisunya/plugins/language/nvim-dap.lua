@@ -1,22 +1,22 @@
----@type Manager.Spec
+---@type PicoPack.Spec
 local dap_spec = {
-  Manager.url.gh("mfussenegger/nvim-dap"),
+  PicoPack.url.gh("mfussenegger/nvim-dap"),
   dependencies = {
-    Manager.url.gh("mason-org/mason.nvim"),
-    Manager.url.gh("jay-babu/mason-nvim-dap.nvim"),
-    Manager.url.gh("theHamsta/nvim-dap-virtual-text"),
+    PicoPack.url.gh("mason-org/mason.nvim"),
+    PicoPack.url.gh("jay-babu/mason-nvim-dap.nvim"),
+    PicoPack.url.gh("theHamsta/nvim-dap-virtual-text"),
   },
-  event = Manager.event.VeryLazy,
+  event = PicoPack.event.VeryLazy,
 }
 
----@type Manager.Spec
+---@type PicoPack.Spec
 local ui_spec = {
-  Manager.url.gh("rcarriga/nvim-dap-ui"),
+  PicoPack.url.gh("rcarriga/nvim-dap-ui"),
   dependencies = {
-    Manager.url.gh("nvim-neotest/nvim-nio"),
-    Manager.url.gh("mfussenegger/nvim-dap"),
+    PicoPack.url.gh("nvim-neotest/nvim-nio"),
+    PicoPack.url.gh("mfussenegger/nvim-dap"),
   },
-  event = Manager.event.VeryLazy,
+  event = PicoPack.event.VeryLazy,
 }
 
 local dap_maps = {
@@ -128,7 +128,7 @@ ui_spec.config = function(opts)
   Utils.keymap.set_maps(ui_maps)
 end
 
-Manager.opts_extend("projections.nvim", {
+PicoPack.opts_extend("projections.nvim", {
   sessions_ignore_filetypes = {
     "dap_repl",
     "dapui_console",
@@ -138,5 +138,5 @@ Manager.opts_extend("projections.nvim", {
   },
 }, { extend = "sessions_ignore_filetypes" })
 
-Manager.add(dap_spec)
-Manager.add(ui_spec)
+PicoPack.register(dap_spec)
+PicoPack.register(ui_spec)

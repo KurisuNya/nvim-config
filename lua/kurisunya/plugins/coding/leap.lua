@@ -1,7 +1,7 @@
----@type Manager.Spec
+---@type PicoPack.Spec
 local spec = {
-  Manager.url.cb("andyg/leap.nvim"),
-  event = Manager.event.VeryLazy,
+  PicoPack.url.cb("andyg/leap.nvim"),
+  event = PicoPack.event.VeryLazy,
 }
 
 local maps = {
@@ -11,4 +11,4 @@ local maps = {
 
 spec.config = function() Utils.keymap.set_maps(maps) end
 
-Manager.add(spec)
+PicoPack.register(spec)

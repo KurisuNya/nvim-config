@@ -1,6 +1,6 @@
-Manager.add({
+PicoPack.register({
   {
-    src = Manager.url.gh("akinsho/git-conflict.nvim"),
+    src = PicoPack.url.gh("akinsho/git-conflict.nvim"),
     version = vim.version.range("*"),
   },
   opts = {
@@ -12,5 +12,5 @@ Manager.add({
     },
   },
   config = function(opts) require("git-conflict").setup(opts) end,
-  event = Manager.event.VeryLazy,
+  event = PicoPack.event.VeryLazy,
 })

@@ -1,7 +1,7 @@
----@type Manager.Spec
+---@type PicoPack.Spec
 local spec = {
-  Manager.url.gh("lukas-reineke/indent-blankline.nvim"),
-  event = Manager.event.VeryLazy,
+  PicoPack.url.gh("lukas-reineke/indent-blankline.nvim"),
+  event = PicoPack.event.VeryLazy,
 }
 
 spec.opts = {
@@ -13,4 +13,4 @@ spec.opts = {
 
 spec.config = function(opts) require("ibl").setup(opts) end
 
-Manager.add(spec)
+PicoPack.register(spec)

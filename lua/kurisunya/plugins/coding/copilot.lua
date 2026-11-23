@@ -1,8 +1,8 @@
----@type Manager.Spec
+---@type PicoPack.Spec
 local spec = {
-  Manager.url.gh("zbirenbaum/copilot.lua"),
+  PicoPack.url.gh("zbirenbaum/copilot.lua"),
   build = function() vim.cmd("Copilot auth") end,
-  event = Manager.event.VeryLazy,
+  event = PicoPack.event.VeryLazy,
 }
 
 local mappings = {
@@ -22,8 +22,8 @@ spec.opts = {
 
 spec.config = function(opts) require("copilot").setup(opts) end
 
-Manager.opts_extend("lualine.nvim", {
+PicoPack.opts_extend("lualine.nvim", {
   custom = { hidden_lsp = { "copilot" } },
 }, { extend = "custom.hidden_lsp" })
 
-Manager.add(spec)
+PicoPack.register(spec)

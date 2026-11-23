@@ -1,7 +1,7 @@
----@type Manager.Spec
+---@type PicoPack.Spec
 local spec = {
-  Manager.url.gh("KurisuNya/nvim-gtd"),
-  event = Manager.event.VeryLazy,
+  PicoPack.url.gh("KurisuNya/nvim-gtd"),
+  event = PicoPack.event.VeryLazy,
 }
 
 local method_maps = {
@@ -25,4 +25,4 @@ spec.config = function()
   end
 end
 
-Manager.add(spec)
+PicoPack.register(spec)

@@ -1,27 +1,27 @@
----@type Manager.Spec
+---@type PicoPack.Spec
 local spec = {
-  Manager.url.gh("saghen/blink.cmp"),
+  PicoPack.url.gh("saghen/blink.cmp"),
   dependencies = {
-    Manager.url.gh("saghen/blink.lib"),
-    Manager.url.gh("kawre/neotab.nvim"),
-    Manager.url.gh("L3MON4D3/LuaSnip"),
+    PicoPack.url.gh("saghen/blink.lib"),
+    PicoPack.url.gh("kawre/neotab.nvim"),
+    PicoPack.url.gh("L3MON4D3/LuaSnip"),
   },
   build = function() require("blink.cmp").build():pwait() end,
-  event = Manager.event.VeryLazy,
+  event = PicoPack.event.VeryLazy,
 }
 
----@type Manager.Spec
+---@type PicoPack.Spec
 local neotab_spec = {
-  Manager.url.gh("kawre/neotab.nvim"),
+  PicoPack.url.gh("kawre/neotab.nvim"),
   opts = {},
   config = function(opts) require("neotab").setup(opts) end,
 }
 
----@type Manager.Spec
+---@type PicoPack.Spec
 local luasnip_spec = {
-  Manager.url.gh("L3MON4D3/LuaSnip"),
+  PicoPack.url.gh("L3MON4D3/LuaSnip"),
   build = "make install_jsregexp",
-  dependencies = { Manager.url.gh("rafamadriz/friendly-snippets") },
+  dependencies = { PicoPack.url.gh("rafamadriz/friendly-snippets") },
   opts = { history = true, delete_check_events = "TextChanged" },
   config = function(opts)
     require("luasnip.loaders.from_vscode").lazy_load()
@@ -77,8 +77,8 @@ spec.opts = function()
     },
   }
 
-  if Manager.have("lazydev.nvim") then
-    Manager.load("lazydev.nvim")
+  if PicoPack.is_registered("lazydev.nvim") then
+    PicoPack.load("lazydev.nvim")
     opts.sources = {
       per_filetype = {
         lua = { inherit_defaults = true, "lazydev" },
@@ -98,6 +98,6 @@ end
 
 spec.config = function(opts) require("blink.cmp").setup(opts) end
 
-Manager.add(neotab_spec)
-Manager.add(luasnip_spec)
-Manager.add(spec)
+PicoPack.register(neotab_spec)
+PicoPack.register(luasnip_spec)
+PicoPack.register(spec)

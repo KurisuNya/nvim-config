@@ -1,7 +1,7 @@
----@type Manager.Spec
+---@type PicoPack.Spec
 local spec = {
-  Manager.url.gh("stevearc/conform.nvim"),
-  event = Manager.event.VeryLazy,
+  PicoPack.url.gh("stevearc/conform.nvim"),
+  event = PicoPack.event.VeryLazy,
 }
 
 --- @class ConformFormatter
@@ -44,4 +44,4 @@ spec.config = function(opts)
   end
 end
 
-Manager.add(spec)
+PicoPack.register(spec)

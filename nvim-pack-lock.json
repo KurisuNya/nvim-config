@@ -9,7 +9,7 @@
       "src": "https://github.com/romgrk/barbar.nvim"
     },
     "blink.cmp": {
-      "rev": "7b31e1b6497be70f620bbad83a789929248697ac",
+      "rev": "3d3631f641e6e9b60066f269f435d23c524ceeb0",
       "src": "https://github.com/saghen/blink.cmp"
     },
     "blink.lib": {
@@ -29,7 +29,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "copilot.lua": {
-      "rev": "3547efbff9adeecbd9d431c0a2a8707b7f6a4131",
+      "rev": "d1570ddc00fc4fc4caf7422803805ee22cca14ff",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
     "diffview.nvim": {
@@ -50,7 +50,7 @@
       "version": ">=0.0.0"
     },
     "gitsigns.nvim": {
-      "rev": "dc7698f932792a764d3db95fedee26c38e728355",
+      "rev": "c0862d382a35b7b45757d8d151a6a634c09bf3ce",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "grug-far.nvim": {
@@ -78,7 +78,7 @@
       "src": "https://github.com/folke/lazydev.nvim"
     },
     "leap.nvim": {
-      "rev": "277e04fad21e3af05a55cc414757b09a704f2a92",
+      "rev": "5af48b78f6c1310ab1f61131d785387faae4cdd4",
       "src": "https://codeberg.org/andyg/leap.nvim"
     },
     "lspsaga.nvim": {
@@ -102,7 +102,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.icons": {
-      "rev": "fc90b3925a2a68282be06e28cfe0cbb366c75dad",
+      "rev": "5d58117d176c133f4cb5585ec8cb3450881c89a0",
       "src": "https://github.com/nvim-mini/mini.icons"
     },
     "neo-tree.nvim": {
@@ -163,7 +163,7 @@
       "src": "https://github.com/KurisuNya/nvim-gtd"
     },
     "nvim-lspconfig": {
-      "rev": "443d92c6bea761ab54cdde46fb197a2b4d614bdd",
+      "rev": "7d22e678970d95d8d18494ec389c52b07111c53a",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -183,7 +183,7 @@
       "src": "https://github.com/nguyenvukhang/nvim-toggler"
     },
     "nvim-treesitter": {
-      "rev": "60c0f468de3e636fa660a419d537e8033aca4e39",
+      "rev": "52773f0d13a0c11d0c3ef33c14ab6ecc1c17148b",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
@@ -198,6 +198,10 @@
     "peek.nvim": {
       "rev": "5820d937d5414baea5f586dc2a3d912a74636e5b",
       "src": "https://github.com/toppair/peek.nvim"
+    },
+    "picopack.nvim": {
+      "rev": "c1eb746a4eb5a1b13c0f538fdb8dc9852c0b60dd",
+      "src": "https://github.com/kurisunya/picopack.nvim"
     },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",

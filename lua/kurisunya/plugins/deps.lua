@@ -1,5 +1,5 @@
-Manager.add({
-  Manager.url.gh("nvim-mini/mini.icons"),
+PicoPack.register({
+  PicoPack.url.gh("nvim-mini/mini.icons"),
   config = function()
     local style = Config.use_nerd_font and "glyph" or "ascii"
     require("mini.icons").setup({ style = style })

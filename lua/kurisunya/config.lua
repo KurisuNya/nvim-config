@@ -50,7 +50,7 @@ Config.dashboard = {
   buttons = {
     { key = "p", name = "  Open Project", cmd = "<CMD>Telescope projections<CR>" },
     { key = "s", name = "  Last Session", cmd = "<CMD>ProjectionsLastSession<CR>" },
-    { key = "u", name = "󰒲  Pack Update", cmd = function() Manager.update_all() end },
+    { key = "u", name = "󰒲  Pack Update", cmd = function() PicoPack.update() end },
     { key = "m", name = "  Mason Manager", cmd = "<CMD>Mason<CR>" },
     { key = "q", name = "  Quit Neovim", cmd = "<CMD>qa<CR>" },
   },

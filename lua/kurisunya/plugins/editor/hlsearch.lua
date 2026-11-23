@@ -1,7 +1,7 @@
----@type Manager.Spec
+---@type PicoPack.Spec
 local spec = {
-  Manager.url.gh("KurisuNya/hlsearch.nvim"),
-  event = Manager.event.VeryLazy,
+  PicoPack.url.gh("KurisuNya/hlsearch.nvim"),
+  event = PicoPack.event.VeryLazy,
 }
 
 local maps = {
@@ -27,4 +27,4 @@ spec.config = function()
   Utils.keymap.set_maps(maps)
 end
 
-Manager.add(spec)
+PicoPack.register(spec)

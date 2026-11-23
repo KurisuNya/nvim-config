@@ -1,7 +1,7 @@
----@type Manager.Spec
+---@type PicoPack.Spec
 local spec = {
-  Manager.url.gh("romgrk/barbar.nvim"),
-  dependencies = { Manager.url.gh("nvim-mini/mini.icons") },
+  PicoPack.url.gh("romgrk/barbar.nvim"),
+  dependencies = { PicoPack.url.gh("nvim-mini/mini.icons") },
   event = { "BufReadPre", "BufNewFile" },
 }
 
@@ -44,7 +44,7 @@ spec.opts = function()
     no_name_title = "Empty",
     sidebar_filetypes = {},
   }
-  if Manager.have("neo-tree.nvim") then
+  if PicoPack.is_registered("neo-tree.nvim") then
     opts.sidebar_filetypes["neo-tree"] = {
       event = "BufWipeout",
       text = "FILE EXPLORER",
@@ -58,11 +58,11 @@ spec.config = function(opts)
   Utils.keymap.set_maps(maps)
 end
 
-Manager.opts_extend("diffview.nvim", {
+PicoPack.opts_extend("diffview.nvim", {
   custom = {
     view_opened_hooks = { function() Utils.keymap.del_maps(maps) end },
     view_close_hooks = { function() Utils.keymap.set_maps(maps) end },
   },
 }, { extend = { "custom.view_opened_hooks", "custom.view_close_hooks" } })
 
-Manager.add(spec)
+PicoPack.register(spec)

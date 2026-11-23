@@ -1,5 +1,5 @@
-Manager.add({
-  Manager.url.gh("catgoose/nvim-colorizer.lua"),
+PicoPack.register({
+  PicoPack.url.gh("catgoose/nvim-colorizer.lua"),
   opts = {
     options = {
       parsers = {
@@ -16,5 +16,5 @@ Manager.add({
     },
   },
   config = function(opts) require("colorizer").setup(opts) end,
-  event = Manager.event.VeryLazy,
+  event = PicoPack.event.VeryLazy,
 })

@@ -1,17 +1,17 @@
----@type Manager.Spec
+---@type PicoPack.Spec
 local spec = {
   {
-    src = Manager.url.gh("gnikdroy/projections.nvim"),
+    src = PicoPack.url.gh("gnikdroy/projections.nvim"),
     version = "pre_release",
   },
-  event = Manager.event.VeryLazy,
+  event = PicoPack.event.VeryLazy,
 }
 
 local maps = function()
   local m = {
     { "n", "<leader>fp", "<CMD>Telescope projections<CR>", { desc = "Telescope Project" } },
   }
-  return Manager.have("telescope.nvim") and m or {}
+  return PicoPack.is_registered("telescope.nvim") and m or {}
 end
 
 spec.init = function() vim.opt.sessionoptions:append("globals") end
@@ -40,8 +40,8 @@ spec.config = function(opts)
   opts.store_hooks = { pre = close_ignore_buffers }
   require("projections").setup(opts)
 
-  if Manager.have("telescope.nvim") then
-    Manager.on_loaded(
+  if PicoPack.is_registered("telescope.nvim") then
+    PicoPack.after_config(
       "telescope.nvim",
       function() require("telescope").load_extension("projections") end
     )
@@ -61,4 +61,4 @@ spec.config = function(opts)
   Utils.keymap.set_maps(maps())
 end
 
-Manager.add(spec)
+PicoPack.register(spec)

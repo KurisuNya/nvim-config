@@ -1,7 +1,7 @@
----@type Manager.Spec
+---@type PicoPack.Spec
 local spec = {
-  Manager.url.gh("lewis6991/gitsigns.nvim"),
-  event = Manager.event.VeryLazy,
+  PicoPack.url.gh("lewis6991/gitsigns.nvim"),
+  event = PicoPack.event.VeryLazy,
 }
 
 local maps = function()
@@ -42,4 +42,4 @@ spec.opts = {
 
 spec.config = function(opts) require("gitsigns").setup(opts) end
 
-Manager.add(spec)
+PicoPack.register(spec)

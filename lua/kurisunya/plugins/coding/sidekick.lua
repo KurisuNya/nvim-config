@@ -1,7 +1,7 @@
----@type Manager.Spec
+---@type PicoPack.Spec
 local spec = {
-  Manager.url.gh("folke/sidekick.nvim"),
-  event = Manager.event.VeryLazy,
+  PicoPack.url.gh("folke/sidekick.nvim"),
+  event = PicoPack.event.VeryLazy,
 }
 
 local maps = {
@@ -32,11 +32,11 @@ local maps = {
 }
 
 local mappings = {
-  buffers = { "<c-b>", "buffers", mode = "nt", desc = "open buffer picker" },
-  files = { "<c-f>", "files", mode = "nt", desc = "open file picker" },
+  buffers = false,
+  files = false,
   prompt = false,
-  stopinsert = { "<c-q>", "stopinsert", mode = "t", desc = "enter normal mode" },
-  hide_n = { "q", "hide", mode = "n", desc = "hide the terminal window" },
+  stopinsert = false,
+  hide_n = false,
   hide_ctrl_q = false,
   hide_ctrl_dot = false,
   hide_ctrl_z = false,
@@ -49,9 +49,9 @@ local mappings = {
 spec.opts = {
   nes = { enabled = false },
   cli = {
+    tools = { pi = { native_scroll = true } },
     mux = { backend = "tmux", enabled = true },
     win = { keys = mappings },
-    tools = { omp = { cmd = { "omp" } } },
   },
 }
 
@@ -60,8 +60,8 @@ spec.config = function(opts)
   Utils.keymap.set_maps(maps)
 end
 
-Manager.opts_extend("projections.nvim", {
+PicoPack.opts_extend("projections.nvim", {
   sessions_ignore_filetypes = { "sidekick_terminal" },
 }, { extend = "sessions_ignore_filetypes" })
 
-Manager.add(spec)
+PicoPack.register(spec)

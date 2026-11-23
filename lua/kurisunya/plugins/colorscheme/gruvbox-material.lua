@@ -1,5 +1,5 @@
 local activate = function(name)
-  Manager.load("gruvbox-material")
+  PicoPack.load("gruvbox-material")
   local background = name:match("dark") and "dark" or "light"
   local contrast = name:match("soft") and "soft" or name:match("hard") and "hard" or "medium"
   vim.o.background = background
@@ -7,7 +7,7 @@ local activate = function(name)
   vim.cmd.colorscheme("gruvbox-material")
 end
 
-Manager.opts_extend("colorschemes.nvim", {
+PicoPack.opts_extend("colorschemes.nvim", {
   specs = {
     {
       colorschemes = {
@@ -23,4 +23,4 @@ Manager.opts_extend("colorschemes.nvim", {
   },
 }, { extend = "specs" })
 
-Manager.add({ Manager.url.gh("sainnhe/gruvbox-material") })
+PicoPack.register({ PicoPack.url.gh("sainnhe/gruvbox-material") })

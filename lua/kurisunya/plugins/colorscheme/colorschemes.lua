@@ -1,5 +1,5 @@
-Manager.add({
-  Manager.url.gh("KurisuNya/colorschemes.nvim"),
+PicoPack.register({
+  PicoPack.url.gh("KurisuNya/colorschemes.nvim"),
   opts = {
     create_commands = true,
     default_colorscheme = Config.default_colorscheme,

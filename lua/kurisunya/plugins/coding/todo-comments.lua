@@ -1,8 +1,8 @@
----@type Manager.Spec
+---@type PicoPack.Spec
 local spec = {
-  Manager.url.gh("folke/todo-comments.nvim"),
-  event = Manager.event.VeryLazy,
-  dependencies = { Manager.url.gh("nvim-lua/plenary.nvim") },
+  PicoPack.url.gh("folke/todo-comments.nvim"),
+  event = PicoPack.event.VeryLazy,
+  dependencies = { PicoPack.url.gh("nvim-lua/plenary.nvim") },
 }
 
 local maps = {
@@ -16,4 +16,4 @@ spec.config = function(opts)
   Utils.keymap.set_maps(maps)
 end
 
-Manager.add(spec)
+PicoPack.register(spec)

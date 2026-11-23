@@ -1,7 +1,7 @@
----@type Manager.Spec
+---@type PicoPack.Spec
 local main_spec = {
-  Manager.url.gh("nvim-telescope/telescope.nvim"),
-  event = Manager.event.VeryLazy,
+  PicoPack.url.gh("nvim-telescope/telescope.nvim"),
+  event = PicoPack.event.VeryLazy,
 }
 
 ---@type string?
@@ -13,9 +13,9 @@ for _, cmd in ipairs({ "make", "cmake", "gmake" }) do
   end
 end
 
----@type Manager.Spec
+---@type PicoPack.Spec
 local fzf_spec = {
-  Manager.url.gh("nvim-telescope/telescope-fzf-native.nvim"),
+  PicoPack.url.gh("nvim-telescope/telescope-fzf-native.nvim"),
   build = (build_cmd ~= "cmake") and "make"
     or "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && "
       .. "cmake --build build --config Release && "
@@ -23,10 +23,10 @@ local fzf_spec = {
 }
 
 main_spec.dependencies = {
-  Manager.url.gh("nvim-mini/mini.icons"),
-  Manager.url.gh("nvim-lua/plenary.nvim"),
-  Manager.url.gh("nvim-telescope/telescope-fzf-native.nvim"),
-  Manager.url.gh("nvim-telescope/telescope-ui-select.nvim"),
+  PicoPack.url.gh("nvim-mini/mini.icons"),
+  PicoPack.url.gh("nvim-lua/plenary.nvim"),
+  PicoPack.url.gh("nvim-telescope/telescope-fzf-native.nvim"),
+  PicoPack.url.gh("nvim-telescope/telescope-ui-select.nvim"),
 }
 
 local maps = {
@@ -97,5 +97,5 @@ main_spec.config = function(opts)
   Utils.keymap.set_maps(maps)
 end
 
-Manager.add(fzf_spec)
-Manager.add(main_spec)
+PicoPack.register(fzf_spec)
+PicoPack.register(main_spec)

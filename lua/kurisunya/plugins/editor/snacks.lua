@@ -1,6 +1,6 @@
----@type Manager.Spec
+---@type PicoPack.Spec
 local spec = {
-  Manager.url.gh("folke/snacks.nvim"),
+  PicoPack.url.gh("folke/snacks.nvim"),
   lazy = false,
   priority = 9000,
 }
@@ -44,13 +44,22 @@ spec.opts = function()
     { section = "header", padding = 4 },
     { section = "keys", gap = 1, padding = 2 },
     function()
-      local stats = Manager.stats()
+      local stats = PicoPack.stats()
+      if not stats then
+        return {
+          align = "center",
+          text = {
+            { Config.dashboard.footer_name .. " | ", hl = "comment" },
+            { "error loading stats", hl = "comment" },
+          },
+        }
+      end
       local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
       return {
         align = "center",
         text = {
           { Config.dashboard.footer_name .. " | ", hl = "comment" },
-          { stats.loaded .. "/" .. stats.total .. " plugins ", hl = "comment" },
+          { stats.loaded .. "/" .. stats.installed .. " plugins ", hl = "comment" },
           { "in " .. ms .. "ms", hl = "comment" },
         },
       }
@@ -65,13 +74,13 @@ spec.config = function(opts)
   vim.o.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
   -- HACK: restore vim.notify after snacks setup and let noice.nvim take over
   -- this is needed to have early notifications show up in noice history
-  if Manager.have("noice.nvim") then
+  if PicoPack.is_registered("noice.nvim") then
     vim.notify = notify
   end
 end
 
-Manager.opts_extend("lualine.nvim", {
+PicoPack.opts_extend("lualine.nvim", {
   custom = { disabled_filetypes = { "snacks_dashboard" } },
 }, { extend = "custom.disabled_filetypes" })
 
-Manager.add(spec)
+PicoPack.register(spec)

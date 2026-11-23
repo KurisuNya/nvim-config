@@ -1,12 +1,12 @@
-Manager.opts_extend("nvim-treesitter", {
+PicoPack.opts_extend("nvim-treesitter", {
   ensure_installed = { "xml" },
 }, { extend = "ensure_installed" })
 
-Manager.opts_extend("mason.nvim", {
+PicoPack.opts_extend("mason.nvim", {
   ensure_installed = { "xmlformatter" },
 }, { extend = "ensure_installed" })
 
-Manager.opts_extend("conform.nvim", {
+PicoPack.opts_extend("conform.nvim", {
   custom = { formatters = {
     { "xmlformatter", filetypes = { "xml" } },
   } },

@@ -1,4 +1,4 @@
-Manager.opts_extend("nvim-treesitter", {
+PicoPack.opts_extend("nvim-treesitter", {
   ensure_installed = { "markdown", "markdown_inline" },
 }, { extend = "ensure_installed" })
 
@@ -10,9 +10,9 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 
 local img_paste_dir = "./assets/img"
 
----@type Manager.Spec
+---@type PicoPack.Spec
 local image_spec = {
-  Manager.url.gh("dfendr/clipboard-image.nvim"),
+  PicoPack.url.gh("dfendr/clipboard-image.nvim"),
   filetype = "markdown",
 }
 
@@ -41,11 +41,11 @@ image_spec.config = function(opts)
   })
 end
 
-Manager.add(image_spec)
+PicoPack.register(image_spec)
 
----@type Manager.Spec
+---@type PicoPack.Spec
 local preview_spec = {
-  Manager.url.gh("toppair/peek.nvim"),
+  PicoPack.url.gh("toppair/peek.nvim"),
   build = "deno task --quiet build:fast",
   filetype = "markdown",
 }
@@ -75,13 +75,13 @@ preview_spec.config = function()
   })
 end
 
-Manager.add(preview_spec)
+PicoPack.register(preview_spec)
 
----@type Manager.Spec
+---@type PicoPack.Spec
 local table_spec = {
-  Manager.url.gh("Kicamon/markdown-table-mode.nvim"),
+  PicoPack.url.gh("Kicamon/markdown-table-mode.nvim"),
   filetype = "markdown",
   config = function() require("markdown-table-mode").setup() end,
 }
 
-Manager.add(table_spec)
+PicoPack.register(table_spec)

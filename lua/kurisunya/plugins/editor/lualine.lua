@@ -1,8 +1,8 @@
----@type Manager.Spec
+---@type PicoPack.Spec
 local spec = {
-  Manager.url.gh("nvim-lualine/lualine.nvim"),
-  dependencies = { Manager.url.gh("nvim-mini/mini.icons") },
-  event = Manager.event.VeryLazy,
+  PicoPack.url.gh("nvim-lualine/lualine.nvim"),
+  dependencies = { PicoPack.url.gh("nvim-mini/mini.icons") },
+  event = PicoPack.event.VeryLazy,
 }
 
 local space_enough = { function() return vim.o.columns >= 80 end }
@@ -79,24 +79,24 @@ spec.config = function(opts)
   end
 
   -- space endough condition
-  if Manager.have("diffview.nvim") then
+  if PicoPack.is_registered("diffview.nvim") then
     table.insert(space_enough, function() return not vim.g.diffview_opened end)
   end
 
   -- extensions
-  if Manager.have("neo-tree.nvim") then
+  if PicoPack.is_registered("neo-tree.nvim") then
     table.insert(opts.extensions, "neo-tree")
   end
 
-  if Manager.have("nvim-dap-ui") then
+  if PicoPack.is_registered("nvim-dap-ui") then
     table.insert(opts.extensions, "nvim-dap-ui")
   end
 
-  if Manager.have("toggleterm.nvim") then
+  if PicoPack.is_registered("toggleterm.nvim") then
     table.insert(opts.extensions, "toggleterm")
   end
 
-  if Manager.have("lspsaga.nvim") then
+  if PicoPack.is_registered("lspsaga.nvim") then
     local lspsaga_extension = {
       sections = {
         lualine_a = { "filetype" },
@@ -111,7 +111,7 @@ spec.config = function(opts)
     table.insert(opts.extensions, lspsaga_extension)
   end
 
-  if Manager.have("neotest") then
+  if PicoPack.is_registered("neotest") then
     local neotest_extension = {
       sections = {
         lualine_a = { "filetype" },
@@ -126,7 +126,7 @@ spec.config = function(opts)
     table.insert(opts.extensions, neotest_extension)
   end
 
-  if Manager.have("diffview.nvim") then
+  if PicoPack.is_registered("diffview.nvim") then
     local diffview_extension = {
       sections = {
         lualine_a = { "filetype" },
@@ -154,7 +154,7 @@ spec.config = function(opts)
   end
 
   -- sections
-  if Manager.have("gitsigns.nvim") then
+  if PicoPack.is_registered("gitsigns.nvim") then
     local head = { "b:gitsigns_head", icon = Icons.git.branch }
     local diff = {
       "diff",
@@ -175,8 +175,8 @@ spec.config = function(opts)
     table.insert(opts.sections.lualine_b, diff)
   end
 
-  if Manager.have("noice.nvim") then
-    Manager.load("noice.nvim")
+  if PicoPack.is_registered("noice.nvim") then
+    PicoPack.load("noice.nvim")
     local noice = require("noice")
     local command = {
       noice.api.status.command.get,
@@ -198,8 +198,8 @@ spec.config = function(opts)
     table.insert(opts.sections.lualine_c, mode)
   end
 
-  if Manager.have("nvim-dap") then
-    Manager.load("nvim-dap")
+  if PicoPack.is_registered("nvim-dap") then
+    PicoPack.load("nvim-dap")
     local dap_info = {
       function() return require("dap").status() end,
       cond = function() return is_space_enough() and require("dap").status() ~= "" end,
@@ -210,11 +210,11 @@ spec.config = function(opts)
   end
 
   -- enable ui2 for better msg_show
-  if not Manager.have("noice.nvim") then
+  if not PicoPack.is_registered("noice.nvim") then
     require("vim._core.ui2").enable()
   end
 
   require("lualine").setup(opts)
 end
 
-Manager.add(spec)
+PicoPack.register(spec)

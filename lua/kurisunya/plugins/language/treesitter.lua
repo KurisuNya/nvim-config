@@ -43,10 +43,10 @@ function H.have(what, query)
 end
 
 local spec = {
-  { src = Manager.url.gh("nvim-treesitter/nvim-treesitter"), version = "main" },
-  dependencies = { Manager.url.gh("nvim-treesitter/nvim-treesitter-context") },
+  { src = PicoPack.url.gh("nvim-treesitter/nvim-treesitter"), version = "main" },
+  dependencies = { PicoPack.url.gh("nvim-treesitter/nvim-treesitter-context") },
   build = function() vim.cmd("TSUpdate") end,
-  event = Manager.event.VeryLazy,
+  event = PicoPack.event.VeryLazy,
   lazy = vim.fn.argc(-1) == 0,
 }
 
@@ -116,8 +116,8 @@ spec.config = function(opts)
   })
 end
 
-Manager.opts_extend("mason.nvim", {
+PicoPack.opts_extend("mason.nvim", {
   ensure_installed = { "tree-sitter-cli" },
 }, { extend = "ensure_installed" })
 
-Manager.add(spec)
+PicoPack.register(spec)

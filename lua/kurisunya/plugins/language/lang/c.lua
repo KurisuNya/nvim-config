@@ -1,18 +1,18 @@
-Manager.opts_extend("nvim-treesitter", {
+PicoPack.opts_extend("nvim-treesitter", {
   ensure_installed = { "c", "cpp" },
 }, { extend = "ensure_installed" })
 
-Manager.opts_extend("mason.nvim", {
+PicoPack.opts_extend("mason.nvim", {
   ensure_installed = { "clangd", "clang-format", "codelldb", "cpptools" },
 }, { extend = "ensure_installed" })
 
-Manager.opts_extend("conform.nvim", {
+PicoPack.opts_extend("conform.nvim", {
   custom = { formatters = {
     { "clang-format", filetypes = { "c", "cpp" } },
   } },
 }, { extend = "custom.formatters" })
 
-Manager.on_loaded("nvim-lspconfig", function()
+PicoPack.after_config("nvim-lspconfig", function()
   vim.lsp.config("clangd", {
     cmd = {
       "clangd",
@@ -48,7 +48,7 @@ Manager.on_loaded("nvim-lspconfig", function()
   vim.lsp.enable("clangd")
 end)
 
-Manager.on_loaded("nvim-dap", function()
+PicoPack.after_config("nvim-dap", function()
   require("dap").adapters.codelldb = {
     type = "server",
     port = "${port}",

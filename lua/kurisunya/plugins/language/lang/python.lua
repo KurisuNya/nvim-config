@@ -4,19 +4,19 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   callback = function() vim.wo[0][0].colorcolumn = "88" end,
 })
 
-Manager.opts_extend("neo-tree.nvim", {
+PicoPack.opts_extend("neo-tree.nvim", {
   custom = { hide_by_name = { "__pycache__" } },
 }, { extend = "custom.hide_by_name" })
 
-Manager.opts_extend("nvim-treesitter", {
+PicoPack.opts_extend("nvim-treesitter", {
   ensure_installed = { "python" },
 }, { extend = "ensure_installed" })
 
-Manager.opts_extend("mason.nvim", {
+PicoPack.opts_extend("mason.nvim", {
   ensure_installed = { "ty", "basedpyright", "ruff", "debugpy" },
 }, { extend = "ensure_installed" })
 
-Manager.opts_extend("conform.nvim", {
+PicoPack.opts_extend("conform.nvim", {
   custom = {
     formatters = {
       { "ruff_organize_imports", filetypes = { "python" } },
@@ -25,7 +25,7 @@ Manager.opts_extend("conform.nvim", {
   },
 }, { extend = "custom.formatters" })
 
-Manager.on_loaded("nvim-lspconfig", function()
+PicoPack.after_config("nvim-lspconfig", function()
   -- vim.lsp.config("basedpyright", {
   --   settings = {
   --     basedpyright = {
@@ -57,12 +57,12 @@ Manager.on_loaded("nvim-lspconfig", function()
   vim.lsp.enable("ruff")
 end)
 
----@type Manager.Spec
+---@type PicoPack.Spec
 local dap_spec = {
-  Manager.url.gh("mfussenegger/nvim-dap-python"),
+  PicoPack.url.gh("mfussenegger/nvim-dap-python"),
   dependencies = {
-    Manager.url.gh("mfussenegger/nvim-dap"),
-    Manager.url.gh("mason-org/mason.nvim"),
+    PicoPack.url.gh("mfussenegger/nvim-dap"),
+    PicoPack.url.gh("mason-org/mason.nvim"),
   },
   filetype = "python",
 }
@@ -80,7 +80,7 @@ dap_spec.config = function()
   end
 end
 
-Manager.on_loaded("nvim-dap", function()
+PicoPack.after_config("nvim-dap", function()
   local dap = require("dap")
   dap.configurations.python = {
     {
@@ -100,11 +100,11 @@ Manager.on_loaded("nvim-dap", function()
   }
 end)
 
-Manager.add(dap_spec)
+PicoPack.register(dap_spec)
 
----@type Manager.Spec
+---@type PicoPack.Spec
 local venv_spec = {
-  Manager.url.gh("linux-cultist/venv-selector.nvim"),
+  PicoPack.url.gh("linux-cultist/venv-selector.nvim"),
   filetype = "python",
 }
 
@@ -132,17 +132,17 @@ venv_spec.config = function(opts)
   })
 end
 
-Manager.add(venv_spec)
+PicoPack.register(venv_spec)
 
 local neotest_spec = {
-  Manager.url.gh("nvim-neotest/neotest-python"),
+  PicoPack.url.gh("nvim-neotest/neotest-python"),
 }
 
-Manager.opts_extend("neotest", {
+PicoPack.opts_extend("neotest", {
   adapters = {
     function()
-      Manager.load("neotest-python")
-      Manager.load("venv-selector.nvim")
+      PicoPack.load("neotest-python")
+      PicoPack.load("venv-selector.nvim")
       local opts = {
         dap = { justMyCode = false },
         python = function() return require("venv-selector").python() end,
@@ -152,4 +152,4 @@ Manager.opts_extend("neotest", {
   },
 }, { extend = "adapters" })
 
-Manager.add(neotest_spec)
+PicoPack.register(neotest_spec)

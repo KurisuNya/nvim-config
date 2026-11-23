@@ -1,8 +1,8 @@
----@type Manager.Spec
+---@type PicoPack.Spec
 local spec = {
-  Manager.url.gh("nvimdev/lspsaga.nvim"),
-  dependencies = { Manager.url.gh("nvim-mini/mini.icons") },
-  event = Manager.event.VeryLazy,
+  PicoPack.url.gh("nvimdev/lspsaga.nvim"),
+  dependencies = { PicoPack.url.gh("nvim-mini/mini.icons") },
+  event = PicoPack.event.VeryLazy,
 }
 
 ---@param severity string
@@ -77,8 +77,8 @@ spec.config = function(opts)
   end
 end
 
-Manager.opts_extend("projections.nvim", {
+PicoPack.opts_extend("projections.nvim", {
   sessions_ignore_filetypes = { "sagaoutline" },
 }, { extend = "sessions_ignore_filetypes" })
 
-Manager.add(spec)
+PicoPack.register(spec)

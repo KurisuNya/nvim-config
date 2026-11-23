@@ -1,18 +1,18 @@
-Manager.opts_extend("nvim-treesitter", {
+PicoPack.opts_extend("nvim-treesitter", {
   ensure_installed = { "lua" },
 }, { extend = "ensure_installed" })
 
-Manager.opts_extend("mason.nvim", {
+PicoPack.opts_extend("mason.nvim", {
   ensure_installed = { "lua-language-server", "stylua" },
 }, { extend = "ensure_installed" })
 
-Manager.opts_extend("conform.nvim", {
+PicoPack.opts_extend("conform.nvim", {
   custom = { formatters = {
     { "stylua", filetypes = { "lua" } },
   } },
 }, { extend = "custom.formatters" })
 
-Manager.on_loaded("nvim-lspconfig", function()
+PicoPack.after_config("nvim-lspconfig", function()
   vim.lsp.config("lua_ls", {
     settings = {
       Lua = {
@@ -34,8 +34,8 @@ Manager.on_loaded("nvim-lspconfig", function()
   vim.lsp.enable("lua_ls")
 end)
 
-Manager.add({
-  Manager.url.gh("folke/lazydev.nvim"),
+PicoPack.register({
+  PicoPack.url.gh("folke/lazydev.nvim"),
   opts = {
     library = {
       { path = "${3rd}/luv/library", words = { "vim%.uv" } },
