@@ -1,5 +1,5 @@
 local activate = function(name)
-  PicoPack.load("gruvbox-material")
+  PicoPack.load_and_config("gruvbox-material")
   local background = name:match("dark") and "dark" or "light"
   local contrast = name:match("soft") and "soft" or name:match("hard") and "hard" or "medium"
   vim.o.background = background

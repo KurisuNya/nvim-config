@@ -32,7 +32,7 @@ local plugin_specific = {
 }
 
 local activate = function(name)
-  PicoPack.load("tokyonight.nvim")
+  PicoPack.load_and_config("tokyonight.nvim")
   require("tokyonight").setup({
     lualine_bold = true,
     styles = {

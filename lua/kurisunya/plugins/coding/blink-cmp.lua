@@ -78,7 +78,7 @@ spec.opts = function()
   }
 
   if PicoPack.is_registered("lazydev.nvim") then
-    PicoPack.load("lazydev.nvim")
+    PicoPack.load_and_config("lazydev.nvim")
     opts.sources = {
       per_filetype = {
         lua = { inherit_defaults = true, "lazydev" },

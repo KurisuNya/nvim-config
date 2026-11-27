@@ -90,7 +90,7 @@ end
 require("kurisunya.plugins.coding.indent-o-matic")
 require("kurisunya.plugins.coding.indent-blankline")
 require("kurisunya.plugins.coding.blink-cmp")
-require("kurisunya.plugins.coding.ts-comment")
+require("kurisunya.plugins.coding.ts-comments")
 require("kurisunya.plugins.coding.nvim-autopairs")
 require("kurisunya.plugins.coding.nvim-ts-autotag")
 require("kurisunya.plugins.coding.sniprun")

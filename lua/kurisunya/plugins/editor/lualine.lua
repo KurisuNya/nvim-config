@@ -176,7 +176,7 @@ spec.config = function(opts)
   end
 
   if PicoPack.is_registered("noice.nvim") then
-    PicoPack.load("noice.nvim")
+    PicoPack.load_and_config("noice.nvim")
     local noice = require("noice")
     local command = {
       noice.api.status.command.get,
@@ -199,7 +199,7 @@ spec.config = function(opts)
   end
 
   if PicoPack.is_registered("nvim-dap") then
-    PicoPack.load("nvim-dap")
+    PicoPack.load_and_config("nvim-dap")
     local dap_info = {
       function() return require("dap").status() end,
       cond = function() return is_space_enough() and require("dap").status() ~= "" end,

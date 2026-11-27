@@ -4,6 +4,12 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   callback = function() vim.wo[0][0].colorcolumn = "88" end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  group = Utils.autocmd.new_group("teal_buf_options"),
+  pattern = "teal",
+  callback = function() vim.bo.commentstring = "-- %s" end,
+})
+
 PicoPack.opts_extend("nvim-treesitter", {
   ensure_installed = { "teal" },
 }, { extend = "ensure_installed" })

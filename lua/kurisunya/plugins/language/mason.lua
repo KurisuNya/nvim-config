@@ -1,7 +1,7 @@
 PicoPack.register({
   PicoPack.url.gh("mason-org/mason.nvim"),
   opts = {
-    ensure_installed = { "ty" },
+    ensure_installed = {},
     ui = { border = Config.border_style },
   },
   config = function(opts)

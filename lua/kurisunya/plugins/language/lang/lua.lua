@@ -38,6 +38,7 @@ PicoPack.register({
   PicoPack.url.gh("folke/lazydev.nvim"),
   opts = {
     library = {
+      "picopack.nvim",
       { path = "${3rd}/luv/library", words = { "vim%.uv" } },
     },
   },

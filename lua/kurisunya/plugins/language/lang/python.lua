@@ -141,8 +141,8 @@ local neotest_spec = {
 PicoPack.opts_extend("neotest", {
   adapters = {
     function()
-      PicoPack.load("neotest-python")
-      PicoPack.load("venv-selector.nvim")
+      PicoPack.load_and_config("neotest-python")
+      PicoPack.load_and_config("venv-selector.nvim")
       local opts = {
         dap = { justMyCode = false },
         python = function() return require("venv-selector").python() end,
